@@ -10,14 +10,14 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
-  m_Name: Default_W_STR
+  m_Name: Default_W_AGI
   m_EditorClassIdentifier: 
-  ITEMNAME: Base Sword
+  ITEMNAME: Base Bow
   ITEM_TYPE: 2
-  ITEM_CLASS: 0
-  STRENGHT: 10
+  ITEM_CLASS: 2
+  STRENGHT: 1
   INTELIGENCE: 1
-  AGILITY: 1
+  AGILITY: 10
   MINDMG: 1
   MAXDMG: 2
   VISUAL_WEAPON: {fileID: 4003179789905615893, guid: f7c4a4b00831ba64f8d9735dd6b78bc3,

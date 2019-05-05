@@ -53,7 +53,7 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
                 parent.GetComponent<Item_Drop_Eq> ().EquipItem ();
         }
 
-        ClearDropZones();
+        //ClearDropZones();
 
         this.transform.SetParent (parent);
         GetComponent<CanvasGroup> ().blocksRaycasts = true;
@@ -116,7 +116,7 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        //ClearDropZones();
+        ClearDropZones();
     }
 
     public void OnPointerDown(PointerEventData eventData)

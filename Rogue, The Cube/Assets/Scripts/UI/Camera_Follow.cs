@@ -28,16 +28,6 @@ public class Camera_Follow : MonoBehaviour
 
         currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
-
-        // if (Input.GetMouseButton(1))
-        // {
-        //     RotateCamera();
-        // }
-        // else
-        // {
-        //     // Cursor.lockState = CursorLockMode.None;
-        //     Cursor.visible = true;
-        // }
     }
     void LateUpdate()
     {
@@ -54,8 +44,6 @@ public class Camera_Follow : MonoBehaviour
         if (Input.GetAxis("Mouse X") >= 0.1f || Input.GetAxis("Mouse X") <= -0.1f)
         {
             currentYaw += yawSpeed * Input.GetAxis("Mouse X");
-            // Cursor.lockState = CursorLockMode.Locked;
-            // Cursor.visible = false;
         }
     }
 }

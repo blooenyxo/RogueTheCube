@@ -17,12 +17,14 @@ public class Stats_Player : Stats {
 
     Equipment equipment;
     /// <summary>
-    /// holds the methode to adjust stats based on currently equiped items. delegate triggers on item add or item removed with the respective parameters.
+    /// holds the methode to adjust stats based on currently equiped items. delegate triggers on item add or 
+    /// item removed with the respective parameters.
     /// </summary>
     private void Start () {
         equipment = Equipment.instance;
         equipment.onEquipmentChange += OnEquipmentChange;
     }
+
     /// <summary>
     /// every new Stat added to the game needs a entry added here. "stat.addModifier(newItem.stat);" and "stat.removeModifier(oldItem.stat);"
     /// </summary>

@@ -24,7 +24,7 @@ public class Equipment : MonoBehaviour {
     public delegate void OnEquipmentChange (Item newItem, Item oldItem);
     /// <summary>
     /// triggered when an item was added or remoed from the equipment array.
-    /// currently only useed in the StatsPlayer Class.
+    /// currently only useed in the Stats_Player Class.
     /// </summary>
     public OnEquipmentChange onEquipmentChange;
 

@@ -16,5 +16,11 @@ public class UI_Input : MonoBehaviour
         {
             CharacterPanel.SetActive(!CharacterPanel.activeSelf);
         }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            PickUpPanel.SetActive(false);
+            CharacterPanel.SetActive(false);
+        }
     }
 }

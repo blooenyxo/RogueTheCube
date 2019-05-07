@@ -20,7 +20,7 @@ MonoBehaviour:
   AGILITY: 10
   MINDMG: 1
   MAXDMG: 2
-  VISUAL_WEAPON: {fileID: 4003179789905615893, guid: f7c4a4b00831ba64f8d9735dd6b78bc3,
+  VISUAL_WEAPON: {fileID: 6034981805155526121, guid: 239d8e772cd7d314c8875cfef13df7e6,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 0}

@@ -6,8 +6,6 @@ public class Controller_Player : MonoBehaviour
     private Rigidbody rb;
     private Vector3 movement;
 
-    public KeyCode inspectKey;
-
     void Start()
     {
         statsPlayer = Stats_Player.instance;
@@ -16,22 +14,11 @@ public class Controller_Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetKeyDown(inspectKey))
-        {
-
-        }
-        else
-        {
-
-        }
-
         if (Input.GetButtonDown("Fire1"))
         {
             if (GetComponentInChildren<Controller_Weapon>())
                 GetComponentInChildren<Controller_Weapon>().BaseAttack();
         }
-
-
     }
 
     void FixedUpdate()
@@ -46,6 +33,7 @@ public class Controller_Player : MonoBehaviour
     {
         movement.Set(h, 0f, v);
         movement = movement.normalized * statsPlayer.MOVESPEED.GetValue() * Time.deltaTime;
+        //movement = transform.worldToLocalMatrix.inverse * movement;
         rb.MovePosition(transform.position + movement);
     }
 

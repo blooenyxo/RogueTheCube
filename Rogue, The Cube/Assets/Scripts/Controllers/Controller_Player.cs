@@ -1,4 +1,5 @@
 ﻿using UnityEngine;
+using UnityEngine.EventSystems;
 
 public class Controller_Player : MonoBehaviour
 {
@@ -14,7 +15,7 @@ public class Controller_Player : MonoBehaviour
 
     private void Update()
     {
-        if (Input.GetButtonDown("Fire1"))
+        if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
         {
             if (GetComponentInChildren<Controller_Weapon>())
                 GetComponentInChildren<Controller_Weapon>().BaseAttack();

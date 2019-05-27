@@ -6,6 +6,8 @@ public class Controller_Player : MonoBehaviour
     private Stats_Player statsPlayer;
     private Rigidbody rb;
     private Vector3 movement;
+    private Vector3 direction;
+    private int moveSpeed;
 
     void Start()
     {
@@ -15,6 +17,9 @@ public class Controller_Player : MonoBehaviour
 
     private void Update()
     {
+        float angle = Vector3.Angle(movement, direction);
+        //Debug.Log(angle);
+
         if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
         {
             if (GetComponentInChildren<Controller_Weapon>())
@@ -44,7 +49,7 @@ public class Controller_Player : MonoBehaviour
 
         if (Physics.Raycast(ray, out RaycastHit hit, 1000f, 9))
         {
-            Vector3 direction = (hit.point - transform.position);
+            direction = (hit.point - transform.position);
             direction.y = 0f;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
             rb.MoveRotation(Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * (statsPlayer.MOVESPEED.GetValue())));

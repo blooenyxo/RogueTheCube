@@ -10,10 +10,15 @@ public class CreateWorld : MonoBehaviour
         {
             for (int y = 0; y < 200; y += 20)
             {
-                GameObject _tmp = Instantiate(floor, this.transform.position + new Vector3(x, 0, y), this.transform.rotation);
-                _tmp.transform.SetParent(this.transform);
+                CreateFloorTile(x, y);
             }
         }
+    }
+
+    private void CreateFloorTile(int x, int y)
+    {
+        GameObject _tmp = Instantiate(floor, this.transform.position + new Vector3(x, 0, y), this.transform.rotation);
+        _tmp.transform.SetParent(this.transform);
     }
 
 }

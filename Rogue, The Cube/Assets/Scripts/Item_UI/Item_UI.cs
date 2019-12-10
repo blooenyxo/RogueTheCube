@@ -1,17 +1,23 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
-public class Item_UI : MonoBehaviour {
+public class Item_UI : MonoBehaviour
+{
     public Item item;
 
     Image image;
 
-    void Start () {
-        image = GetComponent<Image> ();
+    void Start()
+    {
+        image = GetComponent<Image>();
 
-        switch (item.ITEM_CLASS) {
+        SetImageColor();
+    }
+
+    void SetImageColor()
+    {
+        switch (item.ITEM_CLASS)
+        {
             case ITEMCLASS.AGILITY:
                 image.color = Color.green;
                 break;
@@ -23,5 +29,4 @@ public class Item_UI : MonoBehaviour {
                 break;
         }
     }
-
 }

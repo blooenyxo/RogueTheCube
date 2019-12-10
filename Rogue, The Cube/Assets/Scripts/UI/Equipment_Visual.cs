@@ -1,7 +1,4 @@
-﻿using System;
-using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Equipment_Visual : MonoBehaviour
 {
@@ -29,6 +26,11 @@ public class Equipment_Visual : MonoBehaviour
         }
         else
         {
+            if (newItem == oldItem)
+            {
+                return;
+            }
+
             if (newItem.ITEM_TYPE == ITEMTYPE.WEAPON)
             {
                 weapon = Instantiate(newItem.VISUAL_WEAPON, rightHandPoint.transform.position, rightHandPoint.transform.rotation);

@@ -1,11 +1,10 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Controller_Bow : Controller_Weapon
 {
     public GameObject arrow;
     public GameObject firePoint;
+
     public override void BaseAttack()
     {
         base.BaseAttack();

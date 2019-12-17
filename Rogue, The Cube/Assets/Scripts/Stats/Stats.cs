@@ -39,7 +39,7 @@ public class Stats : MonoBehaviour
         }
     }
     /// <summary>
-    /// a rudimentary crit change + crit amount system. work in progress.
+    /// a rudimentary crit chance + crit amount system. work in progress.
     /// </summary>
     /// <returns>int damage, to be used with the targets takedamage() method</returns>
     public virtual int DealDamage()

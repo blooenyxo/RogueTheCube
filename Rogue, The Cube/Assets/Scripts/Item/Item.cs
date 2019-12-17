@@ -1,5 +1,4 @@
 ﻿using UnityEngine;
-using static System.Net.Mime.MediaTypeNames;
 
 public enum ITEMTYPE { HELMET, CHEST, WEAPON, OFFHAND, CONSUMABLE }
 public enum ITEMCLASS { STRENGHT, INTELIGENCE, AGILITY }

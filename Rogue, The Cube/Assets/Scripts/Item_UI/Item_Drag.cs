@@ -18,7 +18,7 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
     /// <summary>
     /// game object reference to the parent of the Item_Drop_Eq holders
     /// </summary>
-    GameObject equipmentBackground;
+    private GameObject equipmentBackground;
 
     void Start()
     {

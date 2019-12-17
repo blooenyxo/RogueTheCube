@@ -7,17 +7,18 @@ public class Controller_Player : MonoBehaviour
     private Rigidbody rb;
     private Vector3 movement;
     private Vector3 direction;
-    private int moveSpeed;
+    private LayerMask floorMask;
 
     void Start()
     {
+        floorMask = LayerMask.GetMask("Floor");
         statsPlayer = Stats_Player.instance;
         rb = GetComponent<Rigidbody>();
     }
 
     private void Update()
     {
-        float angle = Vector3.Angle(movement, direction);
+        //float angle = Vector3.Angle(movement, direction);
         //Debug.Log(angle);
 
         if (Input.GetButtonDown("Fire1") && !EventSystem.current.IsPointerOverGameObject())
@@ -47,7 +48,7 @@ public class Controller_Player : MonoBehaviour
     {
         Ray ray = (Camera.main.ScreenPointToRay(Input.mousePosition));
 
-        if (Physics.Raycast(ray, out RaycastHit hit, 1000f, 9))
+        if (Physics.Raycast(ray, out RaycastHit hit, Mathf.Infinity, floorMask))
         {
             direction = (hit.point - transform.position);
             direction.y = 0f;

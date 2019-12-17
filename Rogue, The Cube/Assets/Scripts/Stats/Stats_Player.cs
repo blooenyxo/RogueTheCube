@@ -1,18 +1,21 @@
 ﻿using UnityEngine;
 
-public class Stats_Player : Stats {
+public class Stats_Player : Stats
+{
     #region Singelton
     public static Stats_Player instance;
-    void Awake () {
-        if (instance != null) {
-            Debug.LogWarning ("More then one Inventory found");
+    void Awake()
+    {
+        if (instance != null)
+        {
+            Debug.LogWarning("More then one Inventory found");
             return;
         }
         instance = this;
     }
     #endregion
 
-    public delegate void OnStatsChanged ();
+    public delegate void OnStatsChanged();
     public OnStatsChanged onStatsChanged;
 
     Equipment equipment;
@@ -20,7 +23,8 @@ public class Stats_Player : Stats {
     /// holds the methode to adjust stats based on currently equiped items. delegate triggers on item add or 
     /// item removed with the respective parameters.
     /// </summary>
-    private void Start () {
+    private void Start()
+    {
         equipment = Equipment.instance;
         equipment.onEquipmentChange += OnEquipmentChange;
     }
@@ -30,8 +34,9 @@ public class Stats_Player : Stats {
     /// </summary>
     /// <param name="newItem">the the item which stats are about to be added</param>
     /// <param name="oldItem">the the item currently in slot which stats are about to be removed</param>
-    public override void OnEquipmentChange (Item newItem, Item oldItem) {
-        base.OnEquipmentChange (newItem, oldItem);
-        onStatsChanged.Invoke ();
+    public override void OnEquipmentChange(Item newItem, Item oldItem)
+    {
+        base.OnEquipmentChange(newItem, oldItem);
+        onStatsChanged.Invoke();
     }
 }

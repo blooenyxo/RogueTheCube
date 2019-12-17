@@ -1,25 +1,25 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
-using UnityEngine.EventSystems;
+﻿using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
 /// 
 /// </summary>
-public class Item_Drop_Eq : Item_Drop {
+public class Item_Drop_Eq : Item_Drop
+{
 
-    Image image;
-    Equipment equipment;
+    private Image image;
+    private Equipment equipment;
     public Item localStoredItem;
     public int index;
 
-    private void Start () {
+    private void Start()
+    {
         equipment = Equipment.instance;
     }
 
-    public override void OnDrop (PointerEventData eventData) {
-        base.OnDrop (eventData);
+    public override void OnDrop(PointerEventData eventData)
+    {
+        base.OnDrop(eventData);
         // this logic handles what happens if after picking an item off a equipmentslot you decide to place it right back down.
         if (transform.childCount == 0)
         {
@@ -28,14 +28,16 @@ public class Item_Drop_Eq : Item_Drop {
                 localStoredItem = eventData.pointerDrag.GetComponent<Item_UI>().item;
             }
             EquipItem();
-        }        
+        }
     }
 
-    public void RemoveItem () {
-        equipment.Unequip (index);
+    public void RemoveItem()
+    {
+        equipment.Unequip(index);
     }
 
-    public void EquipItem () {
-        equipment.Equip (localStoredItem, index);
+    public void EquipItem()
+    {
+        equipment.Equip(localStoredItem, index);
     }
 }

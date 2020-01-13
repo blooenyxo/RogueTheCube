@@ -3,7 +3,10 @@
 --- !u!78 &1
 TagManager:
   serializedVersion: 2
-  tags: []
+  tags:
+  - Enemy_Basic_Melee
+  - Enemy_Boss_Melee
+  - Enemy
   layers:
   - Default
   - TransparentFX
@@ -17,8 +20,8 @@ TagManager:
   - Floor
   - Walls
   - Items
-  - 
-  - 
+  - Enemy
+  - Arrow
   - 
   - 
   - 

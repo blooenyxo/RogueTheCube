@@ -2,28 +2,30 @@
 
 public class Arrow : Controller_Projectile
 {
-    private Stats_Player stats_Player;
-
     public override void Start()
     {
-        stats_Player = Stats_Player.instance;
-
-        speed = Mathf.RoundToInt(stats_Player.AGILITY.GetValue() * 1.5f);
         base.Start();
+        speed = Mathf.RoundToInt(stats.AGILITY.GetValue() * 1.5f);
+        rb.AddForce(transform.forward * speed, ForceMode.Impulse); // this has to be here, the speed variable in set only one row above
     }
 
     /// <summary>
     /// an IDEA to make the arrow behave normal upon touching a wall
+    /// currenlty, it just drops to the floor, no matter what it hit
+    /// fixed the collision matrix (forgot about that). now it collides with walls and enamies and me. ah, and floors too :D
     /// </summary>
     /// <param name="collision"></param>
     public void OnCollisionEnter(Collision col)
     {
-        // to compare the topmost bits of the layerMask value you need to bitshift (<<) by 1. this works right now as is, 
-        // maybe update later to a more classy sollution.
-        if (1 << col.gameObject.layer == interactLayers.value)
+        rb.constraints = RigidbodyConstraints.FreezePositionX;
+        rb.constraints = RigidbodyConstraints.FreezePositionZ;
+        rb.useGravity = true;
+
+        if (col.gameObject.GetComponent<Stats>() && canDoDamage)
         {
-            rb.constraints = RigidbodyConstraints.FreezeAll;
-            rb.useGravity = false;
+            col.gameObject.GetComponent<Stats>().TakeDamage(stats.MAXDMG.GetValue());
         }
+
+        canDoDamage = false;
     }
 }

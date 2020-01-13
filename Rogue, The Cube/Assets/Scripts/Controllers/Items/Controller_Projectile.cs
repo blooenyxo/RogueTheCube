@@ -10,12 +10,12 @@ public class Controller_Projectile : MonoBehaviour
     // the layermask is set on the class where this one is inherited
     public LayerMask interactLayers;
     public float desctroyTimer;
+    public Stats stats;
+    public bool canDoDamage = true;
 
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
-        rb.AddForce(transform.forward * speed, ForceMode.Impulse);
-
         Destroy(this.gameObject, desctroyTimer);
     }
 }

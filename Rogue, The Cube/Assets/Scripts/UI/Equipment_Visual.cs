@@ -2,20 +2,25 @@
 
 public class Equipment_Visual : MonoBehaviour
 {
+    [Header("Equipment Slots")]
     public GameObject rightHandPoint;
     public GameObject leftHandPoint;
     public GameObject headPoint;
 
+    [Header("Dead")]
+    public GameObject deathBody;
+    public GameObject aliveBody;
+
     Equipment equipment;
     GameObject weapon;
 
-    private void Start()
+    public virtual void Start()
     {
         equipment = Equipment.instance;
         equipment.onEquipmentChange += UpdateVisuals;
     }
 
-    private void UpdateVisuals(Item newItem, Item oldItem)
+    public virtual void UpdateVisuals(Item newItem, Item oldItem)
     {
         if (newItem == null)
         {

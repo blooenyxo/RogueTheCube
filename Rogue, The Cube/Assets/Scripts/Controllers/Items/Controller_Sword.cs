@@ -4,9 +4,10 @@ public class Controller_Sword : Controller_Weapon
 {
     private Animator animator;
 
-    private void Start()
+    public override void Start()
     {
         animator = GetComponent<Animator>();
+        base.Start();
     }
 
     public override void BaseAttack()

@@ -20,5 +20,4 @@ public class CreateWorld : MonoBehaviour
         GameObject _tmp = Instantiate(floor, this.transform.position + new Vector3(x, 0, y), this.transform.rotation);
         _tmp.transform.SetParent(this.transform);
     }
-
 }

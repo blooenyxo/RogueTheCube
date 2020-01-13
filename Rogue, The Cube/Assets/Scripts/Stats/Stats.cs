@@ -15,13 +15,13 @@ public class Stats : MonoBehaviour
     public Stat MINDMG;
     public Stat MAXDMG;
 
-    public int currentHealth { get; private set; }
-    public int currentMana { get; private set; }
+    public int CurrentHealth { get; private set; }
+    public int CurrentMana { get; private set; }
 
-    private void Start()
+    public virtual void Start()
     {
-        currentHealth = HITPOINTS.GetValue();
-        currentMana = MANAPOINTS.GetValue();
+        CurrentHealth = HITPOINTS.GetValue();
+        CurrentMana = MANAPOINTS.GetValue();
     }
 
     /// <summary>
@@ -32,8 +32,11 @@ public class Stats : MonoBehaviour
     {
         value -= ARMOR.GetValue();
         value = Mathf.Clamp(value, 1, int.MaxValue);
-        currentHealth -= value;
-        if (currentHealth <= 0)
+        CurrentHealth -= value;
+
+        //Debug.Log(this.gameObject.name + " Took " + value + " damage");
+
+        if (CurrentHealth <= 0)
         {
             Die();
         }
@@ -70,10 +73,10 @@ public class Stats : MonoBehaviour
     }
     public virtual void Heal(int value)
     {
-        currentHealth += value;
-        if (currentHealth > HITPOINTS.GetValue())
+        CurrentHealth += value;
+        if (CurrentHealth > HITPOINTS.GetValue())
         {
-            currentHealth = HITPOINTS.GetValue();
+            CurrentHealth = HITPOINTS.GetValue();
         }
     }
     /// <summary>
@@ -81,19 +84,19 @@ public class Stats : MonoBehaviour
     /// </summary>
     public virtual void GainMana(int value)
     {
-        currentMana += value;
-        if (currentMana > MANAPOINTS.GetValue())
+        CurrentMana += value;
+        if (CurrentMana > MANAPOINTS.GetValue())
         {
-            currentMana = MANAPOINTS.GetValue();
+            CurrentMana = MANAPOINTS.GetValue();
         }
     }
 
     public virtual bool UseMana(int value)
     {
-        currentMana -= value;
-        if (currentMana <= 0)
+        CurrentMana -= value;
+        if (CurrentMana <= 0)
         {
-            currentMana = 0;
+            CurrentMana = 0;
             return false;
         }
         return true;
@@ -101,6 +104,10 @@ public class Stats : MonoBehaviour
     public virtual void Die()
     {
         //TODO there is nothing in the Die() method.
+        //Debug.Log("Dead");
+        Destroy(GetComponent<Equipment_Visual>().aliveBody);
+        Instantiate(GetComponent<Equipment_Visual>().deathBody, this.transform.position, this.transform.rotation);
+        Destroy(this.gameObject);
     }
 
     public virtual void OnEquipmentChange(Item newItem, Item oldItem)

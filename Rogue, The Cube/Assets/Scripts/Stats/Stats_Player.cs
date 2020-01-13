@@ -23,10 +23,11 @@ public class Stats_Player : Stats
     /// holds the methode to adjust stats based on currently equiped items. delegate triggers on item add or 
     /// item removed with the respective parameters.
     /// </summary>
-    private void Start()
+    public override void Start()
     {
         equipment = Equipment.instance;
         equipment.onEquipmentChange += OnEquipmentChange;
+        base.Start();
     }
 
     /// <summary>

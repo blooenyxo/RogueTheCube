@@ -7,8 +7,9 @@ public class Controller_Staff : Controller_Weapon
 
     Animator animator;
 
-    private void Start()
+    public override void Start()
     {
+        base.Start();
         animator = GetComponent<Animator>();
     }
 
@@ -26,6 +27,8 @@ public class Controller_Staff : Controller_Weapon
 
     public void StaffProjectile()
     {
-        Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
+        GameObject _prj = Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
+        //_prj.transform.SetParent(this.transform); // projectiles will move and rotate along with the caster. doese not work
+        _prj.GetComponent<Controller_Projectile>().stats = stats;
     }
 }

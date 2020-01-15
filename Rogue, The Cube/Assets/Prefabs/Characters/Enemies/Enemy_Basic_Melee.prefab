@@ -186,9 +186,9 @@ MonoBehaviour:
   ARMOR:
     baseValue: 0
   MINDMG:
-    baseValue: 0
-  MAXDMG:
     baseValue: 1
+  MAXDMG:
+    baseValue: 2
 --- !u!195 &5301184627081013385
 NavMeshAgent:
   m_ObjectHideFlags: 0

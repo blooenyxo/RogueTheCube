@@ -105,7 +105,7 @@ public class AI_Routine : MonoBehaviour
     {
         if (agent.remainingDistance <= .5f && bNewLocation == false)
         {
-            StartCoroutine("NewLocation");
+            StartCoroutine(NewLocation());
         }
     }
 

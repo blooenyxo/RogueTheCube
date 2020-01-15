@@ -1,11 +1,8 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 using UnityEngine.UI;
 
 public class AdjustStatValues : MonoBehaviour
 {
-
     public Text strValue;
     public Text agiValue;
     public Text intValue;
@@ -24,5 +21,4 @@ public class AdjustStatValues : MonoBehaviour
         agiValue.text = stats_player.AGILITY.GetValue().ToString();
         intValue.text = stats_player.INTELIGENCE.GetValue().ToString();
     }
-
 }

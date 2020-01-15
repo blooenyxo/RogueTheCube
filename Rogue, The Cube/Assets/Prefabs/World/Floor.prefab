@@ -296,7 +296,7 @@ SphereCollider:
   m_GameObject: {fileID: 2713336546665058661}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -312,6 +312,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83817b5377e1864281f2b1b710d78cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _radius: 0.1
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &3612430869561684237
 GameObject:
   m_ObjectHideFlags: 0
@@ -436,7 +440,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &1850046648338243309
 Transform:
   m_ObjectHideFlags: 0
@@ -530,7 +534,7 @@ SphereCollider:
   m_GameObject: {fileID: 4510147792177705290}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -546,6 +550,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83817b5377e1864281f2b1b710d78cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _radius: 0.1
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &5132415259661480141
 GameObject:
   m_ObjectHideFlags: 0
@@ -696,7 +704,7 @@ SphereCollider:
   m_GameObject: {fileID: 7229356438608270487}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -712,6 +720,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83817b5377e1864281f2b1b710d78cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _radius: 0.1
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 512
 --- !u!1 &8385227183318468537
 GameObject:
   m_ObjectHideFlags: 0
@@ -862,7 +874,7 @@ SphereCollider:
   m_GameObject: {fileID: 8556139316501149974}
   m_Material: {fileID: 0}
   m_IsTrigger: 1
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 2
   m_Radius: 0.5
   m_Center: {x: 0, y: 0, z: 0}
@@ -878,3 +890,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e83817b5377e1864281f2b1b710d78cd, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  _radius: 0.1
+  _layerMask:
+    serializedVersion: 2
+    m_Bits: 512

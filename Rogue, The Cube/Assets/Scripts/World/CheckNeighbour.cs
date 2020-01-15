@@ -2,8 +2,23 @@
 
 public class CheckNeighbour : MonoBehaviour
 {
-    private void OnTriggerEnter(Collider other)
+    public float _radius = 5f;
+    public LayerMask _layerMask;
+
+    public bool Check()
     {
-        //Debug.Log("found neightbour at " + other.transform.position);
+        Collider[] col = Physics.OverlapSphere(this.transform.position, _radius, _layerMask);
+        //Debug.Log(col);
+
+        if (col.Length > 0)
+        {
+            //Debug.Log("true");
+            return true;
+        }
+        else
+        {
+            //Debug.Log("false");
+            return false;
+        }
     }
 }

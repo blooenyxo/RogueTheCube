@@ -4,8 +4,7 @@ using UnityEngine.UI;
 public class Item_UI : MonoBehaviour
 {
     public Item item;
-
-    Image image;
+    private Image image;
 
     void Start()
     {

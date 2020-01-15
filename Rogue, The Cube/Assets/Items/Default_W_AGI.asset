@@ -19,7 +19,7 @@ MonoBehaviour:
   INTELIGENCE: 1
   AGILITY: 10
   MINDMG: 1
-  MAXDMG: 2
+  MAXDMG: 10
   VISUAL_WEAPON: {fileID: 6034981805155526121, guid: 239d8e772cd7d314c8875cfef13df7e6,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}

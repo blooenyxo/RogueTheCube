@@ -12,7 +12,7 @@ public class Arrow : Controller_Projectile
     /// <summary>
     /// an IDEA to make the arrow behave normal upon touching a wall
     /// currenlty, it just drops to the floor, no matter what it hit
-    /// fixed the collision matrix (forgot about that). now it collides with walls and enamies and me. ah, and floors too :D
+    /// fixed the collision matrix (forgot about that). now it collides with walls and enemies and me. ah, and floors too :D
     /// </summary>
     /// <param name="collision"></param>
     public void OnCollisionEnter(Collision col)
@@ -23,9 +23,10 @@ public class Arrow : Controller_Projectile
 
         if (col.gameObject.GetComponent<Stats>() && canDoDamage)
         {
-            col.gameObject.GetComponent<Stats>().TakeDamage(stats.MAXDMG.GetValue());
+            int dmg = Random.Range(stats.MINDMG.GetValue(), stats.MAXDMG.GetValue());
+            //Debug.Log(dmg);
+            col.gameObject.GetComponent<Stats>().TakeDamage(dmg);
         }
-
         canDoDamage = false;
     }
 }

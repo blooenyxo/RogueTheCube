@@ -20,7 +20,7 @@ public class Item : ScriptableObject {
     public int MINDMG;
     public int MAXDMG;
     [Header ("For Visuals")]
-    public GameObject VISUAL_WEAPON;
+    public GameObject VISUAL_MODEL;
     public GameObject VISUAL_ARMOR;
     public Sprite sprite;
 
@@ -43,6 +43,6 @@ public class Item : ScriptableObject {
         sprite = _sprite;
 
         VISUAL_ARMOR = visualArmor;
-        VISUAL_WEAPON = visualWeapon;
+        VISUAL_MODEL = visualWeapon;
     }
 }

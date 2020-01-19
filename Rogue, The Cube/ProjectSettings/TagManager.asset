@@ -7,6 +7,7 @@ TagManager:
   - Enemy_Basic_Melee
   - Enemy_Boss_Melee
   - Enemy
+  - Shield
   layers:
   - Default
   - TransparentFX
@@ -22,8 +23,8 @@ TagManager:
   - Items
   - Enemy
   - Arrow
-  - 
-  - 
+  - Sword
+  - Shield
   - 
   - 
   - 

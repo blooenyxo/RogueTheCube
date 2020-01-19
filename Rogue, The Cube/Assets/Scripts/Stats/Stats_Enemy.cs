@@ -4,4 +4,9 @@
     {
         base.Start();
     }
+
+    public override void TakeDamage(int value)
+    {
+        base.TakeDamage(value);
+    }
 }

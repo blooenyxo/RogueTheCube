@@ -5,7 +5,7 @@ public class Arrow : Controller_Projectile
     public override void Start()
     {
         base.Start();
-        speed = Mathf.RoundToInt(stats.AGILITY.GetValue() * 1.5f);
+        speed = Mathf.RoundToInt(stats.AGILITY.GetValue() * .5f);
         rb.AddForce(transform.forward * speed, ForceMode.Impulse); // this has to be here, the speed variable in set only one row above
     }
 
@@ -14,19 +14,21 @@ public class Arrow : Controller_Projectile
     /// currenlty, it just drops to the floor, no matter what it hit
     /// fixed the collision matrix (forgot about that). now it collides with walls and enemies and me. ah, and floors too :D
     /// </summary>
-    /// <param name="collision"></param>
-    public void OnCollisionEnter(Collision col)
+    public void OnCollisionEnter(Collision collision)
     {
-        rb.constraints = RigidbodyConstraints.FreezePositionX;
-        rb.constraints = RigidbodyConstraints.FreezePositionZ;
-        rb.useGravity = true;
-
-        if (col.gameObject.GetComponent<Stats>() && canDoDamage)
+        if (!collision.gameObject.CompareTag(parentTag))
         {
-            int dmg = Random.Range(stats.MINDMG.GetValue(), stats.MAXDMG.GetValue());
-            //Debug.Log(dmg);
-            col.gameObject.GetComponent<Stats>().TakeDamage(dmg);
+            rb.constraints = RigidbodyConstraints.FreezePositionX;
+            rb.constraints = RigidbodyConstraints.FreezePositionZ;
+            rb.useGravity = true;
+
+            if (collision.gameObject.GetComponent<Stats>() && canDoDamage)
+            {
+                int dmg = stats.DealDamage();
+                collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
+                collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
+            }
+            canDoDamage = false;
         }
-        canDoDamage = false;
     }
 }

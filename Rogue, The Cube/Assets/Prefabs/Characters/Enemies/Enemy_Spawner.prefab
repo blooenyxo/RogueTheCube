@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 8916235688897835445}
   - component: {fileID: 8916235688897835446}
   m_Layer: 0
-  m_Name: EnemySpawnPoint
+  m_Name: Enemy_Spawner
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -43,5 +43,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b174e01b7854ee542a4e6e0de16a6b48, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  Enemy: {fileID: 0}
-  Parent: {fileID: 0}
+  Enemies: []
+  spawnDistantce: 0

@@ -18,14 +18,16 @@ public class AI_Routine : MonoBehaviour
     public float attackDistance;
 
     [Header("Interaction")]
-    public LayerMask characterLayer; // used for the overlap shpere interaction.
-    public string[] interactTags; // used to controll the interaction routine of the enemy. with whom to interact with
+    public LayerMask targetLayer; // used for the overlap shpere interaction.
+    //public string[] interactTags; // used to controll the interaction routine of the enemy. with whom to interact with
+    private int _ignoreLayer = ~(1 << 15); // ignore shiled when looking at player (ForwardRay())
+
 
     private NavMeshAgent agent;
     private Vector3 spawnLocation;
-    [SerializeField] private bool bSpottedNearbyCharacter = false;
-    [SerializeField] private GameObject target;
-    [SerializeField] private bool bNewLocation = false;
+    private bool spottedNearbyCharacter = false;
+    private GameObject target;
+    private bool newLocation = false;
 
     private void Start()
     {
@@ -71,7 +73,7 @@ public class AI_Routine : MonoBehaviour
     /// </summary>
     private void Idle()
     {
-        bSpottedNearbyCharacter = false;
+        spottedNearbyCharacter = false;
         currentState = AI_STATE.PICKLOCATION;
     }
 
@@ -91,7 +93,7 @@ public class AI_Routine : MonoBehaviour
     /// <param name="positionToMoveTo"></param>
     private void MoveToLocation(Vector3 positionToMoveTo)
     {
-        bNewLocation = false;
+        newLocation = false;
         agent.stoppingDistance = 0f;
         currentState = AI_STATE.MOVING;
         agent.SetDestination(positionToMoveTo);
@@ -103,7 +105,7 @@ public class AI_Routine : MonoBehaviour
     /// </summary>
     private void ArriveAtLocation()
     {
-        if (agent.remainingDistance <= .5f && bNewLocation == false)
+        if (agent.remainingDistance <= .5f && newLocation == false)
         {
             StartCoroutine(NewLocation());
         }
@@ -111,7 +113,7 @@ public class AI_Routine : MonoBehaviour
 
     private IEnumerator NewLocation()
     {
-        bNewLocation = true;
+        newLocation = true;
         yield return new WaitForSeconds(stopingTime);
         currentState = AI_STATE.PICKLOCATION;
     }
@@ -126,7 +128,7 @@ public class AI_Routine : MonoBehaviour
         if (target)
             currentState = AI_STATE.ATTACK;
 
-        if (target == null && bSpottedNearbyCharacter == true)
+        if (target == null && spottedNearbyCharacter == true)
         {
             currentState = AI_STATE.IDLE;
         }
@@ -142,17 +144,15 @@ public class AI_Routine : MonoBehaviour
     /// <returns>GameObject used to be stored into the target variable</returns>
     private GameObject NearbyCharacters(string _tag)
     {
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, detectionSphereRadius, characterLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, detectionSphereRadius, targetLayer);
 
         if (hitColliders.Length > 0)
         {
-
-            bSpottedNearbyCharacter = true;
-
             foreach (Collider col in hitColliders)
             {
                 if (col.CompareTag(_tag))
                 {
+                    spottedNearbyCharacter = true;
                     return col.gameObject;
                 }
             }
@@ -181,7 +181,7 @@ public class AI_Routine : MonoBehaviour
                 GetComponentInChildren<Controller_Weapon>().BaseAttack();
         }
 
-        bSpottedNearbyCharacter = false;
+        spottedNearbyCharacter = false;
     }
     private void LookAt(GameObject target)
     {
@@ -192,7 +192,7 @@ public class AI_Routine : MonoBehaviour
 
     private bool ForwardRay()
     {
-        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit))
+        if (Physics.Raycast(transform.position, transform.TransformDirection(Vector3.forward), out RaycastHit hit, Mathf.Infinity, _ignoreLayer))
         {
             if (hit.transform.CompareTag("Player"))
             {
@@ -227,6 +227,6 @@ public class AI_Routine : MonoBehaviour
     void OnDrawGizmosSelected()
     {
         Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(this.transform.position, detectionSphereRadius);
+        Gizmos.DrawWireSphere(transform.position, detectionSphereRadius);
     }
 }

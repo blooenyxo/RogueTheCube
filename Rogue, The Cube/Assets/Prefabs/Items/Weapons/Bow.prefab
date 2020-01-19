@@ -204,9 +204,11 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   stats: {fileID: 0}
+  parentTag: 
+  cooldown: 0
+  globalCooldown: 1
   arrow: {fileID: 6966743522659729518, guid: b27a9bab639c4b84bb0d95dbbc757f06, type: 3}
   firePoint: {fileID: 4544235955684237522}
-  globalCooldown: 0.5
 --- !u!1 &6763840368977833499
 GameObject:
   m_ObjectHideFlags: 0

@@ -4,28 +4,42 @@ using UnityEngine.UI;
 public class Item_UI : MonoBehaviour
 {
     public Item item;
-    private Image image;
+    public Image backgroundImage;
+    public Image itemImage;
 
     void Start()
     {
-        image = GetComponent<Image>();
+        SetBackgroundColor();
 
-        SetImageColor();
+        SetItemImage();
     }
 
-    void SetImageColor()
+    private void SetBackgroundColor()
     {
         switch (item.ITEM_CLASS)
         {
             case ITEMCLASS.AGILITY:
-                image.color = Color.green;
+                backgroundImage.color = Color.green;
                 break;
             case ITEMCLASS.STRENGHT:
-                image.color = Color.red;
+                backgroundImage.color = Color.red;
                 break;
             case ITEMCLASS.INTELIGENCE:
-                image.color = Color.blue;
+                backgroundImage.color = Color.blue;
                 break;
+        }
+    }
+
+    private void SetItemImage()
+    {
+        if (item.sprite != null)
+        {
+            itemImage.sprite = item.sprite;
+        }
+        else
+        {
+            itemImage.sprite = null;
+            itemImage.color = backgroundImage.color;
         }
     }
 }

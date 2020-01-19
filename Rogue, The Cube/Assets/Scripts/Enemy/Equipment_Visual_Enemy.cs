@@ -1,6 +1,4 @@
-﻿using UnityEngine;
-
-public class Equipment_Visual_Enemy : Equipment_Visual
+﻿public class Equipment_Visual_Enemy : Equipment_Visual
 {
     public Controller_Enemy _Controller_Enemy;
 

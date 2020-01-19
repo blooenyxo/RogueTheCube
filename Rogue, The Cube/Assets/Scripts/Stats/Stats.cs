@@ -117,7 +117,7 @@ public class Stats : MonoBehaviour
             STRENGHT.AddModifier(newItem.STRENGHT);
             INTELIGENCE.AddModifier(newItem.INTELIGENCE);
             AGILITY.AddModifier(newItem.AGILITY);
-            MOVESPEED.AddModifier(Mathf.CeilToInt(newItem.AGILITY * .5f));
+            MOVESPEED.AddModifier(Mathf.CeilToInt(newItem.AGILITY * .1f));
             MINDMG.AddModifier(newItem.MINDMG);
             MAXDMG.AddModifier(newItem.MAXDMG);
             HITPOINTS.AddModifier(newItem.STRENGHT * 2);
@@ -129,7 +129,7 @@ public class Stats : MonoBehaviour
             STRENGHT.RemoveModifier(oldItem.STRENGHT);
             INTELIGENCE.RemoveModifier(oldItem.INTELIGENCE);
             AGILITY.RemoveModifier(oldItem.AGILITY);
-            MOVESPEED.RemoveModifier(Mathf.CeilToInt(oldItem.AGILITY * .5f));
+            MOVESPEED.RemoveModifier(Mathf.CeilToInt(oldItem.AGILITY * .1f));
             MINDMG.RemoveModifier(oldItem.MINDMG);
             MAXDMG.RemoveModifier(oldItem.MAXDMG);
             HITPOINTS.RemoveModifier(oldItem.STRENGHT * 2);

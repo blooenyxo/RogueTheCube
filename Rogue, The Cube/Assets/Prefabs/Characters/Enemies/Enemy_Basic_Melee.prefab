@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6866525043993644441}
   m_Layer: 12
   m_Name: Graphics
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -45,8 +45,8 @@ GameObject:
   - component: {fileID: 8334093377104011782}
   - component: {fileID: 2701209385301564006}
   - component: {fileID: 4340996019288248736}
-  - component: {fileID: 6219899408672357560}
   - component: {fileID: -2385801666593161806}
+  - component: {fileID: 6219899408672357560}
   - component: {fileID: 5301184627081013385}
   m_Layer: 12
   m_Name: Enemy_Basic_Melee
@@ -81,11 +81,11 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3591082380441925013}
   serializedVersion: 2
-  m_Mass: 100
+  m_Mass: 1
   m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
-  m_IsKinematic: 0
+  m_IsKinematic: 1
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
@@ -120,6 +120,8 @@ MonoBehaviour:
   deathBody: {fileID: 798773788267458066, guid: e3881a40379c5854ca15b46720e202e9,
     type: 3}
   aliveBody: {fileID: 2384642107145414310}
+  hitMarker: {fileID: 5723862131911769860, guid: 9bb6914bdb138fc49b5fee0df2ea9953,
+    type: 3}
   _Controller_Enemy: {fileID: 4340996019288248736}
 --- !u!114 &4340996019288248736
 MonoBehaviour:
@@ -135,30 +137,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   enemyWeapon: {fileID: 11400000, guid: 8f511cb159422e5469021e592070f5eb, type: 2}
   enemyArmor: {fileID: 0}
---- !u!114 &6219899408672357560
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3591082380441925013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 4fe5aff195029ca47ac9da89477a8350, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentState: 3
-  detectionSphereRadius: 30
-  stopingTime: 2
-  patrolRadius: 5
-  attackDistance: 2.5
-  characterLayer:
-    serializedVersion: 2
-    m_Bits: 256
-  interactTags: []
-  bSpottedNearbyCharacter: 0
-  target: {fileID: 0}
-  bNewLocation: 0
 --- !u!114 &-2385801666593161806
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -189,6 +167,26 @@ MonoBehaviour:
     baseValue: 1
   MAXDMG:
     baseValue: 2
+--- !u!114 &6219899408672357560
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591082380441925013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4fe5aff195029ca47ac9da89477a8350, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentState: 3
+  detectionSphereRadius: 30
+  stopingTime: 2
+  patrolRadius: 5
+  attackDistance: 2.5
+  targetLayer:
+    serializedVersion: 2
+    m_Bits: 256
 --- !u!195 &5301184627081013385
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -225,7 +223,7 @@ GameObject:
   - component: {fileID: 4262836061199510990}
   m_Layer: 12
   m_Name: SeeThroughWallsRadius
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -314,7 +312,7 @@ GameObject:
   - component: {fileID: 6251269081788789200}
   m_Layer: 12
   m_Name: LeftHandPoint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -344,7 +342,7 @@ GameObject:
   - component: {fileID: 8933106901906776180}
   m_Layer: 12
   m_Name: RightHandPoint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -374,7 +372,7 @@ GameObject:
   - component: {fileID: 3471454305183946467}
   m_Layer: 12
   m_Name: HeadPoint
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -408,7 +406,7 @@ GameObject:
   - component: {fileID: 6203505339256711895}
   m_Layer: 8
   m_Name: Cube
-  m_TagString: Untagged
+  m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

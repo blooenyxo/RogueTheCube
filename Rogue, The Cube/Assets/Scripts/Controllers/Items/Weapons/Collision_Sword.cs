@@ -7,6 +7,16 @@ public class Collision_Sword : Controller_Sword
     /// </summary>
     private void OnCollisionEnter(Collision collision)
     {
+        // this first part is for hitting you own shield. If left unchecked, you can accidentally parry yourself with your shield
+        if (collision.gameObject.GetComponentInParent<Controller_Shield>())
+        {
+            if (collision.gameObject.GetComponentInParent<Controller_Shield>().parentTag == parentTag)
+            {
+                //Debug.Log("hit my shield");
+                return;
+            }
+        }
+        // the second part is ment to see if you hit something else. first a shield, and then a character
         if (collision.gameObject.CompareTag("Shield"))
         {
             //Debug.Log("shield block");

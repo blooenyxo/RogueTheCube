@@ -57,6 +57,7 @@ public abstract class Equipment_Visual : MonoBehaviour
             }
             else if (newItem.ITEM_TYPE == ITEMTYPE.OFFHAND)
             {
+                // here add what to do when you add in the offhand slot a different Arrow type
                 offhand = Instantiate(newItem.VISUAL_MODEL, leftHandPoint.transform.position, rightHandPoint.transform.rotation);
                 offhand.transform.SetParent(leftHandPoint.transform);
             }

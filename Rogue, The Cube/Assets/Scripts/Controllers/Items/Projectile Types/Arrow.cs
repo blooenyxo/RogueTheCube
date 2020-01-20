@@ -5,8 +5,8 @@ public class Arrow : Controller_Projectile
     public override void Start()
     {
         base.Start();
-        speed = Mathf.RoundToInt(stats.AGILITY.GetValue() * .5f);
-        rb.AddForce(transform.forward * speed, ForceMode.Impulse); // this has to be here, the speed variable in set only one row above
+        speed = Mathf.RoundToInt(stats.AGILITY.GetValue() * 3f);
+        rb.AddForce(transform.forward * speed); // this has to be here, the speed variable in set only one row above
     }
 
     /// <summary>

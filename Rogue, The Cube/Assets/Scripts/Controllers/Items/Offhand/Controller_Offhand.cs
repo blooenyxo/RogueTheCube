@@ -2,12 +2,11 @@
 
 public abstract class Controller_Offhand : MonoBehaviour
 {
-    [HideInInspector] public BoxCollider shieldCollider;
+    public string parentTag;
 
     public virtual void Start()
     {
-        shieldCollider = GetComponentInChildren<BoxCollider>();
-        shieldCollider.enabled = false;
+        parentTag = gameObject.transform.parent.tag;
     }
 
     public virtual void UseOffhand() { }

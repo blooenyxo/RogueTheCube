@@ -3,10 +3,13 @@
 public class Controller_Shield : Controller_Offhand
 {
     private Animator animator;
+    private BoxCollider shieldCollider;
 
     public override void Start()
     {
         base.Start();
+        shieldCollider = GetComponentInChildren<BoxCollider>();
+        shieldCollider.enabled = false;
         animator = GetComponent<Animator>();
     }
 

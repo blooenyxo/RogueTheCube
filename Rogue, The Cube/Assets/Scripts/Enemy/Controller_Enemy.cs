@@ -15,6 +15,6 @@ public class Controller_Enemy : MonoBehaviour
         agent = GetComponent<NavMeshAgent>();
 
         agent.speed = stats.MOVESPEED.GetValue();
-        agent.angularSpeed = Mathf.CeilToInt(stats.MOVESPEED.GetValue() * 1.5f);
+        //agent.angularSpeed = Mathf.CeilToInt(stats.MOVESPEED.GetValue() * 1.5f); // this has to be hight , otherwise it sucks :D
     }
 }

@@ -25,12 +25,15 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
         equipmentBackground = GameObject.Find("EquipmentBackground");
     }
 
+    /// <summary>
+    /// mouse button should be defined here. if this will stick, and we will use a mouse or keyboard for the final game, then 
+    /// the difference between left and right clicks should be defined. 
+    /// so do that here and in the right click handler.
+    /// </summary>
     public void OnBeginDrag(PointerEventData eventData)
     {
         parent = this.transform.parent;
         _currentParent = this.transform.parent;
-
-
 
         if (transform.parent.GetComponent<Item_Drop_Eq>())
         {
@@ -58,9 +61,7 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
             if (parent.GetComponent<Item_Drop_Eq>())
                 parent.GetComponent<Item_Drop_Eq>().EquipItem();
         }
-
         //ClearDropZones();
-
         this.transform.SetParent(parent);
         GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
@@ -74,6 +75,7 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
         if (equipmentBackground == null)
             equipmentBackground = GameObject.Find("EquipmentBackground");
 
+        /// i must investigate this one. why not if else.
         if (equipmentBackground == null)
             return;
 

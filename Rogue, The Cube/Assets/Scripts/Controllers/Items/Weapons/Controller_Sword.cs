@@ -32,7 +32,7 @@ public class Controller_Sword : Controller_Weapon
     {
         animator.SetTrigger(PickAttack());
         swordCollider.enabled = true;
-        yield return new WaitForSeconds(.5f);
+        yield return new WaitForSeconds(cooldown);
         swordCollider.enabled = false;
     }
 
@@ -42,10 +42,10 @@ public class Controller_Sword : Controller_Weapon
     /// <returns>the random animation to be played</returns>
     private string PickAttack()
     {
-        string[] attacks = new string[2];
-        attacks[0] = "baseattack";
+        string[] attacks = new string[1];
+        //attacks[0] = "baseattack";
         //attacks[1] = "base2attack";
-        attacks[1] = "base3attack";
+        attacks[0] = "base3attack";
         int i = Random.Range(0, attacks.Length);
         string _str = attacks[i];
         return _str;

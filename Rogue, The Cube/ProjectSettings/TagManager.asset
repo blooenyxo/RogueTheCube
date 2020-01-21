@@ -8,6 +8,9 @@ TagManager:
   - Enemy_Boss_Melee
   - Enemy
   - Shield
+  - EquipmentSlot
+  - InventorySlot
+  - LootSlot
   layers:
   - Default
   - TransparentFX

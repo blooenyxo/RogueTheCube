@@ -29,6 +29,7 @@ Transform:
   m_LocalPosition: {x: 0, y: 0, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
+  - {fileID: 8920492772537432029}
   - {fileID: 8502490965514610946}
   m_Father: {fileID: 0}
   m_RootOrder: 0
@@ -64,6 +65,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 9347af40817c1ec4f92049205eaad3e6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  globalCooldown: 1
+  stats: {fileID: 0}
+  parentTag: 
+  cooldown: 0
+  animator: {fileID: 6713074647599283484}
   projectile: {fileID: 2751216269527067318, guid: 1bb3e41e77782184f9b46fd8f063daf6,
     type: 3}
   firePoint: {fileID: 3682306072504639074}
@@ -91,11 +97,11 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3682306072504639074}
   m_LocalRotation: {x: -0, y: -0, z: -0, w: 1}
-  m_LocalPosition: {x: 0, y: 1.455, z: 0}
+  m_LocalPosition: {x: -0.5, y: 1.455, z: 0}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
-  m_Father: {fileID: 8502490965514610946}
-  m_RootOrder: 1
+  m_Father: {fileID: 377133223788720379}
+  m_RootOrder: 0
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &4977713139188136491
 GameObject:
@@ -217,7 +223,6 @@ Transform:
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children:
   - {fileID: 7626978770785226768}
-  - {fileID: 8920492772537432029}
   m_Father: {fileID: 377133223788720379}
-  m_RootOrder: 0
+  m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}

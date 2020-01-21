@@ -10,6 +10,7 @@ public abstract class Equipment_Visual : MonoBehaviour
     [Header("Dead")]
     public GameObject deathBody;
     public GameObject aliveBody;
+    public GameObject lootBox;
 
     [Header("HitMarker")]
     public GameObject hitMarker;

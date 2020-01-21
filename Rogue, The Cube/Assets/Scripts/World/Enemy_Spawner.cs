@@ -8,6 +8,7 @@ public class Enemy_Spawner : MonoBehaviour
 {
     public GameObject[] Enemies;
     public float spawnDistantce;
+    public bool respawn = false;
 
     private GameObject spawnedGameObject;
     private int rnd;
@@ -26,9 +27,8 @@ public class Enemy_Spawner : MonoBehaviour
     private void LateUpdate()
     {
 
-        if (spawnedGameObject == null)
+        if (spawnedGameObject == null && respawn)
         {
-
             SpawnGameObject();
         }
     }

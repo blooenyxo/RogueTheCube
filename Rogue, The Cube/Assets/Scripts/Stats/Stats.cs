@@ -105,8 +105,13 @@ public class Stats : MonoBehaviour
     {
         //TODO there is nothing in the Die() method.
         //Debug.Log("Dead");
-        Destroy(GetComponent<Equipment_Visual>().aliveBody);
-        Instantiate(GetComponent<Equipment_Visual>().deathBody, this.transform.position, this.transform.rotation);
+
+        Equipment_Visual ev = GetComponent<Equipment_Visual>();
+
+        Destroy(ev.aliveBody);
+        Instantiate(ev.deathBody, this.transform.position, this.transform.rotation);
+        if (ev.lootBox)
+            Instantiate(ev.lootBox, this.transform.position, this.transform.rotation);
         Destroy(this.gameObject);
     }
 

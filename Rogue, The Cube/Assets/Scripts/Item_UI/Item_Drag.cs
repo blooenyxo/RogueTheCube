@@ -136,11 +136,13 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
 
     public void OnPointerUp(PointerEventData eventData)
     {
-        ClearDropZones();
+        if (Input.GetMouseButtonUp(0))
+            ClearDropZones();
     }
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        DropZones(GetComponent<Item_UI>().item);
+        if (Input.GetMouseButtonDown(0))
+            DropZones(GetComponent<Item_UI>().item);
     }
 }

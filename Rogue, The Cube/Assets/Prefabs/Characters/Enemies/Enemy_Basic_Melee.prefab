@@ -180,7 +180,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 3
-  detectionSphereRadius: 30
+  detectionSphereRadius: 20
   stopingTime: 2
   patrolRadius: 5
   attackDistance: 2.5

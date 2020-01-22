@@ -9,8 +9,12 @@ public class Item_UI : MonoBehaviour
 
     void Start()
     {
-        SetBackgroundColor();
+        UpdateItemVisuals();
+    }
 
+    public void UpdateItemVisuals()
+    {
+        SetBackgroundColor();
         SetItemImage();
     }
 

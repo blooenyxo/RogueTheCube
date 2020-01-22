@@ -11,6 +11,8 @@ TagManager:
   - EquipmentSlot
   - InventorySlot
   - LootSlot
+  - LootBox
+  - NPC
   layers:
   - Default
   - TransparentFX
@@ -28,7 +30,7 @@ TagManager:
   - Arrow
   - Sword
   - Shield
-  - LootBox
+  - Interact
   - 
   - 
   - 

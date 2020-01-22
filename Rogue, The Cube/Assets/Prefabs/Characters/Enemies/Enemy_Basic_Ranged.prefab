@@ -120,6 +120,10 @@ MonoBehaviour:
   deathBody: {fileID: 798773788267458066, guid: e3881a40379c5854ca15b46720e202e9,
     type: 3}
   aliveBody: {fileID: 2384642107145414310}
+  lootBox: {fileID: 4504357921252825845, guid: 619ecc4a39709bb4a86540f0b4978510, type: 3}
+  itemsToDrop:
+  - {fileID: 11400000, guid: 5e49183b54a08194f8d53ba0875be56d, type: 2}
+  - {fileID: 11400000, guid: bda34e2dc8df7b848a0e5943c846fdf0, type: 2}
   hitMarker: {fileID: 5723862131911769860, guid: 9bb6914bdb138fc49b5fee0df2ea9953,
     type: 3}
   _Controller_Enemy: {fileID: 4340996019288248736}

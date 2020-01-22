@@ -107,11 +107,8 @@ public class Stats : MonoBehaviour
         //Debug.Log("Dead");
 
         Equipment_Visual ev = GetComponent<Equipment_Visual>();
-
         Destroy(ev.aliveBody);
         Instantiate(ev.deathBody, this.transform.position, this.transform.rotation);
-        if (ev.lootBox)
-            Instantiate(ev.lootBox, this.transform.position, this.transform.rotation);
         Destroy(this.gameObject);
     }
 

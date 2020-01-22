@@ -8,14 +8,21 @@ public class Controller_Player : MonoBehaviour
     private Vector3 movement;
     private Vector3 direction;
     private LayerMask floorMask;
+    private UI_Input ui_input;
+
+    public LayerMask interactionLayer;
 
     void Start()
     {
+        ui_input = GameObject.Find("UI_Canvas").GetComponent<UI_Input>();
         floorMask = LayerMask.GetMask("Floor");
         statsPlayer = Stats_Player.instance;
         rb = GetComponent<Rigidbody>();
     }
 
+    /// <summary>
+    /// all the player inputs should be controlled from here. movement, interaction, ui, combat
+    /// </summary>
     private void Update()
     {
         //float angle = Vector3.Angle(movement, direction);
@@ -36,6 +43,48 @@ public class Controller_Player : MonoBehaviour
         {
             if (GetComponentInChildren<Controller_Offhand>())
                 GetComponentInChildren<Controller_Offhand>().ReleaseOffhand();
+        }
+
+        if (Input.GetKeyDown(KeyCode.E) && NearbyInteraction() != null)
+        {
+            if (NearbyInteraction().CompareTag("NPC"))
+            {
+                // npc interaction starts here
+                Debug.Log(NearbyInteraction());
+            }
+            else if (NearbyInteraction().CompareTag("LootBox"))
+            {
+                ui_input.SwitchPanelState(ui_input.pp_cg);
+                if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == false)
+                    ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().SetupPanel(NearbyInteraction());
+                else if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == true)
+                    ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().RemoveItemFromPanel();
+            }
+        }
+
+        if (NearbyInteraction() == null)
+        {
+            ui_input.ClosePickupPanel();
+            ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().RemoveItemFromPanel();
+        }
+
+
+
+
+        //if (Input.GetKeyDown(KeyCode.V))
+        //{
+        //    ui_input.SwitchPanelState(ui_input.pp_cg);
+        //}
+
+        if (Input.GetKeyDown(KeyCode.C))
+        {
+            ui_input.SwitchPanelState(ui_input.cp_cg);
+        }
+
+        if (Input.GetButtonDown("Jump"))
+        {
+            ui_input.ClosePickupPanel();
+            ui_input.ClosePlayerPanel();
         }
     }
 
@@ -67,6 +116,25 @@ public class Controller_Player : MonoBehaviour
             rb.MoveRotation(Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * (statsPlayer.MOVESPEED.GetValue()
             /* add a slowing modifyer here if needed */ )));
         }
+    }
+
+    public GameObject NearbyInteraction()
+    {
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 3f, interactionLayer);
+
+        if (hitColliders.Length > 0)
+        {
+            foreach (Collider col in hitColliders)
+            {
+                return col.gameObject;
+            }
+        }
+        else
+        {
+            return null;
+        }
+
+        return null;
     }
 
     private void OnDrawGizmos()

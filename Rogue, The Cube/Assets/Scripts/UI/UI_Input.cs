@@ -4,50 +4,42 @@ public class UI_Input : MonoBehaviour
 {
     public GameObject CharacterPanel;
     public GameObject PickUpPanel;
-    private CanvasGroup cp_cg;
+
+    [HideInInspector] public CanvasGroup cp_cg;
+    [HideInInspector] public CanvasGroup pp_cg;
 
     private void Start()
     {
         cp_cg = CharacterPanel.GetComponent<CanvasGroup>();
+        pp_cg = PickUpPanel.GetComponent<CanvasGroup>();
     }
 
-    void Update()
-    {
-        if (Input.GetKeyDown(KeyCode.E))
-        {
-            PickUpPanel.SetActive(!PickUpPanel.activeSelf);
-        }
-
-        if (Input.GetKeyDown(KeyCode.C))
-        {
-            if (cp_cg.alpha == 0)
-            {
-                OpenPlayerPanel();
-            }
-            else if (cp_cg.alpha == 1)
-            {
-                ClosePlayerPanel();
-            }
-        }
-
-        if (Input.GetButtonDown("Jump"))
-        {
-            PickUpPanel.SetActive(false);
-            ClosePlayerPanel();
-        }
-    }
-
-    void ClosePlayerPanel()
+    public void ClosePlayerPanel()
     {
         cp_cg.alpha = 0;
         cp_cg.blocksRaycasts = false;
         cp_cg.interactable = false;
     }
 
-    void OpenPlayerPanel()
+    public void ClosePickupPanel()
     {
-        cp_cg.alpha = 1;
-        cp_cg.blocksRaycasts = true;
-        cp_cg.interactable = true;
+        pp_cg.alpha = 0;
+        pp_cg.blocksRaycasts = false;
+        pp_cg.interactable = false;
+    }
+
+    public void SwitchPanelState(CanvasGroup cg)
+    {
+        if (cg.alpha == 0)
+        {
+            cg.alpha = 1;
+        }
+        else if (cg.alpha == 1)
+        {
+            cg.alpha = 0;
+        }
+
+        cg.blocksRaycasts = !cg.blocksRaycasts;
+        cg.interactable = !cg.interactable;
     }
 }

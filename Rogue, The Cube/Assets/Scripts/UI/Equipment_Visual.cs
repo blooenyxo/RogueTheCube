@@ -11,6 +11,7 @@ public abstract class Equipment_Visual : MonoBehaviour
     public GameObject deathBody;
     public GameObject aliveBody;
     public GameObject lootBox;
+    public Item[] itemsToDrop;
 
     [Header("HitMarker")]
     public GameObject hitMarker;

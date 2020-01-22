@@ -6,6 +6,7 @@ using UnityEngine.EventSystems;
 /// the way i made it, was storing everyhing localy on every item. i dont think this is the best way, but it works
 /// when you right click on item, they move acording to the unwritten law of rpg doing :D from loot window to inventory, 
 /// from inventory to equipment, and from equipment to inventory. There is no logic for what happens if slot is ocupied.
+/// later edit: made the swaping mechanism.
 /// </summary>
 public class Item_Click : MonoBehaviour, IPointerDownHandler
 {

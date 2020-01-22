@@ -20,7 +20,7 @@ public class AI_Routine : MonoBehaviour
     [Header("Interaction")]
     public LayerMask targetLayer; // used for the overlap shpere interaction.
     //public string[] interactTags; // used to controll the interaction routine of the enemy. with whom to interact with
-    private int _ignoreLayer = ~(1 << 15); // ignore shiled when looking at player (ForwardRay())
+    private int _ignoreLayer = ~(1 << 15); // ignore shield when looking at player (ForwardRay())
 
 
     private NavMeshAgent agent;
@@ -162,6 +162,7 @@ public class AI_Routine : MonoBehaviour
 
     /// <summary>
     /// this needs work. the enemy will attack constantly. fast. does now work well with a arrow / ranged enemy
+    /// later edit: this was fixed with a global cooldown in the weapon_controller
     /// </summary>
     private void Attack()
     {
@@ -187,7 +188,7 @@ public class AI_Routine : MonoBehaviour
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, agent.angularSpeed * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, (agent.angularSpeed / 50) * Time.deltaTime);
     }
 
     private bool ForwardRay()

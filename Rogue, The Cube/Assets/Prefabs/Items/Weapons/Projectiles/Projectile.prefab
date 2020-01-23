@@ -79,8 +79,8 @@ MonoBehaviour:
   speed: 10
   interactLayers:
     serializedVersion: 2
-    m_Bits: 0
-  desctroyTimer: 5
+    m_Bits: 4352
+  desctroyTimer: 10
   stats: {fileID: 0}
   canDoDamage: 1
   parentTag: 

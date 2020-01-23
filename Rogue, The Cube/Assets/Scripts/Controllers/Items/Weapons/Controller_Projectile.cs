@@ -7,12 +7,13 @@ public abstract class Controller_Projectile : MonoBehaviour
 {
     [HideInInspector] public Rigidbody rb;
     [HideInInspector] public int speed;
+    [HideInInspector] public Stats stats;
+    [HideInInspector] public bool canDoDamage = true;
+    [HideInInspector] public string parentTag;
+
     // the layermask is set on the class where this one is inherited
     public LayerMask interactLayers;
     public float desctroyTimer;
-    public Stats stats;
-    public bool canDoDamage = true;
-    public string parentTag;
 
     public virtual void Start()
     {

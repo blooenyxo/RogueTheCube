@@ -16,7 +16,7 @@ public class Item_Drop : MonoBehaviour, IDropHandler
                     eventData.pointerDrag.GetComponent<Item_Drag>().parent = this.transform;
 
                     // the next line is for clearing the lootbox content after item was removed
-                    if (GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>())
+                    if (eventData.pointerDrag.GetComponent<Item_Drag>()._currentParent.CompareTag("LootSlot"))
                         GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromArray(eventData.pointerDrag.GetComponent<Item_UI>().item);
 
                 }

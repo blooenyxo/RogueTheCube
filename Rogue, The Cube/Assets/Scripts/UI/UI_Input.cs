@@ -8,10 +8,13 @@ public class UI_Input : MonoBehaviour
     [HideInInspector] public CanvasGroup cp_cg;
     [HideInInspector] public CanvasGroup pp_cg;
 
+    public Camera_Follow cam;
+
     private void Start()
     {
         cp_cg = CharacterPanel.GetComponent<CanvasGroup>();
         pp_cg = PickUpPanel.GetComponent<CanvasGroup>();
+
     }
 
     public void ClosePlayerPanel()
@@ -26,6 +29,20 @@ public class UI_Input : MonoBehaviour
         pp_cg.alpha = 0;
         pp_cg.blocksRaycasts = false;
         pp_cg.interactable = false;
+    }
+
+    public void OpenPlayerPanel()
+    {
+        cp_cg.alpha = 1;
+        cp_cg.blocksRaycasts = true;
+        cp_cg.interactable = true;
+    }
+
+    public void OpenPickupPanel()
+    {
+        pp_cg.alpha = 1;
+        pp_cg.blocksRaycasts = true;
+        pp_cg.interactable = true;
     }
 
     public void SwitchPanelState(CanvasGroup cg)

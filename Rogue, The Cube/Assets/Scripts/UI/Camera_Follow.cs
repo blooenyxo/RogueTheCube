@@ -14,6 +14,7 @@ public class Camera_Follow : MonoBehaviour
     public float currentYaw = 0f;
     public float yawSpeed = 1;
 
+
     Camera cam;
     void Start()
     {
@@ -28,6 +29,20 @@ public class Camera_Follow : MonoBehaviour
 
         currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
         currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
+
+        // if a ui element is opened, the mouse pointer is visible and can be used to interact with things on screen
+        if (target != null)
+        {
+            if (target.GetComponent<Controller_Player>().uiIsOpen == false)
+            {
+                Cursor.lockState = CursorLockMode.Locked;
+                RotateCamera();
+            }
+            else
+            {
+                Cursor.lockState = CursorLockMode.None;
+            }
+        }
     }
     void LateUpdate()
     {

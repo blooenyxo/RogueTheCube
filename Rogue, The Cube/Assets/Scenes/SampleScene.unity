@@ -4581,7 +4581,7 @@ Camera:
     height: 1
   near clip plane: 0.3
   far clip plane: 1000
-  field of view: 60
+  field of view: 75
   orthographic: 0
   orthographic size: 5
   m_Depth: -1
@@ -4606,8 +4606,8 @@ Transform:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 963194225}
-  m_LocalRotation: {x: 0.24377911, y: -0, z: -0, w: 0.9698308}
-  m_LocalPosition: {x: 85, y: 14.3, z: 40}
+  m_LocalRotation: {x: 0.16018225, y: -0, z: -0, w: 0.9870875}
+  m_LocalPosition: {x: 85, y: 4, z: 52}
   m_LocalScale: {x: 1, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -4630,7 +4630,7 @@ MonoBehaviour:
   pitch: 2
   minZoom: 3
   maxZoom: 20
-  currentZoom: 20
+  currentZoom: 3
   currentYaw: 0
   yawSpeed: 1
 --- !u!4 &971773367 stripped
@@ -7067,6 +7067,7 @@ MonoBehaviour:
   PickUpPanel: {fileID: 221274948}
   cp_cg: {fileID: 0}
   pp_cg: {fileID: 0}
+  cam: {fileID: 963194229}
 --- !u!1001 &1354973782
 PrefabInstance:
   m_ObjectHideFlags: 0

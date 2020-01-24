@@ -9,7 +9,10 @@ public class Controller_Player : MonoBehaviour
     private Vector3 direction;
     private LayerMask floorMask;
     private UI_Input ui_input;
+    private bool pickupPanelOpen = false;
+    private bool inventoryPanelOpen = false;
 
+    public bool uiIsOpen = false;
     public LayerMask interactionLayer;
 
     void Start()
@@ -56,36 +59,53 @@ public class Controller_Player : MonoBehaviour
             {
                 ui_input.SwitchPanelState(ui_input.pp_cg);
                 if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == false)
+                {
                     ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().SetupPanel(NearbyInteraction());
+                    pickupPanelOpen = true;
+                }
                 else if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == true)
+                {
                     ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().RemoveItemFromPanel();
+                    pickupPanelOpen = false;
+                }
             }
         }
 
-        if (NearbyInteraction() == null)
+        if (NearbyInteraction() == null && pickupPanelOpen)
         {
             ui_input.ClosePickupPanel();
             ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().RemoveItemFromPanel();
+            pickupPanelOpen = false;
         }
-
-
-
-
-        //if (Input.GetKeyDown(KeyCode.V))
-        //{
-        //    ui_input.SwitchPanelState(ui_input.pp_cg);
-        //}
 
         if (Input.GetKeyDown(KeyCode.C))
         {
-            ui_input.SwitchPanelState(ui_input.cp_cg);
+            if (inventoryPanelOpen == false)
+            {
+                ui_input.OpenPlayerPanel();
+                inventoryPanelOpen = true;
+            }
+            else
+            {
+                ui_input.ClosePlayerPanel();
+                inventoryPanelOpen = false;
+            }
         }
 
         if (Input.GetButtonDown("Jump"))
         {
+            uiIsOpen = false;
+            inventoryPanelOpen = false;
+            pickupPanelOpen = false;
             ui_input.ClosePickupPanel();
             ui_input.ClosePlayerPanel();
         }
+
+        // uiisopen bool turns true every frame when one of the panels is open (inv., pickup, and all the future ones (dialog, shop etc..))
+        if (inventoryPanelOpen || pickupPanelOpen)
+            uiIsOpen = true;
+        else
+            uiIsOpen = false;
     }
 
     void FixedUpdate()
@@ -93,14 +113,16 @@ public class Controller_Player : MonoBehaviour
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
         Move(h, v);
-        MouseLook();
+
+        if (!uiIsOpen)
+            MouseLook();
     }
 
     void Move(float h, float v)
     {
         movement.Set(h, 0f, v);
-        movement = movement.normalized * statsPlayer.MOVESPEED.GetValue() * Time.deltaTime;
-        //movement = transform.worldToLocalMatrix.inverse * movement;
+        movement = movement.normalized * (statsPlayer.MOVESPEED.GetValue() * Time.deltaTime);
+        movement = transform.worldToLocalMatrix.inverse * movement;
         rb.MovePosition(transform.position + movement);
     }
 

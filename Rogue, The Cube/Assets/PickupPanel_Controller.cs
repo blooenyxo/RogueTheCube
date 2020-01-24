@@ -23,8 +23,7 @@ public class PickupPanel_Controller : MonoBehaviour
         {
             if (slot.childCount == 0)
             {
-                GameObject _ui_item = Instantiate(UI_Item);
-                _ui_item.transform.SetParent(slot);
+                GameObject _ui_item = Instantiate(UI_Item, slot.transform.position, slot.transform.rotation, slot);
                 _ui_item.GetComponent<Item_UI>().item = item;
                 _ui_item.GetComponent<Item_UI>().UpdateItemVisuals();
                 return;

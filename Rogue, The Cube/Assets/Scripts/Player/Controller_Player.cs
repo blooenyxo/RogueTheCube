@@ -12,8 +12,10 @@ public class Controller_Player : MonoBehaviour
     private bool pickupPanelOpen = false;
     private bool inventoryPanelOpen = false;
 
-    public bool uiIsOpen = false;
+    [HideInInspector] public bool uiIsOpen = false;
     public LayerMask interactionLayer;
+    public float speedModifyer = 0f;
+    private float _speedModifyer = 1f;
 
     void Start()
     {
@@ -106,22 +108,34 @@ public class Controller_Player : MonoBehaviour
             uiIsOpen = true;
         else
             uiIsOpen = false;
+
+        if (Input.GetButton("Run"))
+        {
+            //Debug.Log("running");
+            _speedModifyer = speedModifyer;
+        }
+        else if (Input.GetButtonUp("Run"))
+        {
+            //Debug.Log("not running");
+            _speedModifyer = 1;
+        }
     }
 
     void FixedUpdate()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
-        Move(h, v);
-
         if (!uiIsOpen)
+        {
+            Move(h, v);
             MouseLook();
+        }
     }
 
     void Move(float h, float v)
     {
         movement.Set(h, 0f, v);
-        movement = movement.normalized * (statsPlayer.MOVESPEED.GetValue() * Time.deltaTime);
+        movement = movement.normalized * (statsPlayer.MOVESPEED.GetValue() * Time.deltaTime * _speedModifyer);
         movement = transform.worldToLocalMatrix.inverse * movement;
         rb.MovePosition(transform.position + movement);
     }
@@ -135,8 +149,8 @@ public class Controller_Player : MonoBehaviour
             direction = (hit.point - transform.position);
             direction.y = 0f;
             Quaternion lookRotation = Quaternion.LookRotation(direction);
-            rb.MoveRotation(Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * (statsPlayer.MOVESPEED.GetValue()
-            /* add a slowing modifyer here if needed */ )));
+            rb.MoveRotation(Quaternion.Slerp(transform.rotation, lookRotation, Time.deltaTime * statsPlayer.MOVESPEED.GetValue()
+            /* add a turn slowing modifyer here if needed */  ));
         }
     }
 

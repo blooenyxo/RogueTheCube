@@ -60,7 +60,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         {
             //move to inventory if enough free space
             // the next line is for clearing the lootbox content after item was removed
-            GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromArray(transform.GetComponent<Item_UI>().item);
+            GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(transform.GetComponent<Item_UI>().item);
             MoveToInventory();
         }
     }

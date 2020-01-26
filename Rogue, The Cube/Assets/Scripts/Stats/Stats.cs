@@ -54,12 +54,12 @@ public class Stats : MonoBehaviour
         }
         else
         {
-            return Mathf.RoundToInt(BaseDamage() * CritAmount());
+            return Mathf.RoundToInt(BaseDamage() + CritAmount());
         }
     }
     private int BaseDamage()
     {
-        return Mathf.CeilToInt(UnityEngine.Random.Range(MINDMG.GetValue(), MAXDMG.GetValue()) + (STRENGHT.GetValue() * .2f));
+        return Mathf.CeilToInt(Random.Range(MINDMG.GetValue(), MAXDMG.GetValue()) + (STRENGHT.GetValue() * .1f));
     }
     private float CritAmount()
     {
@@ -103,13 +103,18 @@ public class Stats : MonoBehaviour
     }
     public virtual void Die()
     {
-        //TODO there is nothing in the Die() method.
-        //Debug.Log("Dead");
-
-        Equipment_Visual ev = GetComponent<Equipment_Visual>();
-        Destroy(ev.aliveBody);
-        Instantiate(ev.deathBody, this.transform.position, this.transform.rotation);
-        Destroy(this.gameObject);
+        /// destroy the graphics of the character, spanw the dead body prefab with another parent, and then destroy the whole gameObject
+        if (GetComponent<Equipment_Visual>())
+        {
+            Equipment_Visual ev = GetComponent<Equipment_Visual>();
+            Destroy(ev.aliveBody);
+            Instantiate(ev.deathBody, this.transform.position, this.transform.rotation);
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            Destroy(this.gameObject);
+        }
     }
 
     public virtual void OnEquipmentChange(Item newItem, Item oldItem)

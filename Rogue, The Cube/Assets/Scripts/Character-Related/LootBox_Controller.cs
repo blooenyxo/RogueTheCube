@@ -7,7 +7,7 @@ public class LootBox_Controller : MonoBehaviour
 
     private void Start()
     {
-        Destroy(gameObject, 30f);
+        Destroy(gameObject, 120f);
     }
 
     private void Update()
@@ -18,7 +18,7 @@ public class LootBox_Controller : MonoBehaviour
         }
     }
 
-    public void RemoveItemFromArray(Item item)
+    public void RemoveItemFromList(Item item)
     {
         items.Remove(item);
     }

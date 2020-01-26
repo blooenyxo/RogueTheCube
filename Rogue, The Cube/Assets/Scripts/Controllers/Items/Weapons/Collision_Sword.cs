@@ -37,7 +37,7 @@ public class Collision_Sword : Controller_Sword
                 }
             }
 
-            Debug.Log("doing damage");
+            //Debug.Log("doing damage");
             nextTime += interval;
         }
     }

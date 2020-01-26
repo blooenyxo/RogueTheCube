@@ -56,7 +56,7 @@ public class Controller_Sword : Controller_Weapon
         swordParry = true;
         swordCollider.enabled = false;
         animator.SetTrigger("reset");
-        yield return new WaitForSeconds(5f);
+        yield return new WaitForSeconds(2f);
         swordParry = false;
     }
 }

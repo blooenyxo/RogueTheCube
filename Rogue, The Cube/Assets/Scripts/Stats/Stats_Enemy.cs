@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections.Generic;
+using UnityEngine;
 
 public class Stats_Enemy : Stats
 {
@@ -15,19 +16,22 @@ public class Stats_Enemy : Stats
     public override void Die()
     {
         base.Die();
+        SetLootBoxAndItems();
+    }
 
-        int r = 0;
+    private void SetLootBoxAndItems()
+    {
+        GameObject lb = Instantiate(GetComponent<Equipment_Visual>().lootBox, this.transform.position, this.transform.rotation);
 
-        if (GetComponent<Equipment_Visual>().lootBox && r == 0)
+        int random = Random.Range(0, GetComponent<ItemDrop>().Drop().Count);
+        List<Item> tempList = new List<Item>();
+
+        for (int i = 0; i < random; i++)
         {
-            int numberOfItemsToDrop = Random.Range(0, GetComponent<Equipment_Visual>().itemsToDrop.Length + 1);
-
-            GameObject lb = Instantiate(GetComponent<Equipment_Visual>().lootBox, this.transform.position, this.transform.rotation);
-
-            for (int i = 0; i < numberOfItemsToDrop; i++)
-            {
-                lb.GetComponent<LootBox_Controller>().items.Add(GetComponent<Equipment_Visual>().itemsToDrop[i]);
-            }
+            int random_ = Random.Range(0, GetComponent<ItemDrop>().Drop().Count);
+            tempList.Add(GetComponent<ItemDrop>().Drop()[random_]);
         }
+
+        lb.GetComponent<LootBox_Controller>().items.AddRange(tempList);
     }
 }

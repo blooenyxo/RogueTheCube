@@ -83,7 +83,7 @@ public class AI_Routine : MonoBehaviour
     /// <returns>returns the Vector3 position where the enemy will walk next</returns>
     private Vector3 PickLocation()
     {
-        Vector3 currentWalkingLocation = spawnLocation + new Vector3(UnityEngine.Random.Range(-patrolRadius, patrolRadius), -3.9f, UnityEngine.Random.Range(-patrolRadius, patrolRadius));
+        Vector3 currentWalkingLocation = spawnLocation + new Vector3(UnityEngine.Random.Range(-patrolRadius, patrolRadius), -3.9f, Random.Range(-patrolRadius, patrolRadius));
         return currentWalkingLocation;
     }
 

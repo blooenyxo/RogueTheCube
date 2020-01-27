@@ -26,5 +26,6 @@ public class Controller_Staff : Controller_Weapon
     {
         GameObject _prj = Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
         _prj.GetComponent<Controller_Projectile>().stats = stats;
+        _prj.GetComponent<Controller_Projectile>().parentTag = transform.parent.tag;
     }
 }

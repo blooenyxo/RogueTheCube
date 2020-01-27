@@ -124,7 +124,7 @@ MonoBehaviour:
   INTELIGENCE:
     baseValue: 0
   AGILITY:
-    baseValue: 5
+    baseValue: 0
   HITPOINTS:
     baseValue: 10
   MANAPOINTS:
@@ -281,7 +281,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 0
+  m_IsActive: 1
 --- !u!4 &8446203975207012175
 Transform:
   m_ObjectHideFlags: 0
@@ -472,6 +472,11 @@ PrefabInstance:
         type: 3}
       propertyPath: m_Name
       value: mr. potatohead -like
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a1a5aff883fcc5b4197229a2de363a77,
+        type: 3}
+      propertyPath: m_IsActive
+      value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1a5aff883fcc5b4197229a2de363a77,
         type: 3}

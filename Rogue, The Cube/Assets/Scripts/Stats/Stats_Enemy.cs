@@ -3,6 +3,9 @@ using UnityEngine;
 
 public class Stats_Enemy : Stats
 {
+    public delegate void OnEnmeyHit(int ctHealth, int mHealth, string enemyName);
+    public OnEnmeyHit onEnemyHit;
+
     public override void Start()
     {
         base.Start();
@@ -11,6 +14,7 @@ public class Stats_Enemy : Stats
     public override void TakeDamage(int value)
     {
         base.TakeDamage(value);
+        onEnemyHit.Invoke(CurrentHealth, HITPOINTS.GetValue(), this.gameObject.name);
     }
 
     public override void Die()

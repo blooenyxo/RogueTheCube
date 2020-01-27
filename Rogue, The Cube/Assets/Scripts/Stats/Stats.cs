@@ -47,7 +47,7 @@ public class Stats : MonoBehaviour
     /// <returns>int damage, to be used with the targets takedamage() method</returns>
     public virtual int DealDamage()
     {
-        int i = UnityEngine.Random.Range(1, 101);
+        int i = Random.Range(1, 101);
         if (i > CritChance())
         {
             return BaseDamage();
@@ -91,15 +91,13 @@ public class Stats : MonoBehaviour
         }
     }
 
-    public virtual bool UseMana(int value)
+    public virtual void UseMana(int value)
     {
         CurrentMana -= value;
         if (CurrentMana <= 0)
         {
             CurrentMana = 0;
-            return false;
         }
-        return true;
     }
     public virtual void Die()
     {

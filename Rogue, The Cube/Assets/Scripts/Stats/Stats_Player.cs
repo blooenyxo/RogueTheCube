@@ -18,9 +18,12 @@ public class Stats_Player : Stats
     public delegate void OnStatsChanged();
     public OnStatsChanged onStatsChanged;
 
+    public delegate void OnResourcesChanged();
+    public OnResourcesChanged onResourcesChanged;
+
     Equipment equipment;
     /// <summary>
-    /// holds the methode to adjust stats based on currently equiped items. delegate triggers on item add or 
+    /// holds the method to adjust stats based on currently equiped items. delegate triggers on item add or 
     /// item removed with the respective parameters.
     /// </summary>
     public override void Start()
@@ -39,5 +42,30 @@ public class Stats_Player : Stats
     {
         base.OnEquipmentChange(newItem, oldItem);
         onStatsChanged.Invoke();
+        onResourcesChanged.Invoke();
+    }
+
+    public override void TakeDamage(int value)
+    {
+        base.TakeDamage(value);
+        onResourcesChanged.Invoke();
+    }
+
+    public override void Heal(int value)
+    {
+        base.Heal(value);
+        onResourcesChanged.Invoke();
+    }
+
+    public override void GainMana(int value)
+    {
+        base.GainMana(value);
+        onResourcesChanged.Invoke();
+    }
+
+    public override void UseMana(int value)
+    {
+        base.UseMana(value);
+        onResourcesChanged.Invoke();
     }
 }

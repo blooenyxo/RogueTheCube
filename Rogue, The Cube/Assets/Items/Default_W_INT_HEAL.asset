@@ -12,14 +12,14 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
   m_Name: Default_W_INT_HEAL
   m_EditorClassIdentifier: 
-  ITEMNAME: 
+  ITEMNAME: Base Healing Staff
   ITEM_TYPE: 2
   ITEM_CLASS: 1
   STRENGHT: 0
   INTELIGENCE: 10
   AGILITY: 0
-  MINDMG: 0
-  MAXDMG: 0
+  MINDMG: 1
+  MAXDMG: 2
   VISUAL_MODEL: {fileID: 1868587299077358907, guid: cddd03f42cad2bd40b39add8ff8c09b2,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}

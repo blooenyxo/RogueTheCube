@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: 82949494011053349}
   m_Layer: 12
   m_Name: Enemy_Basic_Ranged
-  m_TagString: Enemy
+  m_TagString: Archer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,12 +122,9 @@ MonoBehaviour:
   deathBody: {fileID: 798773788267458066, guid: e3881a40379c5854ca15b46720e202e9,
     type: 3}
   aliveBody: {fileID: 2384642107145414310}
-  lootBox: {fileID: 4504357921252825845, guid: 619ecc4a39709bb4a86540f0b4978510, type: 3}
-  itemsToDrop:
-  - {fileID: 11400000, guid: 5e49183b54a08194f8d53ba0875be56d, type: 2}
-  - {fileID: 11400000, guid: bda34e2dc8df7b848a0e5943c846fdf0, type: 2}
   hitMarker: {fileID: 5723862131911769860, guid: 9bb6914bdb138fc49b5fee0df2ea9953,
     type: 3}
+  lootBox: {fileID: 4504357921252825845, guid: 619ecc4a39709bb4a86540f0b4978510, type: 3}
   _Controller_Enemy: {fileID: 4340996019288248736}
 --- !u!114 &4340996019288248736
 MonoBehaviour:
@@ -162,7 +159,7 @@ MonoBehaviour:
   AGILITY:
     baseValue: 30
   HITPOINTS:
-    baseValue: 10
+    baseValue: 20
   MANAPOINTS:
     baseValue: 0
   MOVESPEED:
@@ -186,10 +183,10 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 3
-  detectionSphereRadius: 20
+  detectionSphereRadius: 40
   stopingTime: 2
-  patrolRadius: 5
-  attackDistance: 15
+  patrolRadius: 20
+  attackDistance: 30
   targetLayer:
     serializedVersion: 2
     m_Bits: 256
@@ -230,7 +227,7 @@ MonoBehaviour:
   maxNrOfLowTierItems: 3
   maxNrOfMediumTierItems: 0
   maxNrOfHighTierItems: 0
-  maxNrOfConsumablesItems: 0
+  maxNrOfConsumablesItems: 5
   maxNrOfspecialItems: 0
 --- !u!1 &4553023784682585979
 GameObject:

@@ -52,7 +52,7 @@ GameObject:
   - component: {fileID: -869321915968182806}
   m_Layer: 12
   m_Name: Enemy_Basic_Melee
-  m_TagString: Enemy
+  m_TagString: Sword Guy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -122,12 +122,9 @@ MonoBehaviour:
   deathBody: {fileID: 798773788267458066, guid: e3881a40379c5854ca15b46720e202e9,
     type: 3}
   aliveBody: {fileID: 2384642107145414310}
-  lootBox: {fileID: 4504357921252825845, guid: 619ecc4a39709bb4a86540f0b4978510, type: 3}
-  itemsToDrop:
-  - {fileID: 11400000, guid: 8f511cb159422e5469021e592070f5eb, type: 2}
-  - {fileID: 11400000, guid: 05b231408bf3cdf4391e58f431d62b9d, type: 2}
   hitMarker: {fileID: 5723862131911769860, guid: 9bb6914bdb138fc49b5fee0df2ea9953,
     type: 3}
+  lootBox: {fileID: 4504357921252825845, guid: 619ecc4a39709bb4a86540f0b4978510, type: 3}
   _Controller_Enemy: {fileID: 4340996019288248736}
 --- !u!114 &4340996019288248736
 MonoBehaviour:
@@ -162,7 +159,7 @@ MonoBehaviour:
   AGILITY:
     baseValue: 0
   HITPOINTS:
-    baseValue: 4
+    baseValue: 20
   MANAPOINTS:
     baseValue: 0
   MOVESPEED:
@@ -186,9 +183,9 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 3
-  detectionSphereRadius: 20
+  detectionSphereRadius: 40
   stopingTime: 2
-  patrolRadius: 5
+  patrolRadius: 20
   attackDistance: 2.5
   targetLayer:
     serializedVersion: 2
@@ -230,7 +227,7 @@ MonoBehaviour:
   maxNrOfLowTierItems: 3
   maxNrOfMediumTierItems: 0
   maxNrOfHighTierItems: 0
-  maxNrOfConsumablesItems: 0
+  maxNrOfConsumablesItems: 5
   maxNrOfspecialItems: 0
 --- !u!1 &4553023784682585979
 GameObject:

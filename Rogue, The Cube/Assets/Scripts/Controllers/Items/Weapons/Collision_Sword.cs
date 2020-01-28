@@ -19,14 +19,13 @@ public class Collision_Sword : Controller_Sword
                     //Debug.Log("hit my shield");
                     return;
                 }
+                else // here we act if the shield is not mine
+                {
+                    StartCoroutine(ParryAttack());
+                }
             }
-            // the second part is ment to see if you hit something else. first a shield, and then a character
-            if (collision.gameObject.CompareTag("Shield"))
-            {
-                //Debug.Log("shield block");
-                StartCoroutine(ParryAttack());
-            }
-            else if (!collision.gameObject.CompareTag(parentTag))
+
+            if (!collision.gameObject.CompareTag(parentTag))
             {
                 int dmg = stats.DealDamage();
                 if (collision.gameObject.GetComponent<Stats>())
@@ -36,8 +35,6 @@ public class Collision_Sword : Controller_Sword
                     collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
                 }
             }
-
-            //Debug.Log("doing damage");
             nextTime += interval;
         }
     }

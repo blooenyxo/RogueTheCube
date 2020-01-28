@@ -172,15 +172,15 @@ public class AI_Routine : MonoBehaviour
         {
             agent.SetDestination(target.transform.position);
             LookAt(target);
+
+            if (ForwardRay() && Vector3.Distance(transform.position, target.transform.position) <= attackDistance)
+            {
+                if (GetComponentInChildren<Controller_Weapon>())
+                    GetComponentInChildren<Controller_Weapon>().BaseAttack();
+            }
         }
         else if (target == null)
             currentState = AI_STATE.IDLE;
-
-        if (ForwardRay() && agent.remainingDistance <= attackDistance)
-        {
-            if (GetComponentInChildren<Controller_Weapon>())
-                GetComponentInChildren<Controller_Weapon>().BaseAttack();
-        }
 
         spottedNearbyCharacter = false;
     }

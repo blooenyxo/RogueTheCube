@@ -13,16 +13,7 @@ public abstract class Controller_Weapon : MonoBehaviour
 
     public virtual void Start()
     {
-        if (transform.parent.parent.CompareTag("Player"))
-        {
-            stats = Stats_Player.instance;
-        }
-
-        if (transform.parent.parent.CompareTag("Enemy"))
-        {
-            stats = GetComponentInParent<Stats_Enemy>();
-        }
-
+        stats = GetComponentInParent<Stats>();
         parentTag = transform.parent.parent.tag;
     }
 

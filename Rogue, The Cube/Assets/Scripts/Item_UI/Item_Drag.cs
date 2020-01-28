@@ -47,6 +47,11 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
     public void OnDrag(PointerEventData eventData)
     {
         transform.position = eventData.position;
+
+        //foreach (Transform tr in _currentParent.GetComponentsInChildren<Transform>())
+        //{
+        //    tr.position = eventData.position;
+        //}
     }
 
     /// <summary>

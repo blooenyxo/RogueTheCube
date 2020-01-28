@@ -27,7 +27,7 @@ public class ItemDistriburion : MonoBehaviour
         List<Item> tempList = new List<Item>();
         for (int i = 0; i < numberOfItems; i++)
         {
-            int random = Random.Range(0, LowTierItems.Count);
+            int random = Random.Range(0, itemTier.Count);
             tempList.Add(itemTier[random]);
         }
         return tempList;

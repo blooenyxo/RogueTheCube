@@ -31,6 +31,9 @@ public class Item_UI : MonoBehaviour
             case ITEMCLASS.INTELIGENCE:
                 backgroundImage.color = Color.blue;
                 break;
+            case ITEMCLASS.NONE:
+                backgroundImage.color = Color.white;
+                break;
         }
     }
 

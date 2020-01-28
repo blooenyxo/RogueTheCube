@@ -3,7 +3,7 @@ using UnityEngine;
 
 public class Stats_Enemy : Stats
 {
-    public delegate void OnEnmeyHit(int ctHealth, int mHealth, string enemyName);
+    public delegate void OnEnmeyHit(int cHealth, int mHealth, string enemyName);
     public OnEnmeyHit onEnemyHit;
 
     public override void Start()
@@ -14,7 +14,10 @@ public class Stats_Enemy : Stats
     public override void TakeDamage(int value)
     {
         base.TakeDamage(value);
-        onEnemyHit.Invoke(CurrentHealth, HITPOINTS.GetValue(), this.gameObject.name);
+        // works for some reason. i dont realy know. multiple delegate maybe. 
+        // i think they all get triggered so we have to check if its null or not. the syntax does eaxctly that ( if (onEnemyHit != null) )
+        // still a problem with new spawned enemies, the listener is not subscribed anymore
+        onEnemyHit?.Invoke(CurrentHealth, HITPOINTS.GetValue(), this.gameObject.tag);
     }
 
     public override void Die()
@@ -25,7 +28,7 @@ public class Stats_Enemy : Stats
 
     private void SetLootBoxAndItems()
     {
-        GameObject lb = Instantiate(GetComponent<Equipment_Visual>().lootBox, this.transform.position, this.transform.rotation);
+        GameObject lb = Instantiate(GetComponent<Equipment_Visual_Enemy>().lootBox, this.transform.position, this.transform.rotation);
 
         int random = Random.Range(0, GetComponent<ItemDrop>().Drop().Count);
         List<Item> tempList = new List<Item>();

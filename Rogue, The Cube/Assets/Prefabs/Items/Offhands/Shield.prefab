@@ -64,7 +64,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: bccbf78c815b8894ea049db93e2e27ff, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  shieldCollider: {fileID: 0}
+  parentTag: 
 --- !u!1 &4860684917166136267
 GameObject:
   m_ObjectHideFlags: 0
@@ -114,7 +114,7 @@ Rigidbody:
   m_IsKinematic: 0
   m_Interpolate: 0
   m_Constraints: 0
-  m_CollisionDetection: 1
+  m_CollisionDetection: 2
 --- !u!65 &5206546619464379384
 BoxCollider:
   m_ObjectHideFlags: 0

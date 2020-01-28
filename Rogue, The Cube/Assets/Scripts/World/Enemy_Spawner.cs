@@ -13,33 +13,41 @@ public class Enemy_Spawner : MonoBehaviour
     private GameObject spawnedGameObject;
     private int rnd;
     private GameObject player;
+    private EnemyResourcePanel erp;
+
+    public float respawnCooldown;
+    private float time;
 
     void Start()
     {
-        player = GameObject.FindGameObjectWithTag("Player");
+        player = Stats_Player.instance.gameObject;
 
         if (Enemies[rnd] != null)
         {
             SpawnGameObject();
         }
+
+        erp = GameObject.Find("EnemyResourcesPanel").GetComponent<EnemyResourcePanel>();
     }
 
     private void LateUpdate()
     {
-
-        if (spawnedGameObject == null && respawn)
+        if (player != null)
         {
-            SpawnGameObject();
+            if (spawnedGameObject == null && respawn && Vector3.Distance(this.transform.position, player.transform.position) > spawnDistantce && Time.time > time)
+            {
+                SpawnGameObject();
+                erp.SubscribeToEvents();
+
+                time = Time.time + respawnCooldown;
+            }
         }
     }
 
     private void SpawnGameObject()
     {
-        if (player != null && Vector3.Distance(this.transform.position, player.transform.position) > spawnDistantce)
-        {
-            rnd = Random.Range(0, Enemies.Length);
-            spawnedGameObject = Instantiate(Enemies[rnd], this.transform.position, Quaternion.identity);
-            spawnedGameObject.transform.SetParent(this.transform);
-        }
+        rnd = Random.Range(0, Enemies.Length);
+        spawnedGameObject = Instantiate(Enemies[rnd], this.transform.position, Quaternion.identity);
+        spawnedGameObject.transform.SetParent(this.transform);
     }
 }

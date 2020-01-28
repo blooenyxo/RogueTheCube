@@ -96,11 +96,11 @@ public class Controller_Player : MonoBehaviour
 
         if (Input.GetButtonDown("Jump"))
         {
-            uiIsOpen = false;
-            inventoryPanelOpen = false;
-            pickupPanelOpen = false;
-            ui_input.ClosePickupPanel();
-            ui_input.ClosePlayerPanel();
+            //uiIsOpen = false;
+            //inventoryPanelOpen = false;
+            //pickupPanelOpen = false;
+            //ui_input.ClosePickupPanel();
+            //ui_input.ClosePlayerPanel();
         }
 
         // uiisopen bool turns true every frame when one of the panels is open (inv., pickup, and all the future ones (dialog, shop etc..))
@@ -156,7 +156,7 @@ public class Controller_Player : MonoBehaviour
 
     public GameObject NearbyInteraction()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 3f, interactionLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 2f, interactionLayer);
 
         if (hitColliders.Length > 0)
         {

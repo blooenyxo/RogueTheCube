@@ -1,6 +1,11 @@
-﻿public class Equipment_Visual_Enemy : Equipment_Visual
+﻿using UnityEngine;
+
+public class Equipment_Visual_Enemy : Equipment_Visual
 {
-    public Controller_Enemy _Controller_Enemy;
+    [Header("Enemy Death")]
+    public GameObject lootBox;
+
+    [HideInInspector] public Controller_Enemy _Controller_Enemy;
 
     public override void Start()
     {

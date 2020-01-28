@@ -7,30 +7,17 @@ public abstract class Equipment_Visual : MonoBehaviour
     public GameObject leftHandPoint;
     public GameObject headPoint;
 
-    [Header("Dead")]
+    [Header("On Death")]
     public GameObject deathBody;
     public GameObject aliveBody;
-    public GameObject lootBox;
-    public Item[] itemsToDrop;
 
-    [Header("HitMarker")]
+    [Header("Hit Marker")]
     public GameObject hitMarker;
 
     GameObject weapon;
     GameObject offhand;
 
     public virtual void Start() { }
-
-    /// <summary>
-    /// for testing only
-    /// </summary>
-    //private void Update()
-    //{
-    //    if (Input.GetKeyDown(KeyCode.E))
-    //    {
-    //        HitMarker(transform);
-    //    }
-    //}
 
     public virtual void UpdateVisuals(Item newItem, Item oldItem)
     {
@@ -68,7 +55,6 @@ public abstract class Equipment_Visual : MonoBehaviour
 
     public virtual void HitMarker(Vector3 where)
     {
-        GameObject hm = Instantiate(hitMarker, where, Quaternion.identity);
-        //hm.transform.SetParent(this.transform); // this made the cubes behave odd. create a cube container and spanw the blood cubes in it
+        GameObject hm = Instantiate(hitMarker, where, Quaternion.identity); // dont parent the cubes to this gameobject
     }
 }

@@ -103,8 +103,6 @@ MonoBehaviour:
   deathBody: {fileID: 798773788267458066, guid: e3881a40379c5854ca15b46720e202e9,
     type: 3}
   aliveBody: {fileID: 1455424952082825380}
-  lootBox: {fileID: 0}
-  itemsToDrop: []
   hitMarker: {fileID: 5723862131911769860, guid: 9bb6914bdb138fc49b5fee0df2ea9953,
     type: 3}
 --- !u!114 &1895210460

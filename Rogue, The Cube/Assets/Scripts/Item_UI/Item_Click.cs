@@ -112,6 +112,32 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
                 SwapWithEquipment(3);
             }
         }
+        else if (_itemType == ITEMTYPE.CONSUMABLE)
+        {
+            bool gainedHealth = false;
+            bool gainedMana = false;
+            if (transform.GetComponent<Item_UI>().item.Health > 0f)
+            {
+                if (Stats_Player.instance.CurrentHealth < Stats_Player.instance.HITPOINTS.GetValue())
+                {
+                    Stats_Player.instance.Heal(transform.GetComponent<Item_UI>().item.Health);
+                    gainedHealth = true;
+                }
+            }
+            if (transform.GetComponent<Item_UI>().item.Mana > 0f)
+            {
+                if (Stats_Player.instance.CurrentMana < Stats_Player.instance.MANAPOINTS.GetValue())
+                {
+                    Stats_Player.instance.GainMana(transform.GetComponent<Item_UI>().item.Mana);
+                    gainedMana = true;
+                }
+            }
+
+            if (gainedHealth || gainedMana)
+            {
+                Destroy(gameObject);
+            }
+        }
     }
 
     /// <summary>
@@ -153,8 +179,8 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
 
     void SwapWithEquipment(int i)
     {
-        equipmentSlots[i].GetChild(0).transform.SetParent(transform.parent);
         RemoveFromEquipment(i);
+        equipmentSlots[i].GetChild(0).GetComponent<Item_Click>().MoveToInventory(); // for sorting back into the inventory, and not stacking
         EquipToEquipment(i);
     }
 }

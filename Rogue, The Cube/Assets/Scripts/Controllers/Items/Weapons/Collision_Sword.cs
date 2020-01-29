@@ -22,15 +22,18 @@ public class Collision_Sword : Controller_Sword
                 else // here we act if the shield is not mine
                 {
                     StartCoroutine(ParryAttack());
+                    if (GetComponentInParent<AI_Routine>())
+                    {
+                        GetComponentInParent<AI_Routine>().Stop();
+                    }
                 }
             }
-
-            if (!collision.gameObject.CompareTag(parentTag))
+            else if (!collision.gameObject.CompareTag(parentTag))
             {
                 int dmg = stats.DealDamage();
                 if (collision.gameObject.GetComponent<Stats>())
                 {
-                    //Debug.Log("took " + dmg + " damage");
+                    Debug.Log(collision.gameObject.tag + " took " + dmg + " damage from " + parentTag);
                     collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
                     collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
                 }

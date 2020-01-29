@@ -17,6 +17,7 @@ public class Enemy_Spawner : MonoBehaviour
 
     public float respawnCooldown;
     private float time;
+    private bool enemyDied;
 
     void Start()
     {
@@ -34,12 +35,17 @@ public class Enemy_Spawner : MonoBehaviour
     {
         if (player != null)
         {
+            if (spawnedGameObject == null && !enemyDied)
+            {
+                time = Time.time + respawnCooldown;
+                enemyDied = true;
+            }
+
             if (spawnedGameObject == null && respawn && Vector3.Distance(this.transform.position, player.transform.position) > spawnDistantce && Time.time > time)
             {
                 SpawnGameObject();
                 erp.SubscribeToEvents();
-
-                time = Time.time + respawnCooldown;
+                enemyDied = false;
             }
         }
     }

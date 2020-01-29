@@ -73,6 +73,7 @@ MonoBehaviour:
   projectile: {fileID: 2751216269527067318, guid: 1bb3e41e77782184f9b46fd8f063daf6,
     type: 3}
   firePoint: {fileID: 3682306072504639074}
+  manaCost: 10
 --- !u!1 &3682306072504639074
 GameObject:
   m_ObjectHideFlags: 0

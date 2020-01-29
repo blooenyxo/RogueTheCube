@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 6866525043993644441}
   m_Layer: 12
   m_Name: Graphics
-  m_TagString: Enemy
+  m_TagString: Archer
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -170,6 +170,8 @@ MonoBehaviour:
     baseValue: 1
   MAXDMG:
     baseValue: 4
+  STAMINA:
+    baseValue: 0
 --- !u!114 &6219899408672357560
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -332,7 +334,7 @@ GameObject:
   - component: {fileID: 6251269081788789200}
   m_Layer: 12
   m_Name: LeftHandPoint
-  m_TagString: Enemy
+  m_TagString: Archer
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -362,7 +364,7 @@ GameObject:
   - component: {fileID: 8933106901906776180}
   m_Layer: 12
   m_Name: RightHandPoint
-  m_TagString: Enemy
+  m_TagString: Archer
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -392,7 +394,7 @@ GameObject:
   - component: {fileID: 3471454305183946467}
   m_Layer: 12
   m_Name: HeadPoint
-  m_TagString: Enemy
+  m_TagString: Archer
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

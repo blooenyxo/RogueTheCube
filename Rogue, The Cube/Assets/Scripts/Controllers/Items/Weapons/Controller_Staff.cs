@@ -5,6 +5,8 @@ public class Controller_Staff : Controller_Weapon
     public GameObject projectile;
     public GameObject firePoint;
 
+    public int manaCost;
+
     public override void Start()
     {
         base.Start();
@@ -13,8 +15,8 @@ public class Controller_Staff : Controller_Weapon
     public override void BaseAttack()
     {
         base.BaseAttack();
-
-        animator.SetTrigger("baseattack");
+        if (stats.UseMana(manaCost))
+            animator.SetTrigger("baseattack");
     }
 
     public override void SpecialAttack()

@@ -11,6 +11,9 @@ public class EnemyResourcePanel : MonoBehaviour
 
     public GameObject enemyHolder;
 
+    private float timer = 0f;
+    private float coolDown = 2f;
+
     private void Start()
     {
         cg = GetComponent<CanvasGroup>();
@@ -34,11 +37,12 @@ public class EnemyResourcePanel : MonoBehaviour
         hpSlider.maxValue = maxHealth;
         hpSlider.value = currentHealth;
         enemyName.text = name;
+        timer = Time.time + coolDown;
     }
 
     private void Update()
     {
-        if (cg.alpha >= 0f)
+        if (cg.alpha >= 0f && Time.time > timer)
             cg.alpha -= 0.2f * Time.deltaTime;
     }
 }

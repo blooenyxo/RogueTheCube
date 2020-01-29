@@ -109,25 +109,63 @@ public class Controller_Player : MonoBehaviour
         else
             uiIsOpen = false;
 
-        if (Input.GetButton("Run"))
-        {
-            //Debug.Log("running");
-            _speedModifyer = speedModifyer;
-        }
-        else if (Input.GetButtonUp("Run"))
-        {
-            //Debug.Log("not running");
-            _speedModifyer = 1;
-        }
+
     }
 
     void FixedUpdate()
     {
         float h = Input.GetAxisRaw("Horizontal");
         float v = Input.GetAxisRaw("Vertical");
+
+
+
+        if (Input.GetAxisRaw("Vertical") > 0.1f)
+        {
+            _speedModifyer = 1;
+            if (Input.GetButton("Run"))
+            {
+                //Debug.Log("running");
+                if (statsPlayer.UseStamina(Mathf.CeilToInt(1 * Time.deltaTime)))
+                {
+                    _speedModifyer = speedModifyer;
+                    statsPlayer.onResourcesChanged.Invoke();
+                }
+                else
+                {
+                    _speedModifyer = 1;
+                }
+            }
+            else if (Input.GetButtonUp("Run"))
+            {
+                //Debug.Log("not running");
+                _speedModifyer = 1;
+            }
+        }
+        else if (Input.GetAxisRaw("Vertical") < 0.1f)
+        {
+            _speedModifyer = 0.5f;
+        }
+        else if (Input.GetAxisRaw("Horizontal") != 0f)
+        {
+            _speedModifyer = 0.5f;
+        }
+
+        if (Input.GetAxisRaw("Horizontal") == 0f && Input.GetAxisRaw("Vertical") == 0f)
+        {
+            _speedModifyer = 1;
+        }
+
+        if (!Input.GetButton("Run"))
+        {
+            statsPlayer.GainStamina(1);
+        }
+
+        Move(h, v);
+
+        // this check is ment to make you not able to move / turn while inv or any other panel is open
+        // i dont like how this works, so i keep testing it.
         if (!uiIsOpen)
         {
-            Move(h, v);
             MouseLook();
         }
     }

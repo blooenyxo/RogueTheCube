@@ -74,6 +74,7 @@ public class AI_Routine : MonoBehaviour
     private void Idle()
     {
         spottedNearbyCharacter = false;
+        agent.isStopped = false;
         currentState = AI_STATE.PICKLOCATION;
     }
 
@@ -220,6 +221,12 @@ public class AI_Routine : MonoBehaviour
         }
         else if (target == null)
             currentState = AI_STATE.IDLE;
+    }
+
+    public void Stop()
+    {
+        agent.isStopped = true;
+        currentState = AI_STATE.IDLE;
     }
 
     /// <summary>

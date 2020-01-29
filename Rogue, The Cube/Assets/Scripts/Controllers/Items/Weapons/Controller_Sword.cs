@@ -32,7 +32,7 @@ public class Controller_Sword : Controller_Weapon
     {
         animator.SetTrigger(PickAttack());
         swordCollider.enabled = true;
-        yield return new WaitForSeconds(cooldown);
+        yield return new WaitForSeconds(globalCooldown);
         swordCollider.enabled = false;
     }
 

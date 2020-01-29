@@ -3,7 +3,7 @@
 public class Controller_Shield : Controller_Offhand
 {
     private Animator animator;
-    private BoxCollider shieldCollider;
+    [SerializeField] private BoxCollider shieldCollider;
 
     public override void Start()
     {

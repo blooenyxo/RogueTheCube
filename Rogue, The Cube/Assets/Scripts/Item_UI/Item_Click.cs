@@ -58,10 +58,14 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         }
         else if (transform.parent.tag == "LootSlot")
         {
+            if (!LookForSimilarItems())
+            {
+                MoveToInventory();
+            }
             //move to inventory if enough free space
             // the next line is for clearing the lootbox content after item was removed
             GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(transform.GetComponent<Item_UI>().item);
-            MoveToInventory();
+
         }
     }
 
@@ -159,6 +163,22 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             equipmentSlots[transform.GetComponentInParent<Item_Drop_Eq>().index].GetComponent<Item_Drop_Eq>().RemoveItem();
         else         // when eqiupment slot is filled and we swap items
             equipmentSlots[i].GetComponent<Item_Drop_Eq>().RemoveItem();
+    }
+
+    bool LookForSimilarItems()
+    {
+        for (int i = inventorySlots.Length - 1; i >= 0; i--)
+        {
+            if (inventorySlots[i].childCount > 0)
+            {
+                if (inventorySlots[i].GetComponentInChildren<Item_UI>().item == transform.GetComponent<Item_UI>().item)
+                {
+                    transform.SetParent(inventorySlots[i]);
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     void MoveToInventory()

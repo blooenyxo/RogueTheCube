@@ -63,9 +63,20 @@ public class Stats_Player : Stats
         onResourcesChanged.Invoke();
     }
 
-    public override void UseMana(int value)
+    public override bool UseMana(int value)
     {
-        base.UseMana(value);
+        onResourcesChanged.Invoke();
+        return base.UseMana(value);
+    }
+
+    public override bool UseStamina(int value)
+    {
+        return base.UseStamina(value);
+    }
+
+    public override void GainStamina(int value)
+    {
+        base.GainStamina(value);
         onResourcesChanged.Invoke();
     }
 }

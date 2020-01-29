@@ -14,14 +14,17 @@ public class Stats : MonoBehaviour
     public Stat ARMOR;
     public Stat MINDMG;
     public Stat MAXDMG;
+    public Stat STAMINA;
 
     public int CurrentHealth { get; private set; }
     public int CurrentMana { get; private set; }
+    public int CurrentStamina { get; private set; }
 
     public virtual void Start()
     {
         CurrentHealth = HITPOINTS.GetValue();
         CurrentMana = MANAPOINTS.GetValue();
+        CurrentStamina = STAMINA.GetValue();
     }
 
     /// <summary>
@@ -91,13 +94,15 @@ public class Stats : MonoBehaviour
         }
     }
 
-    public virtual void UseMana(int value)
+    public virtual bool UseMana(int value)
     {
         CurrentMana -= value;
-        if (CurrentMana <= 0)
+        if (CurrentMana < 0)
         {
             CurrentMana = 0;
+            return false;
         }
+        return true;
     }
     public virtual void Die()
     {
@@ -112,6 +117,26 @@ public class Stats : MonoBehaviour
         else
         {
             Destroy(this.gameObject);
+        }
+    }
+
+    public virtual bool UseStamina(int value)
+    {
+        CurrentStamina -= value;
+        if (CurrentStamina < 0)
+        {
+            CurrentStamina = 0;
+            return false;
+        }
+        return true;
+    }
+
+    public virtual void GainStamina(int value)
+    {
+        CurrentStamina += value;
+        if (CurrentStamina >= STAMINA.GetValue())
+        {
+            CurrentStamina = STAMINA.GetValue();
         }
     }
 

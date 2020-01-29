@@ -84,7 +84,7 @@ MonoBehaviour:
   interactionLayer:
     serializedVersion: 2
     m_Bits: 0
-  speedModifyer: 20
+  speedModifyer: 5
 --- !u!114 &1163672701290340823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -135,6 +135,8 @@ MonoBehaviour:
     baseValue: 0
   MAXDMG:
     baseValue: 1
+  STAMINA:
+    baseValue: 100
 --- !u!1 &723620584866224505
 GameObject:
   m_ObjectHideFlags: 0
@@ -466,16 +468,6 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 7669500635546708891}
     m_Modifications:
-    - target: {fileID: -927199367670048503, guid: a1a5aff883fcc5b4197229a2de363a77,
-        type: 3}
-      propertyPath: m_Name
-      value: mr. potatohead -like
-      objectReference: {fileID: 0}
-    - target: {fileID: -927199367670048503, guid: a1a5aff883fcc5b4197229a2de363a77,
-        type: 3}
-      propertyPath: m_IsActive
-      value: 0
-      objectReference: {fileID: 0}
     - target: {fileID: -4216859302048453862, guid: a1a5aff883fcc5b4197229a2de363a77,
         type: 3}
       propertyPath: m_LocalPosition.x
@@ -529,6 +521,16 @@ PrefabInstance:
     - target: {fileID: -4216859302048453862, guid: a1a5aff883fcc5b4197229a2de363a77,
         type: 3}
       propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a1a5aff883fcc5b4197229a2de363a77,
+        type: 3}
+      propertyPath: m_Name
+      value: mr. potatohead -like
+      objectReference: {fileID: 0}
+    - target: {fileID: -927199367670048503, guid: a1a5aff883fcc5b4197229a2de363a77,
+        type: 3}
+      propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
     - target: {fileID: -2416733968201007103, guid: a1a5aff883fcc5b4197229a2de363a77,

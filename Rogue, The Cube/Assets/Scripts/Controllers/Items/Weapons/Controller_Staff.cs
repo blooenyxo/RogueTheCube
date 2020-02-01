@@ -3,22 +3,21 @@ using System.Collections;
 
 public class Controller_Staff : Controller_Weapon
 {
-    public GameObject projectile;
-    public GameObject firePoint;
-
-    public int manaCost;
-
+    public Transform firePoint;
     private bool attacking;
+    private Spell spell;
 
     public override void Start()
     {
         base.Start();
+        spell = GetComponent<Spell>();
     }
 
     public override void BaseAttack()
     {
         base.BaseAttack();
-        StartCoroutine(ExecuteSwingAttack());
+        if (attacking == false)
+            StartCoroutine(ExecuteSwingAttack());
     }
 
     public override void SpecialAttack()
@@ -26,9 +25,9 @@ public class Controller_Staff : Controller_Weapon
         base.SpecialAttack();
         if (attacking == false)
         {
-            if (stats.UseMana(manaCost))
+            if (stats.UseMana(spell.manaCost))
             {
-                StartCoroutine(ExecuteMissileAttack());
+                StartCoroutine(ExecuteSpellAttack());
             }
             else
             {
@@ -39,14 +38,13 @@ public class Controller_Staff : Controller_Weapon
 
     public void StaffProjectile()
     {
-        GameObject _prj = Instantiate(projectile, firePoint.transform.position, firePoint.transform.rotation);
-        _prj.GetComponent<Controller_Projectile>().stats = stats;
-        _prj.GetComponent<Controller_Projectile>().parentTag = transform.parent.tag;
+        //Debug.Log("fire");
+        spell.CastSpell(firePoint, stats, transform.parent.tag);
     }
 
-    private IEnumerator ExecuteMissileAttack()
+    private IEnumerator ExecuteSpellAttack()
     {
-        animator.SetTrigger("baseattack");
+        animator.SetTrigger(spell.title);
         attacking = true;
         yield return new WaitForSeconds(1.5f);
         attacking = false;

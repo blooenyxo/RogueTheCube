@@ -116,13 +116,19 @@ AnimatorController:
   m_Name: Staff
   serializedVersion: 5
   m_AnimatorParameters:
-  - m_Name: baseattack
+  - m_Name: Deathball
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
     m_DefaultBool: 0
     m_Controller: {fileID: 0}
   - m_Name: baseattack_swing
+    m_Type: 9
+    m_DefaultFloat: 0
+    m_DefaultInt: 0
+    m_DefaultBool: 0
+    m_Controller: {fileID: 0}
+  - m_Name: HealSelf
     m_Type: 9
     m_DefaultFloat: 0
     m_DefaultInt: 0
@@ -194,7 +200,7 @@ AnimatorStateTransition:
   m_Name: 
   m_Conditions:
   - m_ConditionMode: 1
-    m_ConditionEvent: baseattack
+    m_ConditionEvent: Deathball
     m_EventTreshold: 0
   m_DstStateMachine: {fileID: 0}
   m_DstState: {fileID: -1760778509055919013}

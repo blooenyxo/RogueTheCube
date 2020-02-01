@@ -11,6 +11,7 @@ GameObject:
   - component: {fileID: 377133223788720379}
   - component: {fileID: 6713074647599283484}
   - component: {fileID: 4384277891788397715}
+  - component: {fileID: 7912859995073669689}
   m_Layer: 17
   m_Name: Staff
   m_TagString: Untagged
@@ -70,10 +71,25 @@ MonoBehaviour:
   parentTag: 
   cooldown: 0
   animator: {fileID: 6713074647599283484}
-  projectile: {fileID: 2751216269527067318, guid: 1bb3e41e77782184f9b46fd8f063daf6,
-    type: 3}
-  firePoint: {fileID: 3682306072504639074}
-  manaCost: 10
+  firePoint: {fileID: 8920492772537432029}
+--- !u!114 &7912859995073669689
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1868587299077358907}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6ae230e566f86a04fae3023fad896d4e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  title: Deathball
+  manaCost: 5
+  targetSelf: 0
+  active: 1
+  channeled: 0
+  effect: {fileID: 2751216269527067318, guid: 1bb3e41e77782184f9b46fd8f063daf6, type: 3}
 --- !u!1 &3682306072504639074
 GameObject:
   m_ObjectHideFlags: 0

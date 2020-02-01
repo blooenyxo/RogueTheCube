@@ -7,6 +7,7 @@ public class AdjustStatValues : MonoBehaviour
     public Text agiValue;
     public Text intValue;
     public Text dmgValue;
+    public Text magValue;
 
     Stats_Player stats_player;
 
@@ -22,5 +23,6 @@ public class AdjustStatValues : MonoBehaviour
         agiValue.text = stats_player.AGILITY.GetValue().ToString();
         intValue.text = stats_player.INTELIGENCE.GetValue().ToString();
         dmgValue.text = Mathf.CeilToInt(stats_player.MINDMG.GetValue() + (stats_player.STRENGHT.GetValue() * .1f)).ToString() + " - " + Mathf.CeilToInt(stats_player.MAXDMG.GetValue() + (stats_player.STRENGHT.GetValue() * .1f)).ToString();
+        magValue.text = Mathf.CeilToInt(stats_player.MINMAGIC.GetValue() + (stats_player.INTELIGENCE.GetValue() * .1f)).ToString() + " - " + Mathf.CeilToInt(stats_player.MAXMAGIC.GetValue() + (stats_player.INTELIGENCE.GetValue() * .1f)).ToString();
     }
 }

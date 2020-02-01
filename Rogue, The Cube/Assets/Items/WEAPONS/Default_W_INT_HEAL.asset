@@ -18,11 +18,13 @@ MonoBehaviour:
   STRENGHT: 0
   INTELIGENCE: 0
   AGILITY: 0
-  MINDMG: 1
-  MAXDMG: 2
+  MINDMG: 5
+  MAXDMG: 10
+  MINMAGIC: 5
+  MAXMAGIC: 10
   Health: 0
   Mana: 0
-  VISUAL_MODEL: {fileID: 1868587299077358907, guid: cddd03f42cad2bd40b39add8ff8c09b2,
+  VISUAL_MODEL: {fileID: 460802970375663651, guid: ca543b598065a12448001b8cbdfa5148,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: 11fcd679d2a042349b976f4aadbf9edb, type: 3}

@@ -20,6 +20,8 @@ public class Item : ScriptableObject
     [Header("For Weapons")]
     public int MINDMG;
     public int MAXDMG;
+    public int MINMAGIC;
+    public int MAXMAGIC;
     [Header("Consumables Section")]
     public int Health;
     public int Mana;

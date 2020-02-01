@@ -19,7 +19,9 @@ MonoBehaviour:
   INTELIGENCE: 5
   AGILITY: 0
   MINDMG: 1
-  MAXDMG: 10
+  MAXDMG: 2
+  MINMAGIC: 1
+  MAXMAGIC: 10
   Health: 0
   Mana: 0
   VISUAL_MODEL: {fileID: 1868587299077358907, guid: cddd03f42cad2bd40b39add8ff8c09b2,

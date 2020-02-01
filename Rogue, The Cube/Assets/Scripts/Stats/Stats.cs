@@ -10,6 +10,8 @@ public class Stats : MonoBehaviour
     public Stat AGILITY;
     public Stat HITPOINTS;
     public Stat MANAPOINTS;
+    public Stat MINMAGIC;
+    public Stat MAXMAGIC;
     public Stat MOVESPEED;
     public Stat ARMOR;
     public Stat MINDMG;
@@ -74,6 +76,12 @@ public class Stats : MonoBehaviour
     {
         return AGILITY.GetValue() * 1.5f;
     }
+
+    public virtual int DealMagicDamage()
+    {
+        return Mathf.CeilToInt(Random.Range(MINMAGIC.GetValue(), MAXMAGIC.GetValue()) + (INTELIGENCE.GetValue() * .1f));
+    }
+
     public virtual void Heal(int value)
     {
         CurrentHealth += value;
@@ -150,6 +158,8 @@ public class Stats : MonoBehaviour
             MOVESPEED.AddModifier(Mathf.CeilToInt(newItem.AGILITY * .1f));
             MINDMG.AddModifier(newItem.MINDMG);
             MAXDMG.AddModifier(newItem.MAXDMG);
+            MINMAGIC.AddModifier(newItem.MINMAGIC);
+            MAXMAGIC.AddModifier(newItem.MAXMAGIC);
             HITPOINTS.AddModifier(newItem.STRENGHT * 2);
             MANAPOINTS.AddModifier(newItem.INTELIGENCE * 2);
             ARMOR.AddModifier(Mathf.CeilToInt(newItem.STRENGHT * .5f));
@@ -162,6 +172,8 @@ public class Stats : MonoBehaviour
             MOVESPEED.RemoveModifier(Mathf.CeilToInt(oldItem.AGILITY * .1f));
             MINDMG.RemoveModifier(oldItem.MINDMG);
             MAXDMG.RemoveModifier(oldItem.MAXDMG);
+            MINMAGIC.RemoveModifier(newItem.MINMAGIC);
+            MAXMAGIC.RemoveModifier(newItem.MAXMAGIC);
             HITPOINTS.RemoveModifier(oldItem.STRENGHT * 2);
             MANAPOINTS.RemoveModifier(oldItem.INTELIGENCE * 2);
             ARMOR.RemoveModifier(Mathf.CeilToInt(oldItem.STRENGHT * .5f));

@@ -27,7 +27,7 @@ public class StaffProjectile : Controller_Projectile
             {
                 if (other.gameObject.GetComponent<Stats>())
                 {
-                    int dmg = stats.DealDamage();
+                    int dmg = stats.DealMagicDamage();
                     other.gameObject.GetComponent<Stats>().TakeDamage(dmg);
                     other.gameObject.GetComponent<Equipment_Visual>().HitMarker(other.gameObject.transform.position);
                 }

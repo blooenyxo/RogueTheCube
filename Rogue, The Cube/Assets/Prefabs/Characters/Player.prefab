@@ -14,7 +14,7 @@ GameObject:
   - component: {fileID: 1772587106120773921}
   - component: {fileID: 1163672701290340823}
   - component: {fileID: 1895210460}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Player
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -83,8 +83,8 @@ MonoBehaviour:
   uiIsOpen: 0
   interactionLayer:
     serializedVersion: 2
-    m_Bits: 0
-  speedModifyer: 5
+    m_Bits: 65536
+  speedModifyer: 2
 --- !u!114 &1163672701290340823
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -103,7 +103,11 @@ MonoBehaviour:
   deathBody: {fileID: 798773788267458066, guid: e3881a40379c5854ca15b46720e202e9,
     type: 3}
   aliveBody: {fileID: 1455424952082825380}
-  hitMarker: {fileID: 5723862131911769860, guid: 9bb6914bdb138fc49b5fee0df2ea9953,
+  hitMarker: {fileID: 2357461739617506972, guid: 180f0e838adef8c4fa998ed80c292563,
+    type: 3}
+  healingEffect: {fileID: 1397096933702881623, guid: 4a05d78d6c4e0d44cac4ab76a889258c,
+    type: 3}
+  gainManaEffect: {fileID: 5095024198059562127, guid: 08690b3c7082b88419cf3f52208f4de5,
     type: 3}
 --- !u!114 &1895210460
 MonoBehaviour:
@@ -124,17 +128,17 @@ MonoBehaviour:
   AGILITY:
     baseValue: 0
   HITPOINTS:
-    baseValue: 10
+    baseValue: 5
   MANAPOINTS:
     baseValue: 0
   MOVESPEED:
-    baseValue: 3
+    baseValue: 1
   ARMOR:
     baseValue: 0
   MINDMG:
     baseValue: 0
   MAXDMG:
-    baseValue: 1
+    baseValue: 0
   STAMINA:
     baseValue: 100
 --- !u!1 &723620584866224505
@@ -149,7 +153,7 @@ GameObject:
   - component: {fileID: 7862289032383233459}
   - component: {fileID: 2689363275701743440}
   - component: {fileID: 1012717121440959436}
-  m_Layer: 0
+  m_Layer: 13
   m_Name: SeeThroughWallsRadius
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -192,6 +196,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -238,7 +243,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7669500635546708891}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Graphics
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -275,7 +280,7 @@ GameObject:
   - component: {fileID: 3110279212410063587}
   - component: {fileID: 5302349814718128342}
   - component: {fileID: 7147776837925915861}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: Cube
   m_TagString: Player
   m_Icon: {fileID: 0}
@@ -318,6 +323,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -362,11 +368,11 @@ NavMeshObstacle:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 4714568566295046071}
-  m_Enabled: 1
+  m_Enabled: 0
   serializedVersion: 3
   m_Shape: 1
   m_Extents: {x: 0.5, y: 0.5, z: 0.5}
-  m_MoveThreshold: 0.1
+  m_MoveThreshold: 0.01
   m_Carve: 1
   m_CarveOnlyStationary: 0
   m_Center: {x: 0, y: 0, z: 0}
@@ -380,7 +386,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 362631409984680161}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: HeadPoint
   m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -410,7 +416,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5682842826674144886}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: RightHandPoint
   m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -440,7 +446,7 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 7198368551685806034}
-  m_Layer: 8
+  m_Layer: 13
   m_Name: LeftHandPoint
   m_TagString: Player
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
@@ -523,6 +529,11 @@ PrefabInstance:
       propertyPath: m_LocalEulerAnglesHint.z
       value: 0
       objectReference: {fileID: 0}
+    - target: {fileID: -2416733968201007103, guid: a1a5aff883fcc5b4197229a2de363a77,
+        type: 3}
+      propertyPath: m_Materials.Array.data[0]
+      value: 
+      objectReference: {fileID: 2100000, guid: 9a07920fce0e7624e92bab68c4a7a291, type: 2}
     - target: {fileID: -927199367670048503, guid: a1a5aff883fcc5b4197229a2de363a77,
         type: 3}
       propertyPath: m_Name
@@ -533,11 +544,16 @@ PrefabInstance:
       propertyPath: m_IsActive
       value: 0
       objectReference: {fileID: 0}
-    - target: {fileID: -2416733968201007103, guid: a1a5aff883fcc5b4197229a2de363a77,
+    - target: {fileID: -927199367670048503, guid: a1a5aff883fcc5b4197229a2de363a77,
         type: 3}
-      propertyPath: m_Materials.Array.data[0]
-      value: 
-      objectReference: {fileID: 2100000, guid: 9a07920fce0e7624e92bab68c4a7a291, type: 2}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
+    - target: {fileID: 2534866581884222612, guid: a1a5aff883fcc5b4197229a2de363a77,
+        type: 3}
+      propertyPath: m_Layer
+      value: 13
+      objectReference: {fileID: 0}
     m_RemovedComponents: []
   m_SourcePrefab: {fileID: 100100000, guid: a1a5aff883fcc5b4197229a2de363a77, type: 3}
 --- !u!4 &6422796443418504968 stripped

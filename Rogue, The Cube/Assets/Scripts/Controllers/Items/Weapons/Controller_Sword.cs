@@ -18,8 +18,10 @@ public class Controller_Sword : Controller_Weapon
         if (Time.time > cooldown && !swordParry)
         {
             base.BaseAttack();
-            cooldown = Time.time + globalCooldown;
+
             StartCoroutine(AttackRoutine());
+
+            cooldown = Time.time + globalCooldown;
         }
     }
 
@@ -30,9 +32,9 @@ public class Controller_Sword : Controller_Weapon
 
     private IEnumerator AttackRoutine()
     {
-        animator.SetTrigger(PickAttack());
         swordCollider.enabled = true;
-        yield return new WaitForSeconds(globalCooldown);
+        animator.SetTrigger(PickAttack());
+        yield return new WaitForSeconds(.3f);
         swordCollider.enabled = false;
     }
 

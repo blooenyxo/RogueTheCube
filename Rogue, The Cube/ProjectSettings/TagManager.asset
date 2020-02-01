@@ -15,6 +15,7 @@ TagManager:
   - NPC
   - Sword Guy
   - Archer
+  - Floor
   layers:
   - Default
   - TransparentFX
@@ -24,16 +25,16 @@ TagManager:
   - UI
   - 
   - 
-  - Characters
+  - Arrow
   - Floor
   - Walls
   - Items
   - Enemy
-  - Arrow
+  - Characters
   - Sword
   - Shield
   - Interact
-  - 
+  - Staff
   - 
   - 
   - 
@@ -57,4 +58,10 @@ TagManager:
     locked: 0
   - name: PlayerStats
     uniqueID: 462550109
+    locked: 0
+  - name: Item_UI
+    uniqueID: 222240723
+    locked: 0
+  - name: ToolTip
+    uniqueID: 937916661
     locked: 0

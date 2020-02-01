@@ -16,6 +16,8 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
     private GameObject inv;
     private GameObject equ;
 
+    private Item_UI thisItem_UI;
+
     private void Start()
     {
         // I store the parents localy
@@ -32,6 +34,8 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
 
         for (int j = 0; j < equ.transform.childCount; j++)
             equipmentSlots[j] = equ.transform.GetChild(j);
+
+        thisItem_UI = GetComponent<Item_UI>();
     }
 
     public void OnPointerDown(PointerEventData eventData)
@@ -54,7 +58,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         else if (transform.parent.tag == "InventorySlot")
         {
             //move to equipment / switch item if equipment slot already ocupied
-            SortFromInventoryToEquipment(transform.GetComponent<Item_UI>().item.ITEM_TYPE);
+            SortFromInventoryToEquipment(thisItem_UI.item.ITEM_TYPE);
         }
         else if (transform.parent.tag == "LootSlot")
         {
@@ -64,7 +68,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             }
             //move to inventory if enough free space
             // the next line is for clearing the lootbox content after item was removed
-            GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(transform.GetComponent<Item_UI>().item);
+            GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(thisItem_UI.item);
 
         }
     }
@@ -120,11 +124,11 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         {
             bool gainedHealth = false;
             bool gainedMana = false;
-            if (transform.GetComponent<Item_UI>().item.Health > 0f)
+            if (thisItem_UI.item.Health > 0f)
             {
                 if (Stats_Player.instance.CurrentHealth < Stats_Player.instance.HITPOINTS.GetValue())
                 {
-                    Stats_Player.instance.Heal(transform.GetComponent<Item_UI>().item.Health);
+                    Stats_Player.instance.Heal(thisItem_UI.item.Health);
                     gainedHealth = true;
                 }
             }
@@ -132,14 +136,17 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             {
                 if (Stats_Player.instance.CurrentMana < Stats_Player.instance.MANAPOINTS.GetValue())
                 {
-                    Stats_Player.instance.GainMana(transform.GetComponent<Item_UI>().item.Mana);
+                    Stats_Player.instance.GainMana(thisItem_UI.item.Mana);
                     gainedMana = true;
                 }
             }
 
             if (gainedHealth || gainedMana)
             {
-                Destroy(gameObject);
+                transform.GetComponent<Item_UI>().stacks--;
+                thisItem_UI.AdjustStackText();
+                if (thisItem_UI.stacks <= 0)
+                    Destroy(gameObject);
             }
         }
     }
@@ -149,7 +156,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
     /// </summary>
     void EquipToEquipment(int i)
     {
-        equipmentSlots[i].GetComponent<Item_Drop_Eq>().localStoredItem = transform.GetComponent<Item_UI>().item;
+        equipmentSlots[i].GetComponent<Item_Drop_Eq>().localStoredItem = thisItem_UI.item;
         equipmentSlots[i].GetComponent<Item_Drop_Eq>().EquipItem();
         transform.SetParent(equipmentSlots[i]);
     }
@@ -171,10 +178,21 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         {
             if (inventorySlots[i].childCount > 0)
             {
-                if (inventorySlots[i].GetComponentInChildren<Item_UI>().item == transform.GetComponent<Item_UI>().item)
+                if (inventorySlots[i].transform.GetComponentInChildren<Item_UI>().item == thisItem_UI.item)
                 {
-                    transform.SetParent(inventorySlots[i]);
-                    return true;
+                    //transform.SetParent(inventorySlots[i]);
+                    if (inventorySlots[i].transform.GetComponentInChildren<Item_UI>().item.stackable)
+                    {
+                        inventorySlots[i].transform.GetComponentInChildren<Item_UI>().stacks++;
+                        inventorySlots[i].transform.GetComponentInChildren<Item_UI>().AdjustStackText();
+                        thisItem_UI.stacks--;
+                        if (thisItem_UI.stacks <= 0)
+                        {
+                            Destroy(gameObject);
+                            return true;
+                        }
+                        return true;
+                    }
                 }
             }
         }
@@ -189,6 +207,12 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             {
                 // move here
                 transform.SetParent(inventorySlots[i]);
+
+                //inventorySlots[i].GetComponent<Item_UI>().item.stacks++;
+                //if (GetComponent<Item_UI>().item.stacks <= 0)
+                //{
+                //    Destroy(gameObject);
+                //}
             }
             else
             {

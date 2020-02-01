@@ -15,7 +15,7 @@ public class StaffProjectile : Controller_Projectile
     public override void Start()
     {
         base.Start();
-        speed = Mathf.RoundToInt(stats.INTELIGENCE.GetValue() * 10f);
+        speed = Mathf.RoundToInt(stats.INTELIGENCE.GetValue());
         rb.AddForce(transform.forward * speed, ForceMode.Force);
     }
 
@@ -29,7 +29,7 @@ public class StaffProjectile : Controller_Projectile
                 {
                     int dmg = stats.DealDamage();
                     other.gameObject.GetComponent<Stats>().TakeDamage(dmg);
-                    //other.gameObject.GetComponent<Equipment_Visual>().HitMarker(other.transform.GetContact(0).point);
+                    other.gameObject.GetComponent<Equipment_Visual>().HitMarker(other.gameObject.transform.position);
                 }
             }
             nextTime += interval;

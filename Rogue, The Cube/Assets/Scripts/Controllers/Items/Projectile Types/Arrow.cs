@@ -2,12 +2,26 @@
 
 public class Arrow : Controller_Projectile
 {
+    private float timer;
+    private bool canFall = true;
     public override void Start()
     {
         base.Start();
         speed = Mathf.RoundToInt(stats.AGILITY.GetValue());
         rb.AddForce(transform.forward * speed, ForceMode.Impulse); // this has to be here, the speed variable in set only one row above
+        timer = Time.time + .5f;
     }
+
+    private void Update()
+    {
+        if (Time.time > timer && canFall)
+        {
+            rb.useGravity = true;
+            canFall = false;
+        }
+    }
+
+
 
     /// <summary>
     /// an IDEA to make the arrow behave normal upon touching a wall
@@ -28,6 +42,13 @@ public class Arrow : Controller_Projectile
                 collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
                 collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
             }
+
+            // disable the arrow after falling to the floor. this is for polish later on
+            //if (collision.gameObject.CompareTag("Floor"))
+            //{
+            //    GetComponent<BoxCollider>().enabled = false;
+            //    rb.useGravity = false;
+            //}
             canDoDamage = false;
         }
     }

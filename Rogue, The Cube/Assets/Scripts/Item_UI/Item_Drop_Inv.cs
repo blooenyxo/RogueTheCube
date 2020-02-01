@@ -10,7 +10,18 @@ public class Item_Drop_Inv : Item_Drop
         {
             if (eventData.pointerDrag.GetComponent<Item_UI>().item == transform.GetComponentInChildren<Item_UI>().item)
             {
-                eventData.pointerDrag.GetComponent<Item_Drag>().parent = this.transform;
+                if (transform.GetComponentInChildren<Item_UI>().item.stackable == true)
+                {
+                    transform.GetComponentInChildren<Item_UI>().stacks += eventData.pointerDrag.GetComponent<Item_UI>().stacks;
+                    transform.GetComponentInChildren<Item_UI>().AdjustStackText();
+
+                    // the next line is for clearing the lootbox content after item was removed
+                    if (eventData.pointerDrag.GetComponent<Item_Drag>()._currentParent.CompareTag("LootSlot"))
+                        GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(eventData.pointerDrag.GetComponent<Item_UI>().item);
+
+                    // also, remove the gameobject
+                    Destroy(eventData.pointerDrag.gameObject);
+                }
             }
         }
     }

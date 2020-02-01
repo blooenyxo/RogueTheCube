@@ -41,13 +41,28 @@ public class Controller_Player : MonoBehaviour
 
         if (Input.GetButton("Fire2") && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (GetComponentInChildren<Controller_Offhand>())
-                GetComponentInChildren<Controller_Offhand>().UseOffhand();
+            if (Equipment.instance.currentEquipment[2] != null && Equipment.instance.currentEquipment[2].TwoHandetWeapon == true)
+            {
+                if (GetComponentInChildren<Controller_Weapon>())
+                    GetComponentInChildren<Controller_Weapon>().SpecialAttack();
+            }
+            else if (Equipment.instance.currentEquipment[2] == null || Equipment.instance.currentEquipment[2].TwoHandetWeapon == false)
+            {
+                if (GetComponentInChildren<Controller_Offhand>())
+                    GetComponentInChildren<Controller_Offhand>().UseOffhand();
+            }
         }
-        else if (Input.GetButtonUp("Fire2"))
+        else if (Input.GetButtonUp("Fire2") && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (GetComponentInChildren<Controller_Offhand>())
-                GetComponentInChildren<Controller_Offhand>().ReleaseOffhand();
+            if (Equipment.instance.currentEquipment[2] != null && Equipment.instance.currentEquipment[2].TwoHandetWeapon == true)
+            {
+                return;
+            }
+            else if (Equipment.instance.currentEquipment[2] == null || Equipment.instance.currentEquipment[2].TwoHandetWeapon == false)
+            {
+                if (GetComponentInChildren<Controller_Offhand>())
+                    GetComponentInChildren<Controller_Offhand>().ReleaseOffhand();
+            }
         }
 
         if (Input.GetKeyDown(KeyCode.E) && NearbyInteraction() != null)

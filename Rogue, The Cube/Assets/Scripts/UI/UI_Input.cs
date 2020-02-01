@@ -4,6 +4,7 @@ public class UI_Input : MonoBehaviour
 {
     public GameObject CharacterPanel;
     public GameObject PickUpPanel;
+    public GameObject RemovePanel;
 
     [HideInInspector] public CanvasGroup cp_cg;
     [HideInInspector] public CanvasGroup pp_cg;

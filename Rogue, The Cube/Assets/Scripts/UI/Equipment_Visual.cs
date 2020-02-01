@@ -14,6 +14,10 @@ public abstract class Equipment_Visual : MonoBehaviour
     [Header("Hit Marker")]
     public GameObject hitMarker;
 
+    [Header("Gain Health / Mana etc.")]
+    public GameObject healingEffect;
+    public GameObject gainManaEffect;
+
     GameObject weapon;
     GameObject offhand;
 
@@ -55,6 +59,6 @@ public abstract class Equipment_Visual : MonoBehaviour
 
     public virtual void HitMarker(Vector3 where)
     {
-        GameObject hm = Instantiate(hitMarker, where, Quaternion.identity); // dont parent the cubes to this gameobject
+        Instantiate(hitMarker, where, transform.rotation); // dont parent the cubes to this gameobject
     }
 }

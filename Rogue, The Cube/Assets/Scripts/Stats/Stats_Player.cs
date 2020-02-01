@@ -55,12 +55,16 @@ public class Stats_Player : Stats
     {
         base.Heal(value);
         onResourcesChanged.Invoke();
+        GameObject tmp = Instantiate(GetComponent<Equipment_Visual>().healingEffect, this.transform.position, this.transform.rotation);
+        tmp.transform.SetParent(this.transform);
     }
 
     public override void GainMana(int value)
     {
         base.GainMana(value);
         onResourcesChanged.Invoke();
+        GameObject tmp = Instantiate(GetComponent<Equipment_Visual>().gainManaEffect, this.transform.position, this.transform.rotation);
+        tmp.transform.SetParent(this.transform);
     }
 
     public override bool UseMana(int value)

@@ -22,7 +22,6 @@ public class AI_Routine : MonoBehaviour
     //public string[] interactTags; // used to controll the interaction routine of the enemy. with whom to interact with
     private int _ignoreLayer = ~(1 << 15); // ignore shield when looking at player (ForwardRay())
 
-
     private NavMeshAgent agent;
     private Vector3 spawnLocation;
     private bool spottedNearbyCharacter = false;
@@ -33,6 +32,8 @@ public class AI_Routine : MonoBehaviour
     {
         spawnLocation = this.transform.parent.position;
         agent = GetComponent<NavMeshAgent>();
+        agent.speed = GetComponent<Stats>().MOVESPEED.GetValue();
+        agent.angularSpeed = GetComponent<Stats>().MOVESPEED.GetValue() * 100f;
         currentState = AI_STATE.IDLE;
     }
 
@@ -45,22 +46,24 @@ public class AI_Routine : MonoBehaviour
         switch (currentState)
         {
             case AI_STATE.ATTACK:
+                //Debug.Log("ATTACK");
                 Attack();
                 break;
             case AI_STATE.INTERACT:
+                //Debug.Log("INTERACT");
                 Interact();
                 break;
             case AI_STATE.MOVING:
+                //Debug.Log("MOVING");
                 ArriveAtLocation();
                 break;
             case AI_STATE.PICKLOCATION:
+                //Debug.Log("PICKLOCATION");
                 MoveToLocation(PickLocation());
                 break;
             case AI_STATE.IDLE:
+                //Debug.Log("IDLE");
                 Idle();
-                break;
-            default:
-
                 break;
         }
 
@@ -84,7 +87,7 @@ public class AI_Routine : MonoBehaviour
     /// <returns>returns the Vector3 position where the enemy will walk next</returns>
     private Vector3 PickLocation()
     {
-        Vector3 currentWalkingLocation = spawnLocation + new Vector3(UnityEngine.Random.Range(-patrolRadius, patrolRadius), -3.9f, Random.Range(-patrolRadius, patrolRadius));
+        Vector3 currentWalkingLocation = spawnLocation + new Vector3(Random.Range(-patrolRadius, patrolRadius), transform.position.y, Random.Range(-patrolRadius, patrolRadius));
         return currentWalkingLocation;
     }
 
@@ -96,8 +99,8 @@ public class AI_Routine : MonoBehaviour
     {
         newLocation = false;
         agent.stoppingDistance = 0f;
-        currentState = AI_STATE.MOVING;
         agent.SetDestination(positionToMoveTo);
+        currentState = AI_STATE.MOVING;
     }
 
     /// <summary>
@@ -124,17 +127,20 @@ public class AI_Routine : MonoBehaviour
     /// </summary>
     private void CheckNearby()
     {
-        target = NearbyCharacters("Player");
-
-        if (target)
+        if (NearbyCharacters("Player"))
+        {
+            target = NearbyCharacters("Player");
             currentState = AI_STATE.ATTACK;
+        }
+        else
+        {
+            target = null;
+        }
 
         if (target == null && spottedNearbyCharacter == true)
         {
             currentState = AI_STATE.IDLE;
         }
-
-
     }
 
     /// <summary>
@@ -171,17 +177,27 @@ public class AI_Routine : MonoBehaviour
 
         if (target != null)
         {
-            agent.SetDestination(target.transform.position);
-            LookAt(target);
-
             if (ForwardRay() && Vector3.Distance(transform.position, target.transform.position) <= attackDistance)
             {
+                //agent.velocity = Vector3.zero;
+                agent.isStopped = true;
+
                 if (GetComponentInChildren<Controller_Weapon>())
                     GetComponentInChildren<Controller_Weapon>().BaseAttack();
             }
+            else if (!ForwardRay() || Vector3.Distance(transform.position, target.transform.position) > attackDistance)
+            {
+                agent.isStopped = false;
+                agent.SetDestination(target.transform.position);
+                LookAt(target);
+                //Debug.Log(agent.destination);
+                //Debug.Log(Vector3.Distance(transform.position, target.transform.position));
+            }
         }
         else if (target == null)
+        {
             currentState = AI_STATE.IDLE;
+        }
 
         spottedNearbyCharacter = false;
     }
@@ -189,7 +205,7 @@ public class AI_Routine : MonoBehaviour
     {
         Vector3 direction = (target.transform.position - transform.position).normalized;
         Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, (agent.angularSpeed / 50) * Time.deltaTime);
+        transform.rotation = Quaternion.Slerp(transform.rotation, lookRotation, (agent.angularSpeed) * Time.deltaTime);
     }
 
     private bool ForwardRay()

@@ -27,6 +27,10 @@ public class Item : ScriptableObject
     public GameObject VISUAL_MODEL;
     public GameObject VISUAL_ARMOR;
     public Sprite sprite;
+    [Header("For Item Stacking")]
+    public bool stackable;
+    [Header("2H Weapon")]
+    public bool TwoHandetWeapon;
 
     /// <summary>
     /// constructor. used to create random items at runtime

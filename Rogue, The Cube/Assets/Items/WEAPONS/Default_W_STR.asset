@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
   m_Name: Default_W_STR
   m_EditorClassIdentifier: 
-  ITEMNAME: Base Sword
+  ITEMNAME: Basic Sword
   ITEM_TYPE: 2
   ITEM_CLASS: 0
   STRENGHT: 5
@@ -20,6 +20,8 @@ MonoBehaviour:
   AGILITY: 2
   MINDMG: 10
   MAXDMG: 20
+  MINMAGIC: 0
+  MAXMAGIC: 0
   Health: 0
   Mana: 0
   VISUAL_MODEL: {fileID: 4003179789905615893, guid: f7c4a4b00831ba64f8d9735dd6b78bc3,
@@ -27,3 +29,4 @@ MonoBehaviour:
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: 490de5b67a54a914088038c8d2c8282f, type: 3}
   stackable: 0
+  TwoHandetWeapon: 0

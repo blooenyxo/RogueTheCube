@@ -115,6 +115,7 @@ MeshRenderer:
   m_MotionVectors: 1
   m_LightProbeUsage: 1
   m_ReflectionProbeUsage: 1
+  m_RayTracingMode: 2
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
@@ -208,7 +209,8 @@ MonoBehaviour:
   parentTag: 
   cooldown: 0
   animator: {fileID: 0}
-  arrow: {fileID: 6966743522659729518, guid: b27a9bab639c4b84bb0d95dbbc757f06, type: 3}
+  baseArrow: {fileID: 6966743522659729518, guid: b27a9bab639c4b84bb0d95dbbc757f06,
+    type: 3}
   firePoint: {fileID: 4544235955684237522}
 --- !u!1 &6763840368977833499
 GameObject:

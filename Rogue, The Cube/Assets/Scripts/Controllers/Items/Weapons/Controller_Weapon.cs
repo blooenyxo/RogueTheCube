@@ -8,6 +8,7 @@ public abstract class Controller_Weapon : MonoBehaviour
     [HideInInspector] public Stats stats;
     [HideInInspector] public string parentTag;
     [HideInInspector] public float cooldown;
+
     [Header("Components")]
     public Animator animator;
 

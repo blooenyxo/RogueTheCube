@@ -194,3 +194,4 @@ MonoBehaviour:
     serializedVersion: 2
     m_Bits: 5120
   desctroyTimer: 10
+  debuff: {fileID: 0}

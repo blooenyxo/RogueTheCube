@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum ITEMTYPE { HELMET, CHEST, WEAPON, OFFHAND, CONSUMABLE }
+public enum ITEMTYPE { HELMET, CHEST, WEAPON, OFFHAND, CONSUMABLE, ARROW }
 public enum ITEMCLASS { STRENGHT, INTELIGENCE, AGILITY, NONE }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "Item")]

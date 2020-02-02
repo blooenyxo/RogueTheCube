@@ -2,9 +2,13 @@
 
 public class HealSelf : Spell
 {
-    public override void CastSpell(Transform where, Stats casterStats, string parentTag)
+    public override bool CastSpell(Transform where, Stats casterStats, string parentTag)
     {
-        //base.CastSpell(where, casterStats, parentTag);
-        casterStats.Heal(Mathf.CeilToInt((Random.Range(casterStats.MINMAGIC.GetValue(), casterStats.MAXMAGIC.GetValue()) + casterStats.INTELIGENCE.GetValue())));
+        if (casterStats.CurrentHealth < casterStats.HITPOINTS.GetValue())
+        {
+            casterStats.Heal(Mathf.CeilToInt((Random.Range(casterStats.MINMAGIC.GetValue(), casterStats.MAXMAGIC.GetValue()) + casterStats.INTELIGENCE.GetValue())));
+            return true;
+        }
+        return false;
     }
 }

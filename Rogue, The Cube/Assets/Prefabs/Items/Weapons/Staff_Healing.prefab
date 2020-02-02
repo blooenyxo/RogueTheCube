@@ -84,7 +84,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 21cb7bcc0a248874ea98a999d299ced6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  title: Deathball
+  title: HealSelf
   manaCost: 5
   targetSelf: 0
   active: 1

@@ -109,7 +109,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
                 SwapWithEquipment(2);
             }
         }
-        else if (_itemType == ITEMTYPE.OFFHAND)
+        else if (_itemType == ITEMTYPE.OFFHAND || _itemType == ITEMTYPE.ARROW)
         {
             if (equipmentSlots[3].childCount == 0)
             {

@@ -1,0 +1,32 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
+  m_Name: BurningArrow
+  m_EditorClassIdentifier: 
+  ITEMNAME: BurningArrow
+  ITEM_TYPE: 5
+  ITEM_CLASS: 1
+  STRENGHT: 0
+  INTELIGENCE: 0
+  AGILITY: 0
+  MINDMG: 0
+  MAXDMG: 0
+  MINMAGIC: 1
+  MAXMAGIC: 10
+  Health: 0
+  Mana: 0
+  VISUAL_MODEL: {fileID: 2978107762447169726, guid: 853d6f5af4e63844fa4acf335c1d1728,
+    type: 3}
+  VISUAL_ARMOR: {fileID: 0}
+  sprite: {fileID: 21300000, guid: 8b92f169cf922fd4485c0cd34fe1a2d3, type: 3}
+  stackable: 1
+  TwoHandetWeapon: 0

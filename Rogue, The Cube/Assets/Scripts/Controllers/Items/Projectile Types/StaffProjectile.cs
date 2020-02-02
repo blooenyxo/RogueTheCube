@@ -4,12 +4,7 @@ public class StaffProjectile : Controller_Projectile
 {
     public GameObject sphereToAnimate;
 
-    private bool up = true;
-    private float cooldown = 0f;
-    private float globalCooldown = 1f;
-    private Vector3 pulseSize = new Vector3(4f, 4f, 4f);
-
-    private readonly float interval = .5f;
+    private readonly float interval = .1f;
     private float nextTime = 0f;
 
     public override void Start()
@@ -32,31 +27,7 @@ public class StaffProjectile : Controller_Projectile
                     other.gameObject.GetComponent<Equipment_Visual>().HitMarker(other.gameObject.transform.position);
                 }
             }
-            nextTime += interval;
+            nextTime = Time.time + interval;
         }
-    }
-
-    private void OnCollisionEnter(Collision collision)
-    {
-
-    }
-
-    private void Update()
-    {
-        Pulsate();
-    }
-
-    void Pulsate()
-    {
-        if (Time.time > cooldown)
-        {
-            up = !up;
-            cooldown = Time.time + globalCooldown;
-        }
-
-        if (up)
-            sphereToAnimate.transform.localScale += pulseSize * Time.deltaTime;
-        else if (!up)
-            sphereToAnimate.transform.localScale -= pulseSize * Time.deltaTime;
     }
 }

@@ -16,6 +16,7 @@ public class Item_UI : MonoBehaviour
     public Text ToolTip_SecondStat;
     public Text ToolTip_ThirdStat;
     public Text ToolTip_ForthStat;
+    public Text ToolTip_FifthStat;
 
     public Image toolTipBorder;
 
@@ -59,12 +60,21 @@ public class Item_UI : MonoBehaviour
             }
         }
 
-        if (item.ITEM_TYPE == ITEMTYPE.WEAPON || item.ITEM_TYPE == ITEMTYPE.OFFHAND)
+        if (item.ITEM_TYPE == ITEMTYPE.WEAPON || item.ITEM_TYPE == ITEMTYPE.OFFHAND || item.ITEM_TYPE == ITEMTYPE.ARROW)
         {
             BasicStats();
 
-            ToolTip_ForthStat.enabled = true;
-            ToolTip_ForthStat.text = item.MINDMG.ToString() + " - " + item.MAXDMG.ToString() + " DMG";
+            if (item.MAXDMG != 0)
+            {
+                ToolTip_ForthStat.enabled = true;
+                ToolTip_ForthStat.text = item.MINDMG.ToString() + " - " + item.MAXDMG.ToString() + " DMG";
+            }
+
+            if (item.MAXMAGIC != 0)
+            {
+                ToolTip_FifthStat.enabled = true;
+                ToolTip_FifthStat.text = item.MINMAGIC.ToString() + " - " + item.MAXMAGIC.ToString() + " MAGIC";
+            }
         }
 
         SetBackgroundColor(toolTipBorder);
@@ -76,6 +86,7 @@ public class Item_UI : MonoBehaviour
         ToolTip_SecondStat.enabled = false;
         ToolTip_ThirdStat.enabled = false;
         ToolTip_ForthStat.enabled = false;
+        ToolTip_FifthStat.enabled = false;
     }
 
     void BasicStats()

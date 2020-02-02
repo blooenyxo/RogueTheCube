@@ -4,6 +4,8 @@ public class Arrow : Controller_Projectile
 {
     private float timer;
     private bool canFall = true;
+    public Buff debuff;
+
     public override void Start()
     {
         base.Start();
@@ -21,12 +23,11 @@ public class Arrow : Controller_Projectile
         }
     }
 
-
-
     /// <summary>
     /// an IDEA to make the arrow behave normal upon touching a wall
     /// currenlty, it just drops to the floor, no matter what it hit
     /// fixed the collision matrix (forgot about that). now it collides with walls and enemies and me. ah, and floors too :D
+    /// debuff determines if the arrow is magic or not. so we can reuse the same arrow scrip for all the prefabs
     /// </summary>
     public void OnCollisionEnter(Collision collision)
     {
@@ -38,17 +39,23 @@ public class Arrow : Controller_Projectile
 
             if (collision.gameObject.GetComponent<Stats>() && canDoDamage)
             {
-                int dmg = stats.DealDamage();
-                collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
-                collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
-            }
+                if (debuff)
+                {
+                    if (collision.gameObject.GetComponent<Controller_Buffs>())
+                    {
+                        collision.gameObject.GetComponent<Controller_Buffs>().AddBuff(debuff);
+                        int dmg = stats.DealMagicDamage();
+                        collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
+                    }
+                }
+                else
+                {
+                    int dmg = stats.DealDamage();
+                    collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
+                    collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
 
-            // disable the arrow after falling to the floor. this is for polish later on
-            //if (collision.gameObject.CompareTag("Floor"))
-            //{
-            //    GetComponent<BoxCollider>().enabled = false;
-            //    rb.useGravity = false;
-            //}
+                }
+            }
             canDoDamage = false;
         }
     }

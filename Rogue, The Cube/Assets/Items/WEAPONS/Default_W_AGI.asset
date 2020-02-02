@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
   m_Name: Default_W_AGI
   m_EditorClassIdentifier: 
-  ITEMNAME: Base Bow
+  ITEMNAME: Basic Bow
   ITEM_TYPE: 2
   ITEM_CLASS: 2
   STRENGHT: 2
@@ -20,6 +20,8 @@ MonoBehaviour:
   AGILITY: 5
   MINDMG: 1
   MAXDMG: 2
+  MINMAGIC: 0
+  MAXMAGIC: 0
   Health: 0
   Mana: 0
   VISUAL_MODEL: {fileID: 6034981805155526121, guid: 239d8e772cd7d314c8875cfef13df7e6,

@@ -25,21 +25,16 @@ public class Controller_Staff : Controller_Weapon
         base.SpecialAttack();
         if (attacking == false)
         {
-            if (stats.UseMana(spell.manaCost))
-            {
+            if (stats.CurrentMana >= spell.manaCost)
                 StartCoroutine(ExecuteSpellAttack());
-            }
-            else
-            {
-                StartCoroutine(ExecuteSwingAttack());
-            }
         }
     }
 
-    public void StaffProjectile()
+    public void StaffSpell()
     {
         //Debug.Log("fire");
-        spell.CastSpell(firePoint, stats, transform.parent.tag);
+        if (spell.CastSpell(firePoint, stats, transform.parent.tag))
+            stats.UseMana(spell.manaCost);
     }
 
     private IEnumerator ExecuteSpellAttack()

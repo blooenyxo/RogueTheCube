@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
   m_Name: Default_W_INT_ATT
   m_EditorClassIdentifier: 
-  ITEMNAME: Base Staff
+  ITEMNAME: Basic Staff
   ITEM_TYPE: 2
   ITEM_CLASS: 1
   STRENGHT: 2

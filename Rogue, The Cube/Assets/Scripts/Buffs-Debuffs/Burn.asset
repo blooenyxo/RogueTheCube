@@ -1,0 +1,23 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c5bab58325331e4489fdace0ebcf5660, type: 3}
+  m_Name: Burn
+  m_EditorClassIdentifier: 
+  title: Burn
+  buffValue: 3
+  harmfull: 1
+  damage: 1
+  movementImpairing: 0
+  duration: 5
+  interval: 0.5
+  visualEffect: {fileID: 8409170008990141941, guid: ccfa3f90e6ecb6742988edda922465db,
+    type: 3}

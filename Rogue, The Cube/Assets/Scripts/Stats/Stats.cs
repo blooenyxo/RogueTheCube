@@ -148,6 +148,16 @@ public class Stats : MonoBehaviour
         }
     }
 
+    public virtual void SetMovespeed(int value)
+    {
+        MOVESPEED.AddModifier(value);
+    }
+
+    public virtual void ResetMovespeed(int value)
+    {
+        MOVESPEED.RemoveModifier(value);
+    }
+
     public virtual void OnEquipmentChange(Item newItem, Item oldItem)
     {
         if (newItem != null)
@@ -172,8 +182,8 @@ public class Stats : MonoBehaviour
             MOVESPEED.RemoveModifier(Mathf.CeilToInt(oldItem.AGILITY * .1f));
             MINDMG.RemoveModifier(oldItem.MINDMG);
             MAXDMG.RemoveModifier(oldItem.MAXDMG);
-            MINMAGIC.RemoveModifier(newItem.MINMAGIC);
-            MAXMAGIC.RemoveModifier(newItem.MAXMAGIC);
+            MINMAGIC.RemoveModifier(oldItem.MINMAGIC);
+            MAXMAGIC.RemoveModifier(oldItem.MAXMAGIC);
             HITPOINTS.RemoveModifier(oldItem.STRENGHT * 2);
             MANAPOINTS.RemoveModifier(oldItem.INTELIGENCE * 2);
             ARMOR.RemoveModifier(Mathf.CeilToInt(oldItem.STRENGHT * .5f));

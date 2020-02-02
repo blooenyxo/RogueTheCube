@@ -50,6 +50,7 @@ GameObject:
   - component: {fileID: 6219899408672357560}
   - component: {fileID: 5301184627081013385}
   - component: {fileID: 82949494011053349}
+  - component: {fileID: -6879093029465150546}
   m_Layer: 12
   m_Name: Enemy_Basic_Ranged
   m_TagString: Archer
@@ -163,11 +164,15 @@ MonoBehaviour:
   AGILITY:
     baseValue: 30
   HITPOINTS:
-    baseValue: 20
+    baseValue: 30
   MANAPOINTS:
     baseValue: 0
+  MINMAGIC:
+    baseValue: 0
+  MAXMAGIC:
+    baseValue: 0
   MOVESPEED:
-    baseValue: 2
+    baseValue: 3
   ARMOR:
     baseValue: 0
   MINDMG:
@@ -235,6 +240,20 @@ MonoBehaviour:
   maxNrOfHighTierItems: 0
   maxNrOfConsumablesItems: 5
   maxNrOfspecialItems: 0
+--- !u!114 &-6879093029465150546
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591082380441925013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: e9775c387cd0e5a4790f4501c7806cf3, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  buffs: []
+  buff: []
 --- !u!1 &4553023784682585979
 GameObject:
   m_ObjectHideFlags: 0

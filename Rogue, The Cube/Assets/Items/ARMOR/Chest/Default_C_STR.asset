@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
   m_Name: Default_C_STR
   m_EditorClassIdentifier: 
-  ITEMNAME: Base Plate
+  ITEMNAME: Basic Plate
   ITEM_TYPE: 1
   ITEM_CLASS: 0
   STRENGHT: 5
@@ -20,9 +20,12 @@ MonoBehaviour:
   AGILITY: 2
   MINDMG: 0
   MAXDMG: 0
+  MINMAGIC: 0
+  MAXMAGIC: 0
   Health: 0
   Mana: 0
   VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: 683e7d9d6853b8a4b9dbe41a0be44b5c, type: 3}
   stackable: 0
+  TwoHandetWeapon: 0

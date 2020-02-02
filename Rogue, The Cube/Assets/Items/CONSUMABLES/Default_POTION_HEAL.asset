@@ -20,9 +20,12 @@ MonoBehaviour:
   AGILITY: 0
   MINDMG: 0
   MAXDMG: 0
-  Health: 50
+  MINMAGIC: 0
+  MAXMAGIC: 0
+  Health: 10
   Mana: 0
   VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: 19576ffc906f90b4a80790bea1c14ffa, type: 3}
   stackable: 1
+  TwoHandetWeapon: 0

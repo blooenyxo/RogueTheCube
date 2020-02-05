@@ -113,6 +113,22 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
                 equipmentBackground.transform.GetChild(2).GetComponent<Image>().color = Color.grey;
                 equipmentBackground.transform.GetChild(2).GetComponent<Item_Drop_Eq>().enabled = false;
                 break;
+            case ITEMTYPE.ARROW:
+                equipmentBackground.transform.GetChild(0).GetComponent<Image>().color = Color.grey;
+                equipmentBackground.transform.GetChild(0).GetComponent<Item_Drop_Eq>().enabled = false;
+                equipmentBackground.transform.GetChild(1).GetComponent<Image>().color = Color.grey;
+                equipmentBackground.transform.GetChild(1).GetComponent<Item_Drop_Eq>().enabled = false;
+                equipmentBackground.transform.GetChild(2).GetComponent<Image>().color = Color.grey;
+                equipmentBackground.transform.GetChild(2).GetComponent<Item_Drop_Eq>().enabled = false;
+                break;
+            case ITEMTYPE.SPELL:
+                equipmentBackground.transform.GetChild(0).GetComponent<Image>().color = Color.grey;
+                equipmentBackground.transform.GetChild(0).GetComponent<Item_Drop_Eq>().enabled = false;
+                equipmentBackground.transform.GetChild(1).GetComponent<Image>().color = Color.grey;
+                equipmentBackground.transform.GetChild(1).GetComponent<Item_Drop_Eq>().enabled = false;
+                equipmentBackground.transform.GetChild(2).GetComponent<Image>().color = Color.grey;
+                equipmentBackground.transform.GetChild(2).GetComponent<Item_Drop_Eq>().enabled = false;
+                break;
         }
     }
 

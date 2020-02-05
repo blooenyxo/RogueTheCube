@@ -5,18 +5,18 @@ public class Equipment_Visual_Enemy : Equipment_Visual
     [Header("Enemy Death")]
     public GameObject lootBox;
 
-    [HideInInspector] public Controller_Enemy _Controller_Enemy;
+    [HideInInspector] public Controller_Equipment equipment;
 
     public override void Start()
     {
-        _Controller_Enemy = GetComponent<Controller_Enemy>();
+        equipment = GetComponent<Controller_Equipment>();
 
-        if (_Controller_Enemy != null)
+        if (equipment != null)
         {
-            if (_Controller_Enemy.enemyWeapon != null)
-                UpdateVisuals(_Controller_Enemy.enemyWeapon, null);
-            if (_Controller_Enemy.enemyArmor != null)
-                UpdateVisuals(_Controller_Enemy.enemyArmor, null);
+            if (equipment.currentEquipment[2] != null)
+                UpdateVisuals(equipment.currentEquipment[2], null);
+            if (equipment.currentEquipment[1] != null)
+                UpdateVisuals(equipment.currentEquipment[1], null);
         }
     }
 

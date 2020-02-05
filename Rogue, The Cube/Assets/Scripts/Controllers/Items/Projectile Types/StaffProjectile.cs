@@ -2,8 +2,6 @@
 
 public class StaffProjectile : Controller_Projectile
 {
-    public GameObject sphereToAnimate;
-
     private readonly float interval = .1f;
     private float nextTime = 0f;
 
@@ -25,6 +23,14 @@ public class StaffProjectile : Controller_Projectile
                     int dmg = stats.DealMagicDamage();
                     other.gameObject.GetComponent<Stats>().TakeDamage(dmg);
                     other.gameObject.GetComponent<Equipment_Visual>().HitMarker(other.gameObject.transform.position);
+
+                    // apply buff
+                    if (buff != null)
+                        other.gameObject.GetComponent<Controller_Buffs>().AddBuff(buff);
+                }
+                else if (other.gameObject.CompareTag("Environment") && destroyOnWallhit)
+                {
+                    Destroy(gameObject);
                 }
             }
             nextTime = Time.time + interval;

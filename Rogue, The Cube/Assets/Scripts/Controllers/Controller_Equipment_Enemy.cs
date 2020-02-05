@@ -1,0 +1,1 @@
+﻿public class Controller_Equipment_Enemy : Controller_Equipment { }

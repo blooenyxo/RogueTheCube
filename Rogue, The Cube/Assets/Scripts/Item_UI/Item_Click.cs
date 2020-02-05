@@ -54,6 +54,8 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             //move to inventory if enough free space
             RemoveFromEquipment(-1);
             MoveToInventory();
+            if (equipmentSlots[3].GetComponentInChildren<Item_Click>())
+                equipmentSlots[3].GetComponentInChildren<Item_Click>().MoveToInventory();
         }
         else if (transform.parent.tag == "InventorySlot")
         {
@@ -68,7 +70,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             }
             //move to inventory if enough free space
             // the next line is for clearing the lootbox content after item was removed
-            GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(thisItem_UI.item);
+            GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(thisItem_UI.item);
 
         }
     }
@@ -109,7 +111,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
                 SwapWithEquipment(2);
             }
         }
-        else if (_itemType == ITEMTYPE.OFFHAND || _itemType == ITEMTYPE.ARROW)
+        else if (_itemType == ITEMTYPE.OFFHAND)
         {
             if (equipmentSlots[3].childCount == 0)
             {
@@ -118,6 +120,40 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             else
             {
                 SwapWithEquipment(3);
+            }
+        }
+        else if (_itemType == ITEMTYPE.ARROW)
+        {
+            if (equipmentSlots[2].childCount != 0f)
+            {
+                if (equipmentSlots[2].GetComponentInChildren<Item_UI>().item.ITEM_CLASS == ITEMCLASS.AGILITY)
+                {
+                    if (equipmentSlots[3].childCount == 0)
+                    {
+                        EquipToEquipment(3);
+                    }
+                    else
+                    {
+                        SwapWithEquipment(3);
+                    }
+                }
+            }
+        }
+        else if (_itemType == ITEMTYPE.SPELL)
+        {
+            if (equipmentSlots[2].childCount != 0f)
+            {
+                if (equipmentSlots[2].GetComponentInChildren<Item_UI>().item.ITEM_CLASS == ITEMCLASS.INTELIGENCE)
+                {
+                    if (equipmentSlots[3].childCount == 0)
+                    {
+                        EquipToEquipment(3);
+                    }
+                    else
+                    {
+                        SwapWithEquipment(3);
+                    }
+                }
             }
         }
         else if (_itemType == ITEMTYPE.CONSUMABLE)
@@ -224,7 +260,12 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
     void SwapWithEquipment(int i)
     {
         RemoveFromEquipment(i);
-        equipmentSlots[i].GetChild(0).GetComponent<Item_Click>().MoveToInventory(); // for sorting back into the inventory, and not stacking
+        equipmentSlots[i].GetChild(0).SetParent(this.transform.parent); // for sorting back into the inventory, and not stacking
         EquipToEquipment(i);
+    }
+
+    void SwapWithInventory(int i)
+    {
+
     }
 }

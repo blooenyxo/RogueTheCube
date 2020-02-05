@@ -18,7 +18,7 @@ public class Item_UI : MonoBehaviour
     public Text ToolTip_ForthStat;
     public Text ToolTip_FifthStat;
 
-    public Image toolTipBorder;
+    public GameObject toolTipBorder;
 
     void Start()
     {
@@ -77,7 +77,7 @@ public class Item_UI : MonoBehaviour
             }
         }
 
-        SetBackgroundColor(toolTipBorder);
+        SetBackgroundColor(toolTipBorder.GetComponent<Image>());
     }
 
     void ResetToolTipStatsText()
@@ -175,5 +175,10 @@ public class Item_UI : MonoBehaviour
             itemImage.sprite = null;
             itemImage.color = backgroundImage.color;
         }
+    }
+
+    private void KeepTooltipOnScreen()
+    {
+
     }
 }

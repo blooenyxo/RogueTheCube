@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88657724b7a39844e9fecbc01548e9fc, type: 3}
+  m_Name: BurningArrow
+  m_EditorClassIdentifier: 
+  speed: 10
+  manaCost: 5
+  piercing: 0
+  visualModel: {fileID: 6966743522659729518, guid: b27a9bab639c4b84bb0d95dbbc757f06,
+    type: 3}
+  particleEffect: {fileID: 9042727578671936168, guid: ea7f1e14d9b02204088b2a06f8da3707,
+    type: 3}
+  debuff: {fileID: 11400000, guid: 990b2347c719e8d43a35732d3f074a4b, type: 2}

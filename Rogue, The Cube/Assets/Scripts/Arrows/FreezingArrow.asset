@@ -1,0 +1,22 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 88657724b7a39844e9fecbc01548e9fc, type: 3}
+  m_Name: FreezingArrow
+  m_EditorClassIdentifier: 
+  speed: 10
+  manaCost: 5
+  piercing: 0
+  visualModel: {fileID: 6966743522659729518, guid: b27a9bab639c4b84bb0d95dbbc757f06,
+    type: 3}
+  particleEffect: {fileID: 4258364630946303290, guid: ad5defcc95fa29f48b05b3423d712f52,
+    type: 3}
+  debuff: {fileID: 11400000, guid: c8271a08a56690e448abb09b94724cdb, type: 2}

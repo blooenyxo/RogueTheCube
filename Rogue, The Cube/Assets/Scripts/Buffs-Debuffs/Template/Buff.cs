@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Buff")]
+[CreateAssetMenu(fileName = "New Item", menuName = "ScriptableObject/Buff")]
 public class Buff : ScriptableObject
 {
     [Header("Title")]

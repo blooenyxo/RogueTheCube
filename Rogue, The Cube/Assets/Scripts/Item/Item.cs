@@ -1,9 +1,9 @@
 ﻿using UnityEngine;
 
-public enum ITEMTYPE { HELMET, CHEST, WEAPON, OFFHAND, CONSUMABLE, ARROW }
+public enum ITEMTYPE { HELMET, CHEST, WEAPON, OFFHAND, CONSUMABLE, ARROW, SPELL }
 public enum ITEMCLASS { STRENGHT, INTELIGENCE, AGILITY, NONE }
 
-[CreateAssetMenu(fileName = "New Item", menuName = "Item")]
+[CreateAssetMenu(fileName = "New Item", menuName = "ScriptableObject/Item")]
 /// <summary>
 /// all the values that go on a item should be included in this class. this template will guide creating items for player and enemies.
 /// most of the params here use descriptive names so no need of extra explaining.
@@ -22,6 +22,7 @@ public class Item : ScriptableObject
     public int MAXDMG;
     public int MINMAGIC;
     public int MAXMAGIC;
+    public float globalCooldown;
     [Header("Consumables Section")]
     public int Health;
     public int Mana;
@@ -33,6 +34,10 @@ public class Item : ScriptableObject
     public bool stackable;
     [Header("2H Weapon")]
     public bool TwoHandetWeapon;
+    [Header("For arrows, add a Arrow SO here")]
+    public Arrow arrow;
+    [Header("if this item can cast a spell")]
+    public Spell spell;
 
     /// <summary>
     /// constructor. used to create random items at runtime

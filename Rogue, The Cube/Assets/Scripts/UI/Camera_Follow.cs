@@ -33,7 +33,7 @@ public class Camera_Follow : MonoBehaviour
         // if a ui element is opened, the mouse pointer is visible and can be used to interact with things on screen
         if (target != null)
         {
-            if (target.GetComponent<Controller_Player>().uiIsOpen == false)
+            if (target.GetComponent<Controller_Input>().uiIsOpen == false)
             {
                 Cursor.lockState = CursorLockMode.Locked;
                 RotateCamera();

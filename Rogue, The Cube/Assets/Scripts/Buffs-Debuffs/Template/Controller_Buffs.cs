@@ -3,8 +3,6 @@ using UnityEngine;
 
 public class Controller_Buffs : MonoBehaviour
 {
-    public List<Buff> buffs = new List<Buff>();
-
     public Buff[] buff;
     private float[] buffDuration;
 

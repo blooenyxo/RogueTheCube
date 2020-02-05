@@ -4,7 +4,7 @@ public class PickupPanel_Controller : MonoBehaviour
 {
     public Transform[] slots;
     public GameObject UI_Item;
-    public Controller_Player _cp;
+    public Controller_Input _cp;
     public bool loadedInPanel = false;
 
     public void SetupPanel(GameObject lootBox)
@@ -13,7 +13,6 @@ public class PickupPanel_Controller : MonoBehaviour
         {
             CreateItem(item);
         }
-
         loadedInPanel = true;
     }
 

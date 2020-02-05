@@ -28,7 +28,7 @@ public class Stats_Player : Stats
     /// </summary>
     public override void Start()
     {
-        equipment = Equipment.instance;
+        equipment = GetComponent<Equipment>();
         equipment.onEquipmentChange += OnEquipmentChange;
         base.Start();
     }

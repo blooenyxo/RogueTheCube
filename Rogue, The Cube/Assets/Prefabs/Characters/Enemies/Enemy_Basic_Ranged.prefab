@@ -45,12 +45,12 @@ GameObject:
   - component: {fileID: 6281262253422383894}
   - component: {fileID: 8334093377104011782}
   - component: {fileID: 2701209385301564006}
-  - component: {fileID: 4340996019288248736}
   - component: {fileID: 7841750928682265713}
   - component: {fileID: 6219899408672357560}
   - component: {fileID: 5301184627081013385}
   - component: {fileID: 82949494011053349}
   - component: {fileID: -6879093029465150546}
+  - component: {fileID: -6520363092124986440}
   m_Layer: 12
   m_Name: Enemy_Basic_Ranged
   m_TagString: Archer
@@ -84,7 +84,7 @@ Rigidbody:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3591082380441925013}
   serializedVersion: 2
-  m_Mass: 10
+  m_Mass: 100
   m_Drag: 1
   m_AngularDrag: 0.05
   m_UseGravity: 1
@@ -99,7 +99,7 @@ BoxCollider:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3591082380441925013}
-  m_Material: {fileID: 0}
+  m_Material: {fileID: 13400000, guid: 394641ccdb420f34d8a0710c4d01e2a3, type: 2}
   m_IsTrigger: 0
   m_Enabled: 1
   serializedVersion: 2
@@ -130,21 +130,7 @@ MonoBehaviour:
   gainManaEffect: {fileID: 5095024198059562127, guid: 08690b3c7082b88419cf3f52208f4de5,
     type: 3}
   lootBox: {fileID: 4504357921252825845, guid: 619ecc4a39709bb4a86540f0b4978510, type: 3}
-  _Controller_Enemy: {fileID: 4340996019288248736}
---- !u!114 &4340996019288248736
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 3591082380441925013}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: c801b7ecae3e0974ba287c4d370ad252, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  enemyWeapon: {fileID: 11400000, guid: bda34e2dc8df7b848a0e5943c846fdf0, type: 2}
-  enemyArmor: {fileID: 0}
+  equipment: {fileID: 0}
 --- !u!114 &7841750928682265713
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -196,6 +182,7 @@ MonoBehaviour:
   currentState: 3
   detectionSphereRadius: 40
   stopingTime: 2
+  globalColldown: 2
   patrolRadius: 20
   attackDistance: 30
   targetLayer:
@@ -252,8 +239,24 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: e9775c387cd0e5a4790f4501c7806cf3, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  buffs: []
   buff: []
+--- !u!114 &-6520363092124986440
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591082380441925013}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 6fc8ea80f6b304c4a89107b2d277bbce, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  currentEquipment:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 11400000, guid: bda34e2dc8df7b848a0e5943c846fdf0, type: 2}
+  - {fileID: 0}
 --- !u!1 &4553023784682585979
 GameObject:
   m_ObjectHideFlags: 0

@@ -17,7 +17,7 @@ public class Item_Drop_Inv : Item_Drop
 
                     // the next line is for clearing the lootbox content after item was removed
                     if (eventData.pointerDrag.GetComponent<Item_Drag>()._currentParent.CompareTag("LootSlot"))
-                        GameObject.Find("Player").GetComponent<Controller_Player>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(eventData.pointerDrag.GetComponent<Item_UI>().item);
+                        GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(eventData.pointerDrag.GetComponent<Item_UI>().item);
 
                     // also, remove the gameobject
                     Destroy(eventData.pointerDrag.gameObject);

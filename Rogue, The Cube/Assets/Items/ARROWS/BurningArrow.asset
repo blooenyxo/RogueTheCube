@@ -14,7 +14,7 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   ITEMNAME: BurningArrow
   ITEM_TYPE: 5
-  ITEM_CLASS: 1
+  ITEM_CLASS: 2
   STRENGHT: 0
   INTELIGENCE: 0
   AGILITY: 0
@@ -22,11 +22,13 @@ MonoBehaviour:
   MAXDMG: 0
   MINMAGIC: 1
   MAXMAGIC: 10
+  globalCooldown: 0
   Health: 0
   Mana: 0
-  VISUAL_MODEL: {fileID: 2978107762447169726, guid: 853d6f5af4e63844fa4acf335c1d1728,
-    type: 3}
+  VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: 8b92f169cf922fd4485c0cd34fe1a2d3, type: 3}
   stackable: 1
   TwoHandetWeapon: 0
+  arrow: {fileID: 11400000, guid: 3b454719a79eb8941b2723746a8ae334, type: 2}
+  spell: {fileID: 0}

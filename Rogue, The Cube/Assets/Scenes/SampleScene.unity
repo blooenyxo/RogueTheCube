@@ -979,7 +979,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &72742140
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2058,7 +2058,7 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: d9bb35ffa96df794b8c37c9b62e712d2,
+      objectReference: {fileID: 11400000, guid: 34fd4d95195f5a147a97b37ef2d28522,
         type: 2}
     - target: {fileID: 4119024234767859940, guid: dc8fdb3634faaf34bbe26c19c0c557ee,
         type: 3}
@@ -2350,7 +2350,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &239991691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -2730,7 +2730,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &257638816
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -3614,7 +3614,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &436672745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4061,7 +4061,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &499965207
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -4562,7 +4562,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &609760562
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -5102,7 +5102,7 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 8c740cb88c5b163439887f55829158b8,
+      objectReference: {fileID: 11400000, guid: bd21be2eeb82dab45a4034ea38831928,
         type: 2}
     - target: {fileID: 4119024234767859940, guid: dc8fdb3634faaf34bbe26c19c0c557ee,
         type: 3}
@@ -6074,7 +6074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &843470302
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -6623,7 +6623,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &916168619
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7454,7 +7454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &979979266
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7566,7 +7566,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &992275099
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -7678,7 +7678,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1006406891
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8139,7 +8139,6 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1037400426}
-  - component: {fileID: 1037400425}
   - component: {fileID: 1037400424}
   m_Layer: 0
   m_Name: GameManager
@@ -8170,7 +8169,7 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 16072ef0bede0bf4bb011ce6f6a8ad66, type: 2}
   - {fileID: 11400000, guid: bda34e2dc8df7b848a0e5943c846fdf0, type: 2}
   - {fileID: 11400000, guid: 8d041366522358143bae328eae3efe9d, type: 2}
-  - {fileID: 11400000, guid: da2af8fdf1623334181db344f54afdf5, type: 2}
+  - {fileID: 0}
   - {fileID: 11400000, guid: 8f511cb159422e5469021e592070f5eb, type: 2}
   MediumTierItems: []
   HighTierItems: []
@@ -8179,23 +8178,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: 3719003d83dd25744bea4882c0d9ee27, type: 2}
   - {fileID: 11400000, guid: 7c8a4807dc2131642864de5f76267b52, type: 2}
   SpecialItem: []
---- !u!114 &1037400425
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 1037400423}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: 7f0852dac1cf5bf41834bad0a92412a9, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  currentEquipment:
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
-  - {fileID: 0}
 --- !u!4 &1037400426
 Transform:
   m_ObjectHideFlags: 0
@@ -8385,7 +8367,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1049944326
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -8497,7 +8479,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1060531745
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9253,7 +9235,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1146494351
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9472,7 +9454,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1149435597
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -9735,7 +9717,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1202826606
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10097,7 +10079,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1230521489
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10210,7 +10192,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1246823049
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -10465,7 +10447,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 636ca9d7ca92b2a4dac9962041b76438, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 0300000005000000
+  acceptedItemType: 030000000500000006000000
   localStoredItem: {fileID: 0}
   index: 3
 --- !u!114 &1285846503
@@ -10709,7 +10691,7 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 3c92c2a8ffb839a4ea8b3d9ae1bcaec3,
+      objectReference: {fileID: 11400000, guid: e6a3ac67a848e2542a2a147b74f8ca3d,
         type: 2}
     - target: {fileID: 4119024234767859940, guid: dc8fdb3634faaf34bbe26c19c0c557ee,
         type: 3}
@@ -11092,7 +11074,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1329054086
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -11924,7 +11906,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1411790943
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12441,7 +12423,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1471927787
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -12932,7 +12914,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1613531691
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -13142,7 +13124,7 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: da2af8fdf1623334181db344f54afdf5,
+      objectReference: {fileID: 11400000, guid: 3c92c2a8ffb839a4ea8b3d9ae1bcaec3,
         type: 2}
     - target: {fileID: 4119024234767859940, guid: dc8fdb3634faaf34bbe26c19c0c557ee,
         type: 3}
@@ -15586,7 +15568,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &1893039637
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -15949,6 +15931,7 @@ GameObject:
   - component: {fileID: 1973772574}
   - component: {fileID: 1973772573}
   - component: {fileID: 1973772576}
+  - component: {fileID: 1973772575}
   m_Layer: 5
   m_Name: PlayerStats
   m_TagString: Untagged
@@ -15975,7 +15958,7 @@ RectTransform:
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
   m_AnchorMin: {x: 0.5, y: 0.5}
   m_AnchorMax: {x: 0.5, y: 0.5}
-  m_AnchoredPosition: {x: 600, y: 0}
+  m_AnchoredPosition: {x: 1322, y: 0}
   m_SizeDelta: {x: 600, y: 1000}
   m_Pivot: {x: 0.5, y: 0.5}
 --- !u!114 &1973772573
@@ -16014,6 +15997,25 @@ CanvasRenderer:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973772571}
   m_CullTransparentMesh: 0
+--- !u!95 &1973772575
+Animator:
+  serializedVersion: 3
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 1973772571}
+  m_Enabled: 1
+  m_Avatar: {fileID: 0}
+  m_Controller: {fileID: 9100000, guid: 3907145f67153f242b32615144c4b43a, type: 2}
+  m_CullingMode: 0
+  m_UpdateMode: 0
+  m_ApplyRootMotion: 0
+  m_LinearVelocityBlending: 0
+  m_WarningMessage: 
+  m_HasTransformHierarchy: 1
+  m_AllowConstantClipSamplingOptimization: 1
+  m_KeepAnimatorControllerStateOnDisable: 0
 --- !u!225 &1973772576
 CanvasGroup:
   m_ObjectHideFlags: 0
@@ -16022,9 +16024,9 @@ CanvasGroup:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 1973772571}
   m_Enabled: 1
-  m_Alpha: 0
-  m_Interactable: 0
-  m_BlocksRaycasts: 0
+  m_Alpha: 1
+  m_Interactable: 1
+  m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
 --- !u!1001 &1978704354
 PrefabInstance:
@@ -16646,7 +16648,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: b90d83bfbeb9621449b96d49b737720d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  acceptedItemType: 000000000100000002000000030000000400000005000000
+  acceptedItemType: 00000000010000000200000003000000040000000500000006000000
 --- !u!114 &2034465729
 MonoBehaviour:
   m_ObjectHideFlags: 0

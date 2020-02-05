@@ -13,6 +13,9 @@ public class AI_Routine : MonoBehaviour
     public int detectionSphereRadius;
     public float stopingTime;
 
+    public float globalColldown;
+    private float cooldown = 0;
+
     [Header("Distance")]
     public float patrolRadius;
     public float attackDistance;
@@ -181,9 +184,13 @@ public class AI_Routine : MonoBehaviour
             {
                 //agent.velocity = Vector3.zero;
                 agent.isStopped = true;
+                if (Time.time > cooldown)
+                {
+                    if (GetComponentInChildren<Controller_Weapon>())
+                        GetComponentInChildren<Controller_Weapon>().BaseAttack();
 
-                if (GetComponentInChildren<Controller_Weapon>())
-                    GetComponentInChildren<Controller_Weapon>().BaseAttack();
+                    cooldown = Time.time + globalColldown;
+                }
             }
             else if (!ForwardRay() || Vector3.Distance(transform.position, target.transform.position) > attackDistance)
             {

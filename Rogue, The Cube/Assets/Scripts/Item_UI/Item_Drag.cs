@@ -19,10 +19,12 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
     /// game object reference to the parent of the Item_Drop_Eq holders
     /// </summary>
     private GameObject equipmentBackground;
+    private GameObject topCanvas;
 
     void Start()
     {
         equipmentBackground = GameObject.Find("EquipmentBackground");
+        topCanvas = GameObject.FindGameObjectWithTag("TopCanvas");
     }
 
     /// <summary>
@@ -40,7 +42,7 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
             transform.parent.GetComponent<Item_Drop_Eq>().RemoveItem();
         }
 
-        this.transform.SetParent(this.transform.parent.parent.parent);
+        this.transform.SetParent(topCanvas.transform);
         GetComponent<CanvasGroup>().blocksRaycasts = false;
     }
 

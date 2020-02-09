@@ -213,17 +213,12 @@ public class Controller_Input : MonoBehaviour
 
         if (hitColliders.Length > 0)
         {
-            foreach (Collider col in hitColliders)
-            {
-                return col.gameObject;
-            }
+            return hitColliders[0].gameObject;
         }
         else
         {
             return null;
         }
-
-        return null;
     }
 
     private void OnDrawGizmos()

@@ -6,7 +6,7 @@
 public abstract class Controller_Projectile : MonoBehaviour
 {
     [HideInInspector] public Rigidbody rb;
-    [HideInInspector] public int speed = 0;
+    public int speed;
     [HideInInspector] public Stats stats;
     [HideInInspector] public bool canDoDamage = true;
     [HideInInspector] public string parentTag;
@@ -19,6 +19,7 @@ public abstract class Controller_Projectile : MonoBehaviour
 
     public virtual void Start()
     {
+        speed = 0;
         rb = GetComponent<Rigidbody>();
         Destroy(this.gameObject, desctroyTimer);
     }

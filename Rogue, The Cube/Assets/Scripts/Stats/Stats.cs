@@ -10,12 +10,12 @@ public class Stats : MonoBehaviour
     public Stat AGILITY;
     public Stat HITPOINTS;
     public Stat MANAPOINTS;
-    public Stat MINMAGIC;
-    public Stat MAXMAGIC;
     public Stat MOVESPEED;
     public Stat ARMOR;
     public Stat MINDMG;
     public Stat MAXDMG;
+    public Stat MINMAGIC;
+    public Stat MAXMAGIC;
     public Stat STAMINA;
 
     public int CurrentHealth { get; private set; }

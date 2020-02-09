@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Deathball
   m_EditorClassIdentifier: 
   ITEMNAME: Deathball
+  DESCRIPTION: 'Magical Speel that create a slow '
   ITEM_TYPE: 6
   ITEM_CLASS: 1
   STRENGHT: 0

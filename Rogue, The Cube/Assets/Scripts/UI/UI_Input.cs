@@ -12,6 +12,9 @@ public class UI_Input : MonoBehaviour
     public Camera_Follow cam;
 
     private Animator animator_playerstatspanel;
+    private Animator animator_pickuppanel;
+
+    private bool pickuppanelopen;
 
     private void Start()
     {
@@ -19,6 +22,7 @@ public class UI_Input : MonoBehaviour
         pp_cg = PickUpPanel.GetComponent<CanvasGroup>();
 
         animator_playerstatspanel = cp_cg.gameObject.GetComponent<Animator>();
+        animator_pickuppanel = pp_cg.gameObject.GetComponent<Animator>();
     }
 
     public void OpenPlayerPanel()
@@ -38,30 +42,29 @@ public class UI_Input : MonoBehaviour
 
     public void OpenPickupPanel()
     {
-        pp_cg.alpha = 1;
         pp_cg.blocksRaycasts = true;
         pp_cg.interactable = true;
+        animator_pickuppanel.SetTrigger("ppopen");
+        pickuppanelopen = true;
     }
 
     public void ClosePickupPanel()
     {
-        pp_cg.alpha = 0;
         pp_cg.blocksRaycasts = false;
         pp_cg.interactable = false;
+        animator_pickuppanel.SetTrigger("ppclose");
+        pickuppanelopen = false;
     }
 
     public void SwitchPanelState(CanvasGroup cg)
     {
-        if (cg.alpha == 0)
+        if (pickuppanelopen)
         {
-            cg.alpha = 1;
+            ClosePickupPanel();
         }
-        else if (cg.alpha == 1)
+        else if (!pickuppanelopen)
         {
-            cg.alpha = 0;
+            OpenPickupPanel();
         }
-
-        cg.blocksRaycasts = !cg.blocksRaycasts;
-        cg.interactable = !cg.interactable;
     }
 }

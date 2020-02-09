@@ -17,6 +17,11 @@ TagManager:
   - Archer
   - Floor
   - Environment
+  - TopCanvas
+  - Button1
+  - Button2
+  - Button3
+  - ButtonQ
   layers:
   - Default
   - TransparentFX

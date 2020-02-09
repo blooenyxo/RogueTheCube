@@ -17,13 +17,12 @@ public class Item_UI : MonoBehaviour
     public Text ToolTip_ThirdStat;
     public Text ToolTip_ForthStat;
     public Text ToolTip_FifthStat;
+    public Text ToolTip_Description;
 
     public GameObject toolTipBorder;
 
     void Start()
     {
-        stacks = 1;
-
         UpdateItemVisuals();
         AdjustStackText();
         ResetToolTipStatsText();
@@ -43,19 +42,19 @@ public class Item_UI : MonoBehaviour
         {
             if (item.Health > 0f && item.Mana == 0f)
             {
-                ToolTip_SecondStat.enabled = true;
-                ToolTip_SecondStat.text = " + " + item.Health.ToString() + " Health";
+                ToolTip_FirstStat.gameObject.SetActive(true);
+                ToolTip_FirstStat.text = " + " + item.Health.ToString() + " Health";
             }
             else if (item.Mana > 0f && item.Health == 0f)
             {
-                ToolTip_SecondStat.enabled = true;
-                ToolTip_SecondStat.text = " + " + item.Mana.ToString() + " Mana";
+                ToolTip_FirstStat.gameObject.SetActive(true);
+                ToolTip_FirstStat.text = " + " + item.Mana.ToString() + " Mana";
             }
             else if (item.Health > 0f && item.Mana > 0f)
             {
-                ToolTip_FirstStat.enabled = true;
+                ToolTip_FirstStat.gameObject.SetActive(true);
                 ToolTip_FirstStat.text = " + " + item.Health.ToString() + " Health";
-                ToolTip_SecondStat.enabled = true;
+                ToolTip_SecondStat.gameObject.SetActive(true);
                 ToolTip_SecondStat.text = " + " + item.Mana.ToString() + " Mana";
             }
         }
@@ -66,52 +65,58 @@ public class Item_UI : MonoBehaviour
 
             if (item.MAXDMG != 0)
             {
-                ToolTip_ForthStat.enabled = true;
+                ToolTip_ForthStat.gameObject.SetActive(true);
                 ToolTip_ForthStat.text = item.MINDMG.ToString() + " - " + item.MAXDMG.ToString() + " DMG";
             }
 
             if (item.MAXMAGIC != 0)
             {
-                ToolTip_FifthStat.enabled = true;
+                ToolTip_FifthStat.gameObject.SetActive(true);
                 ToolTip_FifthStat.text = item.MINMAGIC.ToString() + " - " + item.MAXMAGIC.ToString() + " MAGIC";
             }
         }
 
+        if (item.DESCRIPTION.Length > 0)
+        {
+            ToolTip_Description.gameObject.SetActive(true);
+            ToolTip_Description.text = item.DESCRIPTION;
+        }
         SetBackgroundColor(toolTipBorder.GetComponent<Image>());
     }
 
     void ResetToolTipStatsText()
     {
-        ToolTip_FirstStat.enabled = false;
-        ToolTip_SecondStat.enabled = false;
-        ToolTip_ThirdStat.enabled = false;
-        ToolTip_ForthStat.enabled = false;
-        ToolTip_FifthStat.enabled = false;
+        ToolTip_FirstStat.gameObject.SetActive(false);
+        ToolTip_SecondStat.gameObject.SetActive(false);
+        ToolTip_ThirdStat.gameObject.SetActive(false);
+        ToolTip_ForthStat.gameObject.SetActive(false);
+        ToolTip_FifthStat.gameObject.SetActive(false);
+        ToolTip_Description.gameObject.SetActive(false);
     }
 
     void BasicStats()
     {
         if (item.STRENGHT == 0f)
-            ToolTip_FirstStat.enabled = false;
+            ToolTip_FirstStat.gameObject.SetActive(false);
         else
         {
-            ToolTip_FirstStat.enabled = true;
+            ToolTip_FirstStat.gameObject.SetActive(true);
             ToolTip_FirstStat.text = " + " + item.STRENGHT.ToString() + " STR";
         }
 
         if (item.INTELIGENCE == 0f)
-            ToolTip_SecondStat.enabled = false;
+            ToolTip_SecondStat.gameObject.SetActive(false);
         else
         {
-            ToolTip_SecondStat.enabled = true;
+            ToolTip_SecondStat.gameObject.SetActive(true);
             ToolTip_SecondStat.text = " + " + item.INTELIGENCE.ToString() + " INT";
         }
 
         if (item.AGILITY == 0f)
-            ToolTip_ThirdStat.enabled = false;
+            ToolTip_ThirdStat.gameObject.SetActive(false);
         else
         {
-            ToolTip_ThirdStat.enabled = true;
+            ToolTip_ThirdStat.gameObject.SetActive(true);
             ToolTip_ThirdStat.text = " + " + item.AGILITY.ToString() + " AGI";
 
         }

@@ -10,25 +10,24 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
-  m_Name: Default_W_STR
+  m_Name: Default_CHEST_INT
   m_EditorClassIdentifier: 
-  ITEMNAME: Basic Sword
-  ITEM_TYPE: 2
-  ITEM_CLASS: 0
-  STRENGHT: 5
-  INTELIGENCE: 0
+  ITEMNAME: Basic Mantle
+  ITEM_TYPE: 1
+  ITEM_CLASS: 1
+  STRENGHT: 0
+  INTELIGENCE: 5
   AGILITY: 2
-  MINDMG: 10
-  MAXDMG: 20
+  MINDMG: 0
+  MAXDMG: 0
   MINMAGIC: 0
   MAXMAGIC: 0
-  globalCooldown: 0.5
+  globalCooldown: 0
   Health: 0
   Mana: 0
-  VISUAL_MODEL: {fileID: 4003179789905615893, guid: f7c4a4b00831ba64f8d9735dd6b78bc3,
-    type: 3}
+  VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
-  sprite: {fileID: 21300000, guid: 490de5b67a54a914088038c8d2c8282f, type: 3}
+  sprite: {fileID: 21300000, guid: fdf9505acc4050143af4484d372ca54a, type: 3}
   stackable: 0
   TwoHandetWeapon: 0
   arrow: {fileID: 0}

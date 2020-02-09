@@ -2,36 +2,61 @@
 
 public class Collision_Sword : MonoBehaviour
 {
+    public bool canDoDamage;
+
+    private void Start()
+    {
+        canDoDamage = true;
+    }
     /// <summary>
     /// collision uses collision matrix again, like with arrows. works great for now
     /// </summary>
     private void OnCollisionEnter(Collision collision)
     {
-        // this first part is for hitting you own shield. If left unchecked, you can accidentally parry yourself with your shield
-        if (collision.gameObject.GetComponentInParent<Controller_Shield>())
+        if (!collision.gameObject.CompareTag(GetComponentInParent<Controller_Weapon>().parentTag))
         {
-            if (collision.gameObject.GetComponentInParent<Controller_Shield>().parentTag == GetComponentInParent<Controller_Weapon>().parentTag)
+            if (collision.gameObject.GetComponentInParent<Controller_Shield>())
             {
-                //Debug.Log("hit my shield");
-                return;
-            }
-            else // here we act if the shield is not mine
-            {
-                StartCoroutine(GetComponentInParent<Controller_Sword>().ParryAttack());
-                if (GetComponentInParent<AI_Routine>())
+                if (collision.gameObject.GetComponentInParent<Controller_Shield>().shieldIsUp == false)
                 {
-                    GetComponentInParent<AI_Routine>().Stop();
+                    int dmg = GetComponentInParent<Controller_Weapon>().stats.DealDamage();
+                    if (collision.gameObject.GetComponent<Stats>())
+                    {
+                        //Debug.Log(collision.gameObject.tag + " took " + dmg + " damage from " + parentTag);
+                        //Debug.Log("shield is not up, doing damage");
+                        collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
+                        collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
+                    }
+                }
+                else if (collision.gameObject.GetComponentInParent<Controller_Shield>().shieldIsUp == true)
+                {
+                    if (collision.gameObject.GetComponentInParent<Controller_Shield>().parentTag == GetComponentInParent<Controller_Weapon>().parentTag)
+                    {
+                        //Debug.Log("hit my shield");
+                        return;
+                    }
+
+                    StartCoroutine(GetComponentInParent<Controller_Sword>().ParryAttack());
+                    if (GetComponentInParent<AI_Routine>())
+                    {
+                        GetComponentInParent<AI_Routine>().Stop();
+                    }
+
+                    //Debug.Log("Parry");
+                    canDoDamage = false;
+                    return;
                 }
             }
-        }
-        else if (!collision.gameObject.CompareTag(GetComponentInParent<Controller_Weapon>().parentTag))
-        {
-            int dmg = GetComponentInParent<Controller_Weapon>().stats.DealDamage();
-            if (collision.gameObject.GetComponent<Stats>())
+            else if (canDoDamage && !collision.gameObject.GetComponentInParent<Controller_Shield>())
             {
-                //Debug.Log(collision.gameObject.tag + " took " + dmg + " damage from " + parentTag);
-                collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
-                collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
+                int dmg = GetComponentInParent<Controller_Weapon>().stats.DealDamage();
+                if (collision.gameObject.GetComponent<Stats>())
+                {
+                    //Debug.Log(collision.gameObject.tag + " took " + dmg + " damage from " + parentTag);
+                    //Debug.Log("no shield present, doing damage");
+                    collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
+                    collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
+                }
             }
         }
     }

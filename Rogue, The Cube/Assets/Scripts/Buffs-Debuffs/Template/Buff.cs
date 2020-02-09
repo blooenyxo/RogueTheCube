@@ -11,6 +11,7 @@ public class Buff : ScriptableObject
     public bool harmfull;
     public bool damage;
     public bool movementImpairing;
+    public int movementImpairingValue;
 
     [Header("How Long")]
     public float duration;
@@ -20,4 +21,5 @@ public class Buff : ScriptableObject
 
     [Header("Visuals")]
     public GameObject visualEffect;
+    public Sprite sprite;
 }

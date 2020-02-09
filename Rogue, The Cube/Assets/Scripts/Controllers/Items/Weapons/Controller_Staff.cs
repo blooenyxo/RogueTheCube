@@ -35,25 +35,22 @@ public class Controller_Staff : Controller_Weapon
 
     public void StaffSpell()
     {
-        if (stats.UseMana(equipment.currentEquipment[3].spell.manaCost))
+        if (stats.UseMana(equipment.currentEquipment[3].spell.manaCost) && equipment.currentEquipment[3].ITEM_TYPE == ITEMTYPE.SPELL)
         {
-            if (equipment.currentEquipment[3].ITEM_TYPE == ITEMTYPE.SPELL)
+            if (equipment.currentEquipment[3].spell.attacking)
             {
-                if (equipment.currentEquipment[3].spell.attacking)
-                {
-                    GameObject _prj = Instantiate(equipment.currentEquipment[3].spell.visualModel, firePoint.transform.position, firePoint.transform.rotation); ;
-                    _prj.GetComponent<Controller_Projectile>().stats = stats;
-                    _prj.GetComponent<Controller_Projectile>().parentTag = parentTag;
-                    _prj.GetComponent<Controller_Projectile>().destroyOnWallhit = equipment.currentEquipment[3].spell.interactWithWalls;
+                GameObject _prj = Instantiate(equipment.currentEquipment[3].spell.visualModel, firePoint.transform.position, firePoint.transform.rotation); ;
+                _prj.GetComponent<Controller_Projectile>().stats = stats;
+                _prj.GetComponent<Controller_Projectile>().parentTag = parentTag;
+                _prj.GetComponent<Controller_Projectile>().destroyOnWallhit = equipment.currentEquipment[3].spell.interactWithWalls;
 
-                    // apply buff
-                    if (equipment.currentEquipment[3].spell.buff != null)
-                        _prj.GetComponent<Controller_Projectile>().buff = equipment.currentEquipment[3].spell.buff;
-                }
-                else if (equipment.currentEquipment[3].spell.healing)
-                {
-                    stats.Heal(Mathf.CeilToInt((Random.Range(stats.MINMAGIC.GetValue(), stats.MAXMAGIC.GetValue()) + stats.INTELIGENCE.GetValue())));
-                }
+                // apply buff
+                if (equipment.currentEquipment[3].spell.buff != null)
+                    _prj.GetComponent<Controller_Projectile>().buff = equipment.currentEquipment[3].spell.buff;
+            }
+            else if (equipment.currentEquipment[3].spell.healing)
+            {
+                stats.Heal(Mathf.CeilToInt((Random.Range(stats.MINMAGIC.GetValue(), stats.MAXMAGIC.GetValue()) + stats.INTELIGENCE.GetValue())));
             }
         }
         else

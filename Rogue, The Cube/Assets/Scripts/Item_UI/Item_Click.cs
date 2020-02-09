@@ -18,19 +18,37 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
 
     private Item_UI thisItem_UI;
 
+    [HideInInspector] public Transform Button1;
+    [HideInInspector] public Transform Button2;
+    [HideInInspector] public Transform Button3;
+    [HideInInspector] public Transform ButtonQ;
+
+
     private void Start()
     {
         // I store the parents localy
         inv = GameObject.Find("Inventory");
         equ = GameObject.Find("EquipmentBackground");
 
+        Button1 = GameObject.FindGameObjectWithTag("Button1").transform;
+        Button2 = GameObject.FindGameObjectWithTag("Button2").transform;
+        Button3 = GameObject.FindGameObjectWithTag("Button3").transform;
+        ButtonQ = GameObject.FindGameObjectWithTag("ButtonQ").transform;
+
         // I make a Transform array, with the size of the child count. easy
-        inventorySlots = new Transform[inv.transform.childCount];
+        inventorySlots = new Transform[28];
         equipmentSlots = new Transform[equ.transform.childCount];
 
+
         // I loop through all the children and store them individually as transforms
-        for (int i = inv.transform.childCount - 1; i >= 0; i--)
+        for (int i = 0; i < 24; i++)
             inventorySlots[i] = inv.transform.GetChild(i);
+
+        inventorySlots[24] = Button1;
+        inventorySlots[25] = Button2;
+        inventorySlots[26] = Button3;
+        inventorySlots[27] = ButtonQ;
+
 
         for (int j = 0; j < equ.transform.childCount; j++)
             equipmentSlots[j] = equ.transform.GetChild(j);
@@ -47,9 +65,9 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         }
     }
 
-    private void MoveItem(string _str)
+    public void MoveItem(string _str)
     {
-        if (transform.parent.tag == "EquipmentSlot")
+        if (_str == "EquipmentSlot")
         {
             //move to inventory if enough free space
             RemoveFromEquipment(-1);
@@ -57,12 +75,12 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             if (equipmentSlots[3].GetComponentInChildren<Item_Click>())
                 equipmentSlots[3].GetComponentInChildren<Item_Click>().MoveToInventory();
         }
-        else if (transform.parent.tag == "InventorySlot")
+        else if (_str == "InventorySlot")
         {
             //move to equipment / switch item if equipment slot already ocupied
             SortFromInventoryToEquipment(thisItem_UI.item.ITEM_TYPE);
         }
-        else if (transform.parent.tag == "LootSlot")
+        else if (_str == "LootSlot")
         {
             if (!LookForSimilarItems())
             {
@@ -70,8 +88,13 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             }
             //move to inventory if enough free space
             // the next line is for clearing the lootbox content after item was removed
-            GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(thisItem_UI.item);
+            if (GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction())
+                GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(thisItem_UI.item);
 
+        }
+        else if (_str == "Button1" || _str == "Button2" || _str == "Button3" || _str == "ButtonQ")
+        {
+            SortFromInventoryToEquipment(thisItem_UI.item.ITEM_TYPE);
         }
     }
 
@@ -210,7 +233,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
 
     bool LookForSimilarItems()
     {
-        for (int i = inventorySlots.Length - 1; i >= 0; i--)
+        for (int i = 0; i < inventorySlots.Length; i++)
         {
             if (inventorySlots[i].childCount > 0)
             {

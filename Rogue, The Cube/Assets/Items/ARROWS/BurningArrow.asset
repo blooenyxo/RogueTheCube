@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: BurningArrow
   m_EditorClassIdentifier: 
   ITEMNAME: BurningArrow
+  DESCRIPTION: Magical Arrow that deals damage and applies a Burning debuff
   ITEM_TYPE: 5
   ITEM_CLASS: 2
   STRENGHT: 0

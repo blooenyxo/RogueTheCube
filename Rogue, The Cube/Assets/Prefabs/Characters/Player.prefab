@@ -132,11 +132,7 @@ MonoBehaviour:
   HITPOINTS:
     baseValue: 5
   MANAPOINTS:
-    baseValue: 0
-  MINMAGIC:
-    baseValue: 0
-  MAXMAGIC:
-    baseValue: 0
+    baseValue: 5
   MOVESPEED:
     baseValue: 1
   ARMOR:
@@ -144,6 +140,10 @@ MonoBehaviour:
   MINDMG:
     baseValue: 0
   MAXDMG:
+    baseValue: 0
+  MINMAGIC:
+    baseValue: 0
+  MAXMAGIC:
     baseValue: 0
   STAMINA:
     baseValue: 100

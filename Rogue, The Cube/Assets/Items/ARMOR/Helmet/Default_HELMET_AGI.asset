@@ -10,20 +10,26 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
-  m_Name: Default_O_STR
+  m_Name: Default_HELMET_AGI
   m_EditorClassIdentifier: 
-  ITEMNAME: Basic Shield
-  ITEM_TYPE: 3
-  ITEM_CLASS: 0
-  STRENGHT: 5
-  INTELIGENCE: 5
+  ITEMNAME: Basic Hood
+  DESCRIPTION: 
+  ITEM_TYPE: 0
+  ITEM_CLASS: 2
+  STRENGHT: 1
+  INTELIGENCE: 0
   AGILITY: 5
   MINDMG: 0
   MAXDMG: 0
+  MINMAGIC: 0
+  MAXMAGIC: 0
+  globalCooldown: 0
   Health: 0
   Mana: 0
-  VISUAL_MODEL: {fileID: 4150877012266153231, guid: ac42653db444e9a40b73838743de86bd,
-    type: 3}
+  VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
-  sprite: {fileID: 21300000, guid: 9de3870da164c554eae556ecc39c6250, type: 3}
+  sprite: {fileID: 21300000, guid: e3e0bf567e013164bab2b74e80ae37bf, type: 3}
   stackable: 0
+  TwoHandetWeapon: 0
+  arrow: {fileID: 0}
+  spell: {fileID: 0}

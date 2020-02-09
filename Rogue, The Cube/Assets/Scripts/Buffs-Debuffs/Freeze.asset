@@ -13,11 +13,13 @@ MonoBehaviour:
   m_Name: Freeze
   m_EditorClassIdentifier: 
   title: Freeze
-  buffValue: -3
+  buffValue: 1
   harmfull: 1
-  damage: 0
+  damage: 1
   movementImpairing: 1
+  movementImpairingValue: -3
   duration: 10
   interval: 10
   visualEffect: {fileID: 4648454888442969733, guid: e7961a77f34693f49956ac2567b8bccd,
     type: 3}
+  sprite: {fileID: 21300000, guid: 8bcb07d9c2c4c484caf61c33f48e3dd8, type: 3}

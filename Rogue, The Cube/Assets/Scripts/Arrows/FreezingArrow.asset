@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 88657724b7a39844e9fecbc01548e9fc, type: 3}
   m_Name: FreezingArrow
   m_EditorClassIdentifier: 
-  speed: 10
+  speed: 40
   manaCost: 5
   piercing: 0
   visualModel: {fileID: 6966743522659729518, guid: b27a9bab639c4b84bb0d95dbbc757f06,

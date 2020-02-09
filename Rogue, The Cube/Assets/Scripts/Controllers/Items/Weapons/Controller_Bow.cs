@@ -27,20 +27,20 @@ public class Controller_Bow : Controller_Weapon
         {
             if (equipment.currentEquipment[3] != null)
             {
-                if (stats.UseMana(equipment.currentEquipment[3].arrow.manaCost))
+                if (equipment.currentEquipment[3].ITEM_TYPE == ITEMTYPE.ARROW)
                 {
-                    if (equipment.currentEquipment[3] != null)
+                    if (stats.UseMana(equipment.currentEquipment[3].arrow.manaCost) /*equipment.currentEquipment[3].*/)
                     {
                         if (equipment.currentEquipment[3].ITEM_TYPE == ITEMTYPE.ARROW)
                         {
                             SetupSpecialArrow(equipment.currentEquipment[3].arrow.visualModel);
                         }
+                        cooldown = Time.time + globalCooldown;
                     }
-                    cooldown = Time.time + globalCooldown;
-                }
-                else
-                {
-                    // message "Not enogh Mana"
+                    else
+                    {
+                        // message "Not enogh Mana"
+                    }
                 }
             }
         }

@@ -21,3 +21,4 @@ MonoBehaviour:
   interval: 0.5
   visualEffect: {fileID: 8409170008990141941, guid: ccfa3f90e6ecb6742988edda922465db,
     type: 3}
+  sprite: {fileID: 21300000, guid: f66c057114b8725409847a8a8e83a75b, type: 3}

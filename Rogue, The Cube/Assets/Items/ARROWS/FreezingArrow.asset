@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: FreezingArrow
   m_EditorClassIdentifier: 
   ITEMNAME: FreezingArrow
+  DESCRIPTION: Magical Arrow that deals damage and applies a Freezing debuff
   ITEM_TYPE: 5
   ITEM_CLASS: 2
   STRENGHT: 0

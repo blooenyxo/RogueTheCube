@@ -11,6 +11,8 @@ public enum ITEMCLASS { STRENGHT, INTELIGENCE, AGILITY, NONE }
 public class Item : ScriptableObject
 {
     public string ITEMNAME;
+    [TextArea(minLines: 2, maxLines: 4)]
+    public string DESCRIPTION;
     public ITEMTYPE ITEM_TYPE;
     public ITEMCLASS ITEM_CLASS;
     [Header("General Stats")]

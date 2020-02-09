@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Default_POTION_REJUV
   m_EditorClassIdentifier: 
   ITEMNAME: Potion of Rejuvenation
+  DESCRIPTION: right click to gain health and mana
   ITEM_TYPE: 4
   ITEM_CLASS: 3
   STRENGHT: 0
@@ -20,9 +21,15 @@ MonoBehaviour:
   AGILITY: 0
   MINDMG: 0
   MAXDMG: 0
+  MINMAGIC: 0
+  MAXMAGIC: 0
+  globalCooldown: 0
   Health: 100
   Mana: 100
   VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: d9ec223ed231bbd4d9347cf8c8c102d5, type: 3}
   stackable: 1
+  TwoHandetWeapon: 0
+  arrow: {fileID: 0}
+  spell: {fileID: 0}

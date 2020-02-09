@@ -9,12 +9,11 @@ public class LootBox_Controller : MonoBehaviour
     {
         Destroy(gameObject, 120f);
     }
-
     private void Update()
     {
         if (items.Count <= 0)
         {
-            Destroy(gameObject);
+            Destroy(gameObject, .5f);
         }
     }
 

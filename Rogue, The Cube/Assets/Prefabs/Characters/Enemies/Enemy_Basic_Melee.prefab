@@ -150,12 +150,8 @@ MonoBehaviour:
   AGILITY:
     baseValue: 0
   HITPOINTS:
-    baseValue: 30
+    baseValue: 20
   MANAPOINTS:
-    baseValue: 0
-  MINMAGIC:
-    baseValue: 0
-  MAXMAGIC:
     baseValue: 0
   MOVESPEED:
     baseValue: 3
@@ -165,6 +161,10 @@ MonoBehaviour:
     baseValue: 1
   MAXDMG:
     baseValue: 1
+  MINMAGIC:
+    baseValue: 0
+  MAXMAGIC:
+    baseValue: 0
   STAMINA:
     baseValue: 0
 --- !u!114 &6219899408672357560
@@ -184,7 +184,7 @@ MonoBehaviour:
   stopingTime: 2
   globalColldown: 2
   patrolRadius: 20
-  attackDistance: 1.5
+  attackDistance: 3
   targetLayer:
     serializedVersion: 2
     m_Bits: 8192
@@ -240,6 +240,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   buff: []
+  buffDuration: []
 --- !u!114 &-4910088851040544610
 MonoBehaviour:
   m_ObjectHideFlags: 0

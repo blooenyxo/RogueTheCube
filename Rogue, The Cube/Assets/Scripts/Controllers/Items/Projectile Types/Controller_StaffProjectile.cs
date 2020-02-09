@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public class StaffProjectile : Controller_Projectile
+public class Controller_StaffProjectile : Controller_Projectile
 {
     private readonly float interval = .1f;
     private float nextTime = 0f;

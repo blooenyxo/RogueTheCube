@@ -3,13 +3,10 @@ using UnityEngine;
 
 public class Controller_Sword : Controller_Weapon
 {
-    public BoxCollider swordCollider;
     private bool swordParry;
 
     public override void Start()
     {
-        swordCollider = GetComponentInChildren<BoxCollider>();
-        swordCollider.enabled = false;
         base.Start();
     }
 
@@ -18,9 +15,9 @@ public class Controller_Sword : Controller_Weapon
         if (Time.time > cooldown && !swordParry)
         {
             base.BaseAttack();
-
-            StartCoroutine(AttackRoutine());
-
+            //StartCoroutine(AttackRoutine());
+            GetComponentInChildren<Collision_Sword>().canDoDamage = true;
+            animator.SetTrigger("normalAttack");
             cooldown = Time.time + globalCooldown;
         }
     }
@@ -32,10 +29,8 @@ public class Controller_Sword : Controller_Weapon
 
     private IEnumerator AttackRoutine()
     {
-        swordCollider.enabled = true;
         animator.SetTrigger(PickAttack());
         yield return new WaitForSeconds(.3f);
-        swordCollider.enabled = false;
     }
 
     /// <summary>
@@ -56,8 +51,7 @@ public class Controller_Sword : Controller_Weapon
     public IEnumerator ParryAttack()
     {
         swordParry = true;
-        swordCollider.enabled = false;
-        animator.SetTrigger("reset");
+        animator.SetTrigger("parry");
         yield return new WaitForSeconds(2f);
         swordParry = false;
     }

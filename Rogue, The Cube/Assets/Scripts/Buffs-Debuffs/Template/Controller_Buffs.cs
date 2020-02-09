@@ -1,10 +1,9 @@
-﻿using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class Controller_Buffs : MonoBehaviour
 {
     public Buff[] buff;
-    private float[] buffDuration;
+    public float[] buffDuration;
 
     private Stats stats;
     private float[] nextTime;
@@ -86,7 +85,7 @@ public class Controller_Buffs : MonoBehaviour
                 else if (buffDuration[i] <= 0f)
                 {
                     if (buff[i].movementImpairing)
-                        stats.ResetMovespeed(buff[i].buffValue);
+                        stats.ResetMovespeed(buff[i].movementImpairingValue);
 
                     buff[i] = null;
                     nextTime[i] = 0f;
@@ -104,7 +103,7 @@ public class Controller_Buffs : MonoBehaviour
             if (buffToExecute.damage)
                 stats.TakeDamage(buffToExecute.buffValue);
             if (buffToExecute.movementImpairing)
-                stats.SetMovespeed(buffToExecute.buffValue);
+                stats.SetMovespeed(buffToExecute.movementImpairingValue);
         }
         else if (buffToExecute.harmfull == false)
         {

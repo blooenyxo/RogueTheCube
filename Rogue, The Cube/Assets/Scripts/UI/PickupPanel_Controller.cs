@@ -24,6 +24,10 @@ public class PickupPanel_Controller : MonoBehaviour
             {
                 GameObject _ui_item = Instantiate(UI_Item, slot.transform.position, slot.transform.rotation, slot);
                 _ui_item.GetComponent<Item_UI>().item = item;
+
+                if (item.ITEM_TYPE == ITEMTYPE.ARROW || item.ITEM_TYPE == ITEMTYPE.CONSUMABLE)
+                    _ui_item.GetComponent<Item_UI>().stacks = Mathf.RoundToInt(Random.Range(0, 20));
+
                 _ui_item.GetComponent<Item_UI>().UpdateItemVisuals();
                 return;
             }

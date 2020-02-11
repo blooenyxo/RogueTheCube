@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: Freeze
   m_EditorClassIdentifier: 
   title: Freeze
-  buffValue: 1
+  buffValue: 0
   harmfull: 1
   damage: 1
   movementImpairing: 1

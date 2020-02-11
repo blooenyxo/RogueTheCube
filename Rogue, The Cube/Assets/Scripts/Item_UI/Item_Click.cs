@@ -157,7 +157,16 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
                     }
                     else
                     {
-                        SwapWithEquipment(3);
+                        if (thisItem_UI.item == equipmentSlots[3].GetComponentInChildren<Item_UI>().item)
+                        {
+                            equipmentSlots[3].GetComponentInChildren<Item_UI>().stacks += thisItem_UI.stacks;
+                            equipmentSlots[3].GetComponentInChildren<Item_UI>().AdjustStackText();
+                            Destroy(this.gameObject);
+                        }
+                        else
+                        {
+                            SwapWithEquipment(3);
+                        }
                     }
                 }
             }
@@ -216,7 +225,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
     void EquipToEquipment(int i)
     {
         equipmentSlots[i].GetComponent<Item_Drop_Eq>().localStoredItem = thisItem_UI.item;
-        equipmentSlots[i].GetComponent<Item_Drop_Eq>().EquipItem();
+        equipmentSlots[i].GetComponent<Item_Drop_Eq>().EquipItem(this.gameObject);
         transform.SetParent(equipmentSlots[i]);
     }
 
@@ -242,9 +251,9 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
                     //transform.SetParent(inventorySlots[i]);
                     if (inventorySlots[i].transform.GetComponentInChildren<Item_UI>().item.stackable)
                     {
-                        inventorySlots[i].transform.GetComponentInChildren<Item_UI>().stacks++;
+                        inventorySlots[i].transform.GetComponentInChildren<Item_UI>().stacks += thisItem_UI.stacks;
                         inventorySlots[i].transform.GetComponentInChildren<Item_UI>().AdjustStackText();
-                        thisItem_UI.stacks--;
+                        thisItem_UI.stacks -= thisItem_UI.stacks;
                         if (thisItem_UI.stacks <= 0)
                         {
                             Destroy(gameObject);

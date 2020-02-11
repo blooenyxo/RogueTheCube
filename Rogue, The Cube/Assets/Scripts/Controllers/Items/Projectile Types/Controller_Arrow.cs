@@ -12,8 +12,8 @@ public class Controller_Arrow : Controller_Projectile
         if (speed == 0)
             speed = Mathf.RoundToInt(stats.AGILITY.GetValue() * 2f);
         // speed cannot be greater then 100
-        if (speed > 100)
-            speed = 100;
+        if (speed > 50)
+            speed = 50;
 
         rb.AddForce(transform.forward * speed, ForceMode.Impulse); // this has to be here, the speed variable in set only one row above
         timer = Time.time + .5f; // timer for acrivating gravity, so that the arrow can fall, but only after a given time
@@ -49,10 +49,11 @@ public class Controller_Arrow : Controller_Projectile
                 {
                     if (collision.gameObject.GetComponent<Controller_Buffs>())
                     {
-                        int dmg = stats.DealMagicDamage();
                         collision.gameObject.GetComponent<Controller_Buffs>().AddBuff(buff);
-                        collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
                     }
+
+                    int dmg = stats.DealMagicDamage();
+                    collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
                 }
                 else
                 {

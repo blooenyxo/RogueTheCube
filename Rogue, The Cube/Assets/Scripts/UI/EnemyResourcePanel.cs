@@ -20,6 +20,9 @@ public class EnemyResourcePanel : MonoBehaviour
     public GameObject EnemyResourcePanelBuff;
     public GameObject BuffBackground;
 
+    public Gradient hpGradient;
+    public Image hpBar;
+
     private void Start()
     {
         cg = GetComponent<CanvasGroup>();
@@ -45,6 +48,7 @@ public class EnemyResourcePanel : MonoBehaviour
         hpSlider.value = currentHealth;
         enemyName.text = enemyGameObject.tag;
         timer = Time.time + coolDown;
+        hpBar.color = hpGradient.Evaluate(hpSlider.normalizedValue);
 
         for (int j = 0; j < enemyGameObject.GetComponent<Controller_Buffs>().buff.Length; j++)
         {

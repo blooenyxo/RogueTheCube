@@ -6,10 +6,10 @@ public class Controller_Equipment : MonoBehaviour
     /// the array holding the 4 slots for weapon and armor
     /// </summary>    
     public Item[] currentEquipment = new Item[4];
+    public GameObject[] currentEquipmentGameObjects = new GameObject[4];
 
     public virtual void Equip(Item newItem, int index)
     {
-
         Item oldItem = null;
 
         if (currentEquipment[index] != null)
@@ -37,5 +37,23 @@ public class Controller_Equipment : MonoBehaviour
 
             currentEquipment[index] = null;
         }
+    }
+
+    public virtual void EquipItemGameObject(GameObject go, int index)
+    {
+        if (currentEquipmentGameObjects[index] != null)
+        {
+            RemoveItemGameObject(index);
+            currentEquipmentGameObjects[index] = go;
+        }
+        else
+        {
+            currentEquipmentGameObjects[index] = go;
+        }
+    }
+
+    public virtual void RemoveItemGameObject(int index)
+    {
+        currentEquipmentGameObjects[index] = null;
     }
 }

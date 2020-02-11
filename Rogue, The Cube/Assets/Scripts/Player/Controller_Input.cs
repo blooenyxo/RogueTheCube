@@ -80,6 +80,7 @@ public class Controller_Input : MonoBehaviour
                 if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == false)
                 {
                     ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().SetupPanel(NearbyInteraction());
+                    NearbyInteraction().GetComponent<LootBox_Controller>().LootboxOpen();
                     pickupPanelOpen = true;
                 }
                 else if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == true)

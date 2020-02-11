@@ -29,17 +29,18 @@ public class Controller_Bow : Controller_Weapon
             {
                 if (equipment.currentEquipment[3].ITEM_TYPE == ITEMTYPE.ARROW)
                 {
-                    if (stats.UseMana(equipment.currentEquipment[3].arrow.manaCost) /*equipment.currentEquipment[3].*/)
+                    if (equipment.currentEquipmentGameObjects[3].GetComponent<Item_UI>().stacks > 0)
                     {
-                        if (equipment.currentEquipment[3].ITEM_TYPE == ITEMTYPE.ARROW)
-                        {
-                            SetupSpecialArrow(equipment.currentEquipment[3].arrow.visualModel);
-                        }
+                        SetupSpecialArrow(equipment.currentEquipment[3].arrow.visualModel);
+                        equipment.currentEquipmentGameObjects[3].GetComponent<Item_UI>().stacks--;
+                        equipment.currentEquipmentGameObjects[3].GetComponent<Item_UI>().AdjustStackText();
                         cooldown = Time.time + globalCooldown;
-                    }
-                    else
-                    {
-                        // message "Not enogh Mana"
+
+                        if (equipment.currentEquipmentGameObjects[3].GetComponent<Item_UI>().stacks <= 0)
+                        {
+                            Destroy(equipment.currentEquipmentGameObjects[3]);
+                            equipment.Unequip(3);
+                        }
                     }
                 }
             }

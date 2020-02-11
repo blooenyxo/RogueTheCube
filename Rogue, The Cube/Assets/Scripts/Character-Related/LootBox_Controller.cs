@@ -4,6 +4,7 @@ using UnityEngine;
 public class LootBox_Controller : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
+    public Animator animator;
 
     private void Start()
     {
@@ -20,5 +21,10 @@ public class LootBox_Controller : MonoBehaviour
     public void RemoveItemFromList(Item item)
     {
         items.Remove(item);
+    }
+
+    public void LootboxOpen()
+    {
+        animator.SetTrigger("lootboxopen");
     }
 }

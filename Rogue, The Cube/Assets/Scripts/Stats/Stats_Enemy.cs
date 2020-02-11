@@ -47,17 +47,22 @@ public class Stats_Enemy : Stats
 
     private void SetLootBoxAndItems()
     {
-        GameObject lb = Instantiate(GetComponent<Equipment_Visual_Enemy>().lootBox, this.transform.position, this.transform.rotation);
-
-        int random = Random.Range(0, GetComponent<ItemDrop>().Drop().Count);
-        List<Item> tempList = new List<Item>();
-
-        for (int i = 0; i < random; i++)
+        if (Random.Range(0, 10) > 7)
         {
-            int random_ = Random.Range(0, GetComponent<ItemDrop>().Drop().Count);
-            tempList.Add(GetComponent<ItemDrop>().Drop()[random_]);
-        }
 
-        lb.GetComponent<LootBox_Controller>().items.AddRange(tempList);
+            GameObject lb = Instantiate(GetComponent<Equipment_Visual_Enemy>().lootBox, this.transform.position, this.transform.rotation);
+
+            int random = Random.Range(0, GetComponent<ItemDrop>().Drop().Count);
+            List<Item> tempList = new List<Item>();
+
+            for (int i = 0; i < random; i++)
+            {
+                int random_ = Random.Range(0, GetComponent<ItemDrop>().Drop().Count);
+                tempList.Add(GetComponent<ItemDrop>().Drop()[random_]);
+            }
+
+            lb.GetComponent<LootBox_Controller>().items.AddRange(tempList);
+
+        }
     }
 }

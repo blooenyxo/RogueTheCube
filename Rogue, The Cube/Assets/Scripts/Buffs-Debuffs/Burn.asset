@@ -13,12 +13,13 @@ MonoBehaviour:
   m_Name: Burn
   m_EditorClassIdentifier: 
   title: Burn
-  buffValue: 3
+  buffValue: 2
   harmfull: 1
   damage: 1
   movementImpairing: 0
+  movementImpairingValue: 0
   duration: 5
-  interval: 0.5
+  interval: 1
   visualEffect: {fileID: 8409170008990141941, guid: ccfa3f90e6ecb6742988edda922465db,
     type: 3}
   sprite: {fileID: 21300000, guid: f66c057114b8725409847a8a8e83a75b, type: 3}

@@ -1,4 +1,5 @@
-﻿using UnityEngine.EventSystems;
+﻿using UnityEngine;
+using UnityEngine.EventSystems;
 using UnityEngine.UI;
 
 /// <summary>
@@ -34,8 +35,13 @@ public class Item_Drop_Eq : Item_Drop
                                 if (localStoredItem != eventData.pointerDrag.GetComponent<Item_UI>().item)
                                 {
                                     localStoredItem = eventData.pointerDrag.GetComponent<Item_UI>().item;
+                                    EquipItem(eventData.pointerDrag.gameObject);
                                 }
-                                EquipItem();
+                                else if (localStoredItem == eventData.pointerDrag.GetComponent<Item_UI>().item)
+                                {
+                                    equipment.currentEquipmentGameObjects[3].GetComponent<Item_UI>().stacks++;
+                                }
+
                             }
                             base.OnDrop(eventData);
                         }
@@ -51,21 +57,21 @@ public class Item_Drop_Eq : Item_Drop
                                 {
                                     localStoredItem = eventData.pointerDrag.GetComponent<Item_UI>().item;
                                 }
-                                EquipItem();
+                                EquipItem(eventData.pointerDrag.gameObject);
                             }
                             base.OnDrop(eventData);
                         }
                         return;
                     }
                     else if (eventData.pointerDrag.GetComponent<Item_UI>().item.ITEM_TYPE == ITEMTYPE.HELMET ||
-                        eventData.pointerDrag.GetComponent<Item_UI>().item.ITEM_TYPE == ITEMTYPE.CHEST ||
-                        eventData.pointerDrag.GetComponent<Item_UI>().item.ITEM_TYPE == ITEMTYPE.WEAPON)
+                             eventData.pointerDrag.GetComponent<Item_UI>().item.ITEM_TYPE == ITEMTYPE.CHEST ||
+                             eventData.pointerDrag.GetComponent<Item_UI>().item.ITEM_TYPE == ITEMTYPE.WEAPON)
                     {
                         if (localStoredItem != eventData.pointerDrag.GetComponent<Item_UI>().item)
                         {
                             localStoredItem = eventData.pointerDrag.GetComponent<Item_UI>().item;
                         }
-                        EquipItem();
+                        EquipItem(eventData.pointerDrag.gameObject);
                     }
                     base.OnDrop(eventData);
                     return;
@@ -76,11 +82,13 @@ public class Item_Drop_Eq : Item_Drop
     public void RemoveItem()
     {
         equipment.Unequip(index);
+        equipment.RemoveItemGameObject(index);
         localStoredItem = null;
     }
 
-    public void EquipItem()
+    public void EquipItem(GameObject go)
     {
         equipment.Equip(localStoredItem, index);
+        equipment.EquipItemGameObject(go, index);
     }
 }

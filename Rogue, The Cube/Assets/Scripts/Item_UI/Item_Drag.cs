@@ -34,21 +34,27 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
     /// </summary>
     public void OnBeginDrag(PointerEventData eventData)
     {
-        parent = this.transform.parent;
-        _currentParent = this.transform.parent;
-
-        if (transform.parent.GetComponent<Item_Drop_Eq>())
+        if (Input.GetMouseButton(0))
         {
-            transform.parent.GetComponent<Item_Drop_Eq>().RemoveItem();
-        }
+            parent = this.transform.parent;
+            _currentParent = this.transform.parent;
 
-        this.transform.SetParent(topCanvas.transform);
-        GetComponent<CanvasGroup>().blocksRaycasts = false;
+            if (transform.parent.GetComponent<Item_Drop_Eq>())
+            {
+                transform.parent.GetComponent<Item_Drop_Eq>().RemoveItem();
+            }
+
+            this.transform.SetParent(topCanvas.transform);
+            GetComponent<CanvasGroup>().blocksRaycasts = false;
+        }
     }
 
     public void OnDrag(PointerEventData eventData)
     {
-        transform.position = eventData.position;
+        if (Input.GetMouseButton(0))
+        {
+            transform.position = eventData.position;
+        }
     }
 
     /// <summary>
@@ -58,14 +64,17 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
     /// <param name="eventData"></param>
     public void OnEndDrag(PointerEventData eventData)
     {
-        if (_currentParent == parent)
+        if (Input.GetMouseButtonUp(0))
         {
-            if (parent.GetComponent<Item_Drop_Eq>())
-                parent.GetComponent<Item_Drop_Eq>().EquipItem();
+            if (_currentParent == parent)
+            {
+                if (parent.GetComponent<Item_Drop_Eq>())
+                    parent.GetComponent<Item_Drop_Eq>().EquipItem(this.gameObject);
+            }
+            //ClearDropZones();
+            this.transform.SetParent(parent);
+            GetComponent<CanvasGroup>().blocksRaycasts = true;
         }
-        //ClearDropZones();
-        this.transform.SetParent(parent);
-        GetComponent<CanvasGroup>().blocksRaycasts = true;
     }
 
     /// <summary>

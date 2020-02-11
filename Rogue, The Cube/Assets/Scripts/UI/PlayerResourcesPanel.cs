@@ -13,6 +13,12 @@ public class PlayerResourcesPanel : MonoBehaviour
 
     public Stats_Player stats_Player;
 
+    public Gradient hpGradient;
+    public Gradient mpGradient;
+
+    public Image hpBar;
+    public Image mpBar;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -39,5 +45,8 @@ public class PlayerResourcesPanel : MonoBehaviour
         hpText.text = stats_Player.CurrentHealth.ToString() + " / " + stats_Player.HITPOINTS.GetValue();
         mpText.text = stats_Player.CurrentMana.ToString() + " / " + stats_Player.MANAPOINTS.GetValue();
         staminaText.text = stats_Player.CurrentStamina.ToString() + " / " + stats_Player.STAMINA.GetValue();
+
+        hpBar.color = hpGradient.Evaluate(hpSlider.normalizedValue);
+        mpBar.color = mpGradient.Evaluate(mpSlider.normalizedValue);
     }
 }

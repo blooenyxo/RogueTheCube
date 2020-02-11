@@ -24,4 +24,7 @@ public class Enemy : ScriptableObject
     public Item offhand;
     public Item headGear;
     public Item chestGear;
+
+    [Header("Visual Model")]
+    public GameObject visualModel;
 }

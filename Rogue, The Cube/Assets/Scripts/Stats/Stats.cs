@@ -17,16 +17,19 @@ public class Stats : MonoBehaviour
     public Stat MINMAGIC;
     public Stat MAXMAGIC;
     public Stat STAMINA;
+    public Stat GOLD;
 
     public int CurrentHealth { get; private set; }
     public int CurrentMana { get; private set; }
     public int CurrentStamina { get; private set; }
+    public int CurrentGold { get; private set; }
 
     public virtual void Start()
     {
         CurrentHealth = HITPOINTS.GetValue();
         CurrentMana = MANAPOINTS.GetValue();
         CurrentStamina = STAMINA.GetValue();
+        CurrentGold = GOLD.GetValue();
     }
 
     /// <summary>
@@ -62,16 +65,19 @@ public class Stats : MonoBehaviour
             return Mathf.RoundToInt(BaseDamage() + CritAmount());
         }
     }
+
     private int BaseDamage()
     {
         return Mathf.CeilToInt(Random.Range(MINDMG.GetValue(), MAXDMG.GetValue()) + (STRENGHT.GetValue() * .1f));
     }
+
     private float CritAmount()
     {
         float value = AGILITY.GetValue() * .2f;
         Mathf.Clamp(value, 1.5f, float.MaxValue);
         return value;
     }
+
     private float CritChance()
     {
         return AGILITY.GetValue() * 1.5f;
@@ -130,13 +136,12 @@ public class Stats : MonoBehaviour
 
     public virtual bool UseStamina(int value)
     {
-        CurrentStamina -= value;
-        if (CurrentStamina < 0)
+        if (CurrentStamina > value)
         {
-            CurrentStamina = 0;
-            return false;
+            CurrentStamina -= value;
+            return true;
         }
-        return true;
+        return false;
     }
 
     public virtual void GainStamina(int value)
@@ -156,6 +161,22 @@ public class Stats : MonoBehaviour
     public virtual void ResetMovespeed(int value)
     {
         MOVESPEED.RemoveModifier(value);
+    }
+
+    public virtual void GainGold(int value)
+    {
+        CurrentGold += value;
+    }
+
+    public virtual bool UseGold(int value)
+    {
+        if (value >= CurrentGold)
+        {
+            CurrentGold -= value;
+            return true;
+        }
+        else
+            return false;
     }
 
     public virtual void OnEquipmentChange(Item newItem, Item oldItem)

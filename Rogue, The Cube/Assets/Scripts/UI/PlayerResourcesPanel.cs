@@ -22,9 +22,22 @@ public class PlayerResourcesPanel : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        stats_Player = Stats_Player.instance;
-        stats_Player.onResourcesChanged += AdjustValues;
+        if (Stats_Player.instance)
+        {
+            stats_Player = Stats_Player.instance;
+            stats_Player.onResourcesChanged += AdjustValues;
+        }
+
         AdjustValues();
+    }
+
+    private void LateUpdate()
+    {
+        if (stats_Player == null)
+        {
+            stats_Player = Stats_Player.instance;
+            stats_Player.onResourcesChanged += AdjustValues;
+        }
     }
 
     void AdjustValues()

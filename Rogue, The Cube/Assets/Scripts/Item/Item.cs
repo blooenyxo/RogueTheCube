@@ -1,6 +1,6 @@
 ﻿using UnityEngine;
 
-public enum ITEMTYPE { HELMET, CHEST, WEAPON, OFFHAND, CONSUMABLE, ARROW, SPELL }
+public enum ITEMTYPE { HELMET, CHEST, WEAPON, OFFHAND, CONSUMABLE, ARROW, SPELL, GOLD }
 public enum ITEMCLASS { STRENGHT, INTELIGENCE, AGILITY, NONE }
 
 [CreateAssetMenu(fileName = "New Item", menuName = "ScriptableObject/Item")]
@@ -28,6 +28,7 @@ public class Item : ScriptableObject
     [Header("Consumables Section")]
     public int Health;
     public int Mana;
+    public int Gold;
     [Header("For Visuals")]
     public GameObject VISUAL_MODEL;
     public GameObject VISUAL_ARMOR;

@@ -14,11 +14,15 @@ public class Item_Drop_Eq : Item_Drop
 
     private void Start()
     {
-        equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
+        if (Stats_Player.instance)
+            equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
     }
 
     public override void OnDrop(PointerEventData eventData)
     {
+        if (equipment == null)
+            equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
+
         // this logic handles what happens if after picking an item off a equipmentslot you decide to place it right back down.
         if (transform.childCount == 0)
         {

@@ -58,6 +58,13 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
+        if (thisItem_UI.item.ITEM_TYPE == ITEMTYPE.GOLD)
+        {
+            Stats_Player.instance.GainGold(thisItem_UI.item.Gold);
+
+            Destroy(gameObject);
+        }
+
         if (Input.GetMouseButtonDown(1))
         {
             //Debug.Log("item was in " + transform.parent.tag);

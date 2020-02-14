@@ -166,6 +166,8 @@ MonoBehaviour:
   MAXMAGIC:
     baseValue: 0
   STAMINA:
+    baseValue: 100
+  GOLD:
     baseValue: 0
 --- !u!114 &6219899408672357560
 MonoBehaviour:
@@ -257,6 +259,11 @@ MonoBehaviour:
   - {fileID: 0}
   - {fileID: 0}
   - {fileID: 11400000, guid: 8f511cb159422e5469021e592070f5eb, type: 2}
+  - {fileID: 0}
+  currentEquipmentGameObjects:
+  - {fileID: 0}
+  - {fileID: 0}
+  - {fileID: 0}
   - {fileID: 0}
 --- !u!1 &4553023784682585979
 GameObject:

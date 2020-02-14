@@ -19,6 +19,7 @@ public class EnemyResourcePanel : MonoBehaviour
 
     public GameObject EnemyResourcePanelBuff;
     public GameObject BuffBackground;
+    public Transform[] BuffBackgroundSlots;
 
     public Gradient hpGradient;
     public Image hpBar;
@@ -27,6 +28,14 @@ public class EnemyResourcePanel : MonoBehaviour
     {
         cg = GetComponent<CanvasGroup>();
         cg.alpha = 0;
+
+
+        BuffBackgroundSlots = new Transform[BuffBackground.transform.childCount];
+        for (int i = 0; i < BuffBackground.transform.childCount; i++)
+        {
+            BuffBackgroundSlots[i] = BuffBackground.transform.GetChild(i);
+        }
+
         SubscribeToEvents();
     }
 
@@ -57,16 +66,19 @@ public class EnemyResourcePanel : MonoBehaviour
                 bool buffExists = false;
                 for (int i = 0; i < BuffBackground.transform.childCount; i++)
                 {
-                    if (BuffBackground.transform.GetChild(i).GetComponent<EnemyResourcePanelBuff>().buff == enemyGameObject.GetComponent<Controller_Buffs>().buff[j])
+                    if (BuffBackground.transform.GetChild(i).GetComponentInChildren<EnemyResourcePanelBuff>())
                     {
-                        //Debug.Log(enemyGameObject.GetComponent<Controller_Buffs>().buff[j].duration);
-                        //Debug.Log(enemyGameObject.GetComponent<Controller_Buffs>().buffDuration[j]);
-
-                        if (enemyGameObject.GetComponent<Controller_Buffs>().buffDuration[j] == enemyGameObject.GetComponent<Controller_Buffs>().buff[j].duration)
+                        if (BuffBackground.transform.GetChild(i).GetComponentInChildren<EnemyResourcePanelBuff>().buff == enemyGameObject.GetComponent<Controller_Buffs>().buff[j])
                         {
-                            BuffBackground.transform.GetChild(i).GetComponent<EnemyResourcePanelBuff>().timeRemainingImage.fillAmount = 1;
+                            //Debug.Log(enemyGameObject.GetComponent<Controller_Buffs>().buff[j].duration);
+                            //Debug.Log(enemyGameObject.GetComponent<Controller_Buffs>().buffDuration[j]);
+
+                            if (enemyGameObject.GetComponent<Controller_Buffs>().buffDuration[j] == enemyGameObject.GetComponent<Controller_Buffs>().buff[j].duration)
+                            {
+                                BuffBackground.transform.GetChild(i).GetComponentInChildren<EnemyResourcePanelBuff>().timeRemainingImage.fillAmount = 1;
+                            }
+                            buffExists = true;
                         }
-                        buffExists = true;
                     }
                 }
 
@@ -76,8 +88,16 @@ public class EnemyResourcePanel : MonoBehaviour
                     BuffIcon.GetComponent<EnemyResourcePanelBuff>().buff = enemyGameObject.GetComponent<Controller_Buffs>().buff[j];
                     BuffIcon.GetComponent<EnemyResourcePanelBuff>().buffDuration = enemyGameObject.GetComponent<Controller_Buffs>().buffDuration[j];
                     BuffIcon.GetComponent<Image>().sprite = enemyGameObject.GetComponent<Controller_Buffs>().buff[j].sprite;
-                    BuffIcon.transform.SetParent(BuffBackground.transform);
                     BuffBackground.GetComponent<CanvasGroup>().alpha = panelAlpha;
+
+                    for (int i = 0; i < BuffBackgroundSlots.Length; i++)
+                    {
+                        if (BuffBackgroundSlots[i].childCount == 0)
+                        {
+                            BuffIcon.transform.SetParent(BuffBackgroundSlots[i]);
+                            return;
+                        }
+                    }
                 }
             }
         }
@@ -85,10 +105,13 @@ public class EnemyResourcePanel : MonoBehaviour
 
     private void EmptyBuffList()
     {
-        for (int i = 0; i < BuffBackground.transform.childCount; i++)
+        for (int i = 0; i < BuffBackgroundSlots.Length; i++)
         {
-            Destroy(BuffBackground.transform.GetChild(i).gameObject);
-            BuffBackground.GetComponent<CanvasGroup>().alpha = 0f;
+            if (BuffBackgroundSlots[i].childCount > 0)
+            {
+                Destroy(BuffBackgroundSlots[i].GetChild(0).gameObject);
+                BuffBackground.GetComponent<CanvasGroup>().alpha = 0f;
+            }
         }
     }
 

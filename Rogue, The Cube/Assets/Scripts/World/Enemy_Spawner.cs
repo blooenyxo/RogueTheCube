@@ -21,7 +21,8 @@ public class Enemy_Spawner : MonoBehaviour
 
     void Start()
     {
-        player = Stats_Player.instance.gameObject;
+        if (Stats_Player.instance)
+            player = Stats_Player.instance.gameObject;
 
         if (Enemies[rnd] != null)
         {
@@ -47,6 +48,10 @@ public class Enemy_Spawner : MonoBehaviour
                 erp.SubscribeToEvents();
                 enemyDied = false;
             }
+        }
+        else
+        {
+            player = Stats_Player.instance.gameObject;
         }
     }
 

@@ -12,7 +12,7 @@ public class Controller_Sword : Controller_Weapon
 
     public override void BaseAttack()
     {
-        if (Time.time > cooldown && !swordParry)
+        if (Time.time > cooldown && !swordParry && stats.UseStamina(40))
         {
             base.BaseAttack();
             //StartCoroutine(AttackRoutine());

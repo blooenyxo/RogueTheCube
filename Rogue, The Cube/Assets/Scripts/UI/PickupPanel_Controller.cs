@@ -28,6 +28,9 @@ public class PickupPanel_Controller : MonoBehaviour
                 if (item.ITEM_TYPE == ITEMTYPE.ARROW || item.ITEM_TYPE == ITEMTYPE.CONSUMABLE)
                     _ui_item.GetComponent<Item_UI>().stacks = Mathf.RoundToInt(Random.Range(0, 20));
 
+                if (item.ITEM_TYPE == ITEMTYPE.GOLD)
+                    _ui_item.GetComponent<Item_UI>().stacks = item.Gold;
+
                 _ui_item.GetComponent<Item_UI>().UpdateItemVisuals();
                 return;
             }

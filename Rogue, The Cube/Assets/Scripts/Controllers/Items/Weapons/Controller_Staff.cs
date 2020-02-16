@@ -5,7 +5,6 @@ public class Controller_Staff : Controller_Weapon
 {
     public Transform firePoint;
     private bool attacking;
-    private Spell spell;
 
     public override void Start()
     {
@@ -40,9 +39,14 @@ public class Controller_Staff : Controller_Weapon
             if (equipment.currentEquipment[3].spell.attacking)
             {
                 GameObject _prj = Instantiate(equipment.currentEquipment[3].spell.visualModel, firePoint.transform.position, firePoint.transform.rotation); ;
-                _prj.GetComponent<Controller_Projectile>().stats = stats;
-                _prj.GetComponent<Controller_Projectile>().parentTag = parentTag;
-                _prj.GetComponent<Controller_Projectile>().destroyOnWallhit = equipment.currentEquipment[3].spell.interactWithWalls;
+                Controller_Projectile _prj_cp = _prj.GetComponent<Controller_Projectile>();
+
+                _prj_cp.stats = stats;
+                _prj_cp.parentTag = parentTag;
+                _prj_cp.destroyOnWallhit = equipment.currentEquipment[3].spell.interactWithWalls;
+                _prj_cp.interval = equipment.currentEquipment[3].spell.interval;
+                _prj_cp.damageOverTime = equipment.currentEquipment[3].spell.damageOverTime;
+
 
                 // apply buff
                 if (equipment.currentEquipment[3].spell.buff != null)

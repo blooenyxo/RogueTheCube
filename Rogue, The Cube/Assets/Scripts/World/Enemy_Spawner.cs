@@ -51,7 +51,8 @@ public class Enemy_Spawner : MonoBehaviour
         }
         else
         {
-            player = Stats_Player.instance.gameObject;
+            if (Stats_Player.instance)
+                player = Stats_Player.instance.gameObject;
         }
     }
 

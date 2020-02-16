@@ -26,6 +26,7 @@ MonoBehaviour:
   globalCooldown: 0
   Health: 0
   Mana: 0
+  Gold: 0
   VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: 0f1303cfff6593747a97f9c964728649, type: 3}

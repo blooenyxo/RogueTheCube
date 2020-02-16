@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 
 public class Camera_Follow : MonoBehaviour
 {
@@ -14,8 +15,11 @@ public class Camera_Follow : MonoBehaviour
     public float currentYaw = 0f;
     public float yawSpeed = 1;
 
+    public float timeToSlerpAtSpawn;
 
-    Camera cam;
+    private bool newTarget = true;
+    private Camera cam;
+
     void Start()
     {
         cam = Camera.main;
@@ -48,9 +52,16 @@ public class Camera_Follow : MonoBehaviour
     {
         if (target != null)
         {
-            transform.position = target.position - offset * currentZoom;
+            if (newTarget == true)
+            {
+                StartCoroutine(SlerpToTarget());
+            }
+            else
+            {
+                transform.position = target.position - offset * currentZoom;
+                transform.RotateAround(target.position, Vector3.up, currentYaw);
+            }
             transform.LookAt(target.position + Vector3.up * pitch);
-            transform.RotateAround(target.position, Vector3.up, currentYaw);
         }
     }
 
@@ -60,5 +71,12 @@ public class Camera_Follow : MonoBehaviour
         {
             currentYaw += yawSpeed * Input.GetAxis("Mouse X");
         }
+    }
+
+    private IEnumerator SlerpToTarget()
+    {
+        transform.position = Vector3.Slerp(transform.position, target.position - offset * currentZoom, 1f * Time.deltaTime);
+        yield return new WaitForSeconds(timeToSlerpAtSpawn);
+        newTarget = false;
     }
 }

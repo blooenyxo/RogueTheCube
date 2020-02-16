@@ -9,7 +9,7 @@ public class PlayerHotbar : MonoBehaviour
     public GameObject Button3;
     public GameObject ButtonQ;
 
-    private void Update()
+    private void LateUpdate()
     {
         if (Input.GetKeyDown(KeyCode.Alpha1))
         {
@@ -26,6 +26,15 @@ public class PlayerHotbar : MonoBehaviour
         else if (Input.GetKeyDown(KeyCode.Q))
         {
             PressButton(ButtonQ);
+        }
+
+        if (GameObject.Find("Player"))
+        {
+            GetComponent<CanvasGroup>().alpha = 1;
+        }
+        else
+        {
+            GetComponent<CanvasGroup>().alpha = 0;
         }
     }
 

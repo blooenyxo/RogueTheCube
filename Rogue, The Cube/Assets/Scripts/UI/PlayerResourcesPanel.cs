@@ -26,17 +26,22 @@ public class PlayerResourcesPanel : MonoBehaviour
         {
             stats_Player = Stats_Player.instance;
             stats_Player.onResourcesChanged += AdjustValues;
-        }
 
-        AdjustValues();
+            AdjustValues();
+        }
+        else
+        {
+            GetComponent<CanvasGroup>().alpha = 0;
+        }
     }
 
     private void LateUpdate()
     {
-        if (stats_Player == null)
+        if (stats_Player == null && Stats_Player.instance)
         {
             stats_Player = Stats_Player.instance;
             stats_Player.onResourcesChanged += AdjustValues;
+            GetComponent<CanvasGroup>().alpha = 1;
         }
     }
 

@@ -49,8 +49,7 @@ public class Equipment : Controller_Equipment
         }
         currentEquipment[index] = newItem;
 
-        if (onEquipmentChange != null)
-            onEquipmentChange.Invoke(newItem, oldItem);
+        onEquipmentChange?.Invoke(newItem, oldItem);
     }
 
     /// <summary>

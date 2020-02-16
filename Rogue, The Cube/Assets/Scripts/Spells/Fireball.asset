@@ -17,7 +17,9 @@ MonoBehaviour:
   attacking: 1
   healing: 0
   channeled: 0
-  interactWithWalls: 0
+  interactWithWalls: 1
+  damageOverTime: 0
+  interval: 0
   visualModel: {fileID: 2751216269527067318, guid: 1bb3e41e77782184f9b46fd8f063daf6,
     type: 3}
   buff: {fileID: 11400000, guid: 990b2347c719e8d43a35732d3f074a4b, type: 2}

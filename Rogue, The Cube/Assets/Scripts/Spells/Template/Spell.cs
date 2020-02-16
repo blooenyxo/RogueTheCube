@@ -14,6 +14,10 @@ public class Spell : ScriptableObject
     public bool channeled;
     public bool interactWithWalls;
 
+    [Header("Damage Over Time")]
+    public bool damageOverTime;
+    public float interval;
+
     [Header("Visual Model")]
     public GameObject visualModel;
 

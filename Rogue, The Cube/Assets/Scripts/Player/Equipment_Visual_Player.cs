@@ -7,4 +7,18 @@
         equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
         equipment.onEquipmentChange += UpdateVisuals;
     }
+
+    private void LateUpdate()
+    {
+        if (equipment == null)
+        {
+            equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
+            equipment.onEquipmentChange += UpdateVisuals;
+        }
+    }
+
+    public override void UpdateVisuals(Item newItem, Item oldItem)
+    {
+        base.UpdateVisuals(newItem, oldItem);
+    }
 }

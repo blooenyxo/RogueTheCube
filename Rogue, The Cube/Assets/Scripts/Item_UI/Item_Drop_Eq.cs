@@ -92,6 +92,9 @@ public class Item_Drop_Eq : Item_Drop
 
     public void EquipItem(GameObject go)
     {
+        if (equipment == null)
+            equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
+
         equipment.Equip(localStoredItem, index);
         equipment.EquipItemGameObject(go, index);
     }

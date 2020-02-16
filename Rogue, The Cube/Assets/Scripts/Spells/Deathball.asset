@@ -18,6 +18,8 @@ MonoBehaviour:
   healing: 0
   channeled: 0
   interactWithWalls: 0
+  damageOverTime: 1
+  interval: 0.5
   visualModel: {fileID: 2751216269527067318, guid: 1bb3e41e77782184f9b46fd8f063daf6,
     type: 3}
   buff: {fileID: 0}

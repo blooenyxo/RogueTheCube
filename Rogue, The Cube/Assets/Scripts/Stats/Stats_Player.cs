@@ -21,6 +21,9 @@ public class Stats_Player : Stats
     public delegate void OnResourcesChanged();
     public OnResourcesChanged onResourcesChanged;
 
+    public delegate void OnPlayerDeath();
+    public OnPlayerDeath onPlayerDeath;
+
     Equipment equipment;
     /// <summary>
     /// holds the method to adjust stats based on currently equiped items. delegate triggers on item add or 
@@ -41,7 +44,7 @@ public class Stats_Player : Stats
     public override void OnEquipmentChange(Item newItem, Item oldItem)
     {
         base.OnEquipmentChange(newItem, oldItem);
-        onStatsChanged.Invoke();
+        onStatsChanged?.Invoke();
         onResourcesChanged.Invoke();
     }
 
@@ -94,5 +97,11 @@ public class Stats_Player : Stats
     {
         onStatsChanged.Invoke();
         return base.UseGold(value);
+    }
+
+    public override void Die()
+    {
+        base.Die();
+        onPlayerDeath?.Invoke();
     }
 }

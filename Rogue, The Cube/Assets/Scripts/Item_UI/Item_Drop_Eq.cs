@@ -82,6 +82,10 @@ public class Item_Drop_Eq : Item_Drop
                 }
             }
         }
+        else
+        {
+
+        }
     }
     public void RemoveItem()
     {

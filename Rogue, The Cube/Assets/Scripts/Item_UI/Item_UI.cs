@@ -18,6 +18,7 @@ public class Item_UI : MonoBehaviour
     public Text ToolTip_ForthStat;
     public Text ToolTip_FifthStat;
     public Text ToolTip_Description;
+    public Text ToolTip_Gold;
 
     public GameObject toolTipBorder;
 
@@ -81,6 +82,13 @@ public class Item_UI : MonoBehaviour
             ToolTip_Description.gameObject.SetActive(true);
             ToolTip_Description.text = item.DESCRIPTION;
         }
+
+        ToolTip_Gold.gameObject.SetActive(true);
+        if (item.stackable)
+            ToolTip_Gold.text = item.Gold.ToString() + " Gold" + " - " + (item.Gold * stacks).ToString() + " Gold / stack";
+        else
+            ToolTip_Gold.text = item.Gold.ToString() + " Gold";
+
         SetBackgroundColor(toolTipBorder.GetComponent<Image>());
     }
 
@@ -92,6 +100,7 @@ public class Item_UI : MonoBehaviour
         ToolTip_ForthStat.gameObject.SetActive(false);
         ToolTip_FifthStat.gameObject.SetActive(false);
         ToolTip_Description.gameObject.SetActive(false);
+        ToolTip_Gold.gameObject.SetActive(false);
     }
 
     void BasicStats()

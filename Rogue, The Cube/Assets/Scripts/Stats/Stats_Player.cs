@@ -90,12 +90,12 @@ public class Stats_Player : Stats
     public override void GainGold(int value)
     {
         base.GainGold(value);
-        onStatsChanged.Invoke();
+        onResourcesChanged.Invoke();
     }
 
     public override bool UseGold(int value)
     {
-        onStatsChanged.Invoke();
+        onResourcesChanged.Invoke();
         return base.UseGold(value);
     }
 

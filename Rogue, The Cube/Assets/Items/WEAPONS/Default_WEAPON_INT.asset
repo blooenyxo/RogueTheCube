@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Default_WEAPON_INT
   m_EditorClassIdentifier: 
   ITEMNAME: Basic Staff
+  DESCRIPTION: 
   ITEM_TYPE: 2
   ITEM_CLASS: 1
   STRENGHT: 2
@@ -25,6 +26,7 @@ MonoBehaviour:
   globalCooldown: 1
   Health: 0
   Mana: 0
+  Gold: 100
   VISUAL_MODEL: {fileID: 1868587299077358907, guid: cddd03f42cad2bd40b39add8ff8c09b2,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}

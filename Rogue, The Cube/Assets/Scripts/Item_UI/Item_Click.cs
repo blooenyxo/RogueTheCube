@@ -15,6 +15,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
 
     private GameObject inv;
     private GameObject equ;
+    private GameObject shop;
 
     private Item_UI thisItem_UI;
 
@@ -29,6 +30,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         // I store the parents localy
         inv = GameObject.Find("Inventory");
         equ = GameObject.Find("EquipmentBackground");
+        shop = GameObject.Find("Shop");
 
         Button1 = GameObject.FindGameObjectWithTag("Button1").transform;
         Button2 = GameObject.FindGameObjectWithTag("Button2").transform;
@@ -78,20 +80,43 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         {
             //move to inventory if enough free space
             RemoveFromEquipment(-1);
-            MoveToInventory();
+            MoveToInventory(this.transform);
             if (equipmentSlots[3].GetComponentInChildren<Item_Click>())
-                equipmentSlots[3].GetComponentInChildren<Item_Click>().MoveToInventory();
+                equipmentSlots[3].GetComponentInChildren<Item_Click>().MoveToInventory(this.transform);
         }
         else if (_str == "InventorySlot")
         {
-            //move to equipment / switch item if equipment slot already ocupied
-            SortFromInventoryToEquipment(thisItem_UI.item.ITEM_TYPE);
+            if (GameObject.Find("Player").GetComponent<Controller_Input>().npcPanelOpen)
+            {
+                if (Input.GetButton("Run")) // selling one item from stack
+                {
+                    GameObject _ui_item = Instantiate(this.gameObject, transform);
+                    _ui_item.GetComponent<Item_UI>().stacks = 1;
+                    shop.GetComponent<Item_Drop_Shop>().SellItem(_ui_item);
+                    thisItem_UI.stacks--;
+                    thisItem_UI.AdjustStackText();
+
+                    if (thisItem_UI.stacks <= 0)
+                    {
+                        Destroy(this.gameObject);
+                    }
+                }
+                else // selling entire stack
+                {
+                    shop.GetComponent<Item_Drop_Shop>().SellItem(this.gameObject);
+                }
+            }
+            else
+            {
+                //move to equipment / switch item if equipment slot already ocupied
+                SortFromInventoryToEquipment(thisItem_UI.item.ITEM_TYPE);
+            }
         }
         else if (_str == "LootSlot")
         {
             if (!LookForSimilarItems())
             {
-                MoveToInventory();
+                MoveToInventory(this.transform);
             }
             //move to inventory if enough free space
             // the next line is for clearing the lootbox content after item was removed
@@ -103,6 +128,58 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         {
             SortFromInventoryToEquipment(thisItem_UI.item.ITEM_TYPE);
         }
+        else if (_str == "Shop")
+        {
+            if (Input.GetButton("Run"))
+            {
+                if (Stats_Player.instance.UseGold(thisItem_UI.item.Gold))
+                {
+                    GameObject _ui_item = Instantiate(this.gameObject, transform);
+                    _ui_item.GetComponent<Item_UI>().stacks = 1;
+
+                    if (!ShopToInventoryLookForSimilar())
+                        MoveToInventory(_ui_item.transform);
+
+                    thisItem_UI.stacks--;
+                    thisItem_UI.AdjustStackText();
+
+                    if (thisItem_UI.stacks <= 0)
+                    {
+                        Destroy(this.gameObject);
+                    }
+                }
+            }
+            else
+            {
+                //Debug.Log("buying item");
+                if (Stats_Player.instance.UseGold(thisItem_UI.item.Gold * thisItem_UI.stacks))
+                {
+                    //Debug.Log(thisItem_UI.item.Gold);
+                    if (!LookForSimilarItems())
+                    {
+                        MoveToInventory(this.transform);
+                    }
+                    GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction().GetComponent<NPC_Controller>().items.Remove(thisItem_UI.item);
+                }
+            }
+        }
+    }
+
+    bool ShopToInventoryLookForSimilar()
+    {
+        for (int i = 0; i < inventorySlots.Length; i++)
+        {
+            if (inventorySlots[i].childCount > 0)
+            {
+                if (inventorySlots[i].transform.GetComponentInChildren<Item_UI>().item == thisItem_UI.item && inventorySlots[i].transform.GetComponentInChildren<Item_UI>().item.stackable)
+                {
+                    inventorySlots[i].transform.GetComponentInChildren<Item_UI>().stacks++;
+                    inventorySlots[i].transform.GetComponentInChildren<Item_UI>().AdjustStackText();
+                    return true;
+                }
+            }
+        }
+        return false;
     }
 
     void SortFromInventoryToEquipment(ITEMTYPE _itemType)
@@ -247,6 +324,13 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             equipmentSlots[i].GetComponent<Item_Drop_Eq>().RemoveItem();
     }
 
+
+    void moveonestack()
+    {
+
+    }
+
+
     bool LookForSimilarItems()
     {
         for (int i = 0; i < inventorySlots.Length; i++)
@@ -274,14 +358,14 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         return false;
     }
 
-    void MoveToInventory()
+    void MoveToInventory(Transform _tr)
     {
         for (int i = inventorySlots.Length - 1; i >= 0; i--)
         {
             if (inventorySlots[i].childCount == 0)
             {
                 // move here
-                transform.SetParent(inventorySlots[i]);
+                _tr.SetParent(inventorySlots[i]);
 
                 //inventorySlots[i].GetComponent<Item_UI>().item.stacks++;
                 //if (GetComponent<Item_UI>().item.stacks <= 0)

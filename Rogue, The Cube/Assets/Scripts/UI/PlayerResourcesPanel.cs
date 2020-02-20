@@ -10,6 +10,7 @@ public class PlayerResourcesPanel : MonoBehaviour
     public Text hpText;
     public Text mpText;
     public Text staminaText;
+    public Text goldText; // this works best as a resource not as a stat. keep it here, even if the gold text is child of equipment panel
 
     public Stats_Player stats_Player;
 
@@ -66,5 +67,7 @@ public class PlayerResourcesPanel : MonoBehaviour
 
         hpBar.color = hpGradient.Evaluate(hpSlider.normalizedValue);
         mpBar.color = mpGradient.Evaluate(mpSlider.normalizedValue);
+
+        goldText.text = stats_Player.CurrentGold.ToString();
     }
 }

@@ -13,7 +13,8 @@ MonoBehaviour:
   m_Name: Deathball
   m_EditorClassIdentifier: 
   ITEMNAME: Deathball
-  DESCRIPTION: 'Magical Speel that create a slow '
+  DESCRIPTION: Magical Spell that creates a slow moving projectile that does damage
+    to everything in its path
   ITEM_TYPE: 6
   ITEM_CLASS: 1
   STRENGHT: 0
@@ -26,7 +27,7 @@ MonoBehaviour:
   globalCooldown: 0
   Health: 0
   Mana: 0
-  Gold: 0
+  Gold: 100
   VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: 0f1303cfff6593747a97f9c964728649, type: 3}

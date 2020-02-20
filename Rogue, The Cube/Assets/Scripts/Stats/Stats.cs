@@ -170,7 +170,7 @@ public class Stats : MonoBehaviour
 
     public virtual bool UseGold(int value)
     {
-        if (value >= CurrentGold)
+        if (CurrentGold >= value)
         {
             CurrentGold -= value;
             return true;

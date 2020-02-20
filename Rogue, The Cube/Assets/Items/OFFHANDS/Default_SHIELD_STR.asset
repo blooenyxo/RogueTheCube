@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Default_SHIELD_STR
   m_EditorClassIdentifier: 
   ITEMNAME: Basic Shield
+  DESCRIPTION: 
   ITEM_TYPE: 3
   ITEM_CLASS: 0
   STRENGHT: 5
@@ -25,6 +26,7 @@ MonoBehaviour:
   globalCooldown: 0
   Health: 0
   Mana: 0
+  Gold: 100
   VISUAL_MODEL: {fileID: 4150877012266153231, guid: ac42653db444e9a40b73838743de86bd,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}

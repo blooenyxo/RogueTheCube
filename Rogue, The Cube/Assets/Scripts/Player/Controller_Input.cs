@@ -10,10 +10,11 @@ public class Controller_Input : MonoBehaviour
     private Vector3 direction;
     private LayerMask floorMask;
     private UI_Input ui_input;
-    private bool pickupPanelOpen = false;
-    private bool inventoryPanelOpen = false;
 
     [HideInInspector] public bool uiIsOpen = false;
+    [HideInInspector] public bool pickupPanelOpen = false;
+    [HideInInspector] public bool inventoryPanelOpen = false;
+    [HideInInspector] public bool npcPanelOpen = false;
     public LayerMask interactionLayer;
     public float speedModifyer = 0f;
     private float _speedModifyer = 1f;
@@ -67,28 +68,60 @@ public class Controller_Input : MonoBehaviour
             }
         }
 
-        if (Input.GetKeyDown(KeyCode.E) && NearbyInteraction() != null)
+        if (Input.GetButtonDown("Interact") && NearbyInteraction() != null)
         {
             if (NearbyInteraction().CompareTag("NPC"))
             {
-                // npc interaction starts here
-                Debug.Log(NearbyInteraction());
+                if (npcPanelOpen)
+                {
+                    ui_input.CloseNpcPanel();
+                    //ui_input.ClosePlayerPanel();
+                    npcPanelOpen = false;
+                }
+                else if (!npcPanelOpen)
+                {
+                    // npc interaction starts here
+                    ui_input.OpenNpcPanel(NearbyInteraction().GetComponent<NPC_Controller>().typeOfNPC); // switch this possibly to enums (done that)
+                    //if (NearbyInteraction().GetComponent<NPC_Controller>().typeOfNPC == TypeOfNPC.Shop)
+                    //{
+                    //    ui_input.OpenPlayerPanel();
+                    //}
+
+                    npcPanelOpen = true;
+                }
             }
             else if (NearbyInteraction().CompareTag("LootBox"))
             {
-                ui_input.SwitchPanelState(ui_input.pp_cg);
-                if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == false)
+                if (!pickupPanelOpen)
                 {
-                    ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().SetupPanel(NearbyInteraction());
-                    NearbyInteraction().GetComponent<LootBox_Controller>().LootboxOpen();
+                    ui_input.OpenPickupPanel();
                     pickupPanelOpen = true;
+
+                    if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == false)
+                    {
+                        ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().SetupPanel(NearbyInteraction());
+                        NearbyInteraction().GetComponent<LootBox_Controller>().LootboxOpen();
+                    }
                 }
-                else if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == true)
+                else if (pickupPanelOpen)
                 {
-                    ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().RemoveItemFromPanel();
+                    ui_input.ClosePickupPanel();
                     pickupPanelOpen = false;
+
+                    if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == true)
+                    {
+                        ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().RemoveItemFromPanel();
+                    }
                 }
             }
+        }
+
+        if (NearbyInteraction() == null && npcPanelOpen)
+        {
+            ui_input.CloseNpcPanel();
+            ui_input.ClosePlayerPanel();
+            npcPanelOpen = false;
+            inventoryPanelOpen = false;
         }
 
         if (NearbyInteraction() == null && pickupPanelOpen)
@@ -98,7 +131,7 @@ public class Controller_Input : MonoBehaviour
             pickupPanelOpen = false;
         }
 
-        if (Input.GetKeyDown(KeyCode.C))
+        if (Input.GetButtonDown("Inventory"))
         {
             if (inventoryPanelOpen == false)
             {
@@ -112,17 +145,20 @@ public class Controller_Input : MonoBehaviour
             }
         }
 
-        if (Input.GetButtonDown("Jump"))
+        if (Input.GetButtonDown("Cancel"))
         {
-            //uiIsOpen = false;
-            //inventoryPanelOpen = false;
-            //pickupPanelOpen = false;
-            //ui_input.ClosePickupPanel();
-            //ui_input.ClosePlayerPanel();
+            uiIsOpen = false;
+            inventoryPanelOpen = false;
+            pickupPanelOpen = false;
+            npcPanelOpen = false;
+
+            ui_input.ClosePickupPanel();
+            ui_input.ClosePlayerPanel();
+            ui_input.CloseNpcPanel();
         }
 
         // uiisopen bool turns true every frame when one of the panels is open (inv., pickup, and all the future ones (dialog, shop etc..))
-        if (inventoryPanelOpen || pickupPanelOpen)
+        if (inventoryPanelOpen || pickupPanelOpen || npcPanelOpen)
             uiIsOpen = true;
         else
             uiIsOpen = false;
@@ -210,7 +246,7 @@ public class Controller_Input : MonoBehaviour
 
     public GameObject NearbyInteraction()
     {
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 2f, interactionLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 1f, interactionLayer);
 
         if (hitColliders.Length > 0)
         {

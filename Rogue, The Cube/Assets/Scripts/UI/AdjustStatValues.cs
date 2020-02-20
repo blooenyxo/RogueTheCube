@@ -8,7 +8,7 @@ public class AdjustStatValues : MonoBehaviour
     public Text intValue;
     public Text dmgValue;
     public Text magValue;
-    public Text goldValue;
+    //public Text goldValue;
 
     Stats_Player stats_player;
 
@@ -39,7 +39,6 @@ public class AdjustStatValues : MonoBehaviour
         intValue.text = stats_player.INTELIGENCE.GetValue().ToString();
         dmgValue.text = Mathf.CeilToInt(stats_player.MINDMG.GetValue() + (stats_player.STRENGHT.GetValue() * .1f)).ToString() + " - " + Mathf.CeilToInt(stats_player.MAXDMG.GetValue() + (stats_player.STRENGHT.GetValue() * .1f)).ToString();
         magValue.text = Mathf.CeilToInt(stats_player.MINMAGIC.GetValue() + (stats_player.INTELIGENCE.GetValue() * .1f)).ToString() + " - " + Mathf.CeilToInt(stats_player.MAXMAGIC.GetValue() + (stats_player.INTELIGENCE.GetValue() * .1f)).ToString();
-        goldValue.text = stats_player.CurrentGold.ToString();
     }
 
     private void Reset()

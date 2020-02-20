@@ -1,6 +1,4 @@
-﻿using System.Collections;
-using System.Collections.Generic;
-using UnityEngine;
+﻿using UnityEngine;
 
 public class startgametest : MonoBehaviour
 {
@@ -18,7 +16,7 @@ public class startgametest : MonoBehaviour
             p.name = "Player";
             playerExists = true;
 
-            SetupPlayer(p.GetComponent<Controller_Equipment>());
+            //SetupPlayer(p.GetComponent<Controller_Equipment>());
         }
 
         if (Stats_Player.instance && stats_player == null)

@@ -26,6 +26,7 @@ MonoBehaviour:
   globalCooldown: 0.5
   Health: 0
   Mana: 0
+  Gold: 100
   VISUAL_MODEL: {fileID: 6034981805155526121, guid: 239d8e772cd7d314c8875cfef13df7e6,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}

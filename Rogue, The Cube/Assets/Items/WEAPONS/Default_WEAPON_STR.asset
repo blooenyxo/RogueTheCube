@@ -13,6 +13,7 @@ MonoBehaviour:
   m_Name: Default_WEAPON_STR
   m_EditorClassIdentifier: 
   ITEMNAME: Basic Sword
+  DESCRIPTION: 
   ITEM_TYPE: 2
   ITEM_CLASS: 0
   STRENGHT: 5
@@ -25,6 +26,7 @@ MonoBehaviour:
   globalCooldown: 0.5
   Health: 0
   Mana: 0
+  Gold: 100
   VISUAL_MODEL: {fileID: 4003179789905615893, guid: f7c4a4b00831ba64f8d9735dd6b78bc3,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}

@@ -85,7 +85,7 @@ public class Item_UI : MonoBehaviour
 
         ToolTip_Gold.gameObject.SetActive(true);
         if (item.stackable)
-            ToolTip_Gold.text = item.Gold.ToString() + " Gold" + " - " + (item.Gold * stacks).ToString() + " Gold / stack";
+            AdjustStackText();
         else
             ToolTip_Gold.text = item.Gold.ToString() + " Gold";
 
@@ -139,6 +139,7 @@ public class Item_UI : MonoBehaviour
             {
                 cg.alpha = 1f;
                 stackText.text = stacks.ToString();
+                ToolTip_Gold.text = item.Gold.ToString() + " Gold" + " - " + (item.Gold * stacks).ToString() + " Gold / stack";
             }
             else
             {
@@ -150,7 +151,6 @@ public class Item_UI : MonoBehaviour
         {
             cg.alpha = 0f;
         }
-
     }
 
     public void UpdateItemVisuals()

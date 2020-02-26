@@ -29,7 +29,7 @@ MonoBehaviour:
   Gold: 100
   VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
-  sprite: {fileID: 21300000, guid: d9ec223ed231bbd4d9347cf8c8c102d5, type: 3}
+  sprite: {fileID: 21300000, guid: c19fdcfe7997c6144967507e797bc3a2, type: 3}
   stackable: 1
   TwoHandetWeapon: 0
   arrow: {fileID: 0}

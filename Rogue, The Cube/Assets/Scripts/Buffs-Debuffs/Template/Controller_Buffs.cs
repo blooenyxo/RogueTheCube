@@ -71,7 +71,7 @@ public class Controller_Buffs : MonoBehaviour
                 {
                     if (Time.time >= nextTime[i])
                     {
-                        Execute(buff[i], i);
+                        Execute(buff[i]);
                         nextTime[i] = Time.time + buff[i].interval;
                     }
 
@@ -96,7 +96,9 @@ public class Controller_Buffs : MonoBehaviour
         }
     }
 
-    public void Execute(Buff buffToExecute, float nextTimeArrayPosition)
+
+    // all the new buff types only need to be added here for the effect to work. the ui is managed on the resourcepanel scripts
+    public void Execute(Buff buffToExecute)
     {
         if (buffToExecute.harmfull)
         {
@@ -107,7 +109,8 @@ public class Controller_Buffs : MonoBehaviour
         }
         else if (buffToExecute.harmfull == false)
         {
-
+            if (buffToExecute.healing)
+                stats.Heal(buffToExecute.buffValue);
         }
     }
 }

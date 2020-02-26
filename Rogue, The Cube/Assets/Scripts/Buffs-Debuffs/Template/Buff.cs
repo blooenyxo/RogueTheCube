@@ -9,6 +9,7 @@ public class Buff : ScriptableObject
     [Header("Values")]
     public int buffValue;
     public bool harmfull;
+    public bool healing;
     public bool damage;
     public bool movementImpairing;
     public int movementImpairingValue;

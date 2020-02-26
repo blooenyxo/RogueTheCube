@@ -61,7 +61,6 @@ public class UI_Input : MonoBehaviour
     {
         npc_cg.alpha = 1;
         NPCPanel.GetComponent<NPCPanel_Controller>().Setup(_typeOfNPC);
-
         npc_cg.blocksRaycasts = true;
         npc_cg.interactable = true;
     }
@@ -70,7 +69,6 @@ public class UI_Input : MonoBehaviour
     {
         npc_cg.alpha = 0;
         NPCPanel.GetComponent<NPCPanel_Controller>().ClearNPCPanel();
-
         npc_cg.blocksRaycasts = false;
         npc_cg.interactable = false;
     }

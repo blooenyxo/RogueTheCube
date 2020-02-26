@@ -72,48 +72,29 @@ public class Controller_Input : MonoBehaviour
         {
             if (NearbyInteraction().CompareTag("NPC"))
             {
-                if (npcPanelOpen)
-                {
-                    ui_input.CloseNpcPanel();
-                    //ui_input.ClosePlayerPanel();
-                    npcPanelOpen = false;
-                }
-                else if (!npcPanelOpen)
-                {
-                    // npc interaction starts here
-                    ui_input.OpenNpcPanel(NearbyInteraction().GetComponent<NPC_Controller>().typeOfNPC); // switch this possibly to enums (done that)
-                    //if (NearbyInteraction().GetComponent<NPC_Controller>().typeOfNPC == TypeOfNPC.Shop)
-                    //{
-                    //    ui_input.OpenPlayerPanel();
-                    //}
-
-                    npcPanelOpen = true;
-                }
+                SwitchNPCPanelState();
             }
             else if (NearbyInteraction().CompareTag("LootBox"))
             {
-                if (!pickupPanelOpen)
-                {
-                    ui_input.OpenPickupPanel();
-                    pickupPanelOpen = true;
-
-                    if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == false)
-                    {
-                        ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().SetupPanel(NearbyInteraction());
-                        NearbyInteraction().GetComponent<LootBox_Controller>().LootboxOpen();
-                    }
-                }
-                else if (pickupPanelOpen)
-                {
-                    ui_input.ClosePickupPanel();
-                    pickupPanelOpen = false;
-
-                    if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == true)
-                    {
-                        ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().RemoveItemFromPanel();
-                    }
-                }
+                SwitchLootBoxState();
             }
+        }
+
+        if (Input.GetButtonDown("Inventory"))
+        {
+            SwitchInventoryState();
+        }
+
+        if (Input.GetButtonDown("Cancel"))
+        {
+            uiIsOpen = false;
+            inventoryPanelOpen = false;
+            pickupPanelOpen = false;
+            npcPanelOpen = false;
+
+            ui_input.ClosePickupPanel();
+            ui_input.ClosePlayerPanel();
+            ui_input.CloseNpcPanel();
         }
 
         if (NearbyInteraction() == null && npcPanelOpen)
@@ -131,32 +112,6 @@ public class Controller_Input : MonoBehaviour
             pickupPanelOpen = false;
         }
 
-        if (Input.GetButtonDown("Inventory"))
-        {
-            if (inventoryPanelOpen == false)
-            {
-                ui_input.OpenPlayerPanel();
-                inventoryPanelOpen = true;
-            }
-            else
-            {
-                ui_input.ClosePlayerPanel();
-                inventoryPanelOpen = false;
-            }
-        }
-
-        if (Input.GetButtonDown("Cancel"))
-        {
-            uiIsOpen = false;
-            inventoryPanelOpen = false;
-            pickupPanelOpen = false;
-            npcPanelOpen = false;
-
-            ui_input.ClosePickupPanel();
-            ui_input.ClosePlayerPanel();
-            ui_input.CloseNpcPanel();
-        }
-
         // uiisopen bool turns true every frame when one of the panels is open (inv., pickup, and all the future ones (dialog, shop etc..))
         if (inventoryPanelOpen || pickupPanelOpen || npcPanelOpen)
             uiIsOpen = true;
@@ -164,6 +119,61 @@ public class Controller_Input : MonoBehaviour
             uiIsOpen = false;
 
 
+    }
+
+    public void SwitchInventoryState()
+    {
+        if (inventoryPanelOpen == false)
+        {
+            ui_input.OpenPlayerPanel();
+            inventoryPanelOpen = true;
+        }
+        else
+        {
+            ui_input.ClosePlayerPanel();
+            inventoryPanelOpen = false;
+        }
+    }
+
+    public void SwitchLootBoxState()
+    {
+        if (!pickupPanelOpen)
+        {
+            ui_input.OpenPickupPanel();
+            pickupPanelOpen = true;
+
+            if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == false)
+            {
+                ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().SetupPanel(NearbyInteraction());
+                NearbyInteraction().GetComponent<LootBox_Controller>().LootboxOpen();
+            }
+        }
+        else if (pickupPanelOpen)
+        {
+            ui_input.ClosePickupPanel();
+            pickupPanelOpen = false;
+
+            if (ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().loadedInPanel == true)
+            {
+                ui_input.gameObject.GetComponentInChildren<PickupPanel_Controller>().RemoveItemFromPanel();
+            }
+        }
+    }
+
+    public void SwitchNPCPanelState()
+    {
+        if (npcPanelOpen)
+        {
+            ui_input.CloseNpcPanel();
+            //ui_input.ClosePlayerPanel();
+            npcPanelOpen = false;
+        }
+        else if (!npcPanelOpen)
+        {
+            // npc interaction starts here
+            ui_input.OpenNpcPanel(NearbyInteraction().GetComponent<NPC_Controller>().typeOfNPC); // switch this possibly to enums (done that)
+            npcPanelOpen = true;
+        }
     }
 
     void FixedUpdate()

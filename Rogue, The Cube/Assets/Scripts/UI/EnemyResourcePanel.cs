@@ -84,7 +84,7 @@ public class EnemyResourcePanel : MonoBehaviour
 
                 if (!buffExists)
                 {
-                    GameObject BuffIcon = Instantiate(EnemyResourcePanelBuff);
+                    GameObject BuffIcon = Instantiate(EnemyResourcePanelBuff, this.transform);
                     BuffIcon.GetComponent<EnemyResourcePanelBuff>().buff = enemyGameObject.GetComponent<Controller_Buffs>().buff[j];
                     BuffIcon.GetComponent<EnemyResourcePanelBuff>().buffDuration = enemyGameObject.GetComponent<Controller_Buffs>().buffDuration[j];
                     BuffIcon.GetComponent<Image>().sprite = enemyGameObject.GetComponent<Controller_Buffs>().buff[j].sprite;

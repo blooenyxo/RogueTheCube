@@ -1,10 +1,10 @@
 ﻿public class Equipment_Visual_Player : Equipment_Visual
 {
-    Equipment equipment;
+    Controller_Equipment_Player equipment;
     public override void Start()
     {
         base.Start();
-        equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
+        equipment = Stats_Player.instance.gameObject.GetComponent<Controller_Equipment_Player>();
         equipment.onEquipmentChange += UpdateVisuals;
     }
 
@@ -12,7 +12,7 @@
     {
         if (equipment == null)
         {
-            equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
+            equipment = Stats_Player.instance.gameObject.GetComponent<Controller_Equipment_Player>();
             equipment.onEquipmentChange += UpdateVisuals;
         }
     }

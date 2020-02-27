@@ -25,3 +25,4 @@ MonoBehaviour:
   offhand: {fileID: 11400000, guid: 16072ef0bede0bf4bb011ce6f6a8ad66, type: 2}
   headGear: {fileID: 11400000, guid: 05b231408bf3cdf4391e58f431d62b9d, type: 2}
   chestGear: {fileID: 11400000, guid: d9bb35ffa96df794b8c37c9b62e712d2, type: 2}
+  visualModel: {fileID: 0}

@@ -24,14 +24,14 @@ public class Stats_Player : Stats
     public delegate void OnPlayerDeath();
     public OnPlayerDeath onPlayerDeath;
 
-    Equipment equipment;
+    Controller_Equipment_Player equipment;
     /// <summary>
     /// holds the method to adjust stats based on currently equiped items. delegate triggers on item add or 
     /// item removed with the respective parameters.
     /// </summary>
     public override void Start()
     {
-        equipment = GetComponent<Equipment>();
+        equipment = GetComponent<Controller_Equipment_Player>();
         equipment.onEquipmentChange += OnEquipmentChange;
         base.Start();
     }

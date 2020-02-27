@@ -8,20 +8,20 @@ using UnityEngine.UI;
 public class Item_Drop_Eq : Item_Drop
 {
     private Image image;
-    private Equipment equipment;
+    private Controller_Equipment equipment;
     public Item localStoredItem;
     public int index;
 
     private void Start()
     {
         if (Stats_Player.instance)
-            equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
+            equipment = Stats_Player.instance.gameObject.GetComponent<Controller_Equipment>();
     }
 
     public override void OnDrop(PointerEventData eventData)
     {
         if (equipment == null)
-            equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
+            equipment = Stats_Player.instance.gameObject.GetComponent<Controller_Equipment>();
 
         // this logic handles what happens if after picking an item off a equipmentslot you decide to place it right back down.
         if (transform.childCount == 0)
@@ -97,7 +97,7 @@ public class Item_Drop_Eq : Item_Drop
     public void EquipItem(GameObject go)
     {
         if (equipment == null)
-            equipment = Stats_Player.instance.gameObject.GetComponent<Equipment>();
+            equipment = Stats_Player.instance.gameObject.GetComponent<Controller_Equipment_Player>();
 
         equipment.Equip(localStoredItem, index);
         equipment.EquipItemGameObject(go, index);

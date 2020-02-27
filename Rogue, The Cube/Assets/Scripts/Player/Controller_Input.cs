@@ -4,7 +4,7 @@ using UnityEngine.EventSystems;
 public class Controller_Input : MonoBehaviour
 {
     private Stats_Player statsPlayer;
-    private Equipment equipment;
+    private Controller_Equipment equipment;
     private Rigidbody rb;
     private Vector3 movement;
     private Vector3 direction;
@@ -24,7 +24,7 @@ public class Controller_Input : MonoBehaviour
         ui_input = GameObject.Find("UI_Canvas").GetComponent<UI_Input>();
         floorMask = LayerMask.GetMask("Floor");
         statsPlayer = Stats_Player.instance;
-        equipment = GetComponent<Equipment>();
+        equipment = GetComponent<Controller_Equipment>();
         rb = GetComponent<Rigidbody>();
     }
 

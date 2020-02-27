@@ -4,7 +4,7 @@
 /// contains two methods for equiping and unequiping items into the equipment array. 
 /// it contains a delegate to invoke when an item was added to the equipment array.
 /// </summary>
-public class Equipment : Controller_Equipment
+public class Controller_Equipment_Player : Controller_Equipment
 {
     //#region Singelton
     //public static Equipment instance;

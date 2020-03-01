@@ -12447,7 +12447,6 @@ MonoBehaviour:
   - {fileID: 11400000, guid: e6a3ac67a848e2542a2a147b74f8ca3d, type: 2}
   - {fileID: 11400000, guid: bd21be2eeb82dab45a4034ea38831928, type: 2}
   - {fileID: 11400000, guid: 34fd4d95195f5a147a97b37ef2d28522, type: 2}
-  - {fileID: 11400000, guid: 425fe6f9bda30304ca4e65ceb7a4d659, type: 2}
   SpecialItem: []
 --- !u!114 &1037400425
 MonoBehaviour:

@@ -40,29 +40,8 @@ public class Stats_Enemy : Stats
 
     public override void Die()
     {
+        GetComponent<ItemDrop>().SetLootBoxAndItems();
         onEnemyDeath?.Invoke();
         base.Die();
-        SetLootBoxAndItems();
-    }
-
-    private void SetLootBoxAndItems()
-    {
-        if (Random.Range(0, 10) > 7)
-        {
-
-            GameObject lb = Instantiate(GetComponent<Equipment_Visual_Enemy>().lootBox, this.transform.position, this.transform.rotation);
-
-            int random = Random.Range(0, GetComponent<ItemDrop>().Drop().Count);
-            List<Item> tempList = new List<Item>();
-
-            for (int i = 0; i < random; i++)
-            {
-                int random_ = Random.Range(0, GetComponent<ItemDrop>().Drop().Count);
-                tempList.Add(GetComponent<ItemDrop>().Drop()[random_]);
-            }
-
-            lb.GetComponent<LootBox_Controller>().items.AddRange(tempList);
-
-        }
     }
 }

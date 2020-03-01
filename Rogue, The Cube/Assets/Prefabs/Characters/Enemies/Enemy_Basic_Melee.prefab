@@ -229,6 +229,8 @@ MonoBehaviour:
   maxNrOfHighTierItems: 0
   maxNrOfConsumablesItems: 5
   maxNrOfspecialItems: 0
+  GoldToDrop: {fileID: 11400000, guid: 425fe6f9bda30304ca4e65ceb7a4d659, type: 2}
+  chanceToDropLootbox: 50
 --- !u!114 &6647370555679260768
 MonoBehaviour:
   m_ObjectHideFlags: 0

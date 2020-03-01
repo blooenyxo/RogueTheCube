@@ -8,6 +8,9 @@ public class ItemDrop : MonoBehaviour
     public int maxNrOfHighTierItems;
     public int maxNrOfConsumablesItems;
     public int maxNrOfspecialItems;
+    public Item GoldToDrop;
+
+    public int chanceToDropLootbox;
 
     public List<Item> Drop()
     {
@@ -19,5 +22,28 @@ public class ItemDrop : MonoBehaviour
         allItems.AddRange(ItemDistriburion.instance.PickItems(maxNrOfspecialItems, ItemDistriburion.instance.SpecialItem));
 
         return allItems;
+    }
+
+    public void SetLootBoxAndItems()
+    {
+        Debug.Log("setlootboxanditems");
+
+        if (Random.Range(0, 101) <= chanceToDropLootbox)
+        {
+
+            GameObject lb = Instantiate(GetComponent<Equipment_Visual_Enemy>().lootBox, this.transform.position, this.transform.rotation);
+
+            int random = Random.Range(0, Drop().Count);
+            List<Item> tempList = new List<Item>();
+
+            for (int i = 0; i < random; i++)
+            {
+                int random_ = Random.Range(0, Drop().Count);
+                tempList.Add(Drop()[random_]);
+            }
+
+            lb.GetComponent<LootBox_Controller>().items.Add(GoldToDrop);
+            lb.GetComponent<LootBox_Controller>().items.AddRange(tempList);
+        }
     }
 }

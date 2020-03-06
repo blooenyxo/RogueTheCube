@@ -11,10 +11,11 @@ public class Controller_Input : MonoBehaviour
     private LayerMask floorMask;
     private UI_Input ui_input;
 
-    [HideInInspector] public bool uiIsOpen = false;
+    public bool uiIsOpen = false;
     [HideInInspector] public bool pickupPanelOpen = false;
     [HideInInspector] public bool inventoryPanelOpen = false;
     [HideInInspector] public bool npcPanelOpen = false;
+    [HideInInspector] public bool pauseMenuOpen = false;
     public LayerMask interactionLayer;
     public float speedModifyer = 0f;
     private float _speedModifyer = 1f;
@@ -87,14 +88,26 @@ public class Controller_Input : MonoBehaviour
 
         if (Input.GetButtonDown("Cancel"))
         {
-            uiIsOpen = false;
-            inventoryPanelOpen = false;
-            pickupPanelOpen = false;
-            npcPanelOpen = false;
+            if (uiIsOpen || inventoryPanelOpen || pickupPanelOpen || npcPanelOpen || pauseMenuOpen)
+            {
+                uiIsOpen = false;
+                inventoryPanelOpen = false;
+                pickupPanelOpen = false;
+                npcPanelOpen = false;
+                pauseMenuOpen = false;
 
-            ui_input.ClosePickupPanel();
-            ui_input.ClosePlayerPanel();
-            ui_input.CloseNpcPanel();
+                ui_input.ClosePickupPanel();
+                ui_input.ClosePlayerPanel();
+                ui_input.CloseNpcPanel();
+                ui_input.ClosePauseMenu();
+            }
+            else
+            {
+                // open quit menu
+                pauseMenuOpen = true;
+                uiIsOpen = true;
+                ui_input.OpenPauseMenu();
+            }
         }
 
         if (NearbyInteraction() == null && npcPanelOpen)
@@ -113,12 +126,10 @@ public class Controller_Input : MonoBehaviour
         }
 
         // uiisopen bool turns true every frame when one of the panels is open (inv., pickup, and all the future ones (dialog, shop etc..))
-        if (inventoryPanelOpen || pickupPanelOpen || npcPanelOpen)
+        if (inventoryPanelOpen || pickupPanelOpen || npcPanelOpen || pauseMenuOpen)
             uiIsOpen = true;
         else
             uiIsOpen = false;
-
-
     }
 
     public void SwitchInventoryState()

@@ -6,10 +6,13 @@ public class UI_Input : MonoBehaviour
     public GameObject NPCPanel;
     public GameObject PickUpPanel;
     public GameObject RemovePanel;
+    public GameObject PauseMenu;
 
     [HideInInspector] public CanvasGroup cp_cg;
     [HideInInspector] public CanvasGroup pp_cg;
     [HideInInspector] public CanvasGroup npc_cg;
+    [HideInInspector] public CanvasGroup pm_cg;
+
 
     public Camera_Follow cam;
 
@@ -21,6 +24,7 @@ public class UI_Input : MonoBehaviour
         cp_cg = CharacterPanel.GetComponent<CanvasGroup>();
         pp_cg = PickUpPanel.GetComponent<CanvasGroup>();
         npc_cg = NPCPanel.GetComponent<CanvasGroup>();
+        pm_cg = PauseMenu.GetComponent<CanvasGroup>();
 
         //animator_playerstatspanel = cp_cg.gameObject.GetComponent<Animator>();
         //animator_pickuppanel = pp_cg.gameObject.GetComponent<Animator>();
@@ -71,5 +75,19 @@ public class UI_Input : MonoBehaviour
         NPCPanel.GetComponent<NPCPanel_Controller>().ClearNPCPanel();
         npc_cg.blocksRaycasts = false;
         npc_cg.interactable = false;
+    }
+
+    public void OpenPauseMenu()
+    {
+        pm_cg.alpha = 1;
+        pm_cg.blocksRaycasts = true;
+        pm_cg.interactable = true;
+    }
+
+    public void ClosePauseMenu()
+    {
+        pm_cg.alpha = 0;
+        pm_cg.blocksRaycasts = false;
+        pm_cg.interactable = false;
     }
 }

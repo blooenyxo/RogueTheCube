@@ -26,6 +26,11 @@ public class Stats : MonoBehaviour
 
     public virtual void Start()
     {
+        SetAllToMax();
+    }
+
+    public virtual void SetAllToMax()
+    {
         CurrentHealth = HITPOINTS.GetValue();
         CurrentMana = MANAPOINTS.GetValue();
         CurrentStamina = STAMINA.GetValue();

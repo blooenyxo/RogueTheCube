@@ -84,7 +84,7 @@ public class Stats_Player : Stats
     public override void GainStamina(int value)
     {
         base.GainStamina(value);
-        onResourcesChanged.Invoke();
+        onResourcesChanged?.Invoke();
     }
 
     public override void GainGold(int value)

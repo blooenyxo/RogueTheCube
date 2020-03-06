@@ -26,7 +26,7 @@ public class ItemDrop : MonoBehaviour
 
     public void SetLootBoxAndItems()
     {
-        Debug.Log("setlootboxanditems");
+        //Debug.Log("setlootboxanditems");
 
         if (Random.Range(0, 101) <= chanceToDropLootbox)
         {
@@ -42,6 +42,7 @@ public class ItemDrop : MonoBehaviour
                 tempList.Add(Drop()[random_]);
             }
 
+            // add a gold item from a list of gold items, or set a random range here !!! currently every mob drops the 500 goldpile item;
             lb.GetComponent<LootBox_Controller>().items.Add(GoldToDrop);
             lb.GetComponent<LootBox_Controller>().items.AddRange(tempList);
         }

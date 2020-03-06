@@ -12464,6 +12464,7 @@ MonoBehaviour:
   spawnPoint: {fileID: 314393675}
   playerExists: 0
   stats_player: {fileID: 0}
+  cc: {fileID: 802270083}
 --- !u!4 &1037400426
 Transform:
   m_ObjectHideFlags: 0
@@ -14134,7 +14135,7 @@ PrefabInstance:
         type: 3}
       propertyPath: item
       value: 
-      objectReference: {fileID: 11400000, guid: 8c740cb88c5b163439887f55829158b8,
+      objectReference: {fileID: 11400000, guid: 05b231408bf3cdf4391e58f431d62b9d,
         type: 2}
     - target: {fileID: 4119024234767859940, guid: dc8fdb3634faaf34bbe26c19c0c557ee,
         type: 3}

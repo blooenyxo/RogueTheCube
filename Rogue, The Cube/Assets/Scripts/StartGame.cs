@@ -12,11 +12,7 @@ public class StartGame : MonoBehaviour
     public CheatCodes cc;
     public GameObject _item_ui;
     public Transform _item_ui_spawnTransform;
-
     public Transform[] allSlots;
-    public GameObject[] equipmentSlots;
-
-    private GameObject equipmentBackground;
 
     private void Awake()
     {
@@ -74,13 +70,13 @@ public class StartGame : MonoBehaviour
         // Set Class
         switch (PlayerPrefs.GetInt("PlayerClass", 0))
         {
-            case 0:
+            case 1:
                 stats_player.STRENGHT.AddModifier(3);
                 break;
-            case 1:
+            case 2:
                 stats_player.AGILITY.AddModifier(3);
                 break;
-            case 2:
+            case 3:
                 stats_player.INTELIGENCE.AddModifier(3);
                 break;
             default:
@@ -97,8 +93,6 @@ public class StartGame : MonoBehaviour
                 CreateItem(ItemDistriburion.instance.AllItems().Find(x => x.ITEMNAME == PlayerPrefs.GetString("playerInvSlot" + i + "item")), allSlots[i], i);
             }
         }
-
-
         // Equip all the items currently on the equipment slots
         SetupPlayer();
 
@@ -123,7 +117,6 @@ public class StartGame : MonoBehaviour
                 PlayerPrefs.SetInt("playerInvSlot" + i + "state", 0);
             }
         }
-
         PlayerPrefs.SetInt("CurrentGold", stats_player.CurrentGold);
     }
 }

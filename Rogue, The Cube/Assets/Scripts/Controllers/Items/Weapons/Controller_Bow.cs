@@ -54,7 +54,7 @@ public class Controller_Bow : Controller_Weapon
         c_p.stats = stats;
         c_p.parentTag = transform.parent.tag;
         c_p.buff = equipment.currentEquipment[3].arrow.debuff;
-        c_p.speed = equipment.currentEquipment[3].arrow.speed;
+        //c_p.speed = equipment.currentEquipment[3].arrow.speed;
 
         GameObject pe = Instantiate(equipment.currentEquipment[3].arrow.particleEffect, firePoint.transform.position, firePoint.transform.rotation);
         pe.transform.SetParent(prj.transform);

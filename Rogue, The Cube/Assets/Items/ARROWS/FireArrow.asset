@@ -10,7 +10,7 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
-  m_Name: BurningArrow
+  m_Name: FireArrow
   m_EditorClassIdentifier: 
   ITEMNAME: Fire Arrow
   DESCRIPTION: Magical Arrow that deals damage and applies a Burning debuff

@@ -9,9 +9,13 @@ public class Controller_Arrow : Controller_Projectile
     {
         base.Start();
         // set arrow speed or use the one from the special arrows
-        if (speed == 0)
-            speed = Mathf.RoundToInt(stats.AGILITY.GetValue() * 2f);
-        // speed cannot be greater then 100
+
+        //if (speed == 0)
+        //    speed = Mathf.RoundToInt(stats.AGILITY.GetValue() * 2f);
+
+        speed = 50; // testing out the fixed arrod speed 
+
+        // speed cannot be greater then 50
         if (speed > 50)
             speed = 50;
 

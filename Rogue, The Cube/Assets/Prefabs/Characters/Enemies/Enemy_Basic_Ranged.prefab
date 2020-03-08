@@ -150,7 +150,7 @@ MonoBehaviour:
   AGILITY:
     baseValue: 30
   HITPOINTS:
-    baseValue: 20
+    baseValue: 5
   MANAPOINTS:
     baseValue: 0
   MOVESPEED:
@@ -227,7 +227,7 @@ MonoBehaviour:
   maxNrOfLowTierItems: 3
   maxNrOfMediumTierItems: 0
   maxNrOfHighTierItems: 0
-  maxNrOfConsumablesItems: 5
+  maxNrOfConsumablesItems: 1
   maxNrOfspecialItems: 0
   GoldToDrop: {fileID: 11400000, guid: 425fe6f9bda30304ca4e65ceb7a4d659, type: 2}
   chanceToDropLootbox: 50

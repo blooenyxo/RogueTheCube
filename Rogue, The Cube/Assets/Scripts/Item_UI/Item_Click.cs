@@ -25,7 +25,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
     [HideInInspector] public Transform ButtonQ;
 
 
-    private void Start()
+    private void Awake() // when creating a item while in game, this methode should be awake, for the dependencies to be linked sooner
     {
         // I store the parents localy
         inv = GameObject.Find("Inventory");
@@ -109,6 +109,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             else
             {
                 //move to equipment / switch item if equipment slot already ocupied
+                //Debug.Log(thisItem_UI.item);
                 SortFromInventoryToEquipment(thisItem_UI.item.ITEM_TYPE);
             }
         }

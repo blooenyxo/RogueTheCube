@@ -32,4 +32,17 @@ public class ItemDistriburion : MonoBehaviour
         }
         return tempList;
     }
+
+    public List<Item> AllItems()
+    {
+        List<Item> allitems = new List<Item>();
+
+        allitems.AddRange(LowTierItems);
+        allitems.AddRange(MediumTierItems);
+        allitems.AddRange(HighTierItems);
+        allitems.AddRange(Consumables);
+        allitems.AddRange(SpecialItem);
+
+        return allitems;
+    }
 }

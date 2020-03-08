@@ -841,10 +841,10 @@ GameObject:
   - component: {fileID: 4119024234767859938}
   - component: {fileID: 4119024234767859939}
   - component: {fileID: 4119024234767859936}
+  - component: {fileID: 4119024234767859934}
   - component: {fileID: 5055198946598920563}
   - component: {fileID: 4119024234767859937}
   - component: {fileID: 3564776465640292989}
-  - component: {fileID: 4119024234767859934}
   - component: {fileID: 7887521192081779355}
   m_Layer: 5
   m_Name: UI_Item
@@ -923,6 +923,33 @@ CanvasGroup:
   m_Interactable: 1
   m_BlocksRaycasts: 1
   m_IgnoreParentGroups: 0
+--- !u!114 &4119024234767859934
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 4119024234767859941}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ff7444dd21d523344815361b1c266c0c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  item: {fileID: 11400000, guid: 8f511cb159422e5469021e592070f5eb, type: 2}
+  backgroundImage: {fileID: 4119024234767859939}
+  itemImage: {fileID: 8301337023417231248}
+  stacks: 1
+  stackText: {fileID: 6362005274543053265}
+  cg: {fileID: 1713717425704445828}
+  ToolTip_Title: {fileID: 4086553503225016002}
+  ToolTip_FirstStat: {fileID: 1345522371495528070}
+  ToolTip_SecondStat: {fileID: 8353079648787752667}
+  ToolTip_ThirdStat: {fileID: 2437908985097479741}
+  ToolTip_ForthStat: {fileID: 5828708708120174857}
+  ToolTip_FifthStat: {fileID: 5749792549637491682}
+  ToolTip_Description: {fileID: 8035255527241032182}
+  ToolTip_Gold: {fileID: 233328907043582288}
+  toolTipBorder: {fileID: 3632233819437698454}
 --- !u!114 &5055198946598920563
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -967,33 +994,6 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   tooltip: {fileID: 3632233819437698454}
   _canvasGroup: {fileID: 0}
---- !u!114 &4119024234767859934
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 4119024234767859941}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: ff7444dd21d523344815361b1c266c0c, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  item: {fileID: 11400000, guid: 8f511cb159422e5469021e592070f5eb, type: 2}
-  backgroundImage: {fileID: 4119024234767859939}
-  itemImage: {fileID: 8301337023417231248}
-  stacks: 1
-  stackText: {fileID: 6362005274543053265}
-  cg: {fileID: 1713717425704445828}
-  ToolTip_Title: {fileID: 4086553503225016002}
-  ToolTip_FirstStat: {fileID: 1345522371495528070}
-  ToolTip_SecondStat: {fileID: 8353079648787752667}
-  ToolTip_ThirdStat: {fileID: 2437908985097479741}
-  ToolTip_ForthStat: {fileID: 5828708708120174857}
-  ToolTip_FifthStat: {fileID: 5749792549637491682}
-  ToolTip_Description: {fileID: 8035255527241032182}
-  ToolTip_Gold: {fileID: 233328907043582288}
-  toolTipBorder: {fileID: 3632233819437698454}
 --- !u!114 &7887521192081779355
 MonoBehaviour:
   m_ObjectHideFlags: 0

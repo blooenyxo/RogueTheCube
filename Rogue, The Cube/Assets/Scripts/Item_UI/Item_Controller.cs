@@ -1,7 +1,7 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
 
-public class ItemDrop : MonoBehaviour
+public class Item_Controller : MonoBehaviour
 {
     public int maxNrOfLowTierItems;
     public int maxNrOfMediumTierItems;

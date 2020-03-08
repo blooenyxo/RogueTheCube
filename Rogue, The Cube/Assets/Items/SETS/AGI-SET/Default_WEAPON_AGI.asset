@@ -12,13 +12,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
   m_Name: Default_WEAPON_AGI
   m_EditorClassIdentifier: 
-  ITEMNAME: Basic Bow
+  ITEMNAME: Short Bow
   DESCRIPTION: 
   ITEM_TYPE: 2
   ITEM_CLASS: 2
-  STRENGHT: 2
+  STRENGHT: 0
   INTELIGENCE: 0
-  AGILITY: 5
+  AGILITY: 2
   MINDMG: 1
   MAXDMG: 2
   MINMAGIC: 0
@@ -26,7 +26,7 @@ MonoBehaviour:
   globalCooldown: 0.5
   Health: 0
   Mana: 0
-  Gold: 100
+  Gold: 5
   VISUAL_MODEL: {fileID: 6034981805155526121, guid: 239d8e772cd7d314c8875cfef13df7e6,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}

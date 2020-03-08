@@ -12,21 +12,21 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
   m_Name: BurningArrow
   m_EditorClassIdentifier: 
-  ITEMNAME: BurningArrow
+  ITEMNAME: Fire Arrow
   DESCRIPTION: Magical Arrow that deals damage and applies a Burning debuff
   ITEM_TYPE: 5
   ITEM_CLASS: 2
   STRENGHT: 0
   INTELIGENCE: 0
-  AGILITY: 0
-  MINDMG: 0
-  MAXDMG: 0
+  AGILITY: 1
+  MINDMG: 1
+  MAXDMG: 2
   MINMAGIC: 1
-  MAXMAGIC: 10
+  MAXMAGIC: 2
   globalCooldown: 0
   Health: 0
   Mana: 0
-  Gold: 100
+  Gold: 1
   VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: 82fca50084cb55e46919cefc13fcb457, type: 3}

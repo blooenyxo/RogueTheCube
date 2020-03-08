@@ -99,6 +99,8 @@ public class Item_Drop_Eq : Item_Drop
         if (equipment == null)
             equipment = Stats_Player.instance.gameObject.GetComponent<Controller_Equipment_Player>();
 
+
+        //Debug.Log(equipment);
         equipment.Equip(localStoredItem, index);
         equipment.EquipItemGameObject(go, index);
     }

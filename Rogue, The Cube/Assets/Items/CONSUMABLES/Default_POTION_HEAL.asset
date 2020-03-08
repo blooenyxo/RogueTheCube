@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
   m_Name: Default_POTION_HEAL
   m_EditorClassIdentifier: 
-  ITEMNAME: Potion of Healing
+  ITEMNAME: Small Potion of Healing
   DESCRIPTION: right click to gain health
   ITEM_TYPE: 4
   ITEM_CLASS: 3
@@ -26,7 +26,7 @@ MonoBehaviour:
   globalCooldown: 0
   Health: 10
   Mana: 0
-  Gold: 100
+  Gold: 1
   VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: fd136431a4a5aea41b010358d03311a3, type: 3}

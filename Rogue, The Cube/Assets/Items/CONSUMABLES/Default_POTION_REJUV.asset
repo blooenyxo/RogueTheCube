@@ -12,7 +12,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
   m_Name: Default_POTION_REJUV
   m_EditorClassIdentifier: 
-  ITEMNAME: Potion of Rejuvenation
+  ITEMNAME: Small Rejuvenation Potion
   DESCRIPTION: right click to gain health and mana
   ITEM_TYPE: 4
   ITEM_CLASS: 3
@@ -24,9 +24,9 @@ MonoBehaviour:
   MINMAGIC: 0
   MAXMAGIC: 0
   globalCooldown: 0
-  Health: 100
-  Mana: 100
-  Gold: 100
+  Health: 10
+  Mana: 10
+  Gold: 5
   VISUAL_MODEL: {fileID: 0}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: c19fdcfe7997c6144967507e797bc3a2, type: 3}

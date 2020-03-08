@@ -10,26 +10,27 @@ MonoBehaviour:
   m_Enabled: 1
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 30e39fb314390b04fac2714a36314495, type: 3}
-  m_Name: Default_CHEST_STR
+  m_Name: Default_WEAPON_STR
   m_EditorClassIdentifier: 
-  ITEMNAME: Basic Plate
+  ITEMNAME: Wooden Sword
   DESCRIPTION: 
-  ITEM_TYPE: 1
+  ITEM_TYPE: 2
   ITEM_CLASS: 0
-  STRENGHT: 5
+  STRENGHT: 2
   INTELIGENCE: 0
-  AGILITY: 2
-  MINDMG: 0
-  MAXDMG: 0
+  AGILITY: 0
+  MINDMG: 1
+  MAXDMG: 2
   MINMAGIC: 0
   MAXMAGIC: 0
-  globalCooldown: 0
+  globalCooldown: 0.5
   Health: 0
   Mana: 0
-  Gold: 100
-  VISUAL_MODEL: {fileID: 0}
+  Gold: 2
+  VISUAL_MODEL: {fileID: 4003179789905615893, guid: f7c4a4b00831ba64f8d9735dd6b78bc3,
+    type: 3}
   VISUAL_ARMOR: {fileID: 0}
-  sprite: {fileID: 21300000, guid: 1ff0878bdc2419e49829c88083c0363e, type: 3}
+  sprite: {fileID: 21300000, guid: 5e3ea35cc885c71458316f7ed70ecf2b, type: 3}
   stackable: 0
   TwoHandetWeapon: 0
   arrow: {fileID: 0}

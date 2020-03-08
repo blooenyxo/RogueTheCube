@@ -87,6 +87,7 @@ MonoBehaviour:
   pickupPanelOpen: 0
   inventoryPanelOpen: 0
   npcPanelOpen: 0
+  pauseMenuOpen: 0
   interactionLayer:
     serializedVersion: 2
     m_Bits: 65536

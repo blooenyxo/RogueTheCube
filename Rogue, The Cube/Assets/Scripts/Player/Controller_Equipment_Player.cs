@@ -34,7 +34,7 @@ public class Controller_Equipment_Player : Controller_Equipment
     /// <param name="index">index of the item. used for choosing in which slot to equip the item</param>
     public override void Equip(Item newItem, int index)
     {
-
+        //Debug.Log("equipping " + newItem.ITEMNAME);
         Item oldItem = null;
 
         if (currentEquipment[index] != null)
@@ -48,7 +48,6 @@ public class Controller_Equipment_Player : Controller_Equipment
             oldItem = null;
         }
         currentEquipment[index] = newItem;
-
         onEquipmentChange?.Invoke(newItem, oldItem);
     }
 

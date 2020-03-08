@@ -72,7 +72,7 @@ public class StartGame : MonoBehaviour
     public IEnumerator LoadGame()
     {
         // Set Class
-        switch (PlayerPrefs.GetInt("playerClass", 0))
+        switch (PlayerPrefs.GetInt("PlayerClass", 0))
         {
             case 0:
                 stats_player.STRENGHT.AddModifier(3);

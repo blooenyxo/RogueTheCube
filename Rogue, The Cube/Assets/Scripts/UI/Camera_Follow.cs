@@ -31,8 +31,8 @@ public class Camera_Follow : MonoBehaviour
             if (GameObject.FindGameObjectWithTag("Player"))
                 target = GameObject.FindGameObjectWithTag("Player").transform;
 
-        currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
-        currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
+        //currentZoom -= Input.GetAxis("Mouse ScrollWheel") * zoomSpeed;
+        //currentZoom = Mathf.Clamp(currentZoom, minZoom, maxZoom);
 
         // if a ui element is opened, the mouse pointer is visible and can be used to interact with things on screen
         if (target != null)

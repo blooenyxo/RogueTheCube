@@ -5,14 +5,16 @@ public class LootBox_Controller : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
     public Animator animator;
+    public bool despawn = true;
 
     private void Start()
     {
-        Destroy(gameObject, 120f);
+        if (despawn)
+            Destroy(gameObject, 120f);
     }
     private void Update()
     {
-        if (items.Count <= 0)
+        if (items.Count <= 0 && despawn)
         {
             Destroy(gameObject, .5f);
         }

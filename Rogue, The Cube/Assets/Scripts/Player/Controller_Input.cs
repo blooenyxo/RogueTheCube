@@ -74,6 +74,8 @@ public class Controller_Input : MonoBehaviour
             if (NearbyInteraction().CompareTag("NPC"))
             {
                 SwitchNPCPanelState();
+                ui_input.OpenPlayerPanel();
+                inventoryPanelOpen = true;
             }
             else if (NearbyInteraction().CompareTag("LootBox"))
             {

@@ -232,7 +232,7 @@ public class Controller_Input : MonoBehaviour
 
         if (!Input.GetButton("Run"))
         {
-            statsPlayer.GainStamina(1);
+            statsPlayer.GainStamina(Mathf.CeilToInt(1 * Time.deltaTime));
         }
 
         Move(h, v);

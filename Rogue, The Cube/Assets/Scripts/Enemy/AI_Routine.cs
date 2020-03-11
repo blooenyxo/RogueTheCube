@@ -71,6 +71,7 @@ public class AI_Routine : MonoBehaviour
         }
 
         CheckNearby();
+        GetComponent<Stats>().GainStamina(Mathf.CeilToInt(1 * Time.deltaTime));
     }
 
     /// <summary>

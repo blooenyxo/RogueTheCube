@@ -13,7 +13,7 @@ public class Enemy_Spawner : MonoBehaviour
     private GameObject spawnedGameObject;
     private int rnd;
     private GameObject player;
-    private EnemyResourcePanel erp;
+    public EnemyResourcePanel erp;
 
     public float respawnCooldown;
     private float time;
@@ -29,7 +29,7 @@ public class Enemy_Spawner : MonoBehaviour
             SpawnGameObject();
         }
 
-        erp = GameObject.Find("EnemyResourcesPanel").GetComponent<EnemyResourcePanel>();
+        //erp = GameObject.Find("EnemyResourcesPanel").GetComponent<EnemyResourcePanel>();
     }
 
     private void LateUpdate()

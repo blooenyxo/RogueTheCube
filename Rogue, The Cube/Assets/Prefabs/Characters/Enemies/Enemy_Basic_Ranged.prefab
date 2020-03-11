@@ -182,7 +182,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   currentState: 3
-  detectionSphereRadius: 40
+  detectionSphereRadius: 25
   stopingTime: 2
   globalColldown: 2
   patrolRadius: 20

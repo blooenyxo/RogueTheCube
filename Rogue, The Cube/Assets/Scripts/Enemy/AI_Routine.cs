@@ -36,7 +36,7 @@ public class AI_Routine : MonoBehaviour
         spawnLocation = this.transform.parent.position;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = GetComponent<Stats>().MOVESPEED.GetValue();
-        agent.angularSpeed = GetComponent<Stats>().MOVESPEED.GetValue() * 100f;
+        agent.angularSpeed = GetComponent<Stats>().MOVESPEED.GetValue() * 10f;
         currentState = AI_STATE.IDLE;
     }
 

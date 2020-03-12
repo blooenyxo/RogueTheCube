@@ -200,7 +200,7 @@ public class Controller_Input : MonoBehaviour
             if (Input.GetButton("Run"))
             {
                 //Debug.Log("running");
-                if (statsPlayer.UseStamina(Mathf.CeilToInt(1 * Time.deltaTime)))
+                if (statsPlayer.UseStamina(/*Mathf.CeilToInt(1f * Time.deltaTime)*/ 1))
                 {
                     _speedModifyer = speedModifyer;
                     statsPlayer.onResourcesChanged.Invoke();
@@ -232,7 +232,7 @@ public class Controller_Input : MonoBehaviour
 
         if (!Input.GetButton("Run"))
         {
-            statsPlayer.GainStamina(Mathf.CeilToInt(1 * Time.deltaTime));
+            statsPlayer.GainStamina(Mathf.CeilToInt(100 * Time.deltaTime));
         }
 
         Move(h, v);

@@ -9,7 +9,6 @@ public enum AI_STATE { IDLE, MOVING, ATTACK, PICKLOCATION, INTERACT };
 /// </summary>
 public class AI_Routine : MonoBehaviour
 {
-    public AI_STATE currentState;
     public int detectionSphereRadius;
     public float stopingTime;
 
@@ -30,6 +29,8 @@ public class AI_Routine : MonoBehaviour
     private bool spottedNearbyCharacter = false;
     private GameObject target;
     private bool newLocation = false;
+    [HideInInspector] public bool staticEnemy;
+    [HideInInspector] public AI_STATE currentState;
 
     private void Start()
     {
@@ -103,7 +104,8 @@ public class AI_Routine : MonoBehaviour
     {
         newLocation = false;
         agent.stoppingDistance = 0f;
-        agent.SetDestination(positionToMoveTo);
+        if (!staticEnemy)
+            agent.SetDestination(positionToMoveTo);
         currentState = AI_STATE.MOVING;
     }
 

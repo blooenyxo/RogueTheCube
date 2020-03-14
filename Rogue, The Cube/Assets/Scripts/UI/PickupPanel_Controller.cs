@@ -11,25 +11,22 @@ public class PickupPanel_Controller : MonoBehaviour
     {
         foreach (Item item in lootBox.GetComponent<LootBox_Controller>().items)
         {
-            CreateItem(item);
+            CreateItem(item, lootBox);
         }
         loadedInPanel = true;
     }
 
-    void CreateItem(Item item)
+    void CreateItem(Item item, GameObject lootBox)
     {
-        foreach (Transform slot in slots)
+        for (int i = 0; i < slots.Length; i++)
         {
-            if (slot.childCount == 0)
+            if (slots[i].childCount == 0)
             {
-                GameObject _ui_item = Instantiate(UI_Item, slot.transform.position, slot.transform.rotation, slot);
+                GameObject _ui_item = Instantiate(UI_Item, slots[i].transform.position, slots[i].transform.rotation, slots[i]);
                 _ui_item.GetComponent<Item_UI>().item = item;
 
-                if (item.ITEM_TYPE == ITEMTYPE.ARROW || item.ITEM_TYPE == ITEMTYPE.CONSUMABLE)
-                    _ui_item.GetComponent<Item_UI>().stacks = Mathf.RoundToInt(Random.Range(0, 20));
-
-                if (item.ITEM_TYPE == ITEMTYPE.GOLD)
-                    _ui_item.GetComponent<Item_UI>().stacks = item.Gold;
+                if (item.ITEM_TYPE == ITEMTYPE.ARROW || item.ITEM_TYPE == ITEMTYPE.CONSUMABLE || item.ITEM_TYPE == ITEMTYPE.GOLD)
+                    _ui_item.GetComponent<Item_UI>().stacks = lootBox.GetComponent<LootBox_Controller>().stacks[i];
 
                 _ui_item.GetComponent<Item_UI>().UpdateItemVisuals();
                 return;

@@ -8,7 +8,7 @@ public class Item_Controller : MonoBehaviour
     public int maxNrOfHighTierItems;
     public int maxNrOfConsumablesItems;
     public int maxNrOfspecialItems;
-    public Item GoldToDrop;
+    //public Item GoldToDrop;
 
     public int chanceToDropLootbox;
 
@@ -34,7 +34,10 @@ public class Item_Controller : MonoBehaviour
             GameObject lb = Instantiate(GetComponent<Equipment_Visual_Enemy>().lootBox, this.transform.position, this.transform.rotation);
 
             int random = Random.Range(0, Drop().Count);
+
             List<Item> tempList = new List<Item>();
+
+            List<int> tempStacks = new List<int>();
 
             for (int i = 0; i < random; i++)
             {
@@ -42,8 +45,29 @@ public class Item_Controller : MonoBehaviour
                 tempList.Add(Drop()[random_]);
             }
 
+
+            for (int j = 0; j < tempList.Count; j++)
+            {
+                tempStacks.Add(0);
+            }
+
+
+            for (int j = 0; j < tempList.Count; j++)
+            {
+                if (tempList[j].ITEM_TYPE == ITEMTYPE.ARROW || tempList[j].ITEM_TYPE == ITEMTYPE.CONSUMABLE)
+                {
+                    tempStacks[j] = Random.Range(1, 11);
+                }
+
+                if (tempList[j].ITEM_TYPE == ITEMTYPE.GOLD)
+                {
+                    tempStacks[j] = Random.Range(1, 51);
+                }
+            }
+
             // add a gold item from a list of gold items, or set a random range here !!! currently every mob drops the 500 goldpile item;
-            lb.GetComponent<LootBox_Controller>().items.Add(GoldToDrop);
+            //lb.GetComponent<LootBox_Controller>().items.Add(GoldToDrop);
+            lb.GetComponent<LootBox_Controller>().stacks = tempStacks;
             lb.GetComponent<LootBox_Controller>().items.AddRange(tempList);
         }
     }

@@ -6,16 +6,23 @@
 /// </summary>
 public class Enemy_Spawner : MonoBehaviour
 {
+    [Header("gameObjects")]
     public GameObject[] Enemies;
+    public EnemyResourcePanel resourcePannel;
+
+    [Header("ints")]
+    public float respawnCooldown;
     public float spawnDistantce;
+
+    [Header("bools")]
+    public bool staticEnemy;
     public bool respawn = false;
+
+
 
     private GameObject spawnedGameObject;
     private int rnd;
     private GameObject player;
-    public EnemyResourcePanel erp;
-
-    public float respawnCooldown;
     private float time;
     private bool enemyDied;
 
@@ -28,8 +35,6 @@ public class Enemy_Spawner : MonoBehaviour
         {
             SpawnGameObject();
         }
-
-        //erp = GameObject.Find("EnemyResourcesPanel").GetComponent<EnemyResourcePanel>();
     }
 
     private void LateUpdate()
@@ -45,7 +50,7 @@ public class Enemy_Spawner : MonoBehaviour
             if (spawnedGameObject == null && respawn && Vector3.Distance(this.transform.position, player.transform.position) > spawnDistantce && Time.time > time)
             {
                 SpawnGameObject();
-                erp.SubscribeToEvents();
+                resourcePannel.SubscribeToEvents();
                 enemyDied = false;
             }
         }
@@ -61,5 +66,6 @@ public class Enemy_Spawner : MonoBehaviour
         rnd = Random.Range(0, Enemies.Length);
         spawnedGameObject = Instantiate(Enemies[rnd], this.transform.position, Quaternion.identity);
         spawnedGameObject.transform.SetParent(this.transform);
+        spawnedGameObject.GetComponent<AI_Routine>().staticEnemy = staticEnemy;
     }
 }

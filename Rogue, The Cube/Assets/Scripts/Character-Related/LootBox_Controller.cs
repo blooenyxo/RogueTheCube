@@ -4,11 +4,13 @@ using UnityEngine;
 public class LootBox_Controller : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
-    public Animator animator;
+    public List<int> stacks = new List<int>();
+    private Animator animator;
     public bool despawn = true;
 
     private void Start()
     {
+        animator = GetComponent<Animator>();
         if (despawn)
             Destroy(gameObject, 120f);
     }
@@ -20,9 +22,10 @@ public class LootBox_Controller : MonoBehaviour
         }
     }
 
-    public void RemoveItemFromList(Item item)
+    public void RemoveItemFromList(Item item, int stackValue)
     {
         items.Remove(item);
+        stacks.Remove(stackValue);
     }
 
     public void LootboxOpen()

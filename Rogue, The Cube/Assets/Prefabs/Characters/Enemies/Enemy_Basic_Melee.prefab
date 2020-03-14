@@ -129,7 +129,7 @@ MonoBehaviour:
     type: 3}
   gainManaEffect: {fileID: 5095024198059562127, guid: 08690b3c7082b88419cf3f52208f4de5,
     type: 3}
-  lootBox: {fileID: 4504357921252825845, guid: 619ecc4a39709bb4a86540f0b4978510, type: 3}
+  lootBox: {fileID: 1952308493306199778, guid: 8e7a776c0ce73164a8fdad30784d65b0, type: 3}
   equipment: {fileID: 0}
 --- !u!114 &-2385801666593161806
 MonoBehaviour:
@@ -181,7 +181,6 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 4fe5aff195029ca47ac9da89477a8350, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  currentState: 3
   detectionSphereRadius: 25
   stopingTime: 2
   globalColldown: 2
@@ -190,6 +189,8 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 8192
+  staticEnemy: 0
+  currentState: 3
 --- !u!195 &5301184627081013385
 NavMeshAgent:
   m_ObjectHideFlags: 0
@@ -227,10 +228,9 @@ MonoBehaviour:
   maxNrOfLowTierItems: 3
   maxNrOfMediumTierItems: 0
   maxNrOfHighTierItems: 0
-  maxNrOfConsumablesItems: 1
+  maxNrOfConsumablesItems: 5
   maxNrOfspecialItems: 0
-  GoldToDrop: {fileID: 11400000, guid: 425fe6f9bda30304ca4e65ceb7a4d659, type: 2}
-  chanceToDropLootbox: 50
+  chanceToDropLootbox: 100
 --- !u!114 &6647370555679260768
 MonoBehaviour:
   m_ObjectHideFlags: 0

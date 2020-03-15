@@ -29,15 +29,16 @@ public class AI_Routine : MonoBehaviour
     private bool spottedNearbyCharacter = false;
     private GameObject target;
     private bool newLocation = false;
-    [HideInInspector] public bool staticEnemy;
-    [HideInInspector] public AI_STATE currentState;
+
+    public bool staticEnemy;
+    public AI_STATE currentState;
 
     private void Start()
     {
         spawnLocation = this.transform.parent.position;
         agent = GetComponent<NavMeshAgent>();
         agent.speed = GetComponent<Stats>().MOVESPEED.GetValue();
-        agent.angularSpeed = GetComponent<Stats>().MOVESPEED.GetValue() * 10f;
+        agent.angularSpeed = GetComponent<Stats>().MOVESPEED.GetValue() * 50f;
         currentState = AI_STATE.IDLE;
     }
 
@@ -83,7 +84,15 @@ public class AI_Routine : MonoBehaviour
     {
         spottedNearbyCharacter = false;
         agent.isStopped = false;
-        currentState = AI_STATE.PICKLOCATION;
+
+        if (staticEnemy)
+        {
+            agent.SetDestination(spawnLocation);
+        }
+        else if (!staticEnemy)
+        {
+            currentState = AI_STATE.PICKLOCATION;
+        }
     }
 
     /// <summary>
@@ -104,8 +113,7 @@ public class AI_Routine : MonoBehaviour
     {
         newLocation = false;
         agent.stoppingDistance = 0f;
-        if (!staticEnemy)
-            agent.SetDestination(positionToMoveTo);
+        agent.SetDestination(positionToMoveTo);
         currentState = AI_STATE.MOVING;
     }
 
@@ -208,8 +216,6 @@ public class AI_Routine : MonoBehaviour
         {
             currentState = AI_STATE.IDLE;
         }
-
-        spottedNearbyCharacter = false;
     }
     private void LookAt(GameObject target)
     {

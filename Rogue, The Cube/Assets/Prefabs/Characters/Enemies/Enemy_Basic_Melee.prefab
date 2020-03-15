@@ -230,6 +230,10 @@ MonoBehaviour:
   maxNrOfHighTierItems: 0
   maxNrOfConsumablesItems: 5
   maxNrOfspecialItems: 0
+  minConsumablesStacks: 1
+  maxConsumablesStacks: 5
+  minGoldStacks: 10
+  maxGoldStacks: 50
   chanceToDropLootbox: 100
 --- !u!114 &6647370555679260768
 MonoBehaviour:

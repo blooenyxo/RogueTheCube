@@ -39,7 +39,7 @@ public class Stats_Enemy : Stats
 
     public override void Die()
     {
-        GetComponent<Item_Controller>().SetLootBoxAndItems();
+        GetComponent<LootDrop_Controller>().SetLootBoxAndItems();
         onEnemyDeath?.Invoke();
         base.Die();
     }

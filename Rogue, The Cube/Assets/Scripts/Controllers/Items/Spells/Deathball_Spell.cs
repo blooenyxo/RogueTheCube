@@ -3,26 +3,26 @@
 /// <summary>
 /// keep this script simple. if we need DOT damage, maybe consider making a secondary method, OnTriggerStay() for that.
 /// </summary>
-public class Controller_StaffProjectile : Controller_Projectile
+public class Deathball_Spell : Controller_Spell
 {
     public override void Start()
     {
         base.Start();
-        speed = Mathf.RoundToInt(stats.INTELIGENCE.GetValue());
         rb.AddForce(transform.forward * speed, ForceMode.Force);
+        Destroy(gameObject, 5f);
     }
 
     private void OnTriggerEnter(Collider other)
     {
         if (other.gameObject.GetComponent<Stats>() && !other.gameObject.CompareTag(parentTag))
         {
-            int dmg = stats.DealMagicDamage();
+            int dmg = casterStats.DealMagicDamage();
             other.gameObject.GetComponent<Stats>().TakeDamage(dmg);
             other.gameObject.GetComponent<Equipment_Visual>().HitMarker(other.gameObject.transform.position);
 
             // apply buff
-            if (buff != null)
-                other.gameObject.GetComponent<Controller_Buffs>().AddBuff(buff);
+            if (spell.buff != null)
+                other.gameObject.GetComponent<Controller_Buffs>().AddBuff(spell.buff);
         }
         else if (other.gameObject.CompareTag("Environment") && destroyOnWallhit)
         {
@@ -38,7 +38,7 @@ public class Controller_StaffProjectile : Controller_Projectile
             {
                 if (other.gameObject.GetComponent<Stats>() && !other.gameObject.CompareTag(parentTag))
                 {
-                    int dmg = stats.DealMagicDamage();
+                    int dmg = casterStats.DealMagicDamage();
                     other.gameObject.GetComponent<Stats>().TakeDamage(dmg);
                     other.gameObject.GetComponent<Equipment_Visual>().HitMarker(other.gameObject.transform.position);
                     nextTime = Time.time + interval;

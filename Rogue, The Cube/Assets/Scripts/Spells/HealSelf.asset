@@ -13,7 +13,13 @@ MonoBehaviour:
   m_Name: HealSelf
   m_EditorClassIdentifier: 
   title: HealSelf
+  spellType: 1
+  spellTarget: 1
+  spellMode: 0
   manaCost: 5
-  attacking: 0
-  healing: 1
-  channeled: 0
+  interactWithWalls: 0
+  castInterval: 0
+  damageOverTime: 0
+  interval: 0
+  visualModel: {fileID: 0}
+  buff: {fileID: 11400000, guid: 6864b880b61467541b0c04fa2faaa312, type: 2}

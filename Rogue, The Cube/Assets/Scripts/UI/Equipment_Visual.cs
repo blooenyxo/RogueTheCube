@@ -31,7 +31,7 @@ public abstract class Equipment_Visual : MonoBehaviour
             {
                 Destroy(weapon);
             }
-            else if (oldItem.ITEM_TYPE == ITEMTYPE.OFFHAND)
+            else if (oldItem.ITEM_TYPE == ITEMTYPE.OFFHAND || oldItem.ITEM_TYPE == ITEMTYPE.SPELL)
             {
                 Destroy(offhand);
             }
@@ -48,7 +48,7 @@ public abstract class Equipment_Visual : MonoBehaviour
                 weapon = Instantiate(newItem.VISUAL_MODEL, rightHandPoint.transform.position, rightHandPoint.transform.rotation);
                 weapon.transform.SetParent(rightHandPoint.transform);
             }
-            else if (newItem.ITEM_TYPE == ITEMTYPE.OFFHAND)
+            else if (newItem.ITEM_TYPE == ITEMTYPE.OFFHAND || newItem.ITEM_TYPE == ITEMTYPE.SPELL)
             {
                 // here add what to do when you add in the offhand slot a different Arrow type
                 offhand = Instantiate(newItem.VISUAL_MODEL, leftHandPoint.transform.position, rightHandPoint.transform.rotation);

@@ -1,18 +1,24 @@
 ﻿using UnityEngine;
 
-[CreateAssetMenu(fileName = "New Item", menuName = "ScriptableObject/Spell")]
+public enum SpellType { attacking, healing, protection }
+public enum SpellTarget { other, self }
+public enum SpellMode { normal, channeled }
 
+[CreateAssetMenu(fileName = "New Item", menuName = "ScriptableObject/Spell")]
 public class Spell : ScriptableObject
 {
     [Header("Name")]
     public string title;
 
+    [Header("Type of Spell")]
+    public SpellType spellType;
+    public SpellTarget spellTarget;
+    public SpellMode spellMode;
+
     [Header("Values")]
     public int manaCost;
-    public bool attacking;
-    public bool healing;
-    public bool channeled;
     public bool interactWithWalls;
+    public float castInterval;
 
     [Header("Damage Over Time")]
     public bool damageOverTime;

@@ -1,8 +1,10 @@
 ﻿using System.Collections;
+using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.AI;
 
 public enum AI_STATE { IDLE, MOVING, ATTACK, PICKLOCATION, INTERACT };
+public enum AI_ROLE { OFFENSIVE, DEFENSIVE }
 
 /// <summary>
 /// this class controls all the behaviour the enemy character does. this should include only the basic stuff, applicable to all types of enemies.
@@ -26,12 +28,18 @@ public class AI_Routine : MonoBehaviour
 
     private NavMeshAgent agent;
     private Vector3 spawnLocation;
-    private bool spottedNearbyCharacter = false;
+    //private bool spottedNearbyCharacter = false;
     private GameObject target;
     private bool newLocation = false;
+    public float manaGain;
+    private float _manaGain;
+    public float staminaGain;
+    private float _staminaGain;
+    private float nextTime;
 
     public bool staticEnemy;
     public AI_STATE currentState;
+    public AI_ROLE enemyRole;
 
     private void Start()
     {
@@ -46,8 +54,10 @@ public class AI_Routine : MonoBehaviour
     /// a basic state machine, using a switch statement. 
     /// on top of that, every check will also look for nearby interactions
     /// </summary>
-    private void Update()
+    private void LateUpdate()
     {
+
+        /*
         switch (currentState)
         {
             case AI_STATE.ATTACK:
@@ -71,9 +81,94 @@ public class AI_Routine : MonoBehaviour
                 Idle();
                 break;
         }
+        */
 
-        CheckNearby();
-        GetComponent<Stats>().GainStamina(Mathf.CeilToInt(1 * Time.deltaTime));
+
+        // Check Nearby
+        switch (enemyRole)
+        {
+            case AI_ROLE.OFFENSIVE:
+                List<GameObject> tmp_PlayerGameObjectsList = new List<GameObject>();
+                tmp_PlayerGameObjectsList.AddRange(NearbyCharacters("Player"));
+
+                if (tmp_PlayerGameObjectsList.Count > 0)
+                {
+                    target = tmp_PlayerGameObjectsList[0];
+                    currentState = AI_STATE.ATTACK;
+                }
+                break;
+            case AI_ROLE.DEFENSIVE:
+
+                List<GameObject> tmp_FriendlyGameObjectsList = new List<GameObject>();
+                tmp_FriendlyGameObjectsList.AddRange(NearbyCharacters("Enemy"));
+
+                if (tmp_FriendlyGameObjectsList.Count > 0)
+                {
+                    foreach (GameObject friendlyEnemy in tmp_FriendlyGameObjectsList)
+                    {
+                        if (friendlyEnemy.GetComponent<Stats>().CurrentHealth < friendlyEnemy.GetComponent<Stats>().HITPOINTS.GetValue())
+                        {
+                            target = friendlyEnemy;
+                            currentState = AI_STATE.INTERACT;
+                            Interact();
+                        }
+                        else
+                        {
+                            target = null;
+                            currentState = AI_STATE.IDLE;
+                            Idle();
+                        }
+                    }
+                }
+                break;
+            default:
+                break;
+        }
+
+        #region Resource Management
+        // resource management / gain back stamina and mana
+        _staminaGain += 1 * Time.deltaTime;
+        if (_staminaGain >= staminaGain)
+        {
+            GetComponent<Stats>().GainStamina(1);
+            _staminaGain = 0f;
+        }
+
+        _manaGain += 1 * Time.deltaTime;
+        if (_manaGain >= manaGain)
+        {
+            GetComponent<Stats>().GainMana(1);
+            _manaGain = 0f;
+        }
+        #endregion
+
+    }
+
+    // Attack Routines
+    private void NormalAttack()
+    {
+        if (GetComponentInChildren<Controller_Weapon>())
+            GetComponentInChildren<Controller_Weapon>().BaseAttack();
+    }
+    private void SpecialAttack()
+    {
+        if (GetComponentInChildren<Controller_Weapon>())
+            GetComponentInChildren<Controller_Weapon>().SpecialAttack();
+    }
+    private void UseOffhand()
+    {
+        if (Time.time > nextTime)
+        {
+
+            if (GetComponentInChildren<Controller_Offhand>())
+            {
+                GetComponentInChildren<Controller_Offhand>().target = target;
+                GetComponentInChildren<Controller_Offhand>().UseOffhand();
+            }
+
+            nextTime = Time.time + GameManager.globalCooldown;
+
+        }
     }
 
     /// <summary>
@@ -82,16 +177,14 @@ public class AI_Routine : MonoBehaviour
     /// </summary>
     private void Idle()
     {
-        spottedNearbyCharacter = false;
+        //spottedNearbyCharacter = false;
         agent.isStopped = false;
+        agent.SetDestination(spawnLocation);
 
-        if (staticEnemy)
-        {
-            agent.SetDestination(spawnLocation);
-        }
-        else if (!staticEnemy)
+        if (!staticEnemy)
         {
             currentState = AI_STATE.PICKLOCATION;
+            MoveToLocation(PickLocation());
         }
     }
 
@@ -137,48 +230,27 @@ public class AI_Routine : MonoBehaviour
     }
 
     /// <summary>
-    /// set the GameObject target to a value, based on the surrounding characters using the NearbyCharacters() function
-    /// </summary>
-    private void CheckNearby()
-    {
-        if (NearbyCharacters("Player"))
-        {
-            target = NearbyCharacters("Player");
-            currentState = AI_STATE.ATTACK;
-        }
-        else
-        {
-            target = null;
-        }
-
-        if (target == null && spottedNearbyCharacter == true)
-        {
-            currentState = AI_STATE.IDLE;
-        }
-    }
-
-    /// <summary>
     /// returns a gameobject based on the surrounding characters, using a basic system to prioritise the player character above the rest
     /// this is not a great method. maybe figure a way to only use layers, and ignore tags.
     /// rethink this proces...
+    /// update:
+    /// this returns a list of gameobjects of given tags. i think this looks good now
     /// </summary>
-    /// <returns>GameObject used to be stored into the target variable</returns>
-    private GameObject NearbyCharacters(string _tag)
+    /// <returns>GameObject List of all nearby Characters based on a given tag</returns>
+    private List<GameObject> NearbyCharacters(string _tag)
     {
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, detectionSphereRadius, targetLayer);
+        List<GameObject> gameObjectsInRangeOfGivenTag = new List<GameObject>();
 
-        if (hitColliders.Length > 0)
+        foreach (Collider col in hitColliders)
         {
-            foreach (Collider col in hitColliders)
+            if (col.CompareTag(_tag))
             {
-                if (col.CompareTag(_tag))
-                {
-                    spottedNearbyCharacter = true;
-                    return col.gameObject;
-                }
+                gameObjectsInRangeOfGivenTag.Add(col.gameObject);
             }
         }
-        return null;
+
+        return gameObjectsInRangeOfGivenTag;
     }
 
     /// <summary>
@@ -197,9 +269,7 @@ public class AI_Routine : MonoBehaviour
                 agent.isStopped = true;
                 if (Time.time > cooldown)
                 {
-                    if (GetComponentInChildren<Controller_Weapon>())
-                        GetComponentInChildren<Controller_Weapon>().BaseAttack();
-
+                    NormalAttack();
                     cooldown = Time.time + globalColldown;
                 }
             }
@@ -215,6 +285,7 @@ public class AI_Routine : MonoBehaviour
         else if (target == null)
         {
             currentState = AI_STATE.IDLE;
+            Idle();
         }
     }
     private void LookAt(GameObject target)
@@ -230,7 +301,7 @@ public class AI_Routine : MonoBehaviour
         {
             if (hit.transform.CompareTag("Player"))
             {
-                Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.white);
+                //Debug.DrawRay(transform.position, transform.TransformDirection(Vector3.forward) * hit.distance, Color.white);
                 return true;
             }
             else
@@ -244,15 +315,9 @@ public class AI_Routine : MonoBehaviour
 
     private void Interact()
     {
-        agent.stoppingDistance = attackDistance;
-
-        if (target != null)
-        {
-            agent.SetDestination(target.transform.position);
-            LookAt(target);
-        }
-        else if (target == null)
-            currentState = AI_STATE.IDLE;
+        // branch here if you need for multiple Enemy defensive actions
+        UseOffhand();
+        currentState = AI_STATE.IDLE;
     }
 
     public void Stop()

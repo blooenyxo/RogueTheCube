@@ -23,6 +23,12 @@ public class Stats_Enemy : Stats
         onEnemyHit?.Invoke(CurrentHealth, HITPOINTS.GetValue(), this.gameObject);
     }
 
+    public override void Heal(int value)
+    {
+        base.Heal(value);
+        onEnemyHit?.Invoke(CurrentHealth, HITPOINTS.GetValue(), this.gameObject);
+    }
+
     public override void SetMovespeed(int value)
     {
         base.SetMovespeed(value);

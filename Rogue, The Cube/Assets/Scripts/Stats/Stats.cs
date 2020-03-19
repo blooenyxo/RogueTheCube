@@ -115,13 +115,12 @@ public class Stats : MonoBehaviour
 
     public virtual bool UseMana(int value)
     {
-        CurrentMana -= value;
-        if (CurrentMana < 0)
+        if (CurrentMana >= value)
         {
-            CurrentMana = 0;
-            return false;
+            CurrentMana -= value;
+            return true;
         }
-        return true;
+        return false;
     }
     public virtual void Die()
     {

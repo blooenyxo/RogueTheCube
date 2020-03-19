@@ -43,18 +43,41 @@ public class Controller_Input : MonoBehaviour
                 GetComponentInChildren<Controller_Weapon>().BaseAttack();
         }
 
+        if (Input.GetButtonDown("Fire2") && !EventSystem.current.IsPointerOverGameObject())
+        {
+            if (GetComponentInChildren<Controller_Offhand>())
+                GetComponentInChildren<Controller_Offhand>().UseOffhand();
+        }
+
+        if (Input.GetButtonUp("Fire2") && !EventSystem.current.IsPointerOverGameObject())
+        {
+            if (GetComponentInChildren<Controller_Offhand>())
+                GetComponentInChildren<Controller_Offhand>().ReleaseOffhand();
+        }
+
+        #region Special Input
+        /*
+
+        ?&
+
         if (Input.GetButton("Fire2") && !EventSystem.current.IsPointerOverGameObject())
         {
-            if (equipment.currentEquipment[2] != null && equipment.currentEquipment[2].TwoHandetWeapon == true)
-            {
-                if (GetComponentInChildren<Controller_Weapon>())
-                    GetComponentInChildren<Controller_Weapon>().SpecialAttack();
-            }
-            else if (equipment.currentEquipment[2] == null || equipment.currentEquipment[2].TwoHandetWeapon == false)
-            {
-                if (GetComponentInChildren<Controller_Offhand>())
-                    GetComponentInChildren<Controller_Offhand>().UseOffhand();
-            }
+
+            // i dont think this one will work. need a rework on this system, always use the offhand controller. should be easyer
+
+            //if (equipment.currentEquipment[2] != null && equipment.currentEquipment[2].TwoHandetWeapon == true)
+            //{
+            //    if (GetComponentInChildren<Controller_Weapon>())
+            //        GetComponentInChildren<Controller_Weapon>().SpecialAttack();
+            //}
+            //else if (equipment.currentEquipment[2] == null || equipment.currentEquipment[2].TwoHandetWeapon == false)
+            //{
+            //    if (GetComponentInChildren<Controller_Offhand>())
+            //        GetComponentInChildren<Controller_Offhand>().UseOffhand();
+            //}
+
+            if (GetComponentInChildren<Controller_Offhand>())
+                GetComponentInChildren<Controller_Offhand>().UseOffhand();
         }
         else if (Input.GetButtonUp("Fire2") && !EventSystem.current.IsPointerOverGameObject())
         {
@@ -68,6 +91,9 @@ public class Controller_Input : MonoBehaviour
                     GetComponentInChildren<Controller_Offhand>().ReleaseOffhand();
             }
         }
+
+        */
+        #endregion
 
         if (Input.GetButtonDown("Interact") && NearbyInteraction() != null)
         {

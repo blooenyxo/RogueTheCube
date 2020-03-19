@@ -7,9 +7,9 @@ public class Camera_Follow : MonoBehaviour
 
     public Vector3 offset;
     public float pitch = 2f;
-    float zoomSpeed = 5f;
-    [SerializeField] private float minZoom = 3f;
-    [SerializeField] private float maxZoom = 20f;
+    //float zoomSpeed = 5f;
+    //[SerializeField] private float minZoom = 3f;
+    //[SerializeField] private float maxZoom = 20f;
     public float currentZoom = 10f;
 
     public float currentYaw = 0f;

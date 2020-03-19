@@ -13,7 +13,7 @@ public class Controller_Arrow : Controller_Projectile
         //if (speed == 0)
         //    speed = Mathf.RoundToInt(stats.AGILITY.GetValue() * 2f);
 
-        speed = 50; // testing out the fixed arrod speed 
+        speed = 50; // testing out the fixed arrow speed 
 
         // speed cannot be greater then 50
         if (speed > 50)

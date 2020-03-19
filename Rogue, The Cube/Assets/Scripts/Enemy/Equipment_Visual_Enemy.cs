@@ -13,10 +13,11 @@ public class Equipment_Visual_Enemy : Equipment_Visual
 
         if (equipment != null)
         {
-            if (equipment.currentEquipment[2] != null)
-                UpdateVisuals(equipment.currentEquipment[2], null);
-            if (equipment.currentEquipment[1] != null)
-                UpdateVisuals(equipment.currentEquipment[1], null);
+            for (int i = 0; i <= 3; i++)
+            {
+                if (equipment.currentEquipment[i] != null)
+                    UpdateVisuals(equipment.currentEquipment[i], null);
+            }
         }
     }
 

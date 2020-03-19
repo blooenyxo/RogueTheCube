@@ -1,0 +1,26 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 1798e3503136cb046b1c5934e53c2424, type: 3}
+  m_Name: HealTarget
+  m_EditorClassIdentifier: 
+  title: Healing Wave
+  spellType: 1
+  spellTarget: 0
+  spellMode: 0
+  manaCost: 10
+  interactWithWalls: 0
+  castInterval: 1
+  damageOverTime: 0
+  interval: 0
+  visualModel: {fileID: 5044236553359929592, guid: df3def9df7ce3ff45b3a3cdc4e58d127,
+    type: 3}
+  buff: {fileID: 11400000, guid: 6864b880b61467541b0c04fa2faaa312, type: 2}

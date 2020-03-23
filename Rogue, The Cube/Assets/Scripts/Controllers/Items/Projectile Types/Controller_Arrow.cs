@@ -55,7 +55,6 @@ public class Controller_Arrow : Controller_Projectile
                     {
                         collision.gameObject.GetComponent<Controller_Buffs>().AddBuff(buff);
                     }
-
                     int dmg = stats.DealMagicDamage();
                     collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
                 }
@@ -64,7 +63,6 @@ public class Controller_Arrow : Controller_Projectile
                     int dmg = stats.DealDamage();
                     collision.gameObject.GetComponent<Stats>().TakeDamage(dmg);
                     collision.gameObject.GetComponent<Equipment_Visual>().HitMarker(collision.GetContact(0).point);
-
                 }
             }
             canDoDamage = false;

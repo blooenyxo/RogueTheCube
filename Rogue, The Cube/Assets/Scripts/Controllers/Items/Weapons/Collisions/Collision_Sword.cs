@@ -37,10 +37,7 @@ public class Collision_Sword : MonoBehaviour
                     }
 
                     StartCoroutine(GetComponentInParent<Controller_Sword>().ParryAttack());
-                    if (GetComponentInParent<AI_Routine>())
-                    {
-                        GetComponentInParent<AI_Routine>().Stop();
-                    }
+                    // Enemy parry animation EXTRAS go here !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
 
                     //Debug.Log("Parry");
                     canDoDamage = false;

@@ -96,7 +96,6 @@ public class Controller_Buffs : MonoBehaviour
         }
     }
 
-
     // all the new buff types only need to be added here for the effect to work. the ui is managed on the resourcepanel scripts
     public void Execute(Buff buffToExecute)
     {

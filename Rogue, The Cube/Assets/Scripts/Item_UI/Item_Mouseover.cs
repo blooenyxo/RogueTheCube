@@ -5,18 +5,33 @@ public class Item_Mouseover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 {
 
     public GameObject tooltip;
-    public CanvasGroup _canvasGroup;
+    private CanvasGroup _canvasGroup;
+
+    private bool mouseOver = false;
+    private float fadeSpeed = 10f;
 
     private void Start()
     {
         _canvasGroup = tooltip.GetComponent<CanvasGroup>();
     }
+
+    private void Update()
+    {
+        if (mouseOver)
+        {
+            FadeIn();
+        }
+        else
+        {
+            FadeOut();
+        }
+    }
+
     public void OnPointerEnter(PointerEventData eventData)
     {
-        if (this.GetComponent<Item_UI>().item.ITEM_TYPE != ITEMTYPE.GOLD)
-            _canvasGroup.alpha = 1f;
+        mouseOver = true;
 
-        if (this.transform.parent.CompareTag("Shop") || this.transform.parent.CompareTag("EquipmentSlot"))
+        if (this.transform.parent.CompareTag("Shop") /*|| this.transform.parent.CompareTag("EquipmentSlot")*/)
         {
             GetComponent<Item_Drag>().enabled = false;
         }
@@ -24,10 +39,20 @@ public class Item_Mouseover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
 
     public void OnPointerExit(PointerEventData eventData)
     {
-        if (this.GetComponent<Item_UI>().item.ITEM_TYPE != ITEMTYPE.GOLD)
-            _canvasGroup.alpha = 0f;
-
+        mouseOver = false;
 
         GetComponent<Item_Drag>().enabled = true;
+    }
+
+    void FadeIn()
+    {
+        if (_canvasGroup.alpha < 1f)
+            _canvasGroup.alpha += fadeSpeed * Time.deltaTime;
+    }
+
+    void FadeOut()
+    {
+        if (_canvasGroup.alpha > 0f)
+            _canvasGroup.alpha -= fadeSpeed * Time.deltaTime;
     }
 }

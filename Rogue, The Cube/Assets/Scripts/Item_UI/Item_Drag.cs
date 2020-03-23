@@ -68,8 +68,11 @@ public class Item_Drag : MonoBehaviour, IEndDragHandler, IDragHandler, IBeginDra
         {
             if (_currentParent == parent)
             {
+                // this is the place where it breaks. when item goes back to the same slot
                 if (parent.GetComponent<Item_Drop_Eq>())
-                    parent.GetComponent<Item_Drop_Eq>().EquipItem(this.gameObject);
+                {
+                    //parent.GetComponent<Item_Drop_Eq>().EquipItem();
+                }
             }
             //ClearDropZones();
             this.transform.SetParent(parent);

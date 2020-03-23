@@ -13,7 +13,7 @@ MonoBehaviour:
   m_Name: SimpleHOT
   m_EditorClassIdentifier: 
   title: SimpleHOT
-  buffValue: 5
+  buffValue: 1
   harmfull: 0
   healing: 1
   damage: 0

@@ -25,11 +25,12 @@ public class Attacking : StateMachineBehaviour
 
             if (Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) <= c_ai.attackingDistance)
             {
-                agent.isStopped = true;
                 LookAt(c_ai.mainTarget.gameObject);
 
                 if (ForwardRay("Player"))
                 {
+                    agent.isStopped = true;
+
                     if (animator.GetComponentInChildren<Controller_Weapon>())
                         animator.GetComponentInChildren<Controller_Weapon>().BaseAttack();
                 }
@@ -41,7 +42,7 @@ public class Attacking : StateMachineBehaviour
         }
         else if (c_ai.mainTarget == null)
         {
-
+            animator.SetTrigger("isReseting");
         }
     }
 

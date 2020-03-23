@@ -66,5 +66,6 @@ public class Enemy_Spawner : MonoBehaviour
         rnd = Random.Range(0, Enemies.Length);
         spawnedGameObject = Instantiate(Enemies[rnd], this.transform.position, Quaternion.identity);
         spawnedGameObject.transform.SetParent(this.transform);
+        spawnedGameObject.GetComponent<Controller_AI>().staticEnemy = staticEnemy;
     }
 }

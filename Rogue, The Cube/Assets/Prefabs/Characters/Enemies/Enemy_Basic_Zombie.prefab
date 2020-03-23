@@ -55,7 +55,7 @@ GameObject:
   m_Layer: 12
   m_Name: Enemy_Basic_Zombie
   m_TagString: Enemy
-  m_Icon: {fileID: 0}
+  m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
   m_IsActive: 1
@@ -285,9 +285,10 @@ MonoBehaviour:
   targetLayer:
     serializedVersion: 2
     m_Bits: 12288
-  mainTarget: {fileID: 0}
   attackingDistance: 1.5
   enemyType: 0
+  mainTarget: {fileID: 0}
+  staticEnemy: 0
   staminaEverySeconds: 0
   staminGainAmmount: 0
   manaEverySeconds: 0

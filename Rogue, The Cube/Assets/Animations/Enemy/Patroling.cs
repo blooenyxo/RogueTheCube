@@ -11,18 +11,15 @@ public class Patroling : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponent<NavMeshAgent>();
-        Vector3 newPosition = animator.transform.parent.position + new Vector3(UnityEngine.Random.Range(-patrolRadius, patrolRadius), 1.5f, UnityEngine.Random.Range(-patrolRadius, patrolRadius));
+        Vector3 newPosition = animator.transform.parent.position + new Vector3(UnityEngine.Random.Range(-patrolRadius, patrolRadius), animator.transform.position.y, UnityEngine.Random.Range(-patrolRadius, patrolRadius));
 
-        if (Vector3.Distance(animator.transform.position, newPosition) >= 2)
-            agent.SetDestination(newPosition);
-        else
-            animator.SetBool("isPatroling", false);
+        agent.SetDestination(newPosition);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-        if (agent.remainingDistance <= 1f)
+        if (agent.remainingDistance <= 2f)
         {
             animator.SetBool("isPatroling", false);
         }

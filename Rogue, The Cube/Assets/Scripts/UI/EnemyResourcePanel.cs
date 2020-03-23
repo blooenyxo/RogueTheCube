@@ -44,7 +44,7 @@ public class EnemyResourcePanel : MonoBehaviour
         stats_Enemy = enemyHolder.GetComponentsInChildren<Stats_Enemy>();
         foreach (Stats_Enemy se in stats_Enemy)
         {
-            se.onEnemyHit += AdjustValues;
+            se.onEnemyHealthChange += AdjustValues;
             se.onEnemyDeath += EmptyBuffList;
         }
     }

@@ -17,7 +17,8 @@ public class Idle : StateMachineBehaviour
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         // do something here other then just start moving :D 
-        animator.SetBool("isPatroling", true);
+        if (!animator.GetComponent<Controller_AI>().staticEnemy)
+            animator.SetBool("isPatroling", true);
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state

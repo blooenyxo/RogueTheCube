@@ -71,4 +71,5 @@ public class NPCPanel_Controller : MonoBehaviour
             }
         }
     }
+
 }

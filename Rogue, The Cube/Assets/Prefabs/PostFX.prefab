@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 6723409978308245818}
   - component: {fileID: 6723409978308245819}
-  m_Layer: 19
+  m_Layer: 17
   m_Name: PostFX
   m_TagString: Untagged
   m_Icon: {fileID: 1206586993520771344, guid: 0000000000000000d000000000000000, type: 0}

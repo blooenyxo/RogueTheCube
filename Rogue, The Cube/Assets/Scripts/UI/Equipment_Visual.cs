@@ -38,10 +38,10 @@ public abstract class Equipment_Visual : MonoBehaviour
         }
         else
         {
-            //if (newItem == oldItem)
-            //{
-            //    return;
-            //}
+            if (newItem == oldItem)
+            {
+                return;
+            }
 
             if (newItem.ITEM_TYPE == ITEMTYPE.WEAPON)
             {

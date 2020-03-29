@@ -3,19 +3,38 @@ using UnityEngine;
 
 public class LootDrop_Controller : MonoBehaviour
 {
-    public int maxNrOfLowTierItems;
-    public int maxNrOfMediumTierItems;
-    public int maxNrOfHighTierItems;
-    public int maxNrOfConsumablesItems;
-    public int maxNrOfspecialItems;
+    [HideInInspector] public int maxNrOfLowTierItems;
+    [HideInInspector] public int maxNrOfMediumTierItems;
+    [HideInInspector] public int maxNrOfHighTierItems;
 
-    public int minConsumablesStacks;
-    public int maxConsumablesStacks;
+    [HideInInspector] public int maxNrOfConsumablesItems;
+    [HideInInspector] public int minConsumablesStacks;
+    [HideInInspector] public int maxConsumablesStacks;
 
-    public int minGoldStacks;
-    public int maxGoldStacks;
+    [HideInInspector] public int maxNrOfSpecialItems;
+    [HideInInspector] public int minGoldStacks;
+    [HideInInspector] public int maxGoldStacks;
 
-    public int chanceToDropLootbox;
+    [HideInInspector] public int chanceToDropLootbox;
+
+    [HideInInspector] public Enemy enemy;
+
+    public void SetValues()
+    {
+        maxNrOfLowTierItems = enemy.maxNrLowTierItems;
+        maxNrOfMediumTierItems = enemy.maxNrMediumTierItems;
+        maxNrOfHighTierItems = enemy.maxNrHighTierItems;
+
+        maxNrOfConsumablesItems = enemy.maxNrConsumableItems;
+        minConsumablesStacks = enemy.minNrConsumableStacks;
+        maxConsumablesStacks = enemy.maxNrConsumableStacks;
+
+        maxNrOfSpecialItems = enemy.maxNrSpecialItems;
+        minGoldStacks = enemy.minGoldStacks;
+        maxGoldStacks = enemy.maxGoldStacks;
+
+        chanceToDropLootbox = enemy.chanceToDropLoot;
+    }
 
     public List<Item> Drop()
     {
@@ -24,7 +43,7 @@ public class LootDrop_Controller : MonoBehaviour
         allItems.AddRange(ItemDistriburion.instance.PickItems(maxNrOfMediumTierItems, ItemDistriburion.instance.MediumTierItems));
         allItems.AddRange(ItemDistriburion.instance.PickItems(maxNrOfHighTierItems, ItemDistriburion.instance.HighTierItems));
         allItems.AddRange(ItemDistriburion.instance.PickItems(maxNrOfConsumablesItems, ItemDistriburion.instance.Consumables));
-        allItems.AddRange(ItemDistriburion.instance.PickItems(maxNrOfspecialItems, ItemDistriburion.instance.SpecialItem));
+        allItems.AddRange(ItemDistriburion.instance.PickItems(maxNrOfSpecialItems, ItemDistriburion.instance.SpecialItem));
 
         return allItems;
     }

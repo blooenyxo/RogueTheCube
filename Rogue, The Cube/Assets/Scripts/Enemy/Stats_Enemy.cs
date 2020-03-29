@@ -9,6 +9,19 @@ public class Stats_Enemy : Stats
     public delegate void OnEnemyDeath(GameObject deadEnemy);
     public OnEnemyDeath onEnemyDeath;
 
+    [HideInInspector] public Enemy enemy;
+
+    public void SetValues()
+    {
+        STRENGHT.AddModifier(enemy.STRENGHT);
+        INTELIGENCE.AddModifier(enemy.INTELIGENCE);
+        AGILITY.AddModifier(enemy.AGILITY);
+        HITPOINTS.AddModifier(enemy.HITPOINTS);
+        MANAPOINTS.AddModifier(enemy.MANAPOINTS);
+        MOVESPEED.AddModifier(enemy.MOVESPEED);
+        STAMINA.AddModifier(enemy.STAMINA);
+    }
+
     public override void Start()
     {
         base.Start();
@@ -27,6 +40,8 @@ public class Stats_Enemy : Stats
     {
         base.Heal(value);
         onEnemyHealthChange?.Invoke(CurrentHealth, HITPOINTS.GetValue(), this.gameObject);
+        GameObject tmp = Instantiate(GetComponent<Equipment_Visual>().healingEffect, this.transform.position, this.transform.rotation);
+        tmp.transform.SetParent(this.transform);
     }
 
     public override void SetMovespeed(int value)

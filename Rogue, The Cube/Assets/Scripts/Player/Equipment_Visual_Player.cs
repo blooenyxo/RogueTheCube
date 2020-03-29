@@ -4,6 +4,7 @@
     public override void Start()
     {
         base.Start();
+        SetValues();
         equipment = Stats_Player.instance.gameObject.GetComponent<Controller_Equipment_Player>();
         equipment.onEquipmentChange += UpdateVisuals;
     }

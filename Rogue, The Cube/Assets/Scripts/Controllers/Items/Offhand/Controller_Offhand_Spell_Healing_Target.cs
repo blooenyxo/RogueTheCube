@@ -6,9 +6,9 @@ public class Controller_Offhand_Spell_Healing_Target : Controller_Offhand_Spell
     {
         base.CastSpell();
 
-        target.GetComponent<Stats>().Heal(Mathf.CeilToInt((Random.Range(stats.MINMAGIC.GetValue(), stats.MAXMAGIC.GetValue()) + stats.INTELIGENCE.GetValue())));
+        target.GetComponentInParent<Stats>().Heal(Mathf.CeilToInt((Random.Range(stats.MINMAGIC.GetValue(), stats.MAXMAGIC.GetValue()) + stats.INTELIGENCE.GetValue())));
         if (spell.buff != null)
-            target.GetComponent<Controller_Buffs>().AddBuff(spell.buff);
+            target.GetComponentInParent<Controller_Buffs>().AddBuff(spell.buff);
 
     }
 }

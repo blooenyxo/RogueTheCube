@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4369ba3e166e7364a885adb40c0cb71d, type: 3}
+  m_Name: BasicArcher
+  m_EditorClassIdentifier: 
+  title: Bowy
+  description: 
+  STRENGHT: 0
+  INTELIGENCE: 0
+  AGILITY: 3
+  HITPOINTS: 10
+  MANAPOINTS: 0
+  MOVESPEED: 4
+  STAMINA: 30
+  headGear: {fileID: 0}
+  chestGear: {fileID: 0}
+  weapon: {fileID: 11400000, guid: bda34e2dc8df7b848a0e5943c846fdf0, type: 2}
+  offhand: {fileID: 0}
+  baseEnemyGameObject: {fileID: 3591082380441925013, guid: bec3089f22c75e94089ac8f2393a7ab3,
+    type: 3}
+  visualModel: {fileID: 3710000997795581929, guid: 70360ae18bf2c5f4faccf2fafed8d749,
+    type: 3}
+  maxNrLowTierItems: 0
+  maxNrMediumTierItems: 0
+  maxNrHighTierItems: 0
+  maxNrConsumableItems: 0
+  minNrConsumableStacks: 0
+  maxNrConsumableStacks: 0
+  maxNrSpecialItems: 0
+  minGoldStacks: 0
+  maxGoldStacks: 0
+  chanceToDropLoot: 0
+  enemyType: 0
+  detectionSphereRadius: 20
+  attackingDistance: 10
+  staminaEverySeconds: 1
+  staminGainAmmount: 5
+  manaEverySeconds: 0
+  manaGainAmmount: 0

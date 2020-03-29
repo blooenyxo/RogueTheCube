@@ -12,11 +12,11 @@ public class Controller_Bow : Controller_Weapon
 
     public override void BaseAttack()
     {
-        if (Time.time > cooldown)
+        if (Time.time > cooldown && stats.UseStamina(10))
         {
             base.BaseAttack();
             CreateArrow(baseArrow);
-            cooldown = Time.time + globalCooldown;
+            cooldown = Time.time + GameManager.globalCooldown;
         }
     }
 
@@ -31,6 +31,6 @@ public class Controller_Bow : Controller_Weapon
         GameObject prj = Instantiate(visualModel, firePoint.transform.position, firePoint.transform.rotation);
         Controller_Projectile c_p = prj.GetComponent<Controller_Projectile>();
         c_p.stats = stats;
-        c_p.parentTag = transform.parent.tag;
+        c_p.parentTag = transform.parent.parent.tag;  // TODO : maybe think about a better way to fix this. seems loose...
     }
 }

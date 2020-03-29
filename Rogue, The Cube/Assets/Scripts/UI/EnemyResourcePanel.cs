@@ -55,7 +55,7 @@ public class EnemyResourcePanel : MonoBehaviour
         hpSlider.minValue = 0f;
         hpSlider.maxValue = maxHealth;
         hpSlider.value = currentHealth;
-        enemyName.text = enemyGameObject.tag;
+        enemyName.text = enemyGameObject.name;
         timer = Time.time + coolDown;
         hpBar.color = hpGradient.Evaluate(hpSlider.normalizedValue);
 

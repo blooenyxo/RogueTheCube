@@ -2,14 +2,13 @@
 
 public abstract class Equipment_Visual : MonoBehaviour
 {
-    [Header("Equipment Slots")]
-    public GameObject rightHandPoint;
-    public GameObject leftHandPoint;
-    public GameObject headPoint;
+    private GameObject headPoint;
+    private GameObject chestPoint;
+    private GameObject rightHandPoint;
+    private GameObject leftHandPoint;
 
-    [Header("On Death")]
-    public GameObject deathBody;
-    public GameObject aliveBody;
+    [HideInInspector] public GameObject deathBody;
+    [HideInInspector] public GameObject aliveBody;
 
     [Header("Hit Marker")]
     public GameObject hitMarker;
@@ -18,10 +17,23 @@ public abstract class Equipment_Visual : MonoBehaviour
     public GameObject healingEffect;
     public GameObject gainManaEffect;
 
-    GameObject weapon;
-    GameObject offhand;
+    private GameObject helmet;
+    private GameObject chest;
+    private GameObject weapon;
+    private GameObject offhand;
 
     public virtual void Start() { }
+
+    public void SetValues()
+    {
+        headPoint = GetComponentInChildren<Controller_Character_Body>().headPoint;
+        chestPoint = GetComponentInChildren<Controller_Character_Body>().chestPoint;
+        rightHandPoint = GetComponentInChildren<Controller_Character_Body>().rightHandPoint;
+        leftHandPoint = GetComponentInChildren<Controller_Character_Body>().leftHandPoint;
+
+        deathBody = GetComponentInChildren<Controller_Character_Body>().deathBody;
+        aliveBody = GetComponentInChildren<Controller_Character_Body>().gameObject;
+    }
 
     public virtual void UpdateVisuals(Item newItem, Item oldItem)
     {

@@ -19,8 +19,8 @@ MonoBehaviour:
   damage: 0
   movementImpairing: 0
   movementImpairingValue: 0
-  duration: 5
-  interval: 0.5
+  duration: 10
+  interval: 1
   visualEffect: {fileID: 1397096933702881623, guid: 4a05d78d6c4e0d44cac4ab76a889258c,
     type: 3}
   sprite: {fileID: 21300000, guid: 11a7f19e0a4d9dd41a12ed2b308618d7, type: 3}

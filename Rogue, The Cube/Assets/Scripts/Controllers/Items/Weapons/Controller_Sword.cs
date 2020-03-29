@@ -18,7 +18,7 @@ public class Controller_Sword : Controller_Weapon
             //StartCoroutine(AttackRoutine());
             GetComponentInChildren<Collision_Sword>().canDoDamage = true;
             animator.SetTrigger("normalAttack");
-            cooldown = Time.time + globalCooldown;
+            cooldown = Time.time + GameManager.globalCooldown;
         }
     }
 

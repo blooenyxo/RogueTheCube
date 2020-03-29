@@ -3,7 +3,6 @@
 public abstract class Controller_Weapon : MonoBehaviour
 {
     //[Header("Global Cooldown")]
-    [HideInInspector] public float globalCooldown;
     [HideInInspector] public Stats stats;
     [HideInInspector] public Controller_Equipment equipment;
     [HideInInspector] public string parentTag;
@@ -16,7 +15,6 @@ public abstract class Controller_Weapon : MonoBehaviour
         stats = GetComponentInParent<Stats>();
         equipment = GetComponentInParent<Controller_Equipment>();
         parentTag = transform.parent.parent.tag;
-        globalCooldown = equipment.currentEquipment[2].globalCooldown;
     }
 
     public virtual void BaseAttack() { }

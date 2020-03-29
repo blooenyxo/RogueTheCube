@@ -27,7 +27,7 @@ MonoBehaviour:
   Health: 0
   Mana: 0
   Gold: 2
-  VISUAL_MODEL: {fileID: 4150877012266153231, guid: ac42653db444e9a40b73838743de86bd,
+  VISUAL_MODEL: {fileID: 4150877012266153231, guid: 48294928a6508f8429b03d46f04c7d8c,
     type: 3}
   VISUAL_ARMOR: {fileID: 0}
   sprite: {fileID: 21300000, guid: 9aefe6a718fe1694c90039217ca585d6, type: 3}

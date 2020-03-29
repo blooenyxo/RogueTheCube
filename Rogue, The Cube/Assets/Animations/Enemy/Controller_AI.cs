@@ -6,27 +6,37 @@ public class Controller_AI : MonoBehaviour
 {
     private Animator animator;
 
-    public float detectionSphereRadius;
+    private float detectionSphereRadius;
     public LayerMask targetLayer;
-    public float attackingDistance;
-    public EnemyType enemyType;
+    [HideInInspector] public float attackingDistance;
+    private EnemyType enemyType;
 
-    public GameObject mainTarget;
+    [HideInInspector] public GameObject mainTarget;
     [HideInInspector] public bool staticEnemy;
 
-    [Header("Stamina Gain")]
-    public float staminaEverySeconds;
-    public int staminGainAmmount;
+    private float staminaEverySeconds;
+    private int staminGainAmmount;
     private float _timerStaminaGain;
 
-    [Header("Mana Gain")]
-    public float manaEverySeconds;
-    public int manaGainAmmount;
+    private float manaEverySeconds;
+    private int manaGainAmmount;
     private float _timerManaGain;
 
-    private Stats_Enemy enemyStats;
-    public bool isEngaged = false;
+    private Stats_Enemy enemyStats; // for maybe prioritising the most hurt enemy. expand later
+    [HideInInspector] public bool isEngaged = false;
 
+    [HideInInspector] public Enemy enemy;
+
+    public void SetValues()
+    {
+        detectionSphereRadius = enemy.detectionSphereRadius;
+        attackingDistance = enemy.attackingDistance;
+        enemyType = enemy.enemyType;
+        staminaEverySeconds = enemy.staminaEverySeconds;
+        staminGainAmmount = enemy.staminGainAmmount;
+        manaEverySeconds = enemy.manaEverySeconds;
+        manaGainAmmount = enemy.manaGainAmmount;
+    }
 
     private void Start()
     {
@@ -56,7 +66,7 @@ public class Controller_AI : MonoBehaviour
                     {
                         if (col.gameObject.CompareTag("Enemy"))
                         {
-                            if (col.gameObject.GetComponent<Stats>().CurrentHealth < col.gameObject.GetComponent<Stats>().HITPOINTS.GetValue())
+                            if (col.gameObject.GetComponentInParent<Stats>().CurrentHealth < col.gameObject.GetComponentInParent<Stats>().HITPOINTS.GetValue())
                             {
                                 mainTarget = col.gameObject;
                                 animator.SetTrigger("isHealing");
@@ -123,8 +133,8 @@ public class Controller_AI : MonoBehaviour
             {
                 if (collider.gameObject.CompareTag("Enemy"))
                 {
-                    collider.gameObject.GetComponent<Controller_AI>().mainTarget = target;
-                    collider.gameObject.GetComponent<Controller_AI>().animator.SetTrigger("isAttacking");
+                    collider.gameObject.GetComponentInParent<Controller_AI>().mainTarget = target;
+                    collider.gameObject.GetComponentInParent<Controller_AI>().animator.SetTrigger("isAttacking");
                 }
             }
         }

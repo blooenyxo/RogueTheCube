@@ -1,0 +1,48 @@
+%YAML 1.1
+%TAG !u! tag:unity3d.com,2011:
+--- !u!114 &11400000
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 0}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 4369ba3e166e7364a885adb40c0cb71d, type: 3}
+  m_Name: BasicMelee
+  m_EditorClassIdentifier: 
+  title: Swordy
+  description: 
+  STRENGHT: 3
+  INTELIGENCE: 0
+  AGILITY: 0
+  HITPOINTS: 10
+  MANAPOINTS: 0
+  MOVESPEED: 3
+  STAMINA: 100
+  headGear: {fileID: 11400000, guid: 05b231408bf3cdf4391e58f431d62b9d, type: 2}
+  chestGear: {fileID: 11400000, guid: d9bb35ffa96df794b8c37c9b62e712d2, type: 2}
+  weapon: {fileID: 11400000, guid: 8f511cb159422e5469021e592070f5eb, type: 2}
+  offhand: {fileID: 11400000, guid: 16072ef0bede0bf4bb011ce6f6a8ad66, type: 2}
+  baseEnemyGameObject: {fileID: 3591082380441925013, guid: bec3089f22c75e94089ac8f2393a7ab3,
+    type: 3}
+  visualModel: {fileID: 3710000997795581929, guid: 70360ae18bf2c5f4faccf2fafed8d749,
+    type: 3}
+  maxNrLowTierItems: 3
+  maxNrMediumTierItems: 0
+  maxNrHighTierItems: 0
+  maxNrConsumableItems: 3
+  minNrConsumableStacks: 1
+  maxNrConsumableStacks: 5
+  maxNrSpecialItems: 0
+  minGoldStacks: 10
+  maxGoldStacks: 50
+  chanceToDropLoot: 100
+  enemyType: 0
+  detectionSphereRadius: 20
+  attackingDistance: 3
+  staminaEverySeconds: 1
+  staminGainAmmount: 10
+  manaEverySeconds: 0
+  manaGainAmmount: 0

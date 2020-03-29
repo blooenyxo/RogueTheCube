@@ -103,7 +103,7 @@ public class EnemyResourcePanel : MonoBehaviour
         }
     }
 
-    private void EmptyBuffList()
+    private void EmptyBuffList(GameObject deadEnemy)
     {
         for (int i = 0; i < BuffBackgroundSlots.Length; i++)
         {

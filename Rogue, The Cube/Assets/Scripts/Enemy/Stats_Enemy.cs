@@ -6,7 +6,7 @@ public class Stats_Enemy : Stats
     public delegate void OnEnmeyHit(int cHealth, int mHealth, GameObject enemyGameObject);
     public OnEnmeyHit onEnemyHealthChange;
 
-    public delegate void OnEnemyDeath();
+    public delegate void OnEnemyDeath(GameObject deadEnemy);
     public OnEnemyDeath onEnemyDeath;
 
     public override void Start()
@@ -46,7 +46,7 @@ public class Stats_Enemy : Stats
     public override void Die()
     {
         GetComponent<LootDrop_Controller>().SetLootBoxAndItems();
-        onEnemyDeath?.Invoke();
+        onEnemyDeath?.Invoke(this.gameObject);
         base.Die();
     }
 }

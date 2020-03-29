@@ -23,7 +23,7 @@ public class Controller_Input : MonoBehaviour
     void Start()
     {
         ui_input = GameObject.Find("UI_Canvas").GetComponent<UI_Input>();
-        floorMask = LayerMask.GetMask("Floor");
+        floorMask = LayerMask.GetMask("CameraLook");
         statsPlayer = Stats_Player.instance;
         equipment = GetComponent<Controller_Equipment>();
         rb = GetComponent<Rigidbody>();
@@ -43,7 +43,7 @@ public class Controller_Input : MonoBehaviour
                 GetComponentInChildren<Controller_Weapon>().BaseAttack();
         }
 
-        if (Input.GetButtonDown("Fire2") && !EventSystem.current.IsPointerOverGameObject())
+        if (Input.GetButton("Fire2") && !EventSystem.current.IsPointerOverGameObject())
         {
             if (GetComponentInChildren<Controller_Offhand>())
                 GetComponentInChildren<Controller_Offhand>().UseOffhand();
@@ -293,7 +293,7 @@ public class Controller_Input : MonoBehaviour
         }
     }
 
-    public GameObject NearbyInteraction()
+    public GameObject NearbyInteraction() // return the closest collider to the sphere center
     {
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 1f, interactionLayer);
 

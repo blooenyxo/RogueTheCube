@@ -22,7 +22,7 @@ public class LootBox_Controller : MonoBehaviour
         }
     }
 
-    public void RemoveItemFromList(Item item, int stackValue)
+    public void RemoveItemFromList(Item item)
     {
         stacks.RemoveAt(items.IndexOf(item));
         items.Remove(item);

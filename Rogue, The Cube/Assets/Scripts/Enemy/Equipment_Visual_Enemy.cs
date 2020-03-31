@@ -5,9 +5,6 @@ public class Equipment_Visual_Enemy : Equipment_Visual
     [Header("Enemy Death")]
     public GameObject lootBox;
 
-    [Header("Body")]
-    public GameObject bodyGraphics;
-
     [HideInInspector] public Controller_Equipment equipment;
     //[HideInInspector] public Enemy enemy;
 

@@ -12,7 +12,7 @@ public class Controller_Bow : Controller_Weapon
 
     public override void BaseAttack()
     {
-        if (Time.time > cooldown && stats.UseStamina(10))
+        if (Time.time > cooldown && stats.UseStamina(staminaUse))
         {
             base.BaseAttack();
             CreateArrow(baseArrow);

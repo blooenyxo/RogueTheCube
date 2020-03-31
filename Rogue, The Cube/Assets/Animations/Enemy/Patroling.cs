@@ -11,6 +11,8 @@ public class Patroling : StateMachineBehaviour
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         agent = animator.GetComponent<NavMeshAgent>();
+        agent.speed = animator.GetComponent<Stats>().MOVESPEED.GetValue();
+
         Vector3 newPosition = animator.transform.parent.position + new Vector3(UnityEngine.Random.Range(-patrolRadius, patrolRadius), animator.transform.position.y, UnityEngine.Random.Range(-patrolRadius, patrolRadius));
 
         agent.SetDestination(newPosition);

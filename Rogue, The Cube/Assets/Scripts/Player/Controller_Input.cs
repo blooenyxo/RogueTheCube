@@ -20,6 +20,10 @@ public class Controller_Input : MonoBehaviour
     public float speedModifyer = 0f;
     private float _speedModifyer = 1f;
 
+    private float _timerStaminaGain;
+    public float staminaEverySeconds;
+    public int staminGainAmmount;
+
     void Start()
     {
         ui_input = GameObject.Find("UI_Canvas").GetComponent<UI_Input>();
@@ -226,7 +230,7 @@ public class Controller_Input : MonoBehaviour
             if (Input.GetButton("Run"))
             {
                 //Debug.Log("running");
-                if (statsPlayer.UseStamina(/*Mathf.CeilToInt(1f * Time.deltaTime)*/ 1))
+                if (statsPlayer.UseStamina(1))
                 {
                     _speedModifyer = speedModifyer;
                     statsPlayer.onResourcesChanged.Invoke();
@@ -258,7 +262,12 @@ public class Controller_Input : MonoBehaviour
 
         if (!Input.GetButton("Run"))
         {
-            statsPlayer.GainStamina(Mathf.CeilToInt(100 * Time.deltaTime));
+            _timerStaminaGain += 1 * Time.fixedDeltaTime;
+            if (_timerStaminaGain >= staminaEverySeconds)
+            {
+                GetComponent<Stats>().GainStamina(staminGainAmmount);
+                _timerStaminaGain = 0f;
+            }
         }
 
         Move(h, v);

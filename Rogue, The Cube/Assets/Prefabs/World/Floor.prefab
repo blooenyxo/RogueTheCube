@@ -17,7 +17,7 @@ GameObject:
   m_TagString: Floor
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 4294967263
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1678998219506738431
 Transform:
@@ -103,12 +103,12 @@ GameObject:
   m_Component:
   - component: {fileID: 1678998220581956022}
   - component: {fileID: 4009440854754498850}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: Floor
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1678998220581956022
 Transform:
@@ -160,7 +160,7 @@ GameObject:
   - component: {fileID: 4154091727838748571}
   - component: {fileID: 8902126865566686872}
   - component: {fileID: 3685419222023292695}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall Top
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -268,12 +268,12 @@ GameObject:
   - component: {fileID: 2011072260186389339}
   - component: {fileID: 6640610392456262308}
   - component: {fileID: 5515924855317173044}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: BottomCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &2011072260186389339
 Transform:
@@ -331,7 +331,7 @@ GameObject:
   - component: {fileID: 2497432393752771702}
   - component: {fileID: 6163549396451122670}
   - component: {fileID: 4683788445014229266}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall Bottom
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -437,12 +437,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 1850046648338243309}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Walls
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!4 &1850046648338243309
 Transform:
@@ -471,12 +471,12 @@ GameObject:
   serializedVersion: 6
   m_Component:
   - component: {fileID: 5142079152176240986}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: CheckPoints
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 0
 --- !u!4 &5142079152176240986
 Transform:
@@ -507,12 +507,12 @@ GameObject:
   - component: {fileID: 1215471393886545620}
   - component: {fileID: 4992702567342688489}
   - component: {fileID: 4842387656471142839}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: TopCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &1215471393886545620
 Transform:
@@ -570,7 +570,7 @@ GameObject:
   - component: {fileID: 4545104735822242525}
   - component: {fileID: 6805657369615078382}
   - component: {fileID: 9111617548927449028}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall Right
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -678,12 +678,12 @@ GameObject:
   - component: {fileID: 7711129808601378634}
   - component: {fileID: 766398846052663826}
   - component: {fileID: 6912747277934729595}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: RightCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &7711129808601378634
 Transform:
@@ -741,7 +741,7 @@ GameObject:
   - component: {fileID: 897749505253279933}
   - component: {fileID: 2724627909334889416}
   - component: {fileID: 7318206162585571209}
-  m_Layer: 10
+  m_Layer: 9
   m_Name: Wall Left
   m_TagString: Environment
   m_Icon: {fileID: 0}
@@ -849,12 +849,12 @@ GameObject:
   - component: {fileID: 4949430984087705685}
   - component: {fileID: 7420496271358036285}
   - component: {fileID: 1732061854355671461}
-  m_Layer: 0
+  m_Layer: 9
   m_Name: LeftCheckPoint
   m_TagString: Untagged
   m_Icon: {fileID: 7422848464349959988, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
-  m_StaticEditorFlags: 0
+  m_StaticEditorFlags: 4294967295
   m_IsActive: 1
 --- !u!4 &4949430984087705685
 Transform:

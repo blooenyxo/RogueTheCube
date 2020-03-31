@@ -8,7 +8,8 @@ public abstract class Controller_Offhand : MonoBehaviour
 
     public virtual void Start()
     {
-        parentTag = gameObject.transform.parent.tag;
+        parentTag = gameObject.transform.parent.parent.tag;
+        //this.transform.GetChild(0).tag = parentTag;
         stats = GetComponentInParent<Stats>();
     }
 

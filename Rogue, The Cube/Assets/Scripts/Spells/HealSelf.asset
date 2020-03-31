@@ -21,5 +21,6 @@ MonoBehaviour:
   castInterval: 0
   damageOverTime: 0
   interval: 0
-  visualModel: {fileID: 0}
+  visualModel: {fileID: 5044236553359929592, guid: 9d7a9d101eddbd2409b03a5572b09a0c,
+    type: 3}
   buff: {fileID: 11400000, guid: 6864b880b61467541b0c04fa2faaa312, type: 2}

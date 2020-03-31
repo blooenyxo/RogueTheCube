@@ -25,9 +25,7 @@ public class Controller_AI : MonoBehaviour
     private Stats_Enemy enemyStats; // for maybe prioritising the most hurt enemy. expand later
     [HideInInspector] public bool isEngaged = false;
 
-    [HideInInspector] public Enemy enemy;
-
-    public void SetValues()
+    public void SetValues(Enemy enemy)
     {
         detectionSphereRadius = enemy.detectionSphereRadius;
         attackingDistance = enemy.attackingDistance;

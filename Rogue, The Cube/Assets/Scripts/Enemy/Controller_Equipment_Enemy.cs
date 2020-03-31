@@ -2,9 +2,7 @@
 
 public class Controller_Equipment_Enemy : Controller_Equipment
 {
-    [HideInInspector] public Enemy enemy;
-
-    public void SetValues()
+    public void SetValues(Enemy enemy)
     {
         currentEquipment[0] = enemy.headGear;
         currentEquipment[1] = enemy.chestGear;

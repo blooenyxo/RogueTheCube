@@ -33,7 +33,7 @@ public class Stats : MonoBehaviour
     {
         CurrentHealth = HITPOINTS.GetValue();
         CurrentMana = MANAPOINTS.GetValue();
-        CurrentStamina = STAMINA.GetValue();
+        //CurrentStamina = STAMINA.GetValue();
         CurrentGold = GOLD.GetValue();
     }
 

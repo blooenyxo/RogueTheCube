@@ -9,9 +9,7 @@ public class Stats_Enemy : Stats
     public delegate void OnEnemyDeath(GameObject deadEnemy);
     public OnEnemyDeath onEnemyDeath;
 
-    [HideInInspector] public Enemy enemy;
-
-    public void SetValues()
+    public void SetValues(Enemy enemy)
     {
         STRENGHT.AddModifier(enemy.STRENGHT);
         INTELIGENCE.AddModifier(enemy.INTELIGENCE);

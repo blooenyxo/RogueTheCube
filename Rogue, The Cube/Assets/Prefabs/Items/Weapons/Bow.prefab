@@ -204,12 +204,12 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 7738bde0b45717b41afcaabcc3fea877, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  globalCooldown: 1
   stats: {fileID: 0}
   equipment: {fileID: 0}
   parentTag: 
   cooldown: 0
   animator: {fileID: 0}
+  staminaUse: 25
   baseArrow: {fileID: 6966743522659729518, guid: b27a9bab639c4b84bb0d95dbbc757f06,
     type: 3}
   firePoint: {fileID: 4544235955684237522}

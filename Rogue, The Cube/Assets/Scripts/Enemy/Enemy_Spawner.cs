@@ -6,64 +6,46 @@
 /// </summary>
 public class Enemy_Spawner : MonoBehaviour
 {
-    [Header("Enemy Array")]
     public Enemy[] Enemies;
 
-    [Header("ints")]
-    public float respawnCooldown;
-    public float spawnDistantce;
+    public float minRespawnCooldown;
 
-    [Header("bools")]
     public bool staticEnemy;
-    public bool respawn = false;
+    public bool respawn;
 
     private EnemyResourcePanel enemyResourcePanel;
     private GameObject spawnedGameObject;
-    private int rnd;
-    private GameObject player;
     private float time;
-    private bool enemyDied;
+
+    Stats_Enemy se;
 
     void Start()
     {
-        if (Stats_Player.instance)
-            player = Stats_Player.instance.gameObject;
-
         enemyResourcePanel = GameObject.Find("EnemyResourcesPanel").GetComponent<EnemyResourcePanel>();
-
-        if (Enemies[rnd] != null)
+        if (Enemies.Length > 0)
         {
             SpawnGameObject();
+            enemyResourcePanel.SubscribeToEvents();
         }
     }
 
     private void LateUpdate()
     {
-        if (player != null)
+        if (spawnedGameObject == null && respawn && Time.time > time)
         {
-            if (spawnedGameObject == null && !enemyDied)
-            {
-                time = Time.time + respawnCooldown;
-                enemyDied = true;
-            }
+            SpawnGameObject();
+            enemyResourcePanel.SubscribeToEvents();
+        }
+    }
 
-            if (spawnedGameObject == null && respawn && Vector3.Distance(this.transform.position, player.transform.position) > spawnDistantce && Time.time > time)
-            {
-                SpawnGameObject();
-                enemyResourcePanel.SubscribeToEvents();
-                enemyDied = false;
-            }
-        }
-        else
-        {
-            if (Stats_Player.instance)
-                player = Stats_Player.instance.gameObject;
-        }
+    private void SetRespawnTimer(GameObject deadEnemy)
+    {
+        time = Time.time + Random.Range(minRespawnCooldown, minRespawnCooldown * 2);
     }
 
     private void SpawnGameObject()
     {
-        rnd = Random.Range(0, Enemies.Length);
+        int rnd = Random.Range(0, Enemies.Length);
 
         spawnedGameObject = Instantiate(Enemies[rnd].baseEnemyGameObject, this.transform.position, Quaternion.identity);
         Instantiate(Enemies[rnd].visualModel, spawnedGameObject.transform);
@@ -73,20 +55,19 @@ public class Enemy_Spawner : MonoBehaviour
         //spawnedGameObject.tag = "Enemy";
         spawnedGameObject.name = Enemies[rnd].title;
 
-        spawnedGameObject.GetComponent<Stats_Enemy>().enemy = Enemies[rnd];
-        spawnedGameObject.GetComponent<Stats_Enemy>().SetValues();
-
-        spawnedGameObject.GetComponent<Controller_Equipment_Enemy>().enemy = Enemies[rnd];
-        spawnedGameObject.GetComponent<Controller_Equipment_Enemy>().SetValues();
+        spawnedGameObject.GetComponent<Stats_Enemy>().SetValues(Enemies[rnd]);
+        spawnedGameObject.GetComponent<Controller_Equipment_Enemy>().SetValues(Enemies[rnd]);
 
         spawnedGameObject.GetComponent<Equipment_Visual_Enemy>().SetValues();
         spawnedGameObject.GetComponent<Equipment_Visual_Enemy>().EnemyUpdateVisuals();
 
-        spawnedGameObject.GetComponent<LootDrop_Controller>().enemy = Enemies[rnd];
-        spawnedGameObject.GetComponent<LootDrop_Controller>().SetValues();
+        spawnedGameObject.GetComponent<LootDrop_Controller>().SetValues(Enemies[rnd]);
 
-        spawnedGameObject.GetComponent<Controller_AI>().enemy = Enemies[rnd];
-        spawnedGameObject.GetComponent<Controller_AI>().SetValues();
+        spawnedGameObject.GetComponent<Controller_AI>().SetValues(Enemies[rnd]);
         spawnedGameObject.GetComponent<Controller_AI>().staticEnemy = staticEnemy;
+
+
+        se = spawnedGameObject.GetComponent<Stats_Enemy>();
+        se.onEnemyDeath += SetRespawnTimer;
     }
 }

@@ -5,10 +5,12 @@ public abstract class Controller_Weapon : MonoBehaviour
     //[Header("Global Cooldown")]
     [HideInInspector] public Stats stats;
     [HideInInspector] public Controller_Equipment equipment;
-    [HideInInspector] public string parentTag;
+    public string parentTag;
     [HideInInspector] public float cooldown;
     //[Header("Components")]
     [HideInInspector] public Animator animator;
+
+    public int staminaUse;
 
     public virtual void Start()
     {

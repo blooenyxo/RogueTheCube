@@ -17,9 +17,7 @@ public class LootDrop_Controller : MonoBehaviour
 
     [HideInInspector] public int chanceToDropLootbox;
 
-    [HideInInspector] public Enemy enemy;
-
-    public void SetValues()
+    public void SetValues(Enemy enemy)
     {
         maxNrOfLowTierItems = enemy.maxNrLowTierItems;
         maxNrOfMediumTierItems = enemy.maxNrMediumTierItems;

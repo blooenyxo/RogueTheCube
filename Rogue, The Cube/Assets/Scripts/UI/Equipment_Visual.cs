@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System;
+using UnityEngine;
 
 public abstract class Equipment_Visual : MonoBehaviour
 {
@@ -33,6 +34,11 @@ public abstract class Equipment_Visual : MonoBehaviour
 
         deathBody = GetComponentInChildren<Controller_Character_Body>().deathBody;
         aliveBody = GetComponentInChildren<Controller_Character_Body>().gameObject;
+    }
+
+    internal void HitMarker(object point)
+    {
+        throw new NotImplementedException();
     }
 
     public virtual void UpdateVisuals(Item newItem, Item oldItem)

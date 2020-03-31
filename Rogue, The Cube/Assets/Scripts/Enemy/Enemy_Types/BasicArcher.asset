@@ -20,7 +20,7 @@ MonoBehaviour:
   HITPOINTS: 10
   MANAPOINTS: 0
   MOVESPEED: 4
-  STAMINA: 30
+  STAMINA: 50
   headGear: {fileID: 0}
   chestGear: {fileID: 0}
   weapon: {fileID: 11400000, guid: bda34e2dc8df7b848a0e5943c846fdf0, type: 2}

@@ -29,16 +29,16 @@ MonoBehaviour:
     type: 3}
   visualModel: {fileID: 3710000997795581929, guid: 70360ae18bf2c5f4faccf2fafed8d749,
     type: 3}
-  maxNrLowTierItems: 3
+  maxNrLowTierItems: 1
   maxNrMediumTierItems: 0
   maxNrHighTierItems: 0
-  maxNrConsumableItems: 3
+  maxNrConsumableItems: 1
   minNrConsumableStacks: 1
   maxNrConsumableStacks: 5
   maxNrSpecialItems: 0
   minGoldStacks: 10
   maxGoldStacks: 50
-  chanceToDropLoot: 100
+  chanceToDropLoot: 50
   enemyType: 0
   detectionSphereRadius: 20
   attackingDistance: 3

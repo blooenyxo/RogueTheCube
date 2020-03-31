@@ -1,36 +1,50 @@
-﻿using System.Collections;
-using UnityEngine;
+﻿using UnityEngine;
 
+/// <summary>
+/// the basic thing here is that we itterate the index of the attack array. if you dont attack for more then 1 second, the index goes back to 0;
+/// simole, easy. the collision in handled in the child (Collision_Sword)
+/// TODO: move player forward when attacking
+/// </summary>
 public class Controller_Sword : Controller_Weapon
 {
-    private bool swordParry;
+    private int currentAttackIndex = 0;
+    private float resetAttackOrderTime = 0;
+    private string[] attacks;
+    private Rigidbody parentRb;
 
     public override void Start()
     {
         base.Start();
+
+        parentRb = GetComponentInParent<Rigidbody>();
+
+        attacks = new string[3];
+        attacks[0] = "attack_0";
+        attacks[1] = "attack_1";
+        attacks[2] = "attack_2";
+    }
+
+    private void Update()
+    {
+        if (Time.time > resetAttackOrderTime)
+        {
+            currentAttackIndex = 0;
+        }
     }
 
     public override void BaseAttack()
     {
-        if (Time.time > cooldown && !swordParry && stats.UseStamina(40))
+        if (Time.time > cooldown && stats.UseStamina(staminaUse))
         {
+            if (currentAttackIndex == 2)
+                parentRb.AddForce(2 * (transform.forward  + transform.up), ForceMode.Impulse);
+
             base.BaseAttack();
-            //StartCoroutine(AttackRoutine());
-            GetComponentInChildren<Collision_Sword>().canDoDamage = true;
-            animator.SetTrigger("normalAttack");
+            animator.SetTrigger(PickAttack());
+
             cooldown = Time.time + GameManager.globalCooldown;
+            resetAttackOrderTime = Time.time + 1f;
         }
-    }
-
-    public override void SpecialAttack()
-    {
-        base.SpecialAttack();
-    }
-
-    private IEnumerator AttackRoutine()
-    {
-        animator.SetTrigger(PickAttack());
-        yield return new WaitForSeconds(.3f);
     }
 
     /// <summary>
@@ -39,20 +53,14 @@ public class Controller_Sword : Controller_Weapon
     /// <returns>the random animation to be played</returns>
     private string PickAttack()
     {
-        string[] attacks = new string[1];
-        //attacks[0] = "baseattack";
-        //attacks[1] = "base2attack";
-        attacks[0] = "base3attack";
-        int i = Random.Range(0, attacks.Length);
-        string _str = attacks[i];
-        return _str;
-    }
+        string _str = attacks[currentAttackIndex];
+        currentAttackIndex++;
 
-    public IEnumerator ParryAttack()
-    {
-        swordParry = true;
-        animator.SetTrigger("parry");
-        yield return new WaitForSeconds(2f);
-        swordParry = false;
+        if (currentAttackIndex >= attacks.Length)
+        {
+            currentAttackIndex = 0;
+        }
+
+        return _str;
     }
 }

@@ -1,16 +1,16 @@
 ﻿using UnityEngine;
-using UnityEngine.AI;
+//using UnityEngine.AI;
 
 public class Healing : StateMachineBehaviour
 {
     Controller_AI c_ai;
-    NavMeshAgent agent;
+    //NavMeshAgent agent;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         c_ai = animator.GetComponent<Controller_AI>();
-        agent = animator.GetComponent<NavMeshAgent>();
+        //agent = animator.GetComponent<NavMeshAgent>();
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -18,9 +18,9 @@ public class Healing : StateMachineBehaviour
     {
         if (c_ai.mainTarget != null)
         {
-            agent.SetDestination(c_ai.mainTarget.transform.position);
+            //agent.SetDestination(c_ai.mainTarget.transform.position);
 
-            if (agent.remainingDistance <= c_ai.attackingDistance)
+            if (Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) < c_ai.attackingDistance)
             {
                 if (animator.GetComponentInChildren<Controller_Offhand>())
                 {

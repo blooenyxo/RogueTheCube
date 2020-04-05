@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 7550001281671811917}
   - component: {fileID: 757179893540804169}
   - component: {fileID: 2808496724471986125}
-  m_Layer: 11
+  m_Layer: 8
   m_Name: Sphere
   m_TagString: Untagged
   m_Icon: {fileID: 0}
@@ -91,7 +91,7 @@ GameObject:
   - component: {fileID: 3734377110161521883}
   - component: {fileID: 3015689091311273281}
   - component: {fileID: 352099506966733303}
-  m_Layer: 0
+  m_Layer: 8
   m_Name: Deathball_Projectile
   m_TagString: Untagged
   m_Icon: {fileID: 0}

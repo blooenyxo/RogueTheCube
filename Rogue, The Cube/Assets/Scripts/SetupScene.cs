@@ -69,7 +69,7 @@ public class SetupScene : MonoBehaviour
         else if (weaponSelection.value == 3)
         {
             SetPlayerPrefsItems(30, 1, "Base Staff", 0);
-            SetPlayerPrefsItems(31, 1, "Deathball", 0);
+            SetPlayerPrefsItems(31, 1, "Fireball", 0);
         }
 
         SetPlayerPrefsItems(0, 1, "Small Potion of Healing", 5);

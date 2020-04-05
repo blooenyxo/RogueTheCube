@@ -41,7 +41,7 @@ MonoBehaviour:
   chanceToDropLoot: 50
   enemyType: 0
   detectionSphereRadius: 20
-  attackingDistance: 3
+  attackingDistance: 2
   staminaEverySeconds: 1
   staminGainAmmount: 10
   manaEverySeconds: 0

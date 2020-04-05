@@ -90,9 +90,9 @@ GameObject:
   - component: {fileID: 6182492217788549209}
   - component: {fileID: 8439318068475394312}
   - component: {fileID: 3940068675933822335}
-  m_Layer: 14
+  m_Layer: 8
   m_Name: Graphics
-  m_TagString: Untagged
+  m_TagString: Weapon
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -124,8 +124,8 @@ BoxCollider:
   m_IsTrigger: 1
   m_Enabled: 0
   serializedVersion: 2
-  m_Size: {x: 0.1, y: 2, z: 0.2}
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Size: {x: 0.12466678, y: 1.2565193, z: 0.24625021}
+  m_Center: {x: -0.0030833483, y: 0.6557858, z: -0.0015416741}
 --- !u!114 &3940068675933822335
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -138,6 +138,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 423ee5c8debaf8343a19bf97eabe03e4, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  parentStats: {fileID: 0}
+  parentTag: 
+  buff: {fileID: 0}
+  damageModifier: 1
 --- !u!1 &4003179789905615893
 GameObject:
   m_ObjectHideFlags: 0
@@ -202,11 +206,11 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 490781419a316da4d8be0b74fdd0485d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  stats: {fileID: 0}
-  equipment: {fileID: 0}
-  parentTag: 
-  cooldown: 0
   animator: {fileID: 578742463990597975}
+  parentStats: {fileID: 0}
+  parentTag: 
+  parentRigidbody: {fileID: 0}
+  equipment: {fileID: 0}
   staminaUse: 30
 --- !u!1 &5299986045380772736
 GameObject:

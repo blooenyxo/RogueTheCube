@@ -11,7 +11,7 @@ GameObject:
   - component: {fileID: 4163119413533250317}
   m_Layer: 12
   m_Name: LeftHandPoint
-  m_TagString: Sword Guy
+  m_TagString: Enemy
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -41,7 +41,7 @@ GameObject:
   - component: {fileID: 7538529534454627406}
   m_Layer: 12
   m_Name: HeadPoint
-  m_TagString: Sword Guy
+  m_TagString: Enemy
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
@@ -74,8 +74,11 @@ GameObject:
   - component: {fileID: -1640579114211302676}
   - component: {fileID: 8235879130252550997}
   - component: {fileID: 6689095536401054613}
+  - component: {fileID: 7918072727500752562}
+  - component: {fileID: -6564480058154897155}
+  - component: {fileID: 8058713618499967676}
   m_Layer: 12
-  m_Name: baseCharacterCube
+  m_Name: baseCharacterCube_Enemy
   m_TagString: Enemy
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -124,7 +127,7 @@ MeshRenderer:
   m_RenderingLayerMask: 1
   m_RendererPriority: 0
   m_Materials:
-  - {fileID: 2100000, guid: e9034e7b39084134da400420eb73207d, type: 2}
+  - {fileID: 2100000, guid: d57a1daa227de0e4592b0713f6b015de, type: 2}
   m_StaticBatchInfo:
     firstSubMesh: 0
     subMeshCount: 0
@@ -169,7 +172,7 @@ BoxCollider:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3710000997795581929}
   m_Material: {fileID: 13400000, guid: 394641ccdb420f34d8a0710c4d01e2a3, type: 2}
-  m_IsTrigger: 0
+  m_IsTrigger: 1
   m_Enabled: 1
   serializedVersion: 2
   m_Size: {x: 1, y: 1, z: 1}
@@ -192,6 +195,52 @@ MonoBehaviour:
   leftHandPoint: {fileID: 2153666512513386917}
   deathBody: {fileID: 798773788267458066, guid: e3881a40379c5854ca15b46720e202e9,
     type: 3}
+--- !u!114 &7918072727500752562
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710000997795581929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: ccbb5c1d173c75d4b82a47a7cbd4d258, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  invicibilityFrames: 0
+  normal: {fileID: 2100000, guid: d57a1daa227de0e4592b0713f6b015de, type: 2}
+  takingDamage: {fileID: 2100000, guid: e4a3dcb673d6fb44aa78fee8ce04895d, type: 2}
+  boxCollider: {fileID: 0}
+  totalInvTime: 2
+  blinkInterval: 0.5
+--- !u!114 &-6564480058154897155
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710000997795581929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 52f594de3b2ea214a9d0ee0dca44768b, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  knockBackForce: 1
+--- !u!114 &8058713618499967676
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3710000997795581929}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 421f29191e0aa7c42b9b15512712769e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  parentStats: {fileID: 0}
+  parentTag: 
+  touchingDamage: 1
 --- !u!1 &5191617012050780409
 GameObject:
   m_ObjectHideFlags: 0
@@ -203,7 +252,7 @@ GameObject:
   - component: {fileID: 7904068011993392010}
   m_Layer: 12
   m_Name: RightHandPoint
-  m_TagString: Sword Guy
+  m_TagString: Enemy
   m_Icon: {fileID: -5442936267250999957, guid: 0000000000000000d000000000000000, type: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0

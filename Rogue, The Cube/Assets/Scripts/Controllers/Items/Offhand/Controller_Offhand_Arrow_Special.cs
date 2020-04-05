@@ -52,10 +52,9 @@ public class Controller_Offhand_Arrow_Special : Controller_Offhand
     private void SetupSpecialArrow(GameObject visualModel)
     {
         GameObject prj = Instantiate(visualModel, firePoint.transform.position, firePoint.transform.rotation);
-        Controller_Projectile c_p = prj.GetComponent<Controller_Projectile>();
-        c_p.stats = stats;
-        c_p.parentTag = transform.parent.parent.tag; // TODO : maybe think about a better way to fix this. seems loose...
-        c_p.buff = arrow.debuff;
+        prj.GetComponentInChildren<Collision_Controller>().parentTag = parentTag;
+        prj.GetComponentInChildren<Collision_Controller>().parentStats = parentStats;
+        prj.GetComponentInChildren<Collision_Controller>().buff = arrow.debuff;
 
         GameObject pe = Instantiate(arrow.particleEffect, firePoint.transform.position, firePoint.transform.rotation);
         pe.transform.SetParent(prj.transform);

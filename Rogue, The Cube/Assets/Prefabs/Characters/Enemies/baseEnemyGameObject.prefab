@@ -10,6 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2738848416729719643}
   - component: {fileID: -7273993750390537653}
+  - component: {fileID: -483907734129339539}
   - component: {fileID: -6937948949408829044}
   - component: {fileID: 5301184627081013385}
   - component: {fileID: 2701209385301564006}
@@ -18,7 +19,7 @@ GameObject:
   - component: {fileID: -869321915968182806}
   - component: {fileID: -4910088851040544610}
   - component: {fileID: 7677352677950351534}
-  m_Layer: 12
+  m_Layer: 14
   m_Name: baseEnemyGameObject
   m_TagString: Enemy
   m_Icon: {fileID: 7174288486110832750, guid: 0000000000000000d000000000000000, type: 0}
@@ -55,6 +56,19 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 2
+--- !u!65 &-483907734129339539
+BoxCollider:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 3591082380441925013}
+  m_Material: {fileID: 0}
+  m_IsTrigger: 0
+  m_Enabled: 1
+  serializedVersion: 2
+  m_Size: {x: 1, y: 1, z: 1}
+  m_Center: {x: 0, y: 0, z: 0}
 --- !u!95 &-6937948949408829044
 Animator:
   serializedVersion: 3
@@ -81,7 +95,7 @@ NavMeshAgent:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 3591082380441925013}
-  m_Enabled: 1
+  m_Enabled: 0
   m_AgentTypeID: 0
   m_Radius: 1
   m_Speed: 3.5
@@ -227,9 +241,10 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b87f0d120f17946b453e7963f83e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  animator: {fileID: 0}
   targetLayer:
     serializedVersion: 2
-    m_Bits: 12288
+    m_Bits: 16384
   attackingDistance: 0
   mainTarget: {fileID: 0}
   staticEnemy: 0

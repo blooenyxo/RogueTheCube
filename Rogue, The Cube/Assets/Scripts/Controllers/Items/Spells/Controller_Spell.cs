@@ -15,8 +15,6 @@ public class Controller_Spell : MonoBehaviour
     public virtual void Start()
     {
         rb = GetComponent<Rigidbody>();
-        //speed = Mathf.RoundToInt(casterStats.INTELIGENCE.GetValue());
-        speed = 50;
         interval = spell.castInterval;
         destroyOnWallhit = spell.interactWithWalls;
         damageOverTime = spell.damageOverTime;

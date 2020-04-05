@@ -19,6 +19,8 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
 
     private Item_UI thisItem_UI;
 
+    private GameObject _player;
+
     [HideInInspector] public Transform Button1;
     [HideInInspector] public Transform Button2;
     [HideInInspector] public Transform Button3;
@@ -58,6 +60,11 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         thisItem_UI = GetComponent<Item_UI>();
     }
 
+    private void Start()
+    {
+        _player = GameObject.Find("Player");
+    }
+
     public void OnPointerDown(PointerEventData eventData)
     {
         if (thisItem_UI.item.ITEM_TYPE == ITEMTYPE.GOLD)
@@ -86,7 +93,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         }
         else if (_str == "InventorySlot")
         {
-            if (GameObject.Find("Player").GetComponent<Controller_Input>().npcPanelOpen)
+            if (_player.GetComponent<Controller_Input>().npcPanelOpen)
             {
                 if (Input.GetButton("Run")) // selling one item from stack
                 {
@@ -121,8 +128,8 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             }
             //move to inventory if enough free space
             // the next line is for clearing the lootbox content after item was removed
-            if (GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction())
-                GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(thisItem_UI.item);
+            if (_player.GetComponent<Controller_Input>().NearbyInteraction())
+                _player.GetComponent<Controller_Input>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(thisItem_UI.item);
 
         }
         else if (_str == "Button1" || _str == "Button2" || _str == "Button3" || _str == "ButtonQ")
@@ -160,7 +167,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
                     {
                         MoveToInventory(this.transform);
                     }
-                    GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction().GetComponent<NPC_Controller>().items.Remove(thisItem_UI.item);
+                    _player.GetComponent<Controller_Input>().NearbyInteraction().GetComponent<NPC_Controller>().items.Remove(thisItem_UI.item);
                 }
             }
         }

@@ -41,8 +41,8 @@ public class Enemy : ScriptableObject
 
     [Header("Enemy AI")]
     public EnemyType enemyType;
-    public int detectionSphereRadius;
-    public int attackingDistance;
+    public float detectionSphereRadius;
+    public float attackingDistance;
     [Header("Stamina Gain")]
     public float staminaEverySeconds;
     public int staminGainAmmount;

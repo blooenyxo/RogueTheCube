@@ -5,6 +5,8 @@ public class Controller_Bow : Controller_Weapon
     public GameObject baseArrow;
     public GameObject firePoint;
 
+    private float cooldown = 0;
+
     public override void Start()
     {
         base.Start();
@@ -12,7 +14,7 @@ public class Controller_Bow : Controller_Weapon
 
     public override void BaseAttack()
     {
-        if (Time.time > cooldown && stats.UseStamina(staminaUse))
+        if (Time.time > cooldown && parentStats.UseStamina(staminaUse))
         {
             base.BaseAttack();
             CreateArrow(baseArrow);
@@ -29,8 +31,7 @@ public class Controller_Bow : Controller_Weapon
     private void CreateArrow(GameObject visualModel)
     {
         GameObject prj = Instantiate(visualModel, firePoint.transform.position, firePoint.transform.rotation);
-        Controller_Projectile c_p = prj.GetComponent<Controller_Projectile>();
-        c_p.stats = stats;
-        c_p.parentTag = transform.parent.parent.tag;  // TODO : maybe think about a better way to fix this. seems loose...
+        prj.GetComponentInChildren<Collision_Controller>().parentTag = parentTag;
+        prj.GetComponentInChildren<Collision_Controller>().parentStats = parentStats;
     }
 }

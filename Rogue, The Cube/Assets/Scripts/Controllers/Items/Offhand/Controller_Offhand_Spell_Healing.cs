@@ -6,8 +6,8 @@ public class Controller_Offhand_Spell_Healing : Controller_Offhand_Spell
     {
         base.CastSpell();
 
-        stats.Heal(Mathf.CeilToInt((UnityEngine.Random.Range(stats.MINMAGIC.GetValue(), stats.MAXMAGIC.GetValue()) + stats.INTELIGENCE.GetValue())));
+        parentStats.Heal(Mathf.CeilToInt((UnityEngine.Random.Range(parentStats.MINMAGIC.GetValue(), parentStats.MAXMAGIC.GetValue()) + parentStats.INTELIGENCE.GetValue())));
         if (spell.buff != null)
-            stats.gameObject.GetComponent<Controller_Buffs>().AddBuff(spell.buff);
+            parentStats.gameObject.GetComponent<Controller_Buffs>().AddBuff(spell.buff);
     }
 }

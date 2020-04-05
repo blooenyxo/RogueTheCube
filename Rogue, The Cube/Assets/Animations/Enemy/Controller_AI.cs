@@ -4,14 +4,14 @@ public enum EnemyType { OFFENSIVE, DEFENSIVE }
 
 public class Controller_AI : MonoBehaviour
 {
-    private Animator animator;
+    public Animator animator;
 
     private float detectionSphereRadius;
     public LayerMask targetLayer;
     [HideInInspector] public float attackingDistance;
     private EnemyType enemyType;
 
-    [HideInInspector] public GameObject mainTarget;
+    public GameObject mainTarget;
     [HideInInspector] public bool staticEnemy;
 
     private float staminaEverySeconds;
@@ -52,7 +52,7 @@ public class Controller_AI : MonoBehaviour
                 case EnemyType.OFFENSIVE:
                     foreach (Collider col in hitColliders)
                     {
-                        if (col.gameObject.CompareTag("Player"))
+                        if (col.gameObject.CompareTag("Player") && !GetComponentInChildren<Controller_Character_Body_Invulnerability>().gotHit)
                         {
                             mainTarget = col.gameObject;
                             animator.SetTrigger("isAttacking");
@@ -100,38 +100,21 @@ public class Controller_AI : MonoBehaviour
 
     }
 
-    void OnDrawGizmosSelected()
+    public void AlertNearby(string target)
     {
-        Gizmos.color = Color.yellow;
-        Gizmos.DrawWireSphere(transform.position, detectionSphereRadius);
-    }
+        mainTarget = GameObject.FindGameObjectWithTag(target);
 
-    private void OnCollisionEnter(Collision collision)
-    {
-        //AlertNearby(collision.gameObject.GetComponent<>())
-
-        if (collision.gameObject.GetComponent<Controller_Projectile>() && collision.gameObject.GetComponent<Controller_Projectile>().parentTag == "Player")
-        {
-            AlertNearby(GameObject.Find(collision.gameObject.GetComponent<Controller_Projectile>().parentTag));
-        }
-    }
-
-    void AlertNearby(GameObject target)
-    {
-        //Debug.Log("Alertingd");
-
-        mainTarget = target;
         animator.SetTrigger("isAttacking");
         isEngaged = true;
 
-        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, 40, targetLayer);
+        Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, detectionSphereRadius, targetLayer);
         if (hitColliders.Length > 0)
         {
             foreach (Collider collider in hitColliders)
             {
                 if (collider.gameObject.CompareTag("Enemy"))
                 {
-                    collider.gameObject.GetComponentInParent<Controller_AI>().mainTarget = target;
+                    collider.gameObject.GetComponentInParent<Controller_AI>().mainTarget = mainTarget;
                     collider.gameObject.GetComponentInParent<Controller_AI>().animator.SetTrigger("isAttacking");
                 }
             }

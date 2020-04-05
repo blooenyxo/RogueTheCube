@@ -2,26 +2,29 @@
 
 /// <summary>
 /// the basic thing here is that we itterate the index of the attack array. if you dont attack for more then 1 second, the index goes back to 0;
-/// simole, easy. the collision in handled in the child (Collision_Sword)
-/// TODO: move player forward when attacking
+/// simple, easy. the collision in handled in the child (Collision_Sword)
+/// TODO: move player forward when attacking - done! but needs some adjustments
 /// </summary>
 public class Controller_Sword : Controller_Weapon
 {
     private int currentAttackIndex = 0;
     private float resetAttackOrderTime = 0;
     private string[] attacks;
-    private Rigidbody parentRb;
+    private float cooldown = 0;
 
     public override void Start()
     {
         base.Start();
 
-        parentRb = GetComponentInParent<Rigidbody>();
-
+        // holds all the attack animations for the sword. if new animations are added, just make the array bigger and and the new trigger to it.
         attacks = new string[3];
         attacks[0] = "attack_0";
         attacks[1] = "attack_1";
         attacks[2] = "attack_2";
+
+
+        GetComponentInChildren<Collision_Controller>().parentStats = parentStats;
+        GetComponentInChildren<Collision_Controller>().parentTag = parentTag;
     }
 
     private void Update()
@@ -34,23 +37,26 @@ public class Controller_Sword : Controller_Weapon
 
     public override void BaseAttack()
     {
-        if (Time.time > cooldown && stats.UseStamina(staminaUse))
+        if (Time.time > cooldown && parentStats.UseStamina(staminaUse))
         {
+            // dynamic cooldown, based on what stage of the sword routine you are in :)
             if (currentAttackIndex == 2)
-                parentRb.AddForce(2 * (transform.forward  + transform.up), ForceMode.Impulse);
+            {
+                parentRigidbody.AddForce(3 * (transform.forward + transform.up), ForceMode.Impulse);
+                GetComponentInChildren<Collision_Controller>().damageModifier = 5;
+                cooldown = Time.time + 1f;
+            }
+            else
+            {
+                GetComponentInChildren<Collision_Controller>().damageModifier = 1;
+                cooldown = Time.time + .2f;
+            }
 
-            base.BaseAttack();
             animator.SetTrigger(PickAttack());
-
-            cooldown = Time.time + GameManager.globalCooldown;
             resetAttackOrderTime = Time.time + 1f;
         }
     }
 
-    /// <summary>
-    /// holds all the attack animations for the sword. if new animations are added, just make the array bigger and and the new trigger to it.
-    /// </summary>
-    /// <returns>the random animation to be played</returns>
     private string PickAttack()
     {
         string _str = attacks[currentAttackIndex];

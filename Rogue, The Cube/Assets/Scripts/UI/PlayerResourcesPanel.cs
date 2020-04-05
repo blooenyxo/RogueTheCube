@@ -20,6 +20,10 @@ public class PlayerResourcesPanel : MonoBehaviour
     public Image hpBar;
     public Image mpBar;
 
+    public GameObject EnemyResourcePanelBuff;
+    public GameObject BuffBackground;
+    public Transform[] BuffBackgroundSlots;
+
     // Start is called before the first frame update
     void Start()
     {
@@ -33,6 +37,13 @@ public class PlayerResourcesPanel : MonoBehaviour
         else
         {
             GetComponent<CanvasGroup>().alpha = 0;
+        }
+
+
+        BuffBackgroundSlots = new Transform[BuffBackground.transform.childCount];
+        for (int i = 0; i < BuffBackground.transform.childCount; i++)
+        {
+            BuffBackgroundSlots[i] = BuffBackground.transform.GetChild(i);
         }
     }
 
@@ -69,5 +80,46 @@ public class PlayerResourcesPanel : MonoBehaviour
         mpBar.color = mpGradient.Evaluate(mpSlider.normalizedValue);
 
         goldText.text = stats_Player.CurrentGold.ToString();
+
+
+        for (int j = 0; j < stats_Player.gameObject.GetComponent<Controller_Buffs>().buff.Length; j++)
+        {
+            if (stats_Player.gameObject.GetComponent<Controller_Buffs>().buff[j] != null)
+            {
+                bool buffExists = false;
+                for (int i = 0; i < BuffBackground.transform.childCount; i++)
+                {
+                    if (BuffBackground.transform.GetChild(i).GetComponentInChildren<EnemyResourcePanelBuff>())
+                    {
+                        if (BuffBackground.transform.GetChild(i).GetComponentInChildren<EnemyResourcePanelBuff>().buff == stats_Player.gameObject.GetComponent<Controller_Buffs>().buff[j])
+                        {
+                            if (stats_Player.gameObject.GetComponent<Controller_Buffs>().buffDuration[j] == stats_Player.gameObject.GetComponent<Controller_Buffs>().buff[j].duration)
+                            {
+                                BuffBackground.transform.GetChild(i).GetComponentInChildren<EnemyResourcePanelBuff>().timeRemainingImage.fillAmount = 1;
+                            }
+                            buffExists = true;
+                        }
+                    }
+                }
+
+                if (!buffExists)
+                {
+                    GameObject BuffIcon = Instantiate(EnemyResourcePanelBuff, this.transform);
+                    BuffIcon.GetComponent<EnemyResourcePanelBuff>().buff = stats_Player.gameObject.GetComponent<Controller_Buffs>().buff[j];
+                    BuffIcon.GetComponent<EnemyResourcePanelBuff>().buffDuration = stats_Player.gameObject.GetComponent<Controller_Buffs>().buffDuration[j];
+                    BuffIcon.GetComponent<Image>().sprite = stats_Player.gameObject.GetComponent<Controller_Buffs>().buff[j].sprite;
+                    BuffBackground.GetComponent<CanvasGroup>().alpha = 1;
+
+                    for (int i = 0; i < BuffBackgroundSlots.Length; i++)
+                    {
+                        if (BuffBackgroundSlots[i].childCount == 0)
+                        {
+                            BuffIcon.transform.SetParent(BuffBackgroundSlots[i]);
+                            return;
+                        }
+                    }
+                }
+            }
+        }
     }
 }

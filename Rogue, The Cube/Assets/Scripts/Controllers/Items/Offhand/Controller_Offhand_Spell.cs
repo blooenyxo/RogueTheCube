@@ -20,7 +20,7 @@ public class Controller_Offhand_Spell : Controller_Offhand
 
         if (Time.time > nextTime)
         {
-            if (stats.UseMana(spell.manaCost))
+            if (parentStats.UseMana(spell.manaCost))
             {
                 CastSpell();
                 nextTime = Time.time + GameManager.globalCooldown;

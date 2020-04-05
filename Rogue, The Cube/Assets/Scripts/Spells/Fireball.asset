@@ -13,13 +13,14 @@ MonoBehaviour:
   m_Name: Fireball
   m_EditorClassIdentifier: 
   title: Deathball
-  manaCost: 10
-  attacking: 1
-  healing: 0
-  channeled: 0
+  spellType: 0
+  spellTarget: 0
+  spellMode: 0
+  manaCost: 2
   interactWithWalls: 1
+  castInterval: 0
   damageOverTime: 0
   interval: 0
-  visualModel: {fileID: 2751216269527067318, guid: 1bb3e41e77782184f9b46fd8f063daf6,
+  visualModel: {fileID: 2751216269527067318, guid: bd00a70b0239d3d4ab944b8b701d55d3,
     type: 3}
   buff: {fileID: 11400000, guid: 990b2347c719e8d43a35732d3f074a4b, type: 2}

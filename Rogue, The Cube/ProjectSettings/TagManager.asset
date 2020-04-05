@@ -23,6 +23,7 @@ TagManager:
   - Button3
   - ButtonQ
   - Shop
+  - Weapon
   layers:
   - Default
   - TransparentFX
@@ -32,13 +33,13 @@ TagManager:
   - UI
   - 
   - 
-  - Arrow
+  - Weapon
   - Floor
   - Walls
   - Items
   - Enemy
+  - Player
   - Characters
-  - Weapon
   - Shield
   - Interact
   - PostProcessing

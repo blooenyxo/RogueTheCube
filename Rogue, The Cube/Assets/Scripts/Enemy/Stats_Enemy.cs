@@ -3,8 +3,8 @@ using UnityEngine.AI;
 
 public class Stats_Enemy : Stats
 {
-    public delegate void OnEnmeyHit(int cHealth, int mHealth, GameObject enemyGameObject);
-    public OnEnmeyHit onEnemyHealthChange;
+    public delegate void OnEnemyHealthChange(int cHealth, int mHealth, GameObject enemyGameObject);
+    public OnEnemyHealthChange onEnemyHealthChange;
 
     public delegate void OnEnemyDeath(GameObject deadEnemy);
     public OnEnemyDeath onEnemyDeath;

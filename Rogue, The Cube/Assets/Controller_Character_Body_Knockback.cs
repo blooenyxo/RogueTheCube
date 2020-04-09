@@ -17,14 +17,12 @@ public class Controller_Character_Body_Knockback : MonoBehaviour
     public void Knockback(Transform attacker)
     {
         float distance = Vector3.Distance(this.transform.position, attacker.position);
-        if (distance < 1)
-            distance = 1;
-
-        float forceModifier = (maxKnockbackDistance - distance) * .1f;
+        float forceModifier = (maxKnockbackDistance - distance) * .4f;
 
         knockBackForce *= forceModifier;
 
-        parentRigidBody.AddForce((attacker.forward + transform.up) * knockBackForce, ForceMode.Impulse);
+        parentRigidBody.AddForce(attacker.forward * knockBackForce, ForceMode.Impulse);
+        parentRigidBody.AddForce(attacker.up * 2f, ForceMode.Impulse);
         knockBackForce = _knockBackForce;
     }
 }

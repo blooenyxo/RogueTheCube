@@ -45,7 +45,7 @@ public class Controller_AI : MonoBehaviour
     void Update()
     {
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, detectionSphereRadius, targetLayer);
-        if (hitColliders.Length > 0)
+        if (hitColliders.Length > 0 && !isEngaged)
         {
             switch (enemyType)
             {
@@ -56,6 +56,7 @@ public class Controller_AI : MonoBehaviour
                         {
                             mainTarget = col.gameObject;
                             animator.SetTrigger("isAttacking");
+                            isEngaged = true;
                         }
                     }
                     break;
@@ -68,6 +69,7 @@ public class Controller_AI : MonoBehaviour
                             {
                                 mainTarget = col.gameObject;
                                 animator.SetTrigger("isHealing");
+                                isEngaged = true;
                             }
                         }
                     }
@@ -79,6 +81,7 @@ public class Controller_AI : MonoBehaviour
         else if (hitColliders.Length <= 0 && !isEngaged)
         {
             mainTarget = null;
+            animator.SetTrigger("isReseting");
         }
 
         #region Resource Management
@@ -102,10 +105,12 @@ public class Controller_AI : MonoBehaviour
 
     public void AlertNearby(string target)
     {
-        mainTarget = GameObject.FindGameObjectWithTag(target);
-
-        animator.SetTrigger("isAttacking");
-        isEngaged = true;
+        if (mainTarget == null)
+        {
+            mainTarget = GameObject.FindGameObjectWithTag(target);
+            animator.SetTrigger("isAttacking");
+            isEngaged = true;
+        }
 
         Collider[] hitColliders = Physics.OverlapSphere(this.transform.position, detectionSphereRadius, targetLayer);
         if (hitColliders.Length > 0)

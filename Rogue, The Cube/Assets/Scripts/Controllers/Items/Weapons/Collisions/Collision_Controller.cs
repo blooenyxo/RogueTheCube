@@ -12,36 +12,36 @@ public class Collision_Controller : MonoBehaviour
     /// </summary>
     private void OnTriggerEnter(Collider other)
     {
+
+        if (other.gameObject.GetComponentInParent<Controller_AI>())
+        {
+            other.gameObject.GetComponentInParent<Controller_AI>().animator.SetTrigger("isTakingDamage");
+            other.gameObject.GetComponentInParent<Controller_AI>().AlertNearby(parentTag);  // alert only enemies
+        }
+
+        if (other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>())
+            other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>().Invincible();
+
+        if (other.gameObject.GetComponent<Controller_Character_Body_Knockback>())
+            other.gameObject.GetComponent<Controller_Character_Body_Knockback>().Knockback(parentStats.gameObject.transform); // just because we allready have this reference. might as well.
+
+
         if (!other.gameObject.CompareTag(parentTag)) // check if i don`t hit myself
         {
             int dmg = parentStats.DealDamage();
             dmg *= damageModifier;
 
-            //Debug.Log(" doing damage ");
-
             if (other.gameObject.GetComponentInParent<Stats>())
             {
                 other.gameObject.GetComponentInParent<Stats>().TakeDamage(dmg);
+            }
 
-                if (buff) // add buff if exists
+            if (buff) // add buff if exists
+            {
+                if (other.gameObject.GetComponentInParent<Controller_Buffs>())
                 {
-                    if (other.gameObject.GetComponentInParent<Controller_Buffs>())
-                    {
-                        other.gameObject.GetComponentInParent<Controller_Buffs>().AddBuff(buff);
-                    }
+                    other.gameObject.GetComponentInParent<Controller_Buffs>().AddBuff(buff);
                 }
-
-                if (other.gameObject.GetComponentInParent<Controller_AI>()) // alert only enemies
-                {
-                    other.gameObject.GetComponentInParent<Controller_AI>().AlertNearby(parentTag);
-                    other.gameObject.GetComponentInParent<Controller_AI>().animator.SetTrigger("isTakingDamage");
-                }
-
-                if (other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>())
-                    other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>().Invincible();
-
-                if (other.gameObject.GetComponent<Controller_Character_Body_Knockback>())
-                    other.gameObject.GetComponent<Controller_Character_Body_Knockback>().Knockback(parentStats.gameObject.transform); // just because we allready have this reference. might as well.
             }
         }
         else if (other.gameObject.CompareTag("Shield"))

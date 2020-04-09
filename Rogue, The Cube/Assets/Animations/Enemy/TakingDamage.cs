@@ -3,11 +3,13 @@ using UnityEngine.AI;
 
 public class TakingDamage : StateMachineBehaviour
 {
-    //private NavMeshAgent agent;
+    private Controller_AI c_ai;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+        c_ai = animator.GetComponent<Controller_AI>();
+        c_ai.isEngaged = false;
         //agent = animator.GetComponent<NavMeshAgent>();
         //agent.isStopped = true;
     }

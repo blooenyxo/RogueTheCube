@@ -1,5 +1,6 @@
 ﻿using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.UI;
 
 public class ItemDistriburion : MonoBehaviour
 {
@@ -25,6 +26,16 @@ public class ItemDistriburion : MonoBehaviour
     [Header("Gold Item")]
     public Item GoldItem;
 
+    //public Sprite newRandimItemSprite;
+    //public GameObject visualWeapon;
+    //public Item newRandomItem;
+
+    //private void Start()
+    //{
+    //    newRandomItem = new Item();
+    //    newRandomItem = ScriptableObject.CreateInstance<Item>();
+    //}
+
     public List<Item> PickItems(int numberOfItems, List<Item> itemTier)
     {
         List<Item> tempList = new List<Item>();
@@ -49,4 +60,6 @@ public class ItemDistriburion : MonoBehaviour
 
         return allitems;
     }
+
+
 }

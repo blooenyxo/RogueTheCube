@@ -42,20 +42,6 @@ public class Stats_Enemy : Stats
         tmp.transform.SetParent(this.transform);
     }
 
-    public override void SetMovespeed(int value)
-    {
-        base.SetMovespeed(value);
-        GetComponent<NavMeshAgent>().speed = MOVESPEED.GetValue();
-        GetComponent<NavMeshAgent>().isStopped = true;
-    }
-
-    public override void ResetMovespeed(int value)
-    {
-        base.ResetMovespeed(value);
-        GetComponent<NavMeshAgent>().speed = MOVESPEED.GetValue();
-        GetComponent<NavMeshAgent>().isStopped = false;
-    }
-
     public override void Die()
     {
         GetComponent<LootDrop_Controller>().SetLootBoxAndItems();

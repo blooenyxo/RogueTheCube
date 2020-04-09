@@ -1,4 +1,5 @@
-﻿using UnityEngine;
+﻿using System.Collections;
+using UnityEngine;
 /// <summary>
 /// class for holding and manipulating stats. inherited by StatsPlayer and StatsEnemy
 /// the methods are virtual so they can be overrwritten in case of extra functionality on the Player / Enemy side is needed
@@ -167,6 +168,11 @@ public class Stats : MonoBehaviour
         MOVESPEED.RemoveModifier(value);
     }
 
+    public IEnumerator StopMovement()
+    {
+        yield return new WaitForSeconds(1f);
+    }
+
     public virtual void GainGold(int value)
     {
         CurrentGold += value;
@@ -182,6 +188,8 @@ public class Stats : MonoBehaviour
         else
             return false;
     }
+
+    #region OnEquipmentChange
 
     public virtual void OnEquipmentChange(Item newItem, Item oldItem)
     {
@@ -214,4 +222,6 @@ public class Stats : MonoBehaviour
             ARMOR.RemoveModifier(Mathf.CeilToInt(oldItem.STRENGHT * .5f));
         }
     }
+
+    #endregion
 }

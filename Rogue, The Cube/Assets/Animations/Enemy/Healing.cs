@@ -16,9 +16,9 @@ public class Healing : StateMachineBehaviour
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
     override public void OnStateUpdate(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
+
         if (c_ai.mainTarget != null)
         {
-            //agent.SetDestination(c_ai.mainTarget.transform.position);
 
             if (Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) < c_ai.attackingDistance)
             {
@@ -27,10 +27,14 @@ public class Healing : StateMachineBehaviour
                     animator.GetComponentInChildren<Controller_Offhand>().target = c_ai.mainTarget;
                     animator.GetComponentInChildren<Controller_Offhand>().UseOffhand();
                 }
-            }
 
-            if (c_ai.GetComponent<Stats>().CurrentHealth >= c_ai.GetComponent<Stats>().HITPOINTS.GetValue() * 0.8f)
-                animator.SetTrigger("isReseting");
+                if (c_ai.GetComponent<Stats>().CurrentHealth >= c_ai.GetComponent<Stats>().HITPOINTS.GetValue() * 0.8f)
+                    animator.SetTrigger("isReseting");
+            }
+            else
+            {
+                animator.transform.position = Vector3.MoveTowards(animator.transform.position, c_ai.mainTarget.transform.position, 1 * Time.deltaTime);
+            }
         }
         else if (c_ai.mainTarget == null)
         {

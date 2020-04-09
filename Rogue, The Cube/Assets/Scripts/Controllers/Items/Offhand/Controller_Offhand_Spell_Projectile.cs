@@ -24,7 +24,7 @@ public class Controller_Offhand_Spell_Projectile : Controller_Offhand_Spell
             _spell.GetComponent<Controller_Spell>().casterStats = parentStats;
             _spell.GetComponent<Controller_Spell>().parentTag = parentTag;
 
-            _spell.GetComponentInChildren<Collision_Controller>().parentTag = parentTag;
+            //_spell.GetComponentInChildren<Collision_Controller>().parentTag = parentTag;
             _spell.GetComponentInChildren<Collision_Controller>().parentStats = parentStats;
             _spell.GetComponentInChildren<Collision_Controller>().buff = spell.buff;
 

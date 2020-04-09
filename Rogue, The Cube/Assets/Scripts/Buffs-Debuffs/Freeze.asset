@@ -15,9 +15,10 @@ MonoBehaviour:
   title: Freeze
   buffValue: 0
   harmfull: 1
+  healing: 0
   damage: 1
   movementImpairing: 1
-  movementImpairingValue: -3
+  movementImpairingValue: -5
   duration: 10
   interval: 10
   visualEffect: {fileID: 4648454888442969733, guid: e7961a77f34693f49956ac2567b8bccd,

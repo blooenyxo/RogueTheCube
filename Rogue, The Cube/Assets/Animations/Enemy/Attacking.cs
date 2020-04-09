@@ -2,17 +2,12 @@
 
 public class Attacking : StateMachineBehaviour
 {
-    Controller_AI c_ai;
-    //NavMeshAgent agent;
+    private Controller_AI c_ai;
 
     // OnStateEnter is called when a transition starts and the state machine starts to evaluate this state
     override public void OnStateEnter(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
         c_ai = animator.GetComponent<Controller_AI>();
-        //agent = animator.GetComponent<NavMeshAgent>();
-
-        //if (c_ai.mainTarget != null)
-        //    agent.SetDestination(c_ai.mainTarget.transform.position);
     }
 
     // OnStateUpdate is called on each Update frame between OnStateEnter and OnStateExit callbacks
@@ -20,24 +15,25 @@ public class Attacking : StateMachineBehaviour
     {
         if (c_ai.mainTarget != null)
         {
-            //agent.SetDestination(c_ai.mainTarget.transform.position);
+            Vector3 direction = (c_ai.mainTarget.transform.position - animator.transform.position).normalized;
+            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
+            animator.transform.rotation = Quaternion.Slerp(animator.transform.transform.rotation, lookRotation, 1f * Time.deltaTime);
+
 
             if (Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) > c_ai.attackingDistance)
             {
-                animator.transform.position = Vector3.MoveTowards(animator.transform.position, c_ai.mainTarget.transform.position, animator.GetComponent<Stats_Enemy>().MOVESPEED.GetValue() * Time.deltaTime);
+                int moveSpeed = animator.GetComponent<Stats_Enemy>().MOVESPEED.GetValue();
+                if (moveSpeed < 0)
+                    moveSpeed = 0;
+
+                animator.transform.position = Vector3.MoveTowards(animator.transform.position, c_ai.mainTarget.transform.position, moveSpeed * Time.deltaTime);
             }
             else if (Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) <= c_ai.attackingDistance && Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) > 1f)
             {
                 if (ForwardRay(animator.gameObject, "Player"))
                 {
-                    //agent.isStopped = true;
-
                     if (animator.GetComponentInChildren<Controller_Weapon>())
                         animator.GetComponentInChildren<Controller_Weapon>().BaseAttack();
-                }
-                else
-                {
-                    LookAt(animator.gameObject, c_ai.mainTarget.gameObject);
                 }
             }
             else if (Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) <= 1f)
@@ -46,35 +42,12 @@ public class Attacking : StateMachineBehaviour
             }
 
         }
-        else if (c_ai.mainTarget == null)
-        {
-            animator.SetTrigger("isReseting");
-        }
     }
 
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
 
-    }
-
-    // OnStateMove is called right after Animator.OnAnimatorMove()
-    //override public void OnStateMove(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that processes and affects root motion
-    //}
-
-    // OnStateIK is called right after Animator.OnAnimatorIK()
-    //override public void OnStateIK(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
-    //{
-    //    // Implement code that sets up animation IK (inverse kinematics)
-    //}
-
-    private void LookAt(GameObject me, GameObject target)
-    {
-        Vector3 direction = (target.transform.position - me.transform.position).normalized;
-        Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-        me.transform.rotation = Quaternion.Slerp(me.transform.transform.rotation, lookRotation, 1f * Time.deltaTime);
     }
 
     // ignoreLayer is missing from this. it will not work propper until fixed

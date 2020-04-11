@@ -8,7 +8,7 @@ public class Item_Mouseover : MonoBehaviour, IPointerEnterHandler, IPointerExitH
     private CanvasGroup _canvasGroup;
 
     private bool mouseOver = false;
-    private float fadeSpeed = 10f;
+    private float fadeSpeed = 100f;
 
     private void Start()
     {

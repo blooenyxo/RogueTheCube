@@ -2,30 +2,29 @@
 
 public class CloseButoons : MonoBehaviour
 {
-    [HideInInspector] public Controller_Input ci_player;
-
+    [HideInInspector] public Player_Input_UI player_Input_UI;
 
     // this is not the way, but it works for now. think of removing this, once i learn how
-    void LateUpdate()
+    void Start()
     {
-        if (ci_player == null && GameObject.Find("Player"))
+        if (player_Input_UI == null && GameObject.Find("Player"))
         {
-            ci_player = GameObject.Find("Player").GetComponent<Controller_Input>();
+            player_Input_UI = GameObject.Find("Player").GetComponent<Player_Input_UI>();
         }
     }
 
     public void InventoryPanel()
     {
-        ci_player.SwitchInventoryState();
+        //player_Input_UI.SwitchInventoryState();
     }
 
     public void NPCPanel()
     {
-        ci_player.SwitchNPCPanelState();
+        //player_Input_UI.SwitchNPCPanelState();
     }
 
     public void LootBoxPanel()
     {
-        ci_player.SwitchLootBoxState();
+        //player_Input_UI.SwitchLootBoxState();
     }
 }

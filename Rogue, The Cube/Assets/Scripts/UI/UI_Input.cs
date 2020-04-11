@@ -13,9 +13,6 @@ public class UI_Input : MonoBehaviour
     [HideInInspector] public CanvasGroup npc_cg;
     [HideInInspector] public CanvasGroup pm_cg;
 
-
-    public Camera_Follow cam;
-
     //private Animator animator_playerstatspanel;
     //private Animator animator_pickuppanel;
 

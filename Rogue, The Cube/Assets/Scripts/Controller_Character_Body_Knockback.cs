@@ -10,7 +10,7 @@ public class Controller_Character_Body_Knockback : MonoBehaviour
 
     void Start()
     {
-        parentRigidBody = transform.parent.GetComponent<Rigidbody>();
+        parentRigidBody = transform.parent.GetComponent<Rigidbody>();   
         _knockBackForce = knockBackForce;
     }
 

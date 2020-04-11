@@ -52,7 +52,7 @@ public class Controller_AI : MonoBehaviour
                 case EnemyType.OFFENSIVE:
                     foreach (Collider col in hitColliders)
                     {
-                        if (col.gameObject.CompareTag("Player") && !GetComponentInChildren<Controller_Character_Body_Invulnerability>().gotHit)
+                        if (col.gameObject.CompareTag("Player"))
                         {
                             mainTarget = col.gameObject;
                             animator.SetTrigger("isAttacking");

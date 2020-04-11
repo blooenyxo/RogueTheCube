@@ -22,7 +22,6 @@ public class Controller_Sword : Controller_Weapon
         attacks[1] = "attack_1";
         attacks[2] = "attack_2";
 
-
         GetComponentInChildren<Collision_Controller>().parentStats = parentStats;
         GetComponentInChildren<Collision_Controller>().parentTag = parentTag;
     }
@@ -42,7 +41,7 @@ public class Controller_Sword : Controller_Weapon
             // dynamic cooldown, based on what stage of the sword routine you are in :)
             if (currentAttackIndex == 2)
             {
-                parentRigidbody.AddForce(3 * (transform.forward + transform.up), ForceMode.Impulse);
+                //parentRigidbody.AddForce(50 * (transform.forward + transform.up), ForceMode.Impulse);
                 GetComponentInChildren<Collision_Controller>().damageModifier = 5;
                 cooldown = Time.time + 1f;
             }

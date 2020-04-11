@@ -67,17 +67,20 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
 
     public void OnPointerDown(PointerEventData eventData)
     {
-        if (thisItem_UI.item.ITEM_TYPE == ITEMTYPE.GOLD)
+        if (Input.GetButtonDown("Fire2"))
         {
-            Stats_Player.instance.GainGold(thisItem_UI.item.Gold);
+            if (thisItem_UI.item.ITEM_TYPE == ITEMTYPE.GOLD)
+            {
+                Stats_Player.instance.GainGold(thisItem_UI.item.Gold);
 
-            Destroy(gameObject);
-        }
+                Destroy(gameObject);
+            }
 
-        if (Input.GetMouseButtonDown(1))
-        {
-            //Debug.Log("item was in " + transform.parent.tag);
             MoveItem(transform.parent.tag); // do something based on the current parent tag
+        }
+        else
+        {
+            return;
         }
     }
 
@@ -93,32 +96,32 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
         }
         else if (_str == "InventorySlot")
         {
-            if (_player.GetComponent<Controller_Input>().npcPanelOpen)
-            {
-                if (Input.GetButton("Run")) // selling one item from stack
-                {
-                    GameObject _ui_item = Instantiate(this.gameObject, transform);
-                    _ui_item.GetComponent<Item_UI>().stacks = 1;
-                    shop.GetComponent<Item_Drop_Shop>().SellItem(_ui_item);
-                    thisItem_UI.stacks--;
-                    thisItem_UI.AdjustStackText();
+            //if (_player.GetComponent<Player_Input_UI>().npcPanelOpen)
+            //{
+            //    if (Input.GetButton("Run")) // selling one item from stack
+            //    {
+            //        GameObject _ui_item = Instantiate(this.gameObject, transform);
+            //        _ui_item.GetComponent<Item_UI>().stacks = 1;
+            //        shop.GetComponent<Item_Drop_Shop>().SellItem(_ui_item);
+            //        thisItem_UI.stacks--;
+            //        thisItem_UI.AdjustStackText();
 
-                    if (thisItem_UI.stacks <= 0)
-                    {
-                        Destroy(this.gameObject);
-                    }
-                }
-                else // selling entire stack
-                {
-                    shop.GetComponent<Item_Drop_Shop>().SellItem(this.gameObject);
-                }
-            }
-            else
-            {
-                //move to equipment / switch item if equipment slot already ocupied
-                //Debug.Log(thisItem_UI.item);
-                SortFromInventoryToEquipment(thisItem_UI.item.ITEM_TYPE);
-            }
+            //        if (thisItem_UI.stacks <= 0)
+            //        {
+            //            Destroy(this.gameObject);
+            //        }
+            //    }
+            //    else // selling entire stack
+            //    {
+            //        shop.GetComponent<Item_Drop_Shop>().SellItem(this.gameObject);
+            //    }
+            //}
+            //else
+            //{
+            //move to equipment / switch item if equipment slot already ocupied
+            //Debug.Log(thisItem_UI.item);
+            SortFromInventoryToEquipment(thisItem_UI.item.ITEM_TYPE);
+            //}
         }
         else if (_str == "LootSlot")
         {
@@ -128,8 +131,8 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
             }
             //move to inventory if enough free space
             // the next line is for clearing the lootbox content after item was removed
-            if (_player.GetComponent<Controller_Input>().NearbyInteraction())
-                _player.GetComponent<Controller_Input>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(thisItem_UI.item);
+            if (_player.GetComponent<Player_Input_UI>().NearbyInteraction())
+                _player.GetComponent<Player_Input_UI>().NearbyInteraction().GetComponent<LootBox_Controller>().RemoveItemFromList(thisItem_UI.item);
 
         }
         else if (_str == "Button1" || _str == "Button2" || _str == "Button3" || _str == "ButtonQ")
@@ -167,7 +170,7 @@ public class Item_Click : MonoBehaviour, IPointerDownHandler
                     {
                         MoveToInventory(this.transform);
                     }
-                    _player.GetComponent<Controller_Input>().NearbyInteraction().GetComponent<NPC_Controller>().items.Remove(thisItem_UI.item);
+                    _player.GetComponent<Player_Input_UI>().NearbyInteraction().GetComponent<NPC_Controller>().items.Remove(thisItem_UI.item);
                 }
             }
         }

@@ -6,8 +6,6 @@ public class Controller_Character_Body_Collision : MonoBehaviour
     public string parentTag;
     public int touchingDamage;
 
-    private float counter = 0f;
-
     private void OnTriggerEnter(Collider other)
     {
         Damage(other);

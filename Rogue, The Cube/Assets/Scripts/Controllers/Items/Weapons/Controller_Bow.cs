@@ -25,7 +25,6 @@ public class Controller_Bow : Controller_Weapon
     public override void SpecialAttack()
     {
         base.SpecialAttack();
-
     }
 
     private void CreateArrow(GameObject visualModel)

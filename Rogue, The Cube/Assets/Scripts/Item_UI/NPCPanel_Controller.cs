@@ -21,7 +21,7 @@ public class NPCPanel_Controller : MonoBehaviour
                 ShopPanel.GetComponent<CanvasGroup>().alpha = 1;
                 ShopPanel.GetComponent<CanvasGroup>().interactable = true;
                 ShopPanel.GetComponent<CanvasGroup>().blocksRaycasts = true;
-                SetupShop(GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction().GetComponent<NPC_Controller>().items, GameObject.Find("Player").GetComponent<Controller_Input>().NearbyInteraction().GetComponent<NPC_Controller>().stacks);
+                SetupShop(GameObject.Find("Player").GetComponent<Player_Input_UI>().NearbyInteraction().GetComponent<NPC_Controller>().items, GameObject.Find("Player").GetComponent<Player_Input_UI>().NearbyInteraction().GetComponent<NPC_Controller>().stacks);
                 break;
             default:
                 break;

@@ -20,9 +20,7 @@ public class Controller_Input : MonoBehaviour
     public float speedModifyer = 0f;
     private float _speedModifyer = 1f;
 
-    private float _timerStaminaGain;
-    public float staminaEverySeconds;
-    public int staminGainAmmount;
+
 
     void Start()
     {
@@ -262,12 +260,7 @@ public class Controller_Input : MonoBehaviour
 
         if (!Input.GetButton("Run"))
         {
-            _timerStaminaGain += 1 * Time.fixedDeltaTime;
-            if (_timerStaminaGain >= staminaEverySeconds)
-            {
-                GetComponent<Stats>().GainStamina(staminGainAmmount);
-                _timerStaminaGain = 0f;
-            }
+
         }
 
         Move(h, v);

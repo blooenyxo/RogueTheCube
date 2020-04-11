@@ -12,20 +12,6 @@ public class Collision_Controller : MonoBehaviour
     /// </summary>
     private void OnTriggerEnter(Collider other)
     {
-
-        if (other.gameObject.GetComponentInParent<Controller_AI>())
-        {
-            other.gameObject.GetComponentInParent<Controller_AI>().animator.SetTrigger("isTakingDamage");
-            other.gameObject.GetComponentInParent<Controller_AI>().AlertNearby(parentTag);  // alert only enemies
-        }
-
-        if (other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>())
-            other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>().Invincible();
-
-        if (other.gameObject.GetComponent<Controller_Character_Body_Knockback>())
-            other.gameObject.GetComponent<Controller_Character_Body_Knockback>().Knockback(parentStats.gameObject.transform); // just because we allready have this reference. might as well.
-
-
         if (!other.gameObject.CompareTag(parentTag)) // check if i don`t hit myself
         {
             int dmg = parentStats.DealDamage();
@@ -37,10 +23,22 @@ public class Collision_Controller : MonoBehaviour
             }
 
             if (buff) // add buff if exists
-            {
                 if (other.gameObject.GetComponentInParent<Controller_Buffs>())
-                {
                     other.gameObject.GetComponentInParent<Controller_Buffs>().AddBuff(buff);
+
+            if (other.gameObject.GetComponentInParent<Controller_AI>())
+                other.gameObject.GetComponentInParent<Controller_AI>().AlertNearby(parentTag);  // alert only enemies
+
+            if (other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>())
+                other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>().Invincible();
+
+            int rnd = Random.Range(0, 100);
+            if (rnd >= 25) // 3 out of 4 times this will trigger
+            {
+                if (other.gameObject.GetComponentInParent<Rigidbody>())
+                {
+                    other.gameObject.GetComponentInParent<Rigidbody>().AddForce(transform.up * 2f, ForceMode.Impulse);
+                    other.gameObject.GetComponentInParent<Rigidbody>().AddForce(transform.forward * 5f, ForceMode.Impulse);
                 }
             }
         }

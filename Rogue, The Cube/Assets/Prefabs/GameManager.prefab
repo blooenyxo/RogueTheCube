@@ -46,6 +46,7 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   player: {fileID: 356717249799902103, guid: e2dd014afa736bb43aff37c3700fa433, type: 3}
+  cam: {fileID: 1492394175886988773, guid: accb06adcb0590e4e8bc4c9762d116e6, type: 3}
   spawnPoint: {fileID: 0}
   playerExists: 0
   stats_player: {fileID: 0}
@@ -136,3 +137,5 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: d63828deb28794a46a8fad3d86d62632, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
+  enemyHolder: {fileID: 0}
+  stats_Enemy: []

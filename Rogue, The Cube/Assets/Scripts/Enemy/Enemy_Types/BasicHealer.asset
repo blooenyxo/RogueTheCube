@@ -40,8 +40,8 @@ MonoBehaviour:
   maxGoldStacks: 0
   chanceToDropLoot: 10
   enemyType: 1
-  detectionSphereRadius: 20
-  attackingDistance: 8
+  detectionSphereRadius: 40
+  attackingDistance: 10
   staminaEverySeconds: 0
   staminGainAmmount: 0
   manaEverySeconds: 0.5

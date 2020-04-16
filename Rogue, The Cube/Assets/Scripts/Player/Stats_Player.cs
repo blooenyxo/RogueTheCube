@@ -15,6 +15,8 @@ public class Stats_Player : Stats
     }
     #endregion
 
+    public GameObject cameraRotationPoint;
+
     public delegate void OnStatsChanged();
     public OnStatsChanged onStatsChanged;
 
@@ -102,6 +104,7 @@ public class Stats_Player : Stats
     public override void Die()
     {
         base.Die();
+        GetComponent<PlayerMovement>().enabled = false;
         onPlayerDeath?.Invoke();
     }
 }

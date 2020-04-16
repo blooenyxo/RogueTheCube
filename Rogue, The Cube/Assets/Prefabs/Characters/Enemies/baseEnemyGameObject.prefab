@@ -10,7 +10,7 @@ GameObject:
   m_Component:
   - component: {fileID: 2738848416729719643}
   - component: {fileID: 5311973098834751730}
-  - component: {fileID: -483907734129339539}
+  - component: {fileID: -6669974336506929870}
   - component: {fileID: -6937948949408829044}
   - component: {fileID: 2701209385301564006}
   - component: {fileID: -2385801666593161806}
@@ -55,7 +55,7 @@ Rigidbody:
   m_Interpolate: 0
   m_Constraints: 80
   m_CollisionDetection: 0
---- !u!65 &-483907734129339539
+--- !u!65 &-6669974336506929870
 BoxCollider:
   m_ObjectHideFlags: 0
   m_CorrespondingSourceObject: {fileID: 0}
@@ -218,10 +218,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 72b87f0d120f17946b453e7963f83e17, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  animator: {fileID: 0}
-  targetLayer:
+  animator: {fileID: -6937948949408829044}
+  spottingLayer:
     serializedVersion: 2
-    m_Bits: 16384
+    m_Bits: 12288
+  alertLayer:
+    serializedVersion: 2
+    m_Bits: 4096
   attackingDistance: 0
   mainTarget: {fileID: 0}
   staticEnemy: 0

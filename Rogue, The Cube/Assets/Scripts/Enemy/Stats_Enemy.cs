@@ -47,5 +47,6 @@ public class Stats_Enemy : Stats
         GetComponent<LootDrop_Controller>().SetLootBoxAndItems();
         onEnemyDeath?.Invoke(this.gameObject);
         base.Die();
+        Destroy(this.gameObject);
     }
 }

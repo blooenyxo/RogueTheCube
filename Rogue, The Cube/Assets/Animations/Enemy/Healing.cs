@@ -28,8 +28,11 @@ public class Healing : StateMachineBehaviour
                     animator.GetComponentInChildren<Controller_Offhand>().UseOffhand();
                 }
 
-                if (c_ai.GetComponent<Stats>().CurrentHealth >= c_ai.GetComponent<Stats>().HITPOINTS.GetValue() * 0.8f)
+                if (c_ai.mainTarget.GetComponentInParent<Stats>().CurrentHealth >= c_ai.mainTarget.GetComponentInParent<Stats>().HITPOINTS.GetValue() * 0.8f)
+                {
+                    c_ai.mainTarget = null;
                     animator.SetTrigger("isReseting");
+                }
             }
             else
             {
@@ -45,7 +48,7 @@ public class Healing : StateMachineBehaviour
     // OnStateExit is called when a transition ends and the state machine finishes evaluating this state
     override public void OnStateExit(Animator animator, AnimatorStateInfo stateInfo, int layerIndex)
     {
-
+        c_ai.isEngaged = false;
     }
 
     // OnStateMove is called right after Animator.OnAnimatorMove()

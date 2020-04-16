@@ -20,7 +20,7 @@ public class MouseLook : MonoBehaviour
     {
         if (!uiOpen)
         {
-            float mouseX = Input.GetAxis("MouseX") * mouseSensitivity * .75f * Time.deltaTime;
+            float mouseX = Input.GetAxis("MouseX") * mouseSensitivity * Time.deltaTime;
             float mouseY = Input.GetAxis("MouseY") * mouseSensitivity * Time.deltaTime;
 
             xRotation -= mouseY;

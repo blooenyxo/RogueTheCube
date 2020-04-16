@@ -7,5 +7,6 @@ public class Controller_Character_Body : MonoBehaviour
     public GameObject rightHandPoint;
     public GameObject leftHandPoint;
 
+    public GameObject aliveBody;
     public GameObject deathBody;
 }

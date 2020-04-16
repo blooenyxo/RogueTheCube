@@ -30,7 +30,7 @@ public class Controller_Bow : Controller_Weapon
     private void CreateArrow(GameObject visualModel)
     {
         GameObject prj = Instantiate(visualModel, firePoint.transform.position, firePoint.transform.rotation);
-        prj.GetComponentInChildren<Collision_Controller>().parentTag = parentTag;
-        prj.GetComponentInChildren<Collision_Controller>().parentStats = parentStats;
+        prj.GetComponent<Collision_Controller>().parentTag = parentTag;
+        prj.GetComponent<Collision_Controller>().parentStats = parentStats;
     }
 }

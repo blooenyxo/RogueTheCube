@@ -19,7 +19,7 @@ MonoBehaviour:
   AGILITY: 0
   HITPOINTS: 5
   MANAPOINTS: 0
-  MOVESPEED: 1
+  MOVESPEED: 4
   STAMINA: 0
   headGear: {fileID: 0}
   chestGear: {fileID: 0}
@@ -29,19 +29,19 @@ MonoBehaviour:
     type: 3}
   visualModel: {fileID: 3710000997795581929, guid: 70360ae18bf2c5f4faccf2fafed8d749,
     type: 3}
-  maxNrLowTierItems: 0
+  maxNrLowTierItems: 5
   maxNrMediumTierItems: 0
   maxNrHighTierItems: 0
-  maxNrConsumableItems: 0
-  minNrConsumableStacks: 0
-  maxNrConsumableStacks: 0
+  maxNrConsumableItems: 5
+  minNrConsumableStacks: 1
+  maxNrConsumableStacks: 10
   maxNrSpecialItems: 0
-  minGoldStacks: 0
-  maxGoldStacks: 0
-  chanceToDropLoot: 0
+  minGoldStacks: 10
+  maxGoldStacks: 10
+  chanceToDropLoot: 100
   enemyType: 0
-  detectionSphereRadius: 30
-  attackingDistance: 1.5
+  detectionSphereRadius: 20
+  attackingDistance: 0
   staminaEverySeconds: 0
   staminGainAmmount: 0
   manaEverySeconds: 0

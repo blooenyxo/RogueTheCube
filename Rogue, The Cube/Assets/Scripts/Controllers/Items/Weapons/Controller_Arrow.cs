@@ -29,4 +29,9 @@ public class Controller_Arrow : MonoBehaviour
             canFall = false;
         }
     }
+
+    private void OnTriggerEnter(Collider other)
+    {
+        Destroy(gameObject);
+    }
 }

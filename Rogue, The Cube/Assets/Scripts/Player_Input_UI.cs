@@ -15,7 +15,7 @@ public class Player_Input_UI : MonoBehaviour
     private void Start()
     {
         ui_input = GameObject.Find("UI_Canvas").GetComponent<UI_Input>();
-        mouseLook = GetComponentInChildren<MouseLook>();
+        //mouseLook = GetComponentInChildren<MouseLook>();
     }
 
     // add every panel to the Cancel action + make for every new panel a "...PanelState" methode.
@@ -65,12 +65,12 @@ public class Player_Input_UI : MonoBehaviour
 
         if (npc_panel_state || lootbox_panel_state || invetory_panel_state || pause_panel_state)
         {
-            mouseLook.uiOpen = true;
+            //mouseLook.uiOpen = true;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
-            mouseLook.uiOpen = false;
+            //mouseLook.uiOpen = false;
             Cursor.lockState = CursorLockMode.Locked;
         }
     }

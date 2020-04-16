@@ -15,11 +15,6 @@ public class Attacking : StateMachineBehaviour
     {
         if (c_ai.mainTarget != null)
         {
-            Vector3 direction = (c_ai.mainTarget.transform.position - animator.transform.position).normalized;
-            Quaternion lookRotation = Quaternion.LookRotation(new Vector3(direction.x, 0f, direction.z));
-            animator.transform.rotation = Quaternion.Slerp(animator.transform.transform.rotation, lookRotation, 1f * Time.deltaTime);
-
-
             if (Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) > c_ai.attackingDistance)
             {
                 int moveSpeed = animator.GetComponent<Stats_Enemy>().MOVESPEED.GetValue();
@@ -30,7 +25,7 @@ public class Attacking : StateMachineBehaviour
             }
             else if (Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) <= c_ai.attackingDistance && Vector3.Distance(animator.transform.position, c_ai.mainTarget.transform.position) > 1f)
             {
-                if (ForwardRay(animator.gameObject, "Player"))
+                if (ForwardRay(animator.transform, "Player"))
                 {
                     if (animator.GetComponentInChildren<Controller_Weapon>())
                         animator.GetComponentInChildren<Controller_Weapon>().BaseAttack();
@@ -51,12 +46,13 @@ public class Attacking : StateMachineBehaviour
     }
 
     // ignoreLayer is missing from this. it will not work propper until fixed
-    private bool ForwardRay(GameObject me, string _tag)
+    private bool ForwardRay(Transform me, string _tag)
     {
-        if (Physics.Raycast(me.transform.position, me.transform.TransformDirection(Vector3.forward), out RaycastHit hit, Mathf.Infinity))
+        if (Physics.Raycast(me.position, me.forward, out RaycastHit hit, 30f, c_ai.spottingLayer))
         {
             if (hit.transform.CompareTag(_tag))
             {
+                //Debug.Log(hit.transform.tag);
                 return true;
             }
             else

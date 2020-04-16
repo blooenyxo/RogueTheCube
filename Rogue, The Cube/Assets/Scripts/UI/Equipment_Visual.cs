@@ -8,8 +8,8 @@ public abstract class Equipment_Visual : MonoBehaviour
     private GameObject rightHandPoint;
     private GameObject leftHandPoint;
 
-    [HideInInspector] public GameObject deathBody;
-    [HideInInspector] public GameObject aliveBody;
+    public GameObject deathBody;
+    public GameObject aliveBody;
 
     [Header("Hit Marker")]
     public GameObject hitMarker;
@@ -33,7 +33,7 @@ public abstract class Equipment_Visual : MonoBehaviour
         leftHandPoint = GetComponentInChildren<Controller_Character_Body>().leftHandPoint;
 
         deathBody = GetComponentInChildren<Controller_Character_Body>().deathBody;
-        aliveBody = GetComponentInChildren<Controller_Character_Body>().gameObject;
+        aliveBody = GetComponentInChildren<Controller_Character_Body>().aliveBody;
     }
 
     internal void HitMarker(object point)

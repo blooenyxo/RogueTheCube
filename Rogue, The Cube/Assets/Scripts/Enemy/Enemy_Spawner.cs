@@ -66,6 +66,9 @@ public class Enemy_Spawner : MonoBehaviour
         spawnedGameObject.GetComponent<Controller_AI>().SetValues(Enemies[rnd]);
         spawnedGameObject.GetComponent<Controller_AI>().staticEnemy = staticEnemy;
 
+        spawnedGameObject.GetComponentInChildren<Collision_Controller>().parentTag = Enemies[rnd].visualModel.tag;
+        spawnedGameObject.GetComponentInChildren<Collision_Controller>().parentStats = spawnedGameObject.GetComponent<Stats>();
+
         se = spawnedGameObject.GetComponent<Stats_Enemy>();
         se.onEnemyDeath += SetRespawnTimer;
     }

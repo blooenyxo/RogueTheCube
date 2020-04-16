@@ -101,6 +101,7 @@ MonoBehaviour:
     baseValue: 100
   GOLD:
     baseValue: 0
+  cameraRotationPoint: {fileID: 1293810997735093815}
 --- !u!114 &-7165117316737289323
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -149,12 +150,12 @@ CharacterController:
   m_Enabled: 1
   serializedVersion: 2
   m_Height: 1
-  m_Radius: 1
+  m_Radius: 0.75
   m_SlopeLimit: 45
   m_StepOffset: 0.3
   m_SkinWidth: 0.08
   m_MinMoveDistance: 0.001
-  m_Center: {x: 0, y: 0.5, z: 0}
+  m_Center: {x: 0, y: 0.25, z: 0}
 --- !u!114 &6258277065811824014
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -232,7 +233,7 @@ GameObject:
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
   m_StaticEditorFlags: 0
-  m_IsActive: 1
+  m_IsActive: 0
 --- !u!4 &6569770486860459801
 Transform:
   m_ObjectHideFlags: 0
@@ -261,6 +262,8 @@ GameObject:
   - component: {fileID: 3209673556873911919}
   - component: {fileID: 7220798473379038711}
   - component: {fileID: 2244574611843274714}
+  - component: {fileID: 3478769696192746048}
+  - component: {fileID: 1981309548225380361}
   m_Layer: 14
   m_Name: Camera
   m_TagString: MainCamera
@@ -305,9 +308,9 @@ Camera:
     y: 0
     width: 1
     height: 1
-  near clip plane: 2.5
+  near clip plane: 0.01
   far clip plane: 1000
-  field of view: 58.703163
+  field of view: 58.715508
   orthographic: 0
   orthographic size: 5
   m_Depth: 0
@@ -371,7 +374,7 @@ MonoBehaviour:
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 7333584825830553660}
-  m_Enabled: 1
+  m_Enabled: 0
   m_EditorHideFlags: 0
   m_Script: {fileID: 11500000, guid: 27d1bb9200f73664a8e088b1ac2e246b, type: 3}
   m_Name: 
@@ -380,6 +383,94 @@ MonoBehaviour:
   playerBody: {fileID: 1380104845253707097}
   cameraRotationPoint: {fileID: 6569770486860459801}
   uiOpen: 0
+--- !u!114 &3478769696192746048
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333584825830553660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: 948f4100a11a5c24981795d21301da5c, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  volumeTrigger: {fileID: 5947532914819757186}
+  volumeLayer:
+    serializedVersion: 2
+    m_Bits: 131072
+  stopNaNPropagation: 1
+  finalBlitToCameraTarget: 0
+  antialiasingMode: 1
+  temporalAntialiasing:
+    jitterSpread: 0.75
+    sharpness: 0.25
+    stationaryBlending: 0.95
+    motionBlending: 0.85
+  subpixelMorphologicalAntialiasing:
+    quality: 2
+  fastApproximateAntialiasing:
+    fastMode: 0
+    keepAlpha: 0
+  fog:
+    enabled: 1
+    excludeSkybox: 1
+  debugLayer:
+    lightMeter:
+      width: 512
+      height: 256
+      showCurves: 1
+    histogram:
+      width: 512
+      height: 256
+      channel: 3
+    waveform:
+      exposure: 0.12
+      height: 256
+    vectorscope:
+      size: 256
+      exposure: 0.12
+    overlaySettings:
+      linearDepth: 0
+      motionColorIntensity: 4
+      motionGridSize: 64
+      colorBlindnessType: 0
+      colorBlindnessStrength: 1
+  m_Resources: {fileID: 11400000, guid: d82512f9c8e5d4a4d938b575d47f88d4, type: 2}
+  m_ShowToolkit: 1
+  m_ShowCustomSorter: 0
+  breakBeforeColorGrading: 0
+  m_BeforeTransparentBundles: []
+  m_BeforeStackBundles: []
+  m_AfterStackBundles: []
+--- !u!114 &1981309548225380361
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 7333584825830553660}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: c0c2e76a563716a46960056d9fb194f4, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  lockCursor: 0
+  mouseSensitivity: 10
+  target: {fileID: 0}
+  distFromTarget: 2
+  pitchMinMax: {x: -40, y: 85}
+  rotationSmoothTime: 8
+  changeTransparency: 1
+  targetRenderer: {fileID: 0}
+  moveSpeed: 5
+  returnSpeed: 9
+  wallPush: 0.7
+  closestDistanceToPlayer: 2
+  evenCloserDistanceToPlayer: 1
+  collisionMask:
+    serializedVersion: 2
+    m_Bits: 0
 --- !u!1 &9182647477934772333
 GameObject:
   m_ObjectHideFlags: 0
@@ -417,30 +508,10 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 1380104845253707097}
     m_Modifications:
-    - target: {fileID: 2153666512513386917, guid: 0a11d56952320ea4cb644bc1a8347249,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 3362108080382489069, guid: 0a11d56952320ea4cb644bc1a8347249,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
     - target: {fileID: 3710000997795581929, guid: 0a11d56952320ea4cb644bc1a8347249,
         type: 3}
       propertyPath: m_Name
       value: baseCharacterCube_Player
-      objectReference: {fileID: 0}
-    - target: {fileID: 3710000997795581929, guid: 0a11d56952320ea4cb644bc1a8347249,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
-      objectReference: {fileID: 0}
-    - target: {fileID: 5191617012050780409, guid: 0a11d56952320ea4cb644bc1a8347249,
-        type: 3}
-      propertyPath: m_Layer
-      value: 14
       objectReference: {fileID: 0}
     - target: {fileID: 6984396795431785271, guid: 0a11d56952320ea4cb644bc1a8347249,
         type: 3}

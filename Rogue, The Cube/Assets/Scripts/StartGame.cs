@@ -6,6 +6,7 @@ public class StartGame : MonoBehaviour
     public static StartGame instance;
 
     public GameObject player;
+    public GameObject cam;
     public Transform spawnPoint;
     public bool playerExists = false;
     public Stats_Player stats_player;
@@ -36,6 +37,10 @@ public class StartGame : MonoBehaviour
         GameObject p = Instantiate(player, spawnPoint.position, spawnPoint.rotation);
         p.transform.SetParent(spawnPoint);
         p.name = "Player";
+
+        GameObject _cam = Instantiate(cam, p.transform.position, p.transform.rotation);
+        _cam.GetComponent<Camera_Controller>().target = p.transform;
+        _cam.GetComponent<Camera_Controller>().targetRenderer = p.GetComponentInChildren<MeshRenderer>();
 
         stats_player = Stats_Player.instance;
     }

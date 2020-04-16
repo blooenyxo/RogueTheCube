@@ -26,9 +26,6 @@ public class Controller_Character_Body_Collision : MonoBehaviour
             }
             if (other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>())
                 other.gameObject.GetComponent<Controller_Character_Body_Invulnerability>().Invincible();
-
-            if (other.gameObject.GetComponent<Controller_Character_Body_Knockback>())
-                other.gameObject.GetComponent<Controller_Character_Body_Knockback>().Knockback(parentStats.gameObject.transform); // just because we allready have this reference. might as well.
         }
     }
 }

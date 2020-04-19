@@ -1,7 +1,12 @@
-﻿using UnityEngine;
+﻿using UnityEditor;
+using UnityEngine;
+using System.Runtime.InteropServices;
 
 public class Player_Input_UI : MonoBehaviour
 {
+    [DllImport("user32.dll")]
+    static extern bool SetCursorPos(int x, int y);
+
     public LayerMask interactionLayer;
     public MouseLook mouseLook;
     //public bool ui_panel_state = false;
@@ -66,12 +71,17 @@ public class Player_Input_UI : MonoBehaviour
         if (npc_panel_state || lootbox_panel_state || invetory_panel_state || pause_panel_state)
         {
             //mouseLook.uiOpen = true;
+            Cursor.visible = true;
+            Camera.main.GetComponent<Camera_Controller>().uiIsOpened = true;
             Cursor.lockState = CursorLockMode.None;
         }
         else
         {
             //mouseLook.uiOpen = false;
+            SetCursorPos(Screen.height / 2, Screen.width / 2);
+            Cursor.visible = false;
             Cursor.lockState = CursorLockMode.Locked;
+            Camera.main.GetComponent<Camera_Controller>().uiIsOpened = false;
         }
     }
 

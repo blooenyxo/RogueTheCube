@@ -12,13 +12,13 @@ public class Camera_Controller : MonoBehaviour
     public float distFromTarget = 2;
     public Vector2 pitchMinMax = new Vector2(-40, 85);
 
-    public float rotationSmoothTime = 8f;
+    public float rotationSmoothTime = 20f;
     Vector3 rotationSmoothVelocity;
     Vector3 currentRotation;
 
     float yaw;
-    float pitch;
-
+    float pitch = 10f;
+    public bool uiIsOpened = false;
 
     [Header("Collision Vars")]
 
@@ -49,33 +49,24 @@ public class Camera_Controller : MonoBehaviour
         }
     }
 
-
     private void LateUpdate()
     {
-
-
-
         CollisionCheck(target.position - transform.forward * distFromTarget);
         WallCheck();
-
 
         if (!pitchLock)
         {
             yaw += Input.GetAxis("MouseX") * mouseSensitivity;
-            pitch -= Input.GetAxis("MouseY") * mouseSensitivity;
+            pitch -= Input.GetAxis("MouseY") * mouseSensitivity * .5f;
             pitch = Mathf.Clamp(pitch, pitchMinMax.x, pitchMinMax.y);
-            currentRotation = Vector3.Lerp(currentRotation, new Vector3(pitch, yaw), rotationSmoothTime * Time.deltaTime);
+            CurrentRotation();
         }
         else
         {
-
             yaw += Input.GetAxis("MouseX") * mouseSensitivity;
             pitch = pitchMinMax.y;
-
-            currentRotation = Vector3.Lerp(currentRotation, new Vector3(pitch, yaw), rotationSmoothTime * Time.deltaTime);
-
+            CurrentRotation();
         }
-
 
         transform.eulerAngles = currentRotation;
 
@@ -83,15 +74,18 @@ public class Camera_Controller : MonoBehaviour
         e.x = 0;
 
         target.eulerAngles = e;
+    }
 
-
-
-
+    void CurrentRotation()
+    {
+        if (!uiIsOpened)
+        {
+            currentRotation = Vector3.Lerp(currentRotation, new Vector3(pitch, yaw), rotationSmoothTime * Time.deltaTime);
+        }
     }
 
     private void WallCheck()
     {
-
         Ray ray = new Ray(target.position, -target.forward);
         RaycastHit hit;
 
@@ -103,12 +97,10 @@ public class Camera_Controller : MonoBehaviour
         {
             pitchLock = false;
         }
-
     }
 
     private void CollisionCheck(Vector3 retPoint)
     {
-
         RaycastHit hit;
 
         if (Physics.Linecast(target.position, retPoint, out hit, collisionMask))
@@ -130,51 +122,36 @@ public class Camera_Controller : MonoBehaviour
             }
 
             return;
-
         }
-
 
         FullTransparency();
 
         transform.position = Vector3.Lerp(transform.position, retPoint, returnSpeed * Time.deltaTime);
         pitchLock = false;
-
-
     }
 
     private void TransparencyCheck()
     {
-
         if (changeTransparency)
         {
-
             if (Vector3.Distance(transform.position, target.position) <= closestDistanceToPlayer)
             {
-
                 Color temp = targetRenderer.sharedMaterial.color;
                 temp.a = Mathf.Lerp(temp.a, 0.2f, moveSpeed * Time.deltaTime);
 
                 targetRenderer.sharedMaterial.color = temp;
-
-
             }
             else
             {
-
                 if (targetRenderer.sharedMaterial.color.a <= 0.99f)
                 {
-
                     Color temp = targetRenderer.sharedMaterial.color;
                     temp.a = Mathf.Lerp(temp.a, 1, moveSpeed * Time.deltaTime);
 
                     targetRenderer.sharedMaterial.color = temp;
-
                 }
-
             }
-
         }
-
     }
 
     private void FullTransparency()
@@ -183,15 +160,11 @@ public class Camera_Controller : MonoBehaviour
         {
             if (targetRenderer.sharedMaterial.color.a <= 0.99f)
             {
-
                 Color temp = targetRenderer.sharedMaterial.color;
                 temp.a = Mathf.Lerp(temp.a, 1, moveSpeed * Time.deltaTime);
 
                 targetRenderer.sharedMaterial.color = temp;
-
             }
         }
     }
-
-
 }

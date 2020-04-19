@@ -202,6 +202,10 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   staminaEverySeconds: 0.01
   staminGainAmmount: 1
+  manaEverySeconds: 5
+  manaGainAmmount: 1
+  healthEverySeconds: 5
+  healthGainAmmount: 1
 --- !u!114 &1667739714448261073
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -461,6 +465,7 @@ MonoBehaviour:
   distFromTarget: 2
   pitchMinMax: {x: -40, y: 85}
   rotationSmoothTime: 8
+  uiIsOpened: 0
   changeTransparency: 1
   targetRenderer: {fileID: 0}
   moveSpeed: 5

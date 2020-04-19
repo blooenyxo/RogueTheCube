@@ -129,15 +129,16 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   lockCursor: 0
-  mouseSensitivity: 5
+  mouseSensitivity: 10
   target: {fileID: 0}
   distFromTarget: 5
-  pitchMinMax: {x: -40, y: 85}
-  rotationSmoothTime: 4
+  pitchMinMax: {x: -20, y: 85}
+  rotationSmoothTime: 5
+  uiIsOpened: 0
   changeTransparency: 1
   targetRenderer: {fileID: 0}
-  moveSpeed: 10
-  returnSpeed: 9
+  moveSpeed: 100
+  returnSpeed: 25
   wallPush: 0.7
   closestDistanceToPlayer: 2
   evenCloserDistanceToPlayer: 1
